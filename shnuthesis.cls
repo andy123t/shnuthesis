@@ -411,7 +411,7 @@
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
 
 % ------- 重置命令 maketitle -------
-\renewcommand{\maketitle}[1][12em]{
+\renewcommand{\maketitle}[1][12cm]{
 	\begin{titlepage}
 		\begin{center} %\zihao{4}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：O24 \hspace{2cm} 学号：\defstunum} \\
