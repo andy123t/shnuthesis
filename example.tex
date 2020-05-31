@@ -83,7 +83,7 @@ This is abstract. This is abstract. This is abstract. This is abstract. This is 
 	
 通过空一行实现段落换行，仅仅是回车并不会产生新的段落
 
-这是一个引用的示例 \cite{Key1}和 \cite{Key2, Key3}.
+这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994, Tadmor2012}.
 
 这是一大段文字这是一大段文字 中英文混合 Galerkin 这是一大段文字 Methods 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字
 
@@ -152,7 +152,7 @@ This is abstract. This is abstract. This is abstract. This is abstract. This is 
 &u(a)=\alpha, \quad u(b)=\beta.
 \end{eqnarray}
 
-问题 \eqref{Equ11}存在唯一解 (参考文献\cite{Key1}).
+问题 \eqref{Equ11}存在唯一解 (参考文献 \cite{Tadmor2012}，也是示例).
 
 
 \section{有限差分方法}
@@ -367,7 +367,9 @@ r  & r        & order    & h        & p        & r        & order    \\
 
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 %使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
+\nocite{*}  % 可以显示全部参考文献，包括未引用的
 \bibliography{mybib}
 
 
@@ -377,10 +379,10 @@ r  & r        & order    & h        & p        & r        & order    \\
 %\pagestyle{plain} \Appendix{
 
 
-\noindent[1] {{\bf Mingzi Xing} and Mingzi Xing},  {\em }, {\bf The name of the published article 1}, 01 (2020), 1001-1008.
+\noindent[1] {{\bf Author1} and Author2},  {\em The name of the published article 1}, {\bf Name of Journal}, 01 (2020), 1001-1008.
 
 
-\noindent[2] {{\bf Mingzi Xing},  Mingzi Xing},  {\em The name of the published article, 2}, submitted to
+\noindent[2] {{\bf Author1},  Author2 and Author3},  {\em The name of the published article 2}, submitted to
 Journal of XXX.
 
 
