@@ -4,19 +4,18 @@
 % SHNU-Thesis 上海师范大学研究生 LaTeX 模板
 \documentclass{shnuthesis}
 % 进行个人信息设置
-\title{毕业论文的题目} %论文题目
+%\title{这是一个毕业论文题目} %论文题目
+\title{这是一个很长的这是一个很长的这是一个很长的毕业论文题目}
 \author{某~某~某} %作者姓名
-\date{2020年6月5日} %日期 二零二零年六月
-\school{院系名称} %院系名称
-\college{学院}
-\major{专业} %专业
-\study{研究方向}
+\date{\today} %日期 或二零二零年六月
+\college{学~院~名~称}
+\major{专~业~名~称} %专业
+\study{专~业~方~向~名~称}
 \stunum {123000678} %学号
-\instructor{某~某~某} %导师姓名
+\instructor{某~某~某~~~教~授} %导师姓名
 
 %添加自己要用的其他宏包
 \usepackage{xltxtra}
-
 % ---- 证明结束黑框 -----
 % \renewcommand{\qedsymbol}{$\blacksquare$}
 
@@ -299,12 +298,12 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 		\end{tabularx}
 \end{generaltab}
 
-当然你也可以引用表格，就像这样：\autoref{tab:heightweight} 
+当然你也可以引用表格，就像这样：\autoref{tab:heightweight}
 
 
 使用通用的表格环境 table.
 
-\begin{table}[!htp] 
+\begin{table}[!htp]
 \centering
 \caption{某校学生升高体重样本}
 \label{tab2:heightweight}
@@ -322,7 +321,7 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 \end{tabularx}
 \end{table}
 
-引用表格：\autoref{tab2:heightweight} 
+引用表格：\autoref{tab2:heightweight}
 
 \clearpage
 基于 tabular 设置一些格式：上下表格线加粗

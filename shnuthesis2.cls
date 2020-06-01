@@ -2,12 +2,12 @@
 %	shnuthesis.cls
 %	本文件是上海师范大学研究生毕业论文模板类文件
 %	@author andy123t
-% 	@date 2020/06/01
+% 	@date 2020/06/02
 %	@version v1.0.0
 %   参考：https://github.com/skinaze/HUSTPaperTemp
 
 % ---------- 定义的新的类 ----------
-\ProvidesClass{shnuthesis}[2020/06/02 v1.0.0]
+\ProvidesClass{shnuthesis2}[2020/06/02 v1.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -41,8 +41,9 @@
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
 \geometry{headsep=1em,footskip=2em}
-%\geometry{headheight=28pt}
+% \geometry{headheight=14pt}
 % \geometry{headsep=-0.1cm,footskip=-0.1cm}
+% \geometry{headheight=14pt}
 
 %  ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm}  % AMSLaTeX宏包 用来排出更加漂亮的公式
@@ -439,7 +440,7 @@
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
 
 % ------- 重置命令 maketitle -------
-\renewcommand{\maketitle}[1][15em]{
+\renewcommand{\maketitle}[1][12cm]{
 	\begin{titlepage}
 		\begin{center} %\zihao{4}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：O24 \hspace{2cm} 学号：\defstunum} \\
@@ -447,32 +448,26 @@
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1.5cm}
 			{ \songti \bf \zihao{0} 硕 \hspt 士 \hspt 学 \hspt 位 \hspt 论 \hspt 文}\\ %\bfseries
-			\vspace{1.8cm}
+			\vspace{2cm}
 			%\vspace{6em}
 			%{\zihao{2} \heiti \@title}\\
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
 			\end{center}
-			%\begin{spacing}{1.5}
 			%{\zihao{2} \heiti \@title} \\
-			%\end{spacing} \\
-			\vspace{1.8cm}
-			{\zihao{3} \heiti
-				\renewcommand\arraystretch{1.8}
-				\begin{tabular}{lc}
-					\makebox[7em][s]{院 \hfill 系~：} & 
-					\underline{\makebox[#1]{\defcollege}} \\
-					\makebox[7em][s]{专 \hfill 业~：} & 
-					\underline{\makebox[#1]{\defmajor}} \\
-					\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & 
-					\underline{\makebox[#1]{\defstudy}} \\
-					\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & 
-					\underline{\makebox[#1]{\@author}} \\
-					\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} &
-					\underline{\makebox[#1]{\definstructor}} \\
-					\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
-					\underline{\makebox[#1]{\@date}} \\
-				\end{tabular}}\\
+			\vspace{2cm}
+			{\zihao{3} \fangsong
+				\renewcommand\arraystretch{1.6}
+				\begin{tabular}{p{0cm}p{6em}l@{\extracolsep{1em}}l}
+					%~&论\hfill 文\hfill 题\hfill 目   && {\heiti \@title}\\
+					~&院\hfill 系 &&  {\heiti \defcollege}\\
+					~&专\hfill 业 &&  {\heiti \defmajor} \\
+					~&研\hfill 究\hfill 方\hfill 向  && {\heiti \defstudy} \\
+					~&研\hfill 究\hfill 生\hfill 姓\hfill 名 &&  {\heiti \@author} \\
+					%~&学 \hfill 号 &&  \defstunum \\
+					~&指\hfill 导\hfill 教\hfill 师   && {\heiti \definstructor}\\
+					~&完\hfill 成\hfill 日\hfill 期   && {\heiti \@date}\\
+			\end{tabular}}\\
 			% \vspace{4em}
 			% {\zihao{3} \fangsong \@date}\\
 		\end{center}
