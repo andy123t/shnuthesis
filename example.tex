@@ -16,14 +16,29 @@
 
 % 添加自己要用的其他宏包
 %\usepackage{xltxtra}
-% ---- 证明结束黑框 -----
+
+% --- 证明结束黑框 ----
 % \renewcommand{\qedsymbol}{$\blacksquare$}
 
-% ---- 段落行距修改 -----
+% --- 默认行距1.2倍, 可以修改 -----
 % \renewcommand{\baselinestretch}{1.5}
 
-% --- 设置其他英文字体 -----
-% \setmainfont{Times New Roman}
+% --- 设置英文字体 -----
+%\setmainfont{Times New Roman}
+\usepackage{newtxtext}  % for text fonts
+
+% --- 设置数学字体 -----
+%\usepackage{mathptmx}
+%\usepackage{newtxmath}
+%\usepackage[lite]{mtpro2}
+
+% --- 自定义命令 -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
+\newcommand{\md}{\mathrm{d}\,}
+\newcommand{\bA}{\boldsymbol{A}}
 
 
 \begin{document}
@@ -43,7 +58,7 @@
 
 在正文中添加空行可以实现换行功能
 		
-摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+摘要内容摘要内容摘要内容摘要内容摘要内 容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 		
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 
@@ -59,9 +74,9 @@
 
 This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract.
 		
-This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract.
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
-This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract.
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 \end{enabstract}
 	
@@ -82,16 +97,18 @@ This is abstract. This is abstract. This is abstract. This is abstract. This is 
 \chapter{引言}
 
 \section{研究背景}
-这是小四号的正文字体，段间距1.2倍
+这是小四号的正文字体, 段间距1.2倍.
 	
-通过空一行实现段落换行，仅仅是回车并不会产生新的段落
+通过空一行实现段落换行，仅仅是回车并不会产生新的段落。
 
-这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994, Tadmor2012}.
+这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994,Tadmor2012}.
 
 这是一大段文字这是一大段文字 中英文混合 Galerkin 这是一大段文字 Methods 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字
 
 
 \section{数学公式}
+
+自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
 
 在文中引用公式可以这么写：$a^2+b^2=c^2$这是勾股定理，他还可以表示为$c=\sqrt{a^2+b^2}$，还可以让公式单独一段并且加上编号
 \begin{equation}\label{eq:trifun}
@@ -117,7 +134,6 @@ This is abstract. This is abstract. This is abstract. This is abstract. This is 
 u(0)=0,\quad u(1)=0.
 \end{array} \right.
 \end{equation}
-
 \section{结构安排}
 
 本文接下来的写作安排如下：

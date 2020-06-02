@@ -56,7 +56,7 @@
 
 
 %  ---------- 常用宏包 ----------
-\RequirePackage{amsmath,amssymb,amsthm}  % AMSLaTeX宏包 用来排出更加漂亮的公式
+\RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMSLaTeX宏包 用来排出更加漂亮的公式
 \RequirePackage{bm}    % 处理数学公式中的黑斜体的宏包
 \RequirePackage{mathrsfs}  % 不同于\mathcal or \mathfrak 之类的英文花体字体
 \RequirePackage{graphicx} % 添加图需要的库
