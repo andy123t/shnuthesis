@@ -28,21 +28,30 @@
 \RequirePackage[cs4size,UTF8,winfonts,heading=true]{ctex}
 
 % ---------- 定义字体 ----------
-% \RequirePackage{xeCJK}
 %用于设置非常用字体
-\RequirePackage{fontspec}
 %论文封面使用宋体和仿宋
+
+% ------ pdflatex -----
+% \usepackage[utf8]{inputenc}
+% \RequirePackage[T1]{fontenc}
+
+% ---------XeLaTeX ------
+\RequirePackage{fontspec}
+
+% ------ 设置电脑中有的字体 --------
+%\RequirePackage{times}  % Times字体的宏包
 %\setmainfont{Microsoft YaHei}
 %\setmainfont{Times New Roman} 
+%\setmainfont[BoldFont=Nimbus Sans L,ItalicFont={Nimbus Roman No9 L}]{Times New Roman}
 
 
 % ---------- 定义页边距 ----------
-%
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
 \geometry{headsep=1em,footskip=2em}
 %\geometry{headheight=28pt}
-% \geometry{headsep=-0.1cm,footskip=-0.1cm}
+%\geometry{headsep=-0.1cm,footskip=-0.1cm}
+
 
 %  ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm}  % AMSLaTeX宏包 用来排出更加漂亮的公式
@@ -68,20 +77,7 @@
 %\usepackage[perpage,symbol]{footmisc}   % 脚注控制
 %\RequirePackage{fancyref}
 %\RequirePackage{lastpage}                   % 自动记录总页数宏包，计数器为 LastPage
-
-% 使用Times字体的宏包
-%\RequirePackage{times}
 %\RequirePackage[perpage,symbol]{footmisc}   % 脚注控制
-
-
-% \setmainfont{Times New Roman}
-
-\RequirePackage[T1]{fontenc}
-
-
-% ------ 设置电脑中有的字体 --------
-% \RequirePackage{fontspec}
-% \setmainfont[BoldFont=Nimbus Sans L,ItalicFont={Nimbus Roman No9 L}]{Times New Roman}
 
 
 % --------设置图片的路径 ---------
@@ -133,7 +129,7 @@
 %     {\huge{\chaptertitlename}}{20pt}{\huge}
 % \titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
 
-\titleformat{\chapter}[hang]{\normalfont \Large \filcenter\heiti}
+\titleformat{\chapter}[hang]{\normalfont \heiti \Large \filcenter}
     {\Large {\chaptertitlename}}{20pt}{\Large}
 \titlespacing{\chapter}{0pt}{0ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
@@ -142,12 +138,12 @@
     {\large \thesection}{1em}{}{}
 \titlespacing{\section}{0pt}{3ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}%{\wordsep}
 
-\titleformat{\subsection}[hang]{\heiti\normalsize}
+\titleformat{\subsection}[hang]{\heiti \normalsize}
     {\normalsize \thesubsection}{1em}{}{}
 \titlespacing{\subsection}%
     {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
-\titleformat{\subsubsection}[hang]{\CJKfamily{hei}}
+\titleformat{\subsubsection}[hang]{\heiti}
     {\thesubsubsection }{1em}{}{}
 \titlespacing{\subsubsection}%
     {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
