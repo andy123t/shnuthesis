@@ -493,54 +493,96 @@
 		{false}{}}
 }
 
+
 % ----  设置命令
 \newcommand{\makestatement}[2][0]{
 	\clearpage
 	\thispagestyle{empty}
-	\vspace*{8ex}
+	\vspace*{-2ex}
+
 	\begin{center}
-		\heiti \zihao{2}
+		\heiti \zihao{-2}
 		论文独创性声明
 	\end{center}
-	\vspace*{10ex}
-	\begin{spacing}{2.0}
-	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特別加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对木研究的启发和所做的贡献均已在论文中做了明确的声明并表示了谢意。
+	\vspace{6ex}
+
+	\begin{spacing}{1.5}
+	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
-	% \rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-	\vspace{4ex}
-	 \parbox[t][10cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
-     作者签名：\hrulefill \hfill 日\hspace{2em}期：\hrulefill \hspace{1cm} }
-	\clearpage
-	\thispagestyle{empty}
-	\vspace*{8ex}
+	\vspace{12ex}
+
+	\rightline{作者签名：\hspace{8em} 日\hspace{1em}期：\hspace{8em}}
+	\vspace{28ex}
+	
 	\begin{center}
-		\heiti \zihao{2}
+		\heiti \zihao{-2}
 		论文使用授权声明
 	\end{center}
-	\vspace*{10ex}
-	\begin{spacing}{2.0}
+	\vspace{6ex}
+
+	\begin{spacing}{1.5}
 	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。保密的论文在解密后遵守此规定。
 	\end{spacing}
-	\vspace*{2ex}
-	{\heiti（保密的论文在解密后应遵守此规定）}
-	% \begin{tabbing}
-	% 	\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\encryption{#2}
-	% 	，在\makebox[2em][c]{\encryptionyear{#2}{#1}}年解密后适用本授权书。\\
-	% 	\>2、不保密\>\nonencryption{#2}
-	% 	。\\
-	% 	\>（请在以上相应方框内打“$\checkmark$”）
-	% \end{tabbing}
-	% \rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-	% \rightline{导师签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-	\vspace*{0ex}
+	\vspace{12ex}
+	
+	\rightline{作者签名：\hspace{7em} 导师签名：\hspace{8em}}
+	\vspace{1ex}
 
-	\parbox[t][10cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
-    作者签名：\hrulefill \hfill 导师签名：\hrulefill \hspace{1cm}
-    \\ \hspace*{2cm} 日\hspace{2em}期：\hrulefill \hfill
-    日\hspace{2em}期：\hrulefill \hspace{1cm} }
-
+	\rightline{日\hspace{2em}期：\hspace{7em} 日\hspace{2em}期：\hspace{8em}}
+	
 	\clearpage
 }
+
+
+
+% ----  设置命令
+% \newcommand{\makestatement}[2][0]{
+% 	\clearpage
+% 	\thispagestyle{empty}
+% 	\vspace*{8ex}
+% 	\begin{center}
+% 		\heiti \zihao{2}
+% 		论文独创性声明
+% 	\end{center}
+% 	\vspace*{10ex}
+% 	\begin{spacing}{2.0}
+% 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特別加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对木研究的启发和所做的贡献均已在论文中做了明确的声明并表示了谢意。
+% 	\end{spacing}
+% 	% \rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
+% 	\vspace{4ex}
+% 	 \parbox[t][10cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
+%      作者签名：\hrulefill \hfill 日\hspace{2em}期：\hrulefill \hspace{1cm} }
+% 	\clearpage
+% 	\thispagestyle{empty}
+% 	\vspace*{8ex}
+% 	\begin{center}
+% 		\heiti \zihao{2}
+% 		论文使用授权声明
+% 	\end{center}
+% 	\vspace*{10ex}
+% 	\begin{spacing}{2.0}
+% 	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。保密的论文在解密后遵守此规定。
+% 	\end{spacing}
+% 	\vspace*{2ex}
+% 	{\heiti（保密的论文在解密后应遵守此规定）}
+% 	% \begin{tabbing}
+% 	% 	\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\encryption{#2}
+% 	% 	，在\makebox[2em][c]{\encryptionyear{#2}{#1}}年解密后适用本授权书。\\
+% 	% 	\>2、不保密\>\nonencryption{#2}
+% 	% 	。\\
+% 	% 	\>（请在以上相应方框内打“$\checkmark$”）
+% 	% \end{tabbing}
+% 	% \rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
+% 	% \rightline{导师签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
+% 	\vspace*{0ex}
+
+% 	\parbox[t][10cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
+%     作者签名：\hrulefill \hfill 导师签名：\hrulefill \hspace{1cm}
+%     \\ \hspace*{2cm} 日\hspace{2em}期：\hrulefill \hfill
+%     日\hspace{2em}期：\hrulefill \hspace{1cm} }
+
+% 	\clearpage
+% }
 
 
 
