@@ -25,7 +25,7 @@
 \LoadClass[a4paper,openany]{book}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,winfonts,heading=true]{ctex}
+\RequirePackage[cs4size,UTF8,heading=true]{ctex}
 
 % ---------- 定义字体 ----------
 %用于设置非常用字体
