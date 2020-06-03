@@ -2,14 +2,14 @@
 %	shnuthesis.cls
 %	本文件是上海师范大学研究生毕业论文模板类文件
 %	@author andy123t
-% 	@date 2020/06/01
+% 	@date 2020/06/04
 %	@version v1.0.0
 %   参考：https://github.com/skinaze/HUSTPaperTemp
+%
 
 % ---------- 定义的新的类 ----------
-\ProvidesClass{shnuthesis}[2020/06/02 v1.0.0]
+\ProvidesClass{shnuthesis}[2020/06/04 v1.0.0]
 \NeedsTeXFormat{LaTeX2e}
-
 
 
 % ---------- 定义类的选项 ----------
@@ -42,16 +42,13 @@
 %\RequirePackage{times}  % Times字体的宏包
 %\setmainfont{Microsoft YaHei}
 %\setmainfont{Times New Roman} 
-%\setmainfont[BoldFont=Nimbus Sans L,ItalicFont={Nimbus Roman No9 L}]{Times New Roman}
 
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
-\geometry{headsep=1em,footskip=2em}
-%\geometry{headheight=28pt}
-%\geometry{headsep=-0.1cm,footskip=-0.1cm}
-
+\addtolength{\headsep}{-0.1cm}          % 页眉位置
+\addtolength{\footskip}{-0.1cm}         % 页脚位置
 
 %  ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMSLaTeX宏包 用来排出更加漂亮的公式
@@ -64,7 +61,7 @@
 \RequirePackage{longtable}   % 长表格
 \RequirePackage{multirow}   % 表格多行合并, 矩阵的边注
 \RequirePackage{colortbl}   % 彩色表格
-% %\RequirePackage{dcolumn}    % 让表格中将小数点对齐
+%\RequirePackage{dcolumn}    % 让表格中将小数点对齐
 \RequirePackage{enumerate}      % 改变列表标号样式
 %\RequirePackage{epsfig}
 %\RequirePackage{epstopdf}
@@ -97,7 +94,7 @@
 %\ctexset{chapter={format={\centering \heiti \bfseries \zihao{2}},titleformat=\raggedright,name={第,章}}}
 %\newcommand{\chapterbreak}{\clearpage} %小节从新的一页开始
 %\ctexset{chapter={format={\centering \heiti \bfseries \zihao{3}},titleformat=\raggedright,name={第,章}}}
-% \ctexset{chapter={format={\centering \heiti \bfseries \zihao{-2}}}}
+%\ctexset{chapter={format={\centering \heiti \bfseries \zihao{-2}}}}
 %\ctexset{chapter={format={\heiti\zihao{3}}}}
 % \newcommand{\chapterbreak}{\clearpage} %小节从新的一页开始
 % \ctexset{section={format={\centering \heiti \bfseries \zihao{-4}}}} %节
@@ -131,9 +128,8 @@
 
 \titleformat{\chapter}[hang]{\normalfont \heiti \Large \filcenter}
     {\Large {\chaptertitlename}}{20pt}{\Large}
-\titlespacing{\chapter}{0pt}{0ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
-%\titleformat{\section}[hang]{\CJKfamily{hei}\Large \centering} %标题居中
 \titleformat{\section}[hang]{\heiti \large}
     {\large \thesection}{1em}{}{}
 \titlespacing{\section}{0pt}{3ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}%{\wordsep}
@@ -150,36 +146,10 @@
 
 
 
-
 % ----------- 设置附录 ---------
 \RequirePackage{titletoc}
 \RequirePackage[title,titletoc]{appendix}
 \renewcommand{\appendixname}{附录}
-
-%首行缩进存在问题，暂不使用
-% \iffalse
-% %设置新的标题层级subsubsubsection
-% \titleclass{\subsubsubsection}{straight}[\subsection]
-% %设置编号
-% \newcounter{subsubsubsection}[subsubsection]
-% \renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
-% %设置标题样式
-% \titleformat{\subsubsubsection}
-% {\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
-% \titlespacing*{\subsubsubsection}
-% {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-% %重新设置段落等级
-% \def\toclevel@subsubsubsection{4}
-% \def\toclevel@paragraph{5}
-% \def\toclevel@paragraph{6}
-% \def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
-% \def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
-% \def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
-% %设置目录深度
-% \setcounter{secnumdepth}{3}
-% \setcounter{tocdepth}{3}
-% \fi
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% 定义页眉页脚 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,12 +171,6 @@
 %\iffalse%-------------------------------%
 \renewcommand{\headrulewidth}{0.5pt}    % 在页眉下画一个0.5pt宽的分隔线
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
-
-% \pagestyle{fancyplain}
-% \renewcommand{\chaptermark}[1]%
-% {\markboth{\chaptername \ #1}{}}            % \chaptermark 去掉章节标题中的数字
-% \renewcommand{\sectionmark}[1]%
-% {\markright{\thesection \ #1}{}}            % \sectionmark 去掉章节标题中的数字
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
@@ -230,8 +194,6 @@
 	\headstyle
 	\footstyle
 }
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 用于中文段落缩进和正文版式 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -281,7 +243,7 @@
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
-\captionsetup{font={normalsize,singlespacing},labelformat={default},labelsep=period}
+\captionsetup{font={normalsize,singlespacing},labelformat={default},labelsep=quad}
 \captionsetup[figure]{position=bottom,skip={5pt},name={图}}
 \captionsetup[table]{position=top,skip={2pt},name={表}}
 \setlength{\textfloatsep}{0pt}
@@ -290,15 +252,6 @@
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
 %\setlength{\abovecaptionskip}{20pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
-
-%---------------------- 定制图形和表格标题格式 -------------
-% \RequirePackage{caption2}
-% \renewcommand{\captionlabeldelim}{} %定义如  "图(表)2: 示例" 中的间隔符号,如 ":" , 这里定义为空
-% \renewcommand{\captionlabelsep}{\hspace{1em}} % 定义图表编号与标题间的间隔距离
-% \renewcommand{\captionlabelfont}{\small \heti \bf} %定义图表标签的字体
-% \renewcommand{\captionfont}{\small \songti \rmfamily} %定义图表标题内容的字体
-% \scriptsize \footnotesize \small \large \Large  %图形标签字体大小
-%\captionsetup[figure]{labelfont={bf},labelformat={default},labelsep=period,name={图.}}
 
 
 
@@ -437,24 +390,19 @@
 % ------- 重置命令 maketitle -------
 \renewcommand{\maketitle}[1][15em]{
 	\begin{titlepage}
-		\begin{center} %\zihao{4}
+		\begin{center}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：O24 \hspace{2cm} 学号：\defstunum} \\
 			\vspace{2cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1.5cm}
 			{ \songti \bf \zihao{0} 硕 \hspt 士 \hspt 学 \hspt 位 \hspt 论 \hspt 文}\\ %\bfseries
 			\vspace{1.8cm}
-			%\vspace{6em}
-			%{\zihao{2} \heiti \@title}\\
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
 			\end{center}
-			%\begin{spacing}{1.5}
-			%{\zihao{2} \heiti \@title} \\
-			%\end{spacing} \\
-			\vspace{1.8cm}
+			\vspace{2cm}
 			{\zihao{3} \heiti
-				\renewcommand\arraystretch{1.8}
+				\renewcommand\arraystretch{1.6}
 				\begin{tabular}{lc}
 					\makebox[7em][s]{院 \hfill 系~：} & 
 					\underline{\makebox[#1]{\defcollege}} \\
@@ -519,7 +467,7 @@
 	\vspace{12ex}
 
 	\rightline{作者签名：\hspace{8em} 日\hspace{1em}期：\hspace{8em}}
-	\vspace{28ex}
+	\vspace{25ex}
 	
 	\begin{center}
 		\heiti \zihao{-2}
@@ -542,56 +490,6 @@
 
 
 
-% \newcommand{\makestatement}[2][0]{
-% 	\clearpage
-% 	\thispagestyle{empty}
-% 	\vspace*{1em}
-% 	%\vspace*{-2cm}
-% 	\begin{center}
-% 		\heiti \zihao{-2}
-% 		论文独创性声明
-% 	\end{center}
-% 	\vspace{4em}
-% 	\begin{spacing}{1.5}
-% 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特別加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对木研究的启发和所做的贡献均已在论文中做了明确的声明并表示了谢意。
-% 	\end{spacing}
-% 	% \rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-% 	%\vspace*{-10ex}
-% 	 \parbox[t][10cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{4cm}
-%      作者签名： \hfill 日\hspace{2em}期： \hfill}
-% 	%\vspace*{-20ex}
-% 	\begin{center}
-% 		\heiti \zihao{-2}
-% 		论文使用授权声明
-% 	\end{center}
-% 	%\vspace*{1ex}
-% 	\begin{spacing}{2.0}
-% 	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。保密的论文在解密后遵守此规定。
-% 	\end{spacing}
-% 	%\vspace*{2ex}
-% 	{\heiti（保密的论文在解密后应遵守此规定）}
-% 	% \begin{tabbing}
-% 	% 	\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\encryption{#2}
-% 	% 	，在\makebox[2em][c]{\encryptionyear{#2}{#1}}年解密后适用本授权书。\\
-% 	% 	\>2、不保密\>\nonencryption{#2}
-% 	% 	。\\
-% 	% 	\>（请在以上相应方框内打“$\checkmark$”）
-% 	% \end{tabbing}
-% 	% \rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-% 	% \rightline{导师签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-% 	%\vspace*{0ex}
-
-% 	\parbox[t][10cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
-%     作者签名：\hrulefill \hfill 导师签名：\hrulefill \hspace{1cm}
-%     \\ \hspace*{2cm} 日\hspace{2em}期：\hrulefill \hfill
-%     日\hspace{2em}期：\hrulefill \hspace{1cm} }
-
-% 	\clearpage
-% }
-
-
-
-
 %%%%%%%%%%%%%%%%%% 定义新的中英文摘要环境 %%%%%%%%%%%%%%%%%%%
 
 % ------------------ 中文摘要环境 -------------
@@ -601,19 +499,17 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{摘要}
 	\chaptermark{中文摘要}
-	\vspace*{-1ex}
+	\vspace*{-2ex}
 	\begin{center} \heiti \Large 摘~~~~要 \end{center}
 	\vspace*{4ex}
-	
 }{
-	\vspace{2em}
+	\vspace{2ex}
 	{\noindent \heiti 关键词：} \cnkeyword
 	\clearpage
 }
 
 
 % ----------------- 英文摘要环境 ----------------
-%\fontspec{Microsoft YaHei}
 
 \newenvironment{enabstract}[1]{
 	\def \enkeyword {#1}
@@ -621,11 +517,11 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{英文摘要}
-	\vspace*{-1ex}
+	\vspace*{-3ex}
 	\begin{center} \Large \bfseries Abstract \end{center} 
-	\vspace*{2ex}
+	\vspace*{4ex}
 }{
-	\vspace{1.5em}
+	\vspace*{2ex}
 	{\noindent \bfseries Key Words: } \enkeyword
 	%\paragraph{\bfseries Key Words: } \enkeyword
 	\clearpage
