@@ -20,9 +20,6 @@
 % --- 证明结束黑框 ----
 % \renewcommand{\qedsymbol}{$\blacksquare$}
 
-% --- 默认行距1.2倍, 可以修改 -----
-% \renewcommand{\baselinestretch}{1.5}
-
 % --- 设置英文字体 -----
 %\setmainfont{Times New Roman}
 \usepackage{newtxtext}  % for text fonts
@@ -58,7 +55,7 @@
 
 在正文中添加空行可以实现换行功能
 		
-摘要内容摘要内容摘要内容摘要内容摘要内 容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 		
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 
@@ -190,7 +187,6 @@ $$\begin{aligned}
 & L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, \quad i=1,2, \cdots, N-1, \\
 & u_{0}=\alpha, \quad u_{N}=\beta.
 \end{aligned}$$
-
 它的解 $u_i$ 是 $u(x)$ 在 $x=x_i$ 处的差分解。
 
 
@@ -202,6 +198,7 @@ $$\boldsymbol{u}=(u_{1}, u_{2}, \cdots, u_{N-1})^{\mathrm{T}}.$$
 差分格式可以写为矩阵形式：
 $$\boldsymbol{A}\boldsymbol{u}=\boldsymbol{f}.
 $$
+
 其中矩阵 $\boldsymbol{A}$、向量 $\boldsymbol{f}$ 的定义如下，注意向量 $\boldsymbol{f}$ 的首尾元素已包含了 $x=a$ 和 $x=b$ 处的边界条件。
 \begin{equation}\label{equ:matrix}
 \boldsymbol{A}=\left[\begin{array}{cccccc}

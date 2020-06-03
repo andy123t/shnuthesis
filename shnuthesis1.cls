@@ -398,8 +398,8 @@
 \AtBeginDocument{
 	\setlength{\abovedisplayskip}{6pt}
 	\setlength{\belowdisplayskip}{6pt}
-	\setlength{\abovedisplayshortskip}{0pt}
-	\setlength{\belowdisplayshortskip}{0pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
 }
 
 

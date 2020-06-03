@@ -394,10 +394,10 @@
 
 % ----- 设置公式间距为零 ------
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{6pt}
-	\setlength{\belowdisplayskip}{6pt}
-	\setlength{\abovedisplayshortskip}{0pt}
-	\setlength{\belowdisplayshortskip}{0pt}
+	\setlength{\abovedisplayskip}{4pt}
+	\setlength{\belowdisplayskip}{4pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
 }
 
 
