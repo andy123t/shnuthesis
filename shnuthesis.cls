@@ -396,7 +396,7 @@
 			\vspace{2cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1.5cm}
-			{ \songti \bf \zihao{0} 硕 \hspt 士 \hspt 学 \hspt 位 \hspt 论 \hspt 文}\\ %\bfseries
+			{\heiti \zihao{0} 硕 \hspt 士 \hspt 学 \hspt 位 \hspt 论 \hspt 文}\\ %\bfseries
 			\vspace{1.8cm}
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
@@ -418,7 +418,7 @@
 					\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
 					\underline{\makebox[#1]{\@date}} \\
 				\end{tabular}}\\
-			% \vspace{4em}
+			% \vspace{4ex}
 			% {\zihao{3} \fangsong \@date}\\
 		\end{center}
 	\end{titlepage}
@@ -571,6 +571,7 @@
 
 
 %------------- 设置新的生成目录命令 ---------------
+
 \let \oldtableofcontens \tableofcontents
 \newcommand{\maketoc}[1][nopagenum]{
 	% 修改hdr原plain格式
@@ -605,7 +606,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%% 重新定义参考文献页 %%%%%%%%%%%%%%%%%%%%%
-% 
+
 % ------------- 设置参考文献 -------------
 
 \bibliographystyle{plain}
@@ -634,21 +635,6 @@
 }{
 	\clearpage
 }
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%% 定义新的致谢环境 %%%%%%%%%%%%%%%%%
-
-% \renewenvironment{appendices}{
-% 	\clearpage
-% 	\phantomsection
-% 	\addcontentsline{toc}{chapter}{附录}
-% 	\chapter*{附录}
-% 	\chaptermark{附录}
-% }{
-% 	\clearpage
-% }
-
 
 
 
