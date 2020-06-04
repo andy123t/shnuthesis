@@ -149,7 +149,8 @@
 % ----------- 设置附录 ---------
 \RequirePackage{titletoc}
 \RequirePackage[title,titletoc]{appendix}
-\renewcommand{\appendixname}{附录}
+%\renewcommand{\appendixname}{附录}
+%\renewcommand{\appendixname}{附录~\Alph{chapter}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% 定义页眉页脚 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -200,7 +201,7 @@
 
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
-\renewcommand{\baselinestretch}{1.2}        % 定义行距
+\renewcommand{\baselinestretch}{1.3}        % 定义行距
 
 \topskip=15pt
 %\parskip=5pt
@@ -402,7 +403,7 @@
 			\end{center}
 			\vspace{2cm}
 			{\zihao{3} \heiti
-				\renewcommand\arraystretch{1.6}
+				\renewcommand\arraystretch{1.5}
 				\begin{tabular}{lc}
 					\makebox[7em][s]{院 \hfill 系~：} & 
 					\underline{\makebox[#1]{\defcollege}} \\
@@ -633,6 +634,21 @@
 }{
 	\clearpage
 }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% 定义新的致谢环境 %%%%%%%%%%%%%%%%%
+
+% \renewenvironment{appendices}{
+% 	\clearpage
+% 	\phantomsection
+% 	\addcontentsline{toc}{chapter}{附录}
+% 	\chapter*{附录}
+% 	\chaptermark{附录}
+% }{
+% 	\clearpage
+% }
+
 
 
 
