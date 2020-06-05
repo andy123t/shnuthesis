@@ -1,18 +1,17 @@
 %
-%	shnuthesis.cls
-%	本文件是上海师范大学研究生毕业论文模板类文件
+%   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/06/04
-%	@version v1.0.0
+% 	@date 2020/06/06
+%	@version v1.2.0
 %   参考：https://github.com/skinaze/HUSTPaperTemp
 %
 
-% ---------- 定义的新的类 ----------
-\ProvidesClass{shnuthesis}[2020/06/04 v1.0.0]
+% ---------- 定义的新的Class ----------
+\ProvidesClass{shnuthesis}[2020/06/06 v1.2.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
-% ---------- 定义类的选项 ----------
+% ---------- 载入学校logo ----------
 \def\logopic{shnu.eps}   %logo
 \DeclareOption{SHNULogo} {
 	\def\logopic{shnu.eps}
@@ -20,112 +19,70 @@
 \ProcessOptions\relax
 
 
-
 % ---------- 载入Class ----------
 \LoadClass[a4paper,openany]{book}
-%页面基本设置
-\RequirePackage[boldfont,slantfont]{xeCJK}
+
+% ---------- 中文字体宏包 ----------
 \RequirePackage[cs4size,UTF8,heading=true]{ctex}
 
-% ---------- 定义字体 ----------
-%用于设置非常用字体
-%论文封面使用宋体和仿宋
-
-% ------ pdflatex -----
-% \usepackage[utf8]{inputenc}
-% \RequirePackage[T1]{fontenc}
-
-% ---------XeLaTeX ------
-\RequirePackage{fontspec}
-
-% ------ 设置电脑中有的字体 --------
-%\RequirePackage{times}  % Times字体的宏包
-%\setmainfont{Microsoft YaHei}
-%\setmainfont{Times New Roman} 
+% --------- 定义不同编译方式 ----------
+\RequirePackage{ifpdf,ifxetex}
+\ifxetex
+  \RequirePackage{fontspec}
+  \RequirePackage{graphicx}
+\else
+  \ifpdf
+  	\usepackage[utf8]{inputenc}
+  	\RequirePackage[T1]{fontenc}
+    \RequirePackage{graphicx}
+    \RequirePackage{epstopdf}
+  \else
+    \RequirePackage[dvipdfmx]{graphicx}
+    \RequirePackage{bmpsize}
+  \fi
+\fi
 
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
-\addtolength{\headsep}{-0.1cm}          % 页眉位置
-\addtolength{\footskip}{-0.1cm}         % 页脚位置
+\addtolength{\headsep}{-0.1cm}     % 页眉位置
+\addtolength{\footskip}{-0.1cm}    % 页脚位置
 
-%  ---------- 常用宏包 ----------
-\RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMSLaTeX宏包 用来排出更加漂亮的公式
-\RequirePackage{bm}    % 处理数学公式中的黑斜体的宏包
-\RequirePackage{mathrsfs}  % 不同于\mathcal or \mathfrak 之类的英文花体字体
-\RequirePackage{graphicx} % 添加图需要的库
+
+% ---------- 常用宏包 ----------
+\RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
+\RequirePackage{bm}         % 数学公式黑斜体
+\RequirePackage{mathrsfs}   % 数学英文花体
 \RequirePackage{booktabs}
 \RequirePackage{float}
 \RequirePackage{cite}
-\RequirePackage{longtable}   % 长表格
-\RequirePackage{multirow}   % 表格多行合并, 矩阵的边注
-\RequirePackage{colortbl}   % 彩色表格
-%\RequirePackage{dcolumn}    % 让表格中将小数点对齐
-\RequirePackage{enumerate}      % 改变列表标号样式
-%\RequirePackage{epsfig}
-%\RequirePackage{epstopdf}
-%\RequirePackage{subfigure}
+\RequirePackage{longtable}  % 长表格
+\RequirePackage{multirow}   % 表格多行合并
+\RequirePackage{enumerate}  % 改变列表标号样式
 \RequirePackage{color,xcolor}
+\RequirePackage{fancyhdr}
 \RequirePackage{setspace}
-\RequirePackage{tikz}  % 用于绘制图形
-%\RequirePackage{pifont}         % 有很漂亮的带圈的各种数字符号使用
-%\RequirePackage{layouts}
-%\usepackage[perpage,symbol]{footmisc}   % 脚注控制
-%\RequirePackage{fancyref}
-%\RequirePackage{lastpage}                   % 自动记录总页数宏包，计数器为 LastPage
-%\RequirePackage[perpage,symbol]{footmisc}   % 脚注控制
+\RequirePackage{tikz}       % 绘制图形
+\RequirePackage{titlesec}   % 设置标题样式
+\RequirePackage{tabularx}
+\RequirePackage{makecell}
+\RequirePackage{xstring}    % 使用条件语句
 
 
 % --------设置图片的路径 ---------
-%\graphicspath{{./Figures/}}
-\graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./pictures/}{./picture/}}
+\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 
-% ----------  ----------
-
-
-%%%%%%%%%%%%%%%%%%%% 定义标题和段落样式 %%%%%%%%%%%%%%%%%%%%%%%%
-
-%设置各个标题样式
-%不需要使用part和chapter层级
-\RequirePackage{titlesec}
-
-%\ctexset{chapter={format={\centering \heiti \bfseries \zihao{2}},titleformat=\raggedright,name={第,章}}}
-%\newcommand{\chapterbreak}{\clearpage} %小节从新的一页开始
-%\ctexset{chapter={format={\centering \heiti \bfseries \zihao{3}},titleformat=\raggedright,name={第,章}}}
-%\ctexset{chapter={format={\centering \heiti \bfseries \zihao{-2}}}}
-%\ctexset{chapter={format={\heiti\zihao{3}}}}
-% \newcommand{\chapterbreak}{\clearpage} %小节从新的一页开始
-% \ctexset{section={format={\centering \heiti \bfseries \zihao{-4}}}} %节
-% \ctexset{subsection={format={\raggedright \heiti \bfseries \zihao{5}}}} %小节
-% %\ctexset{subsubsection={format={\raggedright \heiti \bfseries \zihao{-4}}}} %小小节
-% \ctexset{paragraph={beforeskip={0em}}}
-% \ctexset{subparagraph={beforeskip={0em}}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 定制章节的标题样式 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%---------------------- 设置章节目录的深度 --------------------------
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3} 
-
-%---------------------- 定义章节的编号格式 --------------------------
+% ---------- 定义章节的编号格式 ----------
 \renewcommand{\chaptername}{第\chinese{chapter}章}
-%\renewcommand{\chaptername}{\arabic{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
-% \let\oldtitle=\title
-% \def\title#1{\oldtitle{\cnbf{#1}}}
 
 
-%----------------------- 定义章节标题格式 ----------------------------
-% \titleformat{\chapter}[hang]{\normalfont\huge\filcenter\heiti}
-%     {\huge{\chaptertitlename}}{20pt}{\huge}
-% \titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
-
+%---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \Large \filcenter}
     {\Large {\chaptertitlename}}{20pt}{\Large}
 \titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
@@ -145,18 +102,16 @@
     {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 
+%---------- 设置章节目录的深度 -------------
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3} 
 
-% ----------- 设置附录 ---------
+% ------------- 设置附录 -----------
 \RequirePackage{titletoc}
 \RequirePackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
-%\renewcommand{\appendixname}{附录~\Alph{chapter}}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%% 定义页眉页脚 %%%%%%%%%%%%%%%%%%%%%%%%%
-
-% ------ 使用fancyhdr库 ------
-\RequirePackage{fancyhdr}
+%-------------- 定义页眉页脚 -------------------
 
 % 定义页眉和页脚 使用fancyhdr 宏包
 \newcommand{\makeheadrule}{%
@@ -168,10 +123,10 @@
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
      \makeheadrule}}
 
-%如果需要画单隔线，则需要
-%\iffalse%-------------------------------%
+% ------------ 画单隔线 ------------
 \renewcommand{\headrulewidth}{0.5pt}    % 在页眉下画一个0.5pt宽的分隔线
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
+
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
@@ -180,6 +135,7 @@
 	\fancyhead[R]{\color{black}\fangsong \leftmark}
 }
 
+
 % ------- 设置页脚样式 ----------
 \newcommand{\footstyle}{\fancyfoot[C]{\fangsong \thepage}}
 \pagestyle{empty}
@@ -187,6 +143,7 @@
 \fancyhf{} %清空原有样式
 \headstyle
 \footstyle
+
 
 % ------ 定义一种新的格式叫做main ------------
 \fancypagestyle{main}{%
@@ -197,44 +154,27 @@
 }
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 用于中文段落缩进和正文版式 %%%%%%%%%%%%%%%%%%%%%%%%
-
+% ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
 \renewcommand{\baselinestretch}{1.3}        % 定义行距
-
-\topskip=15pt
+%\topskip=15pt   % 书写区域顶部空白
 %\parskip=5pt
 %\parindent=0pt
 %\baselineskip=5pt
 %\setlength{\baselineskip}{24pt}
 
 
-
-% %------------------------- 列表与图表距离设置 -----------------------%
-% \setlength{\topsep}{3pt plus1pt minus2pt}           % 第一个item和前面版落间的距离
-% \setlength{\partopsep}{3pt plus1pt minus2pt}        % 当在一个新页开始时加到
-%                                                     % \topsep 的额外空间
-% \setlength{\itemsep}{3pt plus1pt minus2pt}          % 连续items之间的距离.
-% \setlength{\floatsep}{10pt plus 3pt minus 2pt}      % 图形之间或图形与正文之间的距离
-% \setlength{\abovecaptionskip}{2pt plus1pt minus1pt} % 图形中的图与标题之间的距离
-% \setlength{\belowcaptionskip}{3pt plus1pt minus2pt} % 表格中的表与标题之间的距离
-
-
-% % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
-% % 也可以防止在很大空白的浮动页上放置很小的图形。
+% ------------------- 浮动对象设置 ---------------------
+% 浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面
+% 也可以防止在很大空白的浮动页上放置很小的图形
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 设置图表格式 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% ------------ 设置图表标题的计数方式 ---------
-% \renewcommand{\thefigure}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
-% \renewcommand{\thetable}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
+% ---------------- 设置图表格式 ---------------
 
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
@@ -248,12 +188,11 @@
 \captionsetup[figure]{position=bottom,skip={5pt},name={图}}
 \captionsetup[table]{position=top,skip={2pt},name={表}}
 \setlength{\textfloatsep}{0pt}
-\setlength{\floatsep}{0pt}
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}
 \setlength{\intextsep}{10pt}
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-%\setlength{\abovecaptionskip}{20pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
-
+\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
+\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 
 % ----- 重新设置图表autoref -------
@@ -261,15 +200,10 @@
 \newcommand{\tableautorefname}{表}
 
 
-
 % --- 使用tabularx库并定义新的左右中格式 ----
-
-\RequirePackage{tabularx}
-\RequirePackage{makecell}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
-
 
 % ------------ 设置三线表格式 ------
 % \setlength{\heavyrulewidth}{1.5pt}
@@ -281,9 +215,7 @@
 % \setlength{\belowbottomsep}{0pt}
 
 
-
-%%%%%%%%%%%% 重新定义图和表的浮动环境 %%%%%%%%%%%%%%%%%
-
+% -------- 重新定义图和表的浮动环境 ---------
 \newenvironment{generalfig}[3][htbp]{
 	\def \figcaption {#2}
 	\def \figlabel {#3}
@@ -305,46 +237,25 @@
 }
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 数学公式设置 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \setlength{\abovedisplayskip}{2pt plus1pt minus1pt}     %公式前的距离
-% \setlength{\belowdisplayskip}{2pt plus1pt minus1pt}     %公式后面的距离
-% \setlength{\arraycolsep}{2pt}   %在一个array中列之间的空白长度, 因为原来的太宽了
-
-\allowdisplaybreaks[4]  % \eqnarray如果很长，影响分栏、换行和分页
-
-
-%--------------------------数学定理设置---------------------------------%
-% \theoremstyle{definition} \newtheorem{defn}{\heiti 定义~}[chapter]
-% \theoremstyle{plain} \newtheorem{prop}{命题~}[section]
-% \theoremstyle{plain} \newtheorem{theorem}{定理~}[chapter]
-% \theoremstyle{plain} \newtheorem{example}{\heiti 例子~}[chapter]
-% \theoremstyle{plain} \newtheorem{lemma}{引理~}[chapter]
-% \theoremstyle{plain}\newtheorem{col}{\heiti 推论~}[chapter]
-% %\theoremstyle{remark}\newtheorem{remark}{\heiti 注~}[chapter]
-% %\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
-% \theoremstyle{plain}\newtheorem{remark}{\heiti 注~}[chapter]%%%改动
-
+%------------- 数学定理设置 ---------------
 \theoremstyle{plain} 
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{example}{例子}[chapter]
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{remark}{注}[chapter]
-
-%\renewcommand{\proofname}{证明}
+\newtheorem{definition}{\heiti 定义}[chapter]
+\newtheorem{proposition}{\heiti 命题}[chapter]
+\newtheorem{lemma}{\heiti 引理}[chapter]
+\newtheorem{theorem}{\heiti 定理}[chapter]
+\newtheorem{example}{\heiti 例子}[chapter]
+\newtheorem{corollary}{\heiti 推论}[chapter]
+\newtheorem{remark}{\heiti 注}[chapter]
+\renewcommand{\proofname}{\heiti 证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
-
 %\newtheorem{algorithm}{算法}
 %\newtheorem{axiom}{公理}
 %\newtheorem{property}{性质}
 %\newtheorem{assumption}{假设}
 
 
-
+% -------------- 数学公式设置 ---------------
+\allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页
 
 % ----- 设置公式间距为零 ------
 \AtBeginDocument{
@@ -352,25 +263,24 @@
 	\setlength{\belowdisplayskip}{4pt}
 	\setlength{\abovedisplayshortskip}{2pt}
 	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
-
-% ----- 公式编号带章节
+% ------- 公式编号带章节 ----------
 \numberwithin{equation}{chapter}
 
-
-%重新设置公式autoref
+% 重新设置公式autoref
 \newcommand{\equationautorefname}{等式}
 
 
-%	---	定义列表项的样式
+% ---- 定义列表项的样式 -----
 
 \RequirePackage{enumitem}
 %\setlist{noitemsep}
-\setitemize{itemsep=2pt}
+\setitemize{itemsep=3pt}
 
 
-%%%%%%%%%%%%%%%%%%%%% 定义新的标题页面 %%%%%%%%%%%%%%%%%%%%%
+%------------- 定义新的标题页面 -------------------
 
 \def \hspt {\hspace{6pt}}  % 定义一个间距
 
@@ -418,20 +328,15 @@
 					\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
 					\underline{\makebox[#1]{\@date}} \\
 				\end{tabular}}\\
-			% \vspace{4ex}
-			% {\zihao{3} \fangsong \@date}\\
 		\end{center}
 	\end{titlepage}
 }
 
 
 
-%%%%%%%%%%%%%%%%%% 定义新的声明页面 %%%%%%%%%%%%%%%%%%%%
+% ------------ 定义新的声明页面 --------------
 
-% ----- 使用条件语句 ------
-\RequirePackage{xstring}
-
-% ------ 定义三个条件语句 -------
+% 定义三个条件语句
 \newcommand{\encryption}[1]{
 	\IfStrEqCase{#1}{{empty}{$\square$}
 		{true}{$\text{\rlap{\checkmark}}\square$ }
@@ -450,7 +355,8 @@
 		{false}{}}
 }
 
-% ----  设置命令
+
+% ----------- 设置命令 ------------
 \newcommand{\makestatement}[2][0]{
 	\clearpage
 	\thispagestyle{empty}
@@ -491,8 +397,6 @@
 
 
 
-%%%%%%%%%%%%%%%%%% 定义新的中英文摘要环境 %%%%%%%%%%%%%%%%%%%
-
 % ------------------ 中文摘要环境 -------------
 \newenvironment{cnabstract}[1]{
 	\def \cnkeyword {#1}
@@ -511,7 +415,6 @@
 
 
 % ----------------- 英文摘要环境 ----------------
-
 \newenvironment{enabstract}[1]{
 	\def \enkeyword {#1}
 	\clearpage
@@ -529,8 +432,7 @@
 }
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%% 定义新的目录页面 %%%%%%%%%%%%%%%%%%
-
+% ------------- 定义新的目录页面 ----------------
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
 \hypersetup{
@@ -541,14 +443,12 @@
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{2ex}
+\setlength{\cftbeforetoctitleskip}{1.5ex}
 \setlength{\cftaftertoctitleskip}{3ex}
-% \renewcommand{\cftbeforeloftitleskip}{0.5em}
-% \renewcommand{\cftafterloftitleskip}{0.5em}
-\renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
-\renewcommand{\cftbeforesecskip}{0em} %设置段间距
-%\renewcommand{\cftpartfont}{\songti \bfseries}%设置Part字体
-%\renewcommand{\cftsecfont}{\songti \bfseries}%设置Section字体
+\renewcommand{\cftsecdotsep}{\cftdotsep}  %设置Section引导点
+\renewcommand{\cftbeforesecskip}{0em}  %设置段间距
+\renewcommand{\cftpartfont}{\songti} %设置Part字体
+\renewcommand{\cftsecfont}{\songti} %设置Section字体
 
 % 使用条件语句
 \RequirePackage{xstring}
@@ -570,8 +470,7 @@
 
 
 
-%------------- 设置新的生成目录命令 ---------------
-
+% ----------- 设置新的生成目录命令 -------------
 \let \oldtableofcontens \tableofcontents
 \newcommand{\maketoc}[1][nopagenum]{
 	% 修改hdr原plain格式
@@ -591,8 +490,7 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%% 定义新的致谢环境 %%%%%%%%%%%%%%%%%
-
+% ---------- 定义新的致谢环境 -----------
 \newenvironment{thankpage}{
 	\clearpage
 	\phantomsection
@@ -605,17 +503,16 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%% 重新定义参考文献页 %%%%%%%%%%%%%%%%%%%%%
+% ----------- 重新定义参考文献页 -----------
 
-% ------------- 设置参考文献 -------------
-
+% 设置参考文献
 \bibliographystyle{plain}
 \ctexset{bibname={参考文献}}
 
 % 设置新的附录命令
 \let \oldbibliography \bibliography
 \renewcommand{\bibliography}[1]{
-	%添加到目录
+	% 添加到目录
 	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{参考文献}
@@ -624,7 +521,7 @@
 
 
 
-%%%%%%%%%%%%%%%%%% 定义新的环境研究成果 %%%%%%%%%%%%%%%%%%%%%%%
+% ---------- 定义新的环境研究成果页 -----------
 
 \newenvironment{researchpage}{
 	\clearpage
@@ -637,6 +534,5 @@
 }
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of file `sduthesis.cls'.
 
