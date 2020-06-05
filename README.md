@@ -10,7 +10,7 @@ LaTeX Thesis Template for SHNU
 
 本模板还可以上传到在线 LaTeX 网站 [Overeaf](https://www.overleaf.com)，在线使用 LaTeX 写文章，也非常方便。
 
-![Overleaf-thesis.png](https://i.loli.net/2020/06/03/xOasPBwQ9Mqfemt.png)
+![Overleaf-Thesis.png](https://i.loli.net/2020/06/06/SLzUIl4d3gNOfmp.png)
 
 如有不足之处，欢迎提出意见或建议。
 
