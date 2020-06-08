@@ -363,8 +363,7 @@
 	\vspace*{-2ex}
 
 	\begin{center}
-		\heiti \zihao{-2}
-		论文独创性声明
+	{\heiti \zihao{-2} 论文独创性声明}
 	\end{center}
 	\vspace{6ex}
 
@@ -377,8 +376,7 @@
 	\vspace{25ex}
 	
 	\begin{center}
-		\heiti \zihao{-2}
-		论文使用授权声明
+	{\heiti \zihao{-2} 论文使用授权声明}
 	\end{center}
 	\vspace{6ex}
 
@@ -427,7 +425,6 @@
 }{
 	\vspace*{2ex}
 	{\noindent \bfseries Key Words: } \enkeyword
-	%\paragraph{\bfseries Key Words: } \enkeyword
 	\clearpage
 }
 
@@ -439,16 +436,16 @@
 	colorlinks = true,
 	linkcolor  = black,
 	citecolor = black
-} %去掉目录红框
+} % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{1.5ex}
 \setlength{\cftaftertoctitleskip}{3ex}
-\renewcommand{\cftsecdotsep}{\cftdotsep}  %设置Section引导点
-\renewcommand{\cftbeforesecskip}{0em}  %设置段间距
-\renewcommand{\cftpartfont}{\songti} %设置Part字体
-\renewcommand{\cftsecfont}{\songti} %设置Section字体
+\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
+\renewcommand{\cftbeforesecskip}{0em}  % 设置段间距
+\renewcommand{\cftpartfont}{\songti} % 设置Part字体
+\renewcommand{\cftsecfont}{\songti} % 设置Section字体
 
 % 使用条件语句
 \RequirePackage{xstring}
@@ -504,8 +501,6 @@
 
 
 % ----------- 重新定义参考文献页 -----------
-
-% 设置参考文献
 \bibliographystyle{plain}
 \ctexset{bibname={参考文献}}
 
@@ -522,7 +517,6 @@
 
 
 % ---------- 定义新的环境研究成果页 -----------
-
 \newenvironment{researchpage}{
 	\clearpage
 	\phantomsection
