@@ -46,8 +46,8 @@
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
-\addtolength{\headsep}{-0.1cm}     % 页眉位置
-\addtolength{\footskip}{-0.1cm}    % 页脚位置
+%\addtolength{\headsep}{-0.1cm}     % 页眉位置
+%\addtolength{\footskip}{-0.1cm}    % 页脚位置
 
 
 % ---------- 常用宏包 ----------
@@ -83,13 +83,13 @@
 
 
 %---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\normalfont \heiti \Large \filcenter}
-    {\Large {\chaptertitlename}}{20pt}{\Large}
-\titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\titleformat{\chapter}[hang]{\normalfont \heiti \LARGE \filcenter}
+    {\LARGE {\chaptertitlename}}{20pt}{\LARGE}
+\titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \large}
     {\large \thesection}{1em}{}{}
-\titlespacing{\section}{0pt}{3ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}%{\wordsep}
+\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}%{\wordsep}
 
 \titleformat{\subsection}[hang]{\heiti \normalsize}
     {\normalsize \thesubsection}{1em}{}{}
@@ -403,7 +403,7 @@
 	\addcontentsline{toc}{chapter}{摘要}
 	\chaptermark{中文摘要}
 	\vspace*{-2ex}
-	\begin{center} \heiti \Large 摘~~~~要 \end{center}
+	\begin{center} \heiti \LARGE 摘~~~~要 \end{center}
 	\vspace*{4ex}
 }{
 	\vspace{2ex}
@@ -420,7 +420,7 @@
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{英文摘要}
 	\vspace*{-3ex}
-	\begin{center} \Large \bfseries Abstract \end{center} 
+	\begin{center} \LARGE \bfseries Abstract \end{center} 
 	\vspace*{4ex}
 }{
 	\vspace*{2ex}
