@@ -510,14 +510,20 @@ Journal of XXX.
 \end{thankpage}
 
 
-% 添加附录
-%\backmatter % 结束章节自动编号
-%\appendix
-%\chapter{附录 A ~~ 这是第一个附录}
-%\section*{附录可以有小节}
-%这里是附录环境，其中的section、subsection、subsubsection已经变为附录的样式，并且会以这种样式加入目录中
-%
-%\chapter{附录 B ~~ 这是第二个附录}
+% 添加附录, 如不需要可以注释掉
+
+\appendix
+\backmatter % 结束章节自动编号
+
+\chapter{附录 A ~~ 这是第一个附录}
+\renewcommand{\thesection}{A.\arabic{section}}
+\section{附录A的小节}
+这里是附录环境，手动设置了 chapter 和 section 的样式，并且加入到目录。
+
+\chapter{附录 B ~~ 这是第二个附录}
+\renewcommand{\thesection}{B.\arabic{section}}
+\section{附录B的小节}
+这里是附录环境，手动设置了 chapter 和 section 的样式，并且加入到目录。
 
 	
 \end{document} 
