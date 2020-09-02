@@ -1,13 +1,13 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/06/06
-%	@version v1.2.0
+% 	@date 2020/09/02
+%	@version v1.3.0
 %   参考：https://github.com/skinaze/HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2020/06/06 v1.2.0]
+\ProvidesClass{shnuthesis}[2020/09/02 v1.3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -23,7 +23,7 @@
 \LoadClass[a4paper,openany]{book}
 
 % ---------- 中文字体宏包 ----------
-\RequirePackage[cs4size,UTF8,heading=true]{ctex}
+\RequirePackage[cs4size,UTF8]{ctex}
 
 % --------- 定义不同编译方式 ----------
 \RequirePackage{ifpdf,ifxetex}
@@ -75,7 +75,7 @@
 
 
 % ---------- 定义章节的编号格式 ----------
-\renewcommand{\chaptername}{第\chinese{chapter}章}
+\renewcommand{\chaptername}{第\arabic{chapter}章}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
@@ -84,7 +84,7 @@
 
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \LARGE \filcenter}
-    {\LARGE {\chaptertitlename}}{20pt}{\LARGE}
+    {\Large {\chaptertitlename}}{20pt}{\Large}
 \titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \large}
@@ -130,9 +130,11 @@
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
-	\fancyhead[L]{\color{black} 上海师范大学硕士论文}
+	% \fancyhead[R]{\color{black}\fangsong \leftmark}
+	% \fancyhead[L]{\color{black} 上海师范大学硕士论文}
+	\fancyhead[RO,LE]{\color{black}\fangsong \leftmark}
+	\fancyhead[LO,RE]{\color{black} 上海师范大学硕士论文}
 	% \fancyhead[L]{\fangsong \zihao{-4} 上海师范大学硕士论文}
-	\fancyhead[R]{\color{black}\fangsong \leftmark}
 }
 
 
@@ -152,6 +154,19 @@
 	\headstyle
 	\footstyle
 }
+
+% \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ #1}{}}
+
+\renewcommand\chaptermark[1]{%
+  \markboth{\MakeUppercase{%
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \@chapapp\ \ %
+      \fi
+    \fi
+    #1}}{}%
+}
+%\renewcommand\@mkboth[2]{\markboth{#1}{}}
 
 
 % ----------- 中文段落缩进和行距 ------------
@@ -357,7 +372,7 @@
 
 
 % ----------- 设置命令 ------------
-\newcommand{\makestatement}[2][0]{
+\newcommand{\makestatement}{
 	\clearpage
 	\thispagestyle{empty}
 	\vspace*{-2ex}
@@ -400,10 +415,13 @@
 	\def \cnkeyword {#1}
 	\clearpage
 	\phantomsection
+	\fancyhead[R]{\color{black}\fangsong \leftmark}
+	\fancyhead[L]{\color{black} 上海师范大学硕士论文}
+	% \fancyhead[L]{\fangsong \zihao{-4} 上海师范大学硕士论文}
 	\addcontentsline{toc}{chapter}{摘要}
 	\chaptermark{中文摘要}
 	\vspace*{-2ex}
-	\begin{center} \heiti \LARGE 摘~~~~要 \end{center}
+	\begin{center} \heiti \Large 摘~~~~要 \end{center}
 	\vspace*{4ex}
 }{
 	\vspace{2ex}
@@ -417,10 +435,12 @@
 	\def \enkeyword {#1}
 	\clearpage
 	\phantomsection
+	\fancyhead[R]{\color{black}\fangsong \leftmark}
+	\fancyhead[L]{\color{black} 上海师范大学硕士论文}
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{英文摘要}
 	\vspace*{-3ex}
-	\begin{center} \LARGE \bfseries Abstract \end{center} 
+	\begin{center} \Large \bfseries Abstract \end{center} 
 	\vspace*{4ex}
 }{
 	\vspace*{2ex}
@@ -443,9 +463,9 @@
 \setlength{\cftbeforetoctitleskip}{1.5ex}
 \setlength{\cftaftertoctitleskip}{3ex}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-\renewcommand{\cftbeforesecskip}{0em}  % 设置段间距
-\renewcommand{\cftpartfont}{\songti} % 设置Part字体
-\renewcommand{\cftsecfont}{\songti} % 设置Section字体
+% \renewcommand\cftbeforechapskip{2ex}
+\renewcommand{\cftbeforesecskip}{0ex} % 设置Part字体
+\renewcommand{\cftsecfont}{\songti}   % 设置Section字体
 
 % 使用条件语句
 \RequirePackage{xstring}
@@ -493,6 +513,7 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{致谢}
 	\chapter*{致谢}
+	%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 	\chaptermark{致谢}
 }{
 	\clearpage

@@ -42,10 +42,13 @@
 \maketitle
 
 % 生成声明与授权书页，此页可以放在最后
-\makestatement{empty}
+\makestatement%{empty}
+
+\frontmatter
 
 \clearpage   % 结束上一页
 \pagenumbering{Roman} % 摘要页码为大写罗马数字
+
 
 % 填写中文摘要内容和关键字
 \begin{cnabstract}{关键词1；关键词2；关键词3}
@@ -87,7 +90,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\mainmatter
 \chapter{引言}
 
 \section{研究背景}
@@ -473,6 +476,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 \end{itemize}
 
 
+\backmatter  % 结束章节自动编号
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
@@ -485,10 +489,14 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 \begin{researchpage}
 
-\noindent[1] {{\bf Author1} and Author2},  {\em The name of the published article 1}, {\bf Name of Journal}, 01 (2020), 1001-1008.
 
+\hangindent 1.5em
+\noindent
+[1] {{\bf Author1} and Author2},  {\em The name of the published article 1}, {\bf Name of Journal}, 01 (2020), 1001-1008.
 
-\noindent[2] {{\bf Author1},  Author2 and Author3},  {\em The name of the published article 2}, submitted to
+\hangindent 1.5em
+\noindent
+[2] {{\bf Author1},  Author2 and Author3},  {\em The name of the published article 2}, submitted to
 Journal of XXX.
 
 
@@ -499,6 +507,7 @@ Journal of XXX.
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Thanks page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{thankpage}
+\chaptermark{致谢}
 \setlength{\baselineskip}{24pt}
 
 感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师
@@ -511,10 +520,9 @@ Journal of XXX.
 
 
 % 添加附录, 如不需要可以注释掉
-
-\backmatter % 结束章节自动编号
 \appendix
-
+%\setcounter{page}{1} %如果需要可以自行重置页码。
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \chapter{附录 A ~ 这是第一个附录}
 \renewcommand{\thesection}{A.\arabic{section}}
 \section{附录A的小节}
@@ -525,5 +533,4 @@ Journal of XXX.
 \section{附录B的小节}
 这里是附录环境，手动设置了 chapter 和 section 的样式，并且加入到目录。
 
-	
 \end{document} 
