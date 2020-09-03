@@ -1,13 +1,13 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/09/02
+% 	@date 2020/09/03
 %	@version v1.3.0
 %   参考：https://github.com/skinaze/HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2020/09/02 v1.3.0]
+\ProvidesClass{shnuthesis}[2020/09/03 v1.3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -415,9 +415,6 @@
 	\def \cnkeyword {#1}
 	\clearpage
 	\phantomsection
-	\fancyhead[R]{\color{black}\fangsong \leftmark}
-	\fancyhead[L]{\color{black} 上海师范大学硕士论文}
-	% \fancyhead[L]{\fangsong \zihao{-4} 上海师范大学硕士论文}
 	\addcontentsline{toc}{chapter}{摘要}
 	\chaptermark{中文摘要}
 	\vspace*{-2ex}
@@ -435,8 +432,6 @@
 	\def \enkeyword {#1}
 	\clearpage
 	\phantomsection
-	\fancyhead[R]{\color{black}\fangsong \leftmark}
-	\fancyhead[L]{\color{black} 上海师范大学硕士论文}
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{英文摘要}
 	\vspace*{-3ex}
