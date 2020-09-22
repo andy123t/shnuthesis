@@ -132,9 +132,9 @@
 \newcommand{\headstyle}{
 	% \fancyhead[R]{\color{black}\fangsong \leftmark}
 	% \fancyhead[L]{\color{black} 上海师范大学硕士论文}
-	\fancyhead[RO,LE]{\color{black}\fangsong \leftmark}
-	\fancyhead[LO,RE]{\color{black} 上海师范大学硕士论文}
-	% \fancyhead[L]{\fangsong \zihao{-4} 上海师范大学硕士论文}
+	\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
+	\fancyhead[LO,RE]{\color{black} \zihao{5} 上海师范大学硕士论文}
+	% \fancyhead[L]{\fangsong \zihao{5} 上海师范大学硕士论文}
 }
 
 
@@ -158,13 +158,13 @@
 % \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ #1}{}}
 
 \renewcommand\chaptermark[1]{%
-  \markboth{\MakeUppercase{%
+  \markboth{%
     \ifnum \c@secnumdepth >\m@ne
       \if@mainmatter
         \@chapapp\ \ %
       \fi
     \fi
-    #1}}{}%
+    #1}{}%
 }
 %\renewcommand\@mkboth[2]{\markboth{#1}{}}
 
