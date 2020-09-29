@@ -11,7 +11,7 @@
 \college{学~院~名~称}
 \major{专~业~名~称} %专业
 \study{专~业~方~向~名~称}
-\stunum {123000678} %学号
+\stunum{123000678} %学号
 \instructor{某~某~某~~~教~授} %导师姓名
 
 % 添加自己要用的其他宏包
@@ -89,7 +89,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 	\pagenumbering{arabic} % 正文页码为阿拉伯数字
 
     \mainmatter
-    
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -322,6 +322,7 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 
 \begin{table}[!htp]
 \centering
+% PLCR已经定义
 \caption{某校学生升高体重样本}
 \label{tab2:heightweight}
 \begin{tabularx}{\textwidth}{lCCC}
@@ -348,12 +349,9 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 \centering
 \caption{数值误差与收敛速率}
 \renewcommand\arraystretch{1.2} %定义表格高度
-\makeatletter
-\def\hlinew#1{\noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet\reserved@a\@xhline}
-\makeatother
 \label{table1}
 \begin{tabular}{c|c|cc|cc|cc}
-\hlinew{0.9pt}  %定义表格宽度
+\Xhline{2\arrayrulewidth}
 degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
 \hline
    &  1/128     & 4.57 E-07    &2.00     & 2.27 E-04  &1.00          & 9.45 E-07   &1.99    \\
@@ -367,7 +365,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
    &  1/32      & 2.04 E-11    &4.00      & 6.20 E-09  &3.00           & 4.00 E-11   &3.97       \\
 3  &  1/64     & 1.28 E-12     &4.00     & 7.76 E-10  &3.00           & 2.52 E-12   &3.99       \\
    &  1/128     & 7.98 E-14     &4.00     & 9.69 E-11  &3.00           & 1.59 E-13   &4.00       \\
-\hlinew{0.9pt}
+\Xhline{2\arrayrulewidth}
 \end{tabular}
 \end{table}
 
@@ -376,18 +374,13 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 
 \begin{table}[htp!]
 \centering
-%\small
-\centering
 \renewcommand\arraystretch{1.2} %定义表格高度
-\makeatletter
-\def\hlinew#1{\noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet\reserved@a\@xhline}
-\makeatother
-\caption{数值误差与收敛速率}
+% PLCR已经定义
 \label{table2}
-\begin{tabular}{||c|c|c|c|c|c|c||}
-\hlinew{0.9pt}  %定义表格宽度
+\begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
+\Xhline{2\arrayrulewidth}
 N  & A       & B    & C       & D      & E       & F   \\
-\hlinew{0.9pt}  %定义表格宽度
+\Xhline{2\arrayrulewidth}
 2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 & 6.70E-05 \\
 4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 & 7.30E-05 \\
 6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 & 5.40E-05 \\
@@ -398,8 +391,8 @@ N  & A       & B    & C       & D      & E       & F   \\
 16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 & 2.90E-05 \\
 18 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 & 7.80E-05 & 3.50E-05 \\
 20 & 1.10E-05 & 1.80E-05 & 0.0001   & 7.70E-05 & 8.40E-05 & 3.60E-05  \\
-\hlinew{0.9pt}  %定义表格宽度
-\end{tabular}
+\Xhline{2\arrayrulewidth}
+\end{tabularx}
 \end{table}
 
 	

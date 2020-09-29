@@ -1,13 +1,13 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/09/03
+% 	@date 2020/09/29
 %	@version v1.3.0
 %   参考：https://github.com/skinaze/HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2020/09/03 v1.3.0]
+\ProvidesClass{shnuthesis}[2020/09/29 v1.3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -84,15 +84,15 @@
 
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \LARGE \filcenter}
-    {\Large {\chaptertitlename}}{20pt}{\Large}
+    {\Large \chaptertitlename}{20pt}{\Large}
 \titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \large}
-    {\large \thesection}{1em}{}{}
-\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}%{\wordsep}
+    {\zihao{-3} \thesection}{1em}{\zihao{-3}}
+\titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
 
 \titleformat{\subsection}[hang]{\heiti \normalsize}
-    {\normalsize \thesubsection}{1em}{}{}
+    {\zihao{4} \thesubsection}{1em}{\zihao{4}}
 \titlespacing{\subsection}%
     {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
@@ -172,7 +172,7 @@
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
-\renewcommand{\baselinestretch}{1.3}        % 定义行距
+\renewcommand{\baselinestretch}{1.35}        % 定义行距
 %\topskip=15pt   % 书写区域顶部空白
 %\parskip=5pt
 %\parindent=0pt
@@ -219,6 +219,7 @@
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
 % ------------ 设置三线表格式 ------
 % \setlength{\heavyrulewidth}{1.5pt}
@@ -419,7 +420,7 @@
 	\chaptermark{中文摘要}
 	\vspace*{-2ex}
 	\begin{center} \heiti \Large 摘~~~~要 \end{center}
-	\vspace*{4ex}
+	\vspace*{3ex}
 }{
 	\vspace{2ex}
 	{\noindent \heiti 关键词：} \cnkeyword
@@ -436,7 +437,7 @@
 	\chaptermark{英文摘要}
 	\vspace*{-3ex}
 	\begin{center} \Large \bfseries Abstract \end{center} 
-	\vspace*{4ex}
+	\vspace*{3ex}
 }{
 	\vspace*{2ex}
 	{\noindent \bfseries Key Words: } \enkeyword
