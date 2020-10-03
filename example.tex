@@ -152,17 +152,19 @@ u(0)=0,\quad u(1)=0.
 
 本章我们考虑具有以下微分方程:
 \begin{equation}\label{Equ11}
-\begin{aligned}
+\left\{\begin{aligned}
 & L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\
-&u(a)=\alpha, \quad u(b)=\beta.
-\end{aligned}
+& u(a)=\alpha, \quad u(b)=\beta.
+\end{aligned}\right.
 \end{equation}
 其中 $q, f$ 为 $[a,b]$ 上的连续函数，$q \geqslant 0$；$\alpha, \beta$ 为给定常数。这是最简单的椭圆方程第一边值问题。
 
 另一个公式环境：
 \begin{eqnarray}\label{Equ12}
-&& \displaystyle L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\
-&& \displaystyle u(a)=\alpha, \quad u(b)=\beta.
+\left\{\begin{array}{l}
+\displaystyle L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\ [6pt]
+\displaystyle u(a)=\alpha, \quad u(b)=\beta.
+\end{array}\right.
 \end{eqnarray}
 
 问题 \eqref{Equ11}存在唯一解 (参考文献 \cite{Tadmor2012}，也是示例).
@@ -173,19 +175,25 @@ u(0)=0,\quad u(1)=0.
 
 \subsection{数值格式}
 将区间 $[a,b]$ 分成 $N$ 等分，分点为
-$$x_{i}=a+i h \quad i=0,1, \cdots, N,$$
-
-$h=(b-a) / N$。于是我们得到区间 $I=[a,b]$ 的一个网格剖分。$x_i$ 称为网格的节点，$h$ 称为步长。
+\begin{equation*}
+  x_{i}=a+i h \quad i=0,1, \cdots, N,
+\end{equation*}
+其中 $h=(b-a) / N$。于是我们得到区间 $I=[a,b]$ 的一个网格剖分。$x_i$ 称为网格的节点，$h$ 称为步长。
 
 数值格式：
-$$L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{h}+q_{i} u_{i}=f_{i},\quad 1 \leqslant j \leqslant N-1.$$
+\begin{equation*}
+  L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{h}+q_{i} u_{i}=f_{i},\quad 1 \leqslant j \leqslant N-1.
+\end{equation*}
 其中  $q_{i}=q(x_{i}), f_{i}=f(x_{i})$。
 
 以上差分方程对于 $i=1,2, \cdots, N-1$ 都成立，加上边值条件 $u_{0}=\alpha, u_{N}=\beta$，就得到关于 $u_i$ 的差分格式：
-$$\begin{aligned}
+\begin{equation}\label{equ21}
+\left\{\begin{aligned}
 & L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, \quad i=1,2, \cdots, N-1, \\
 & u_{0}=\alpha, \quad u_{N}=\beta.
-\end{aligned}$$
+\end{aligned}\right.
+\end{equation}
+
 它的解 $u_i$ 是 $u(x)$ 在 $x=x_i$ 处的差分解。
 
 
@@ -193,11 +201,14 @@ $$\begin{aligned}
 \subsection{矩阵形式}
 
 先定义向量 $\boldsymbol{u}$：
-$$\boldsymbol{u}=(u_{1}, u_{2}, \cdots, u_{N-1})^{\mathrm{T}}.$$
-差分格式可以写为矩阵形式：
-$$\boldsymbol{A}\boldsymbol{u}=\boldsymbol{f}.
-$$
+\begin{equation*}
+  \boldsymbol{u}=(u_{1}, u_{2}, \cdots, u_{N-1})^{\mathrm{T}}.
+\end{equation*}
 
+差分格式可以写为矩阵形式：
+\begin{equation*}
+  \boldsymbol{A}\boldsymbol{u}=\boldsymbol{f}.
+\end{equation*}
 其中矩阵 $\boldsymbol{A}$、向量 $\boldsymbol{f}$ 的定义如下，注意向量 $\boldsymbol{f}$ 的首尾元素已包含了 $x=a$ 和 $x=b$ 处的边界条件。
 \begin{equation}\label{equ:matrix}
 \boldsymbol{A}=\left[\begin{array}{cccccc}
@@ -293,15 +304,15 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 \section{表的使用}
 
 作为论文，推荐使用三线表进行排版。所谓三线表，即在标题前有横线，标题后有横线，表格最后还有横线，其他地方无线。当然这不是死规定，也可以根据需要在合适的地方加线。
-	
-本文定义了新的可变长度左中右（LCR）格式，LCR三个格式会根据表格宽度的设定自行控制宽度，且其宽度相等，方便设置和页面相同宽度的表格。但该功能需要使用tabularx做表。
+
+本文定义了新的可变长度左中右 (LCR) 格式，LCR三个格式会根据表格宽度的设定自行控制宽度，且其宽度相等，方便设置和页面相同宽度的表格。 本文还定义了 (P\{\})格式可以设定某一列宽度 (如 (P\{$1cm$\} 控制某一列的宽度为 $1cm$))，P\{\} 格式在 p\{\} 格式的基础上增加了居中功能。 PLCR格式的功能需要使用tabularx做表。
 
 \section{表格示例}
 
 可以使用自定义表格环境 generaltab.
 
 \begin{generaltab}{某校学生升高体重样本}{tab:heightweight}
-		\begin{tabularx}{\textwidth}{lCCC}
+		\begin{tabularx}{0.9\textwidth}{lCCC}
 			\toprule
 			序号&年龄&身高&体重\\
 			\midrule
@@ -325,7 +336,7 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 % PLCR已经定义
 \caption{某校学生升高体重样本}
 \label{tab2:heightweight}
-\begin{tabularx}{\textwidth}{lCCC}
+\begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
 	序号&年龄&身高&体重\\
 	\midrule
@@ -408,7 +419,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 使用自定义环境 generalfig
 	
 \begin{generalfig}[htb]{大数据信息处理框架}{fig:data}
-		\includegraphics[width=0.8\textwidth]{Figures/data.png}
+		\includegraphics[width=0.8\linewidth]{Figures/data.png}
 \end{generalfig}
 
 引用该图片例如：\autoref{fig:data}。请注意generalfig第一个参数是标题，第二个参数是引用。
@@ -416,16 +427,16 @@ N  & A       & B    & C       & D      & E       & F   \\
 使用 minipage 排版并排插图。
 
 \begin{figure}[htp!]
-\begin{minipage}[h]{0.48\linewidth}
+\begin{minipage}[t]{0.48\linewidth}
 \centering
-  \includegraphics [height=2.2in]{Image1.eps}
+  \includegraphics[width=\linewidth]{Image1.eps}
     \caption{A方法的 $L^\infty$误差.}
     \label{fig:error1}
 \end{minipage}
   \hfill
-\begin{minipage}[h]{0.48\linewidth}
+\begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics [height=2.2in]{Image2.eps}
+   \includegraphics[width=\linewidth]{Image2.eps}
    \caption{B方法的 $L^\infty$误差.}
    \label{fig:error2}
 \end{minipage}
@@ -436,10 +447,11 @@ N  & A       & B    & C       & D      & E       & F   \\
 \clearpage
 \begin{figure}[htp!]
 \centering
-  \includegraphics [height=2.3in]{Image1.eps}\hfill
-   \includegraphics [height=2.3in]{Image2.eps}
-   \caption{左：A方法的 $L^\infty$误差；右：B方法的 $L^\infty$误差.}
-   \label{fig:error}
+  \includegraphics[width=0.48\linewidth]{Image1.eps} %2.3in
+  \hfill
+  \includegraphics[width=0.48\linewidth]{Image2.eps}
+  \caption{左：A方法的 $L^\infty$误差；右：B方法的 $L^\infty$误差.}
+  \label{fig:error}
 \end{figure}
 
 \chapter{列表的使用}
