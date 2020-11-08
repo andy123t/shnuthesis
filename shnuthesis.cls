@@ -1,13 +1,14 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/09/29
-%	@version v1.3.0
-%   参考：https://github.com/skinaze/HUSTPaperTemp
+% 	@date 2020/11/18
+%	@version v1.4.0
+%	@address https://github.com/andy123t/shnuthesis
+%   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2020/09/29 v1.3.0]
+\ProvidesClass{shnuthesis}[2020/11/18 v1.4.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -20,7 +21,7 @@
 
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany]{book}
+\LoadClass[a4paper,openany,twoside]{book}
 
 % ---------- 中文字体宏包 ----------
 \RequirePackage[cs4size,UTF8]{ctex}
@@ -155,7 +156,6 @@
 	\footstyle
 }
 
-% \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ #1}{}}
 
 \renewcommand\chaptermark[1]{%
   \markboth{%
@@ -166,7 +166,6 @@
     \fi
     #1}{}%
 }
-%\renewcommand\@mkboth[2]{\markboth{#1}{}}
 
 
 % ----------- 中文段落缩进和行距 ------------
@@ -353,23 +352,23 @@
 % ------------ 定义新的声明页面 --------------
 
 % 定义三个条件语句
-\newcommand{\encryption}[1]{
-	\IfStrEqCase{#1}{{empty}{$\square$}
-		{true}{$\text{\rlap{\checkmark}}\square$ }
-		{false}{$\square$}}
-	[$\square$]
-}
-\newcommand{\nonencryption}[1]{
-	\IfStrEqCase{#1}{{empty}{$\square$}
-		{true}{$\square$}
-		{false}{$\text{\rlap{\checkmark}}\square$}}
-	[$\square$]
-}
-\newcommand{\encryptionyear}[2]{
-	\IfStrEqCase{#1}{{empty}{}
-		{true}{#2}
-		{false}{}}
-}
+% \newcommand{\encryption}[1]{
+% 	\IfStrEqCase{#1}{{empty}{$\square$}
+% 		{true}{$\text{\rlap{\checkmark}}\square$ }
+% 		{false}{$\square$}}
+% 	[$\square$]
+% }
+% \newcommand{\nonencryption}[1]{
+% 	\IfStrEqCase{#1}{{empty}{$\square$}
+% 		{true}{$\square$}
+% 		{false}{$\text{\rlap{\checkmark}}\square$}}
+% 	[$\square$]
+% }
+% \newcommand{\encryptionyear}[2]{
+% 	\IfStrEqCase{#1}{{empty}{}
+% 		{true}{#2}
+% 		{false}{}}
+% }
 
 
 % ----------- 设置命令 ------------
@@ -379,7 +378,7 @@
 	\vspace*{-2ex}
 
 	\begin{center}
-	{\heiti \zihao{-2} 论文独创性声明}
+	{\heiti \zihao{3} 论文独创性声明}
 	\end{center}
 	\vspace{6ex}
 
@@ -392,7 +391,7 @@
 	\vspace{25ex}
 	
 	\begin{center}
-	{\heiti \zihao{-2} 论文使用授权声明}
+	{\heiti \zihao{3} 论文使用授权声明}
 	\end{center}
 	\vspace{6ex}
 
@@ -416,8 +415,8 @@
 	\def \cnkeyword {#1}
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{摘要}
-	\chaptermark{中文摘要}
+	\addcontentsline{toc}{chapter}{摘~要}
+	\chaptermark{摘~~要}
 	\vspace*{-2ex}
 	\begin{center} \heiti \Large 摘~~~~要 \end{center}
 	\vspace*{3ex}
@@ -434,7 +433,7 @@
 	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
-	\chaptermark{英文摘要}
+	\chaptermark{Abstract}
 	\vspace*{-3ex}
 	\begin{center} \Large \bfseries Abstract \end{center} 
 	\vspace*{3ex}
@@ -478,7 +477,7 @@
 	\IfStrEqCase{#1}{{nopagenum}{}
 		{pagenum}{}
 		{pagenumtoc}{\phantomsection
-			\addcontentsline{toc}{chapter}{目录}}}
+			\addcontentsline{toc}{chapter}{目~录}}}
 }
 
 
@@ -545,5 +544,5 @@
 }
 
 
-% End of file `sduthesis.cls'.
+% End of file `shnuthesis.cls'.
 

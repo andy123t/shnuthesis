@@ -7,7 +7,7 @@
 %\title{这是一个毕业论文题目} %论文题目
 \title{这是一个很长的这是一个很长的这是一个很长的毕业论文题目}
 \author{某~某~某} %作者姓名
-\date{2020年6月}  %日期 或二零二零年六月
+\date{2021年3月}  %日期 或二零二零年三月
 \college{学~院~名~称}
 \major{专~业~名~称} %专业
 \study{专~业~方~向~名~称}
@@ -26,6 +26,9 @@
 % --- 设置数学字体 -----
 % \usepackage{mathptmx}
 
+% --- 直接插入 pdf 文件 ----
+%\usepackage{pdfpages}
+
 % --- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
@@ -33,24 +36,29 @@
 \newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
 \newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
-
+\newcommand{\red}[1]{\textcolor{red}{#1}}
 
 \begin{document}
 
+\frontmatter
+
 % 生成标题页
-% 如果要改变填写横杠长度 \maketitle[15em]
 \maketitle
 
-% 生成声明与授权书页，此页可以放在最后
-\makestatement%{empty}
+%\thispagestyle{empty}
+%% 需要 pdfpages 宏包
+%\includepdf[pages=-]{pdfname.pdf}
 
-\frontmatter
+% 生成声明与授权书页，此页可以放在最后
+\makestatement
+
 
 \clearpage   % 结束上一页
 \pagenumbering{Roman} % 摘要页码为大写罗马数字
 
 
 % 填写中文摘要内容和关键字
+
 \begin{cnabstract}{关键词1；关键词2；关键词3}
 
 在正文中添加空行可以实现换行功能
@@ -66,7 +74,7 @@
 
 % 填写英文摘要内容和关键字
 
-\begin{enabstract}{Keyword 1,~ Keyword 2,~ Keyword 3}
+\begin{enabstract}{Keyword 1;~ Keyword 2;~ Keyword 3}
 
 
 This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract.
@@ -96,9 +104,11 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \chapter{引言}
 
 \section{研究背景}
-这是小四号的正文字体, 段间距1.3倍.
+这是小四号的正文字体, 段间距1.35倍.
 	
 通过空一行实现段落换行，仅仅是回车并不会产生新的段落。
+
+自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
 这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994,Tadmor2012}.
 
@@ -110,13 +120,13 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
 
 在文中引用公式可以这么写：$a^2+b^2=c^2$这是勾股定理，他还可以表示为$c=\sqrt{a^2+b^2}$，还可以让公式单独一段并且加上编号
-\begin{equation}\label{eq:trifun}
+\begin{equation}\label{eqn:trifun}
 \sin^2{\theta}+\cos^2{\theta}=1
 \end{equation}
-还可以通过添加标签在正文中引用公式，如等式~\eqref{eq:trifun}或者\ref{eq:trifun}。
+还可以通过添加标签在正文中引用公式，如等式~\eqref{eqn:trifun}或者\ref{eqn:trifun}。
 
-这个公式使用 aligned 环境
-\begin{equation}\label{eq:equation1}
+这个公式使用 aligned 环境 (\textbf{推荐使用})
+\begin{equation}\label{eqn:equation1}
 \left\{\begin{aligned}
   &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
   &u(0)=0,\quad u(1)=0.
@@ -124,7 +134,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \end{equation}
 
 这个公式使用 array 环境
-\begin{equation}\label{eq:equation2}
+\begin{equation}\label{eqn:equation2}
 \left\{\begin{array}{l}
 \displaystyle
 -\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
@@ -151,7 +161,7 @@ u(0)=0,\quad u(1)=0.
 \chapter{微分方程的数值方法}
 
 本章我们考虑具有以下微分方程:
-\begin{equation}\label{Equ11}
+\begin{equation}\label{eqn11}
 \left\{\begin{aligned}
 & L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\
 & u(a)=\alpha, \quad u(b)=\beta.
@@ -160,14 +170,14 @@ u(0)=0,\quad u(1)=0.
 其中 $q, f$ 为 $[a,b]$ 上的连续函数，$q \geqslant 0$；$\alpha, \beta$ 为给定常数。这是最简单的椭圆方程第一边值问题。
 
 另一个公式环境：
-\begin{eqnarray}\label{Equ12}
+\begin{eqnarray}\label{eqn12}
 \left\{\begin{array}{l}
 \displaystyle L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\ [6pt]
 \displaystyle u(a)=\alpha, \quad u(b)=\beta.
 \end{array}\right.
 \end{eqnarray}
 
-问题 \eqref{Equ11}存在唯一解 (参考文献 \cite{Tadmor2012}，也是示例).
+问题 \eqref{eqn11}存在唯一解 (参考文献 \cite{Tadmor2012}，也是示例).
 
 
 \section{有限差分方法}
@@ -328,7 +338,6 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 
 当然你也可以引用表格，就像这样：\autoref{tab:heightweight}
 
-
 使用通用的表格环境 table.
 
 \begin{table}[!htp]
@@ -387,6 +396,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \centering
 \renewcommand\arraystretch{1.2} %定义表格高度
 % PLCR已经定义
+\caption{数值误差}
 \label{table2}
 \begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
 \Xhline{2\arrayrulewidth}
@@ -417,7 +427,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 \section{插图示例}
 
 使用自定义环境 generalfig
-	
+
 \begin{generalfig}[htb]{大数据信息处理框架}{fig:data}
 		\includegraphics[width=0.8\linewidth]{Figures/data.png}
 \end{generalfig}
@@ -486,6 +496,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 
 \backmatter  % 结束章节自动编号
+
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
