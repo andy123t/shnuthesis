@@ -15,6 +15,7 @@
 \instructor{某~某~某~~~教~授} %导师姓名
 
 % 添加自己要用的其他宏包
+\usepackage[numbers]{natbib}
 %\usepackage{xltxtra}
 
 % --- 证明结束黑框 ----
@@ -61,13 +62,13 @@
 
 \begin{cnabstract}{关键词 1；关键词 2；关键词 3}
 
-在正文中添加空行可以实现换行功能
+在正文中添加空行可以实现换行功能.
 		
-摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 		
-摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 
-摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 
 \end{cnabstract}
 
@@ -110,10 +111,11 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
+这是一大段文字这是一大段文字 中英文混合 Galerkin Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+参考文献的引用采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献格式为 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的一个格式, 去掉了文献的标号 [J], [M]等, 想要文献的标号可以选择  \verb|thuthesis-numeric| 格式, 也可以选择 plain 与  abbrv 格式.
+
 这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
-
-这是一大段文字这是一大段文字 中英文混合 Galerkin Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字
-
 
 \section{数学公式}
 
@@ -124,6 +126,27 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \sin^2{\theta}+\cos^2{\theta}=1
 \end{equation}
 还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun}或者\ref{eqn:trifun}.
+
+
+多行公式 align 环境, 它将公式用 \verb|&| 隔为两部分并对齐. 分隔符通常放在等号左边:
+\begin{align}
+a & = b + c \\
+& = d + e
+\end{align}
+
+align 环境会给每行公式都编号. 我们仍然可以用 \verb|\notag| 或 \verb|\nonumber| 去掉某行的编号. 在以下的例子,
+为了对齐等号, 我们将分隔符放在右侧, 并且此时需要在等号后添加一对括号 \verb|{}| 以产生正常的间距:
+\begin{align}
+a ={} & b + c \\
+={} & d + e + f + g + h + i
++ j + k + l \notag \\
+& + m + n + o \\
+={} & p + q + r + s \\
+={} & t + u + v + w.
+\end{align}
+在添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
+
+多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
 这个公式使用 aligned 环境 (\textbf{推荐使用})
 \begin{equation}\label{eqn:equation1}
@@ -141,6 +164,9 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 u(0)=0,\quad u(1)=0.
 \end{array} \right.
 \end{equation}
+
+aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 有时候需要手动调整公式行间距和行间显示.
+
 \section{结构安排}
 
 本文接下来的写作安排如下：
@@ -167,7 +193,7 @@ u(0)=0,\quad u(1)=0.
 & u(a)=\alpha, \quad u(b)=\beta.
 \end{aligned}\right.
 \end{equation}
-其中 $q, f$ 为 $[a,b]$ 上的连续函数, $q \geqslant 0$; $\alpha, \beta$ 为给定常数. 这是最简单的椭圆方程第一边值问题.
+其中 $q, f$ 为 $[a,b]$ 上的连续函数, $q \geqslant 0$; $\alpha, \beta$ 为给定常数. 这是最简单的椭圆方程第一边值问题 .
 
 另一个公式环境：
 \begin{eqnarray}\label{eqn12}
@@ -177,7 +203,7 @@ u(0)=0,\quad u(1)=0.
 \end{array}\right.
 \end{eqnarray}
 
-问题 \eqref{eqn11} 存在唯一解 (引用示例参考文献 \cite{Tadmor2012}).
+问题 \eqref{eqn11} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
 
 
 \section{有限差分方法}
@@ -485,14 +511,14 @@ N  & A       & B    & C       & D      & E       & F   \\
 \section{不计数列表}
 
 这是一个不计数的列表
-\begin{itemize}
+\begin{itemize}%[label={$\bullet$}]
 	\item 第一项
 	\begin{itemize}
 		\item 第一项中的第一项
 		\item 第一项中的第二项
 	\end{itemize}
 	\item 第二项
-	\item 第三项 
+	\item 第三项
 \end{itemize}
 
 
@@ -500,20 +526,23 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-%\nocite{*}  % 可以显示全部参考文献，包括未引用的
-%\bibliographystyle{abbrv}
-\bibliography{mybib}
+%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
+%使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
+% 参考文献格式可选
+%\bibliographystyle{plain}
+%\bibliographystyle{abbrv}
+%\bibliographystyle{thuthesis-numeric}
+\bibliographystyle{shnuthesis-numeric}
+\bibliography{mybib}
 
 
 %%%%%%%%%%%%%%%%%%%%%% 攻读硕士学位期间的研究成果  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{researchpage}
-
 \hangindent 1.4em
 \noindent
-[1] {{\bf Author 1} and Author 2},  The name of the published article 1, {\em  Name of Journal}, 01 (2020), 1001-1008.
+[1] {{\bf Author 1} and Author 2},  The name of the published article 1, {\bf  Name of Journal}, 2020, 12(34):1001-1020.
 
 \hangindent 1.4em
 \noindent

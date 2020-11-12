@@ -517,7 +517,7 @@
 
 
 % ----------- 重新定义参考文献页 -----------
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
 \ctexset{bibname={参考文献}}
 
 % 设置新的附录命令
