@@ -113,7 +113,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 这是一大段文字这是一大段文字 中英文混合 Galerkin Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
-参考文献的引用采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献格式为 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的一个格式, 去掉了文献的标号 [J], [M]等, 想要文献的标号可以选择  \verb|thuthesis-numeric| 格式, 也可以选择 plain 与  abbrv 格式.
+参考文献的引用采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献格式为 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献格式, 去掉了文献的标号 [J], [M]等， 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. \verb|plain| 与 \verb|abbrv| 分别为 LaTeX 英文常用的普通格式和作者缩写格式.
 
 这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
 
@@ -121,7 +121,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
 
-在文中引用公式可以这么写：$a^2+b^2=c^2$ 这是勾股定理, 他还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
+在文中引用公式可以这么写：$a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
 \begin{equation}\label{eqn:trifun}
 \sin^2{\theta}+\cos^2{\theta}=1
 \end{equation}
@@ -287,14 +287,14 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 \end{equation}
 
 \begin{lemma}\label{lemma-conver} {\rm (\textit{参考文献}\cite{Shen1994})}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 Lipschitz 条件
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
 \begin{equation}\label{Equ22}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{lemma}
 
 \begin{theorem}\label{theorem-conver} {\rm (\textit{参考文献}\cite{Adams1975})}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 Lipschitz 条件
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
 \begin{equation}\label{Equ23}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
@@ -305,14 +305,14 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 
 
 \begin{theorem}\label{theorem-conver2}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 Lipschitz 条件
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
 \begin{equation}\label{Equ24}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{theorem}
 
 \begin{corollary}\label{col-conver}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 Lipschitz 条件
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
 \begin{equation}\label{Equ25}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
@@ -578,13 +578,13 @@ Journal of XXX.
 \renewcommand{\thesection}{A.\arabic{section}}
 \section{附录A的小节}
 
-这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到目录.
+这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
 
 \chapter{附录 B ~ 这是第二个附录}
 \renewcommand{\thesection}{B.\arabic{section}}
 \section{附录B的小节}
 
-这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到目录.
+这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
 
 
 
