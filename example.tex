@@ -447,7 +447,8 @@ N  & A       & B    & C       & D      & E       & F   \\
 \chapter{插图环境}
 
 \section{图的使用}
-	XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当然也可以用绘图包直接在 \LaTeX 中绘制图形, 推荐使用宏包 tikz. 图的环境是 figure, 但 figure 环境使用复杂且不自带标题, 因此本模板定义了一个通用版本的 generalfig, 该环境会将 figure 内的图片居中并设置标签与引用名, 同时会让图片位置设置为所有可行位置 (htbp, 即此处、页顶、页底、独立一页), 此选项可以作为可选参数设置.
+
+XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当然也可以用绘图包直接在 \LaTeX 中绘制图形, 推荐使用宏包 tikz. 图的环境是 figure, 但 figure 环境使用复杂且不自带标题, 因此本模板定义了一个通用版本的 generalfig, 该环境会将 figure 内的图片居中并设置标签与引用名, 同时会让图片位置设置为所有可行位置 (htbp, 即此处、页顶、页底、独立一页), 此选项可以作为可选参数设置.
 
 \section{插图示例}
 
@@ -477,7 +478,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 \end{minipage}
 \end{figure}
 
-引用图片：\autoref{fig:error1} 与 \autoref{fig:error2}
+引用图片: \autoref{fig:error1} 与 \autoref{fig:error2}
 
 \clearpage
 \begin{figure}[htp!]
@@ -495,7 +496,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 \section{计数列表}
 
-这是一个计数的列表
+这是一个计数的列表.
 \begin{enumerate}
 	\item 第一项
 		\begin{enumerate}
@@ -510,7 +511,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 \section{不计数列表}
 
-这是一个不计数的列表
+这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
 	\item 第一项
 	\begin{itemize}
