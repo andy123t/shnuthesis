@@ -4,7 +4,7 @@
 % SHNU-Thesis 上海师范大学研究生 LaTeX 模板
 \documentclass{shnuthesis}
 % 进行个人信息设置
-%\title{这是一个毕业论文题目} %论文题目
+% \title{这是一个毕业论文题目} % 论文题目
 \title{这是一个很长的这是一个很长的这是一个很长的毕业论文题目}
 \author{某~某~某} %作者姓名
 \date{2021~年~3~月}  %日期 或二零二零年三月
@@ -16,7 +16,8 @@
 
 % 添加自己要用的其他宏包
 \usepackage[numbers]{natbib}
-%\usepackage{xltxtra}
+\usepackage{subfig}
+% \usepackage{xltxtra}
 
 % --- 证明结束黑框 ----
 % \renewcommand{\qedsymbol}{$\blacksquare$}
@@ -28,7 +29,7 @@
 % \usepackage{mathptmx}
 
 % --- 直接插入 pdf 文件 ----
-%\usepackage{pdfpages}
+% \usepackage{pdfpages}
 
 % --- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
@@ -46,9 +47,9 @@
 % 生成标题页
 \maketitle
 
-%\thispagestyle{empty}
-%% 需要 pdfpages 宏包
-%\includepdf[pages=-]{pdfname.pdf}
+% \thispagestyle{empty}
+% 需要 pdfpages 宏包
+% \includepdf[pages=-]{pdfname.pdf}
 
 % 生成声明与授权书页，此页可以放在最后
 \makestatement
@@ -58,7 +59,7 @@
 \pagenumbering{Roman} % 摘要页码为大写罗马数字
 
 
-% 填写中文摘要内容和关键字
+%%%%%%%%%%%%%%%%%%%%% 填写中文摘要内容和关键字  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{cnabstract}{关键词 1；关键词 2；关键词 3}
 
@@ -70,6 +71,7 @@
 
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 
+
 \end{cnabstract}
 
 
@@ -77,12 +79,12 @@
 
 \begin{enabstract}{Keyword 1;~ Keyword 2;~ Keyword 3}
 
-
 This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract.
 		
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
 
 \end{enabstract}
 	
@@ -94,8 +96,8 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
     \maketoc[pagenumtoc]
 
 
-	\clearpage % 结束上一页
-	\pagenumbering{arabic} % 正文页码为阿拉伯数字
+	\clearpage  % 结束上一页
+	\pagenumbering{arabic}  % 正文页码为阿拉伯数字
 
     \mainmatter
 
@@ -105,51 +107,87 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \chapter{引言}
 
 \section{研究背景}
-这是小四号的正文字体, 段间距1.35倍.
+这是小四号的正文字体, 行间距 1.35 倍.
 	
 通过空一行实现段落换行, 仅仅是回车并不会产生新的段落.
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一大段文字这是一大段文字 中英文混合 Galerkin Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
-
-参考文献的引用采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献格式为 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献格式, 去掉了文献的标号 [J], [M]等， 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. \verb|plain| 与 \verb|abbrv| 分别为 LaTeX 英文常用的普通格式和作者缩写格式.
-
 这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
 
+这是一大段文字这是一大段文字 中英文混合 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+\section{主要结论}
+
+这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+
+
+\section{结构安排}
+
+本文接下来的写作安排如下：
+
+第二章, 首先介绍了数学公式的使用, 介绍了定理环境, 给出了定理、命题、引理、推论、证明以及注的环境示例.
+
+第三章, 介绍了微分方程的数值方法中差分方法的示例.
+
+第四章, 介绍了表格环境, 给出了三线表的介绍和自定义表格环境 generaltab 的使用, 也给出了其他表格插入示例.
+
+第五章, 介绍了可以插入各种格式的图片, 然后给出了自定义插图环境 generalfig 和 并排插图实例.
+
+第六章, 给出了列表的示例与参考文献样式的设置.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 数学公式与定理  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{数学公式与定理}
+
 \section{数学公式}
+
+数学公式的使用请参考公式 symbols-a4, 或者 《一份(不太)简短的 \LaTeX 2$\varepsilon$ 介绍》 (lshort-zh-cn).
 
 自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
 
 在文中引用公式可以这么写：$a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
 \begin{equation}\label{eqn:trifun}
-\sin^2{\theta}+\cos^2{\theta}=1
+\sin^2{\theta}+\cos^2{\theta}=1.
 \end{equation}
-还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun}或者\ref{eqn:trifun}.
+还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun} 或者 \ref{eqn:trifun}.
 
+读者可能阅读过其它手册或者资料, 知道 LaTeX 提供了 eqnarray 环境. 它按照等号左边—等号—等号右边呈三列对齐, 但等号周围的空隙过大, 加上公式编号等一些 bug, 目前已不推荐使用. (摘自 lshort-zh-cn)
 
-多行公式 align 环境, 它将公式用 \verb|&| 隔为两部分并对齐. 分隔符通常放在等号左边:
+多行公式常用 align 环境, 公式通过 \verb|&| 对齐. 分隔符通常放在等号左边:
 \begin{align}
 a & = b + c \\
-& = d + e
+& = d + e.
 \end{align}
 
 align 环境会给每行公式都编号. 我们仍然可以用 \verb|\notag| 或 \verb|\nonumber| 去掉某行的编号. 在以下的例子,
 为了对齐等号, 我们将分隔符放在右侧, 并且此时需要在等号后添加一对括号 \verb|{}| 以产生正常的间距:
 \begin{align}
 a ={} & b + c \\
-={} & d + e + f + g + h + i
-+ j + k + l \notag \\
+={} & d + e + f + g + h + i + j \notag \\
 & + m + n + o \\
 ={} & p + q + r + s \\
 ={} & t + u + v + w.
 \end{align}
-在添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
+
+如果我们不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
+\begin{gather}
+a = b + c \\
+d = e + f + g \\
+h + i = j + k \notag \\
+l + m = n
+\end{gather}
+align 和 gather 有对应的不带编号的版本 align* 和 gather*.
+
+对于 align、 gather、align* 与 gather* 等环境, 在添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
 
 多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
 这个公式使用 aligned 环境 (\textbf{推荐使用})
-\begin{equation}\label{eqn:equation1}
+\begin{equation}\label{eqn:1}
 \left\{\begin{aligned}
   &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
   &u(0)=0,\quad u(1)=0.
@@ -157,7 +195,7 @@ a ={} & b + c \\
 \end{equation}
 
 这个公式使用 array 环境
-\begin{equation}\label{eqn:equation2}
+\begin{equation}\label{eqn:2}
 \left\{\begin{array}{l}
 \displaystyle
 -\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
@@ -167,27 +205,68 @@ u(0)=0,\quad u(1)=0.
 
 aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 有时候需要手动调整公式行间距和行间显示.
 
-\section{结构安排}
 
-本文接下来的写作安排如下：
+\section{定理环境}
 
-第二章,  介绍了微分方程的数值方法中差分方法的示例.
+\begin{definition}
+这是一个定义.
+\end{definition}
 
-第三章, 介绍了定理环境, 给出了定理、命题、引理、推论、证明以及注的环境示例.
+\begin{lemma}[Lemma] \label{lemma1}
+这是一个引理.
+\end{lemma}
 
-第四章, 介绍了表格环境, 给出了三线表的介绍和自定义表格环境 generaltab 的使用, 也给出了其他表格插入示例.
+\begin{theorem}[Theorem]
+这是一个定理.
+\end{theorem}
+\begin{proof}
+这是证明环境.
+\end{proof}
 
-第五章, 首先介绍可以插入各种格式的图片, 然后给出了自定义插图环境 generalfig 和 并排插图实例.
+\begin{proposition}[Proposition]
+这是一个命题.
+\end{proposition}
 
-第六章, 给出了计数列表和不计数列表的示例.
+\begin{lemma}\label{lemma-convergence} {\rm (\textit{参考文献}\cite{LiLiu1997})}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:3}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{lemma}
+
+\begin{theorem}\label{theorem-convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:4}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{theorem}
+\begin{proof}
+由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
+\end{proof}
+
+\begin{corollary}\label{col-convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:5}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{corollary}
 
 
+\begin{remark}\label{remark1}
+这是一个 remark.
+\end{remark}
 
+\begin{example}
+这是一个例子.
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{微分方程的数值方法}
 
 本章我们考虑具有以下微分方程:
-\begin{equation}\label{eqn11}
+\begin{equation}\label{eqn:pde}
 \left\{\begin{aligned}
 & L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\
 & u(a)=\alpha, \quad u(b)=\beta.
@@ -195,15 +274,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \end{equation}
 其中 $q, f$ 为 $[a,b]$ 上的连续函数, $q \geqslant 0$; $\alpha, \beta$ 为给定常数. 这是最简单的椭圆方程第一边值问题 .
 
-另一个公式环境：
-\begin{eqnarray}\label{eqn12}
-\left\{\begin{array}{l}
-\displaystyle L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\ [6pt]
-\displaystyle u(a)=\alpha, \quad u(b)=\beta.
-\end{array}\right.
-\end{eqnarray}
-
-问题 \eqref{eqn11} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
+问题 \eqref{eqn:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
 
 
 \section{有限差分方法}
@@ -223,7 +294,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 其中  $q_{i}=q(x_{i}), f_{i}=f(x_{i})$.
 
 以上差分方程对于 $i=1,2, \cdots, N-1$ 都成立, 加上边值条件 $u_{0}=\alpha, u_{N}=\beta$, 就得到关于 $u_i$ 的差分格式：
-\begin{equation}\label{equ21}
+\begin{equation}\label{eqn:fdm}
 \left\{\begin{aligned}
 & L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, \quad i=1,2, \cdots, N-1, \\
 & u_{0}=\alpha, \quad u_{N}=\beta.
@@ -231,7 +302,6 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \end{equation}
 
 它的解 $u_i$ 是 $u(x)$ 在 $x=x_i$ 处的差分解.
-
 
 
 \subsection{矩阵形式}
@@ -246,93 +316,34 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
   \boldsymbol{A}\boldsymbol{u}=\boldsymbol{f}.
 \end{equation*}
 其中矩阵 $\boldsymbol{A}$、向量 $\boldsymbol{f}$ 的定义如下, 注意向量 $\boldsymbol{f}$ 的首尾元素已包含了 $x=a$ 和 $x=b$ 处的边界条件.
-\begin{equation}\label{equ:matrix}
-\boldsymbol{A}=\left[\begin{array}{cccccc}
-\displaystyle \frac{2}{h^{2}}+q_{1} & \displaystyle\frac{1}{2h}-\frac{1}{h^{2}} &   &  &  \\[8pt]
- \displaystyle-\frac{1}{2h}-\frac{1}{h^{2}} & \displaystyle \frac{2}{h^{2}}+q_{2} & \displaystyle\frac{1}{2h}-\frac{1}{h^{2}}  & &  \\[8pt]
+\begin{equation}\label{equ:matrix1}
+\boldsymbol{A}=\begin{bmatrix}
+\dfrac{2}{h^{2}}+q_{1} & \dfrac{1}{2h}-\dfrac{1}{h^{2}} &   &  &  \\[8pt]
+ -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{2} & \dfrac{1}{2h}-\dfrac{1}{h^{2}}  & &  \\[8pt]
   &  &  &  &    \\
-   &  \ddots  & \ddots  &   \ddots  &    \\[8pt]
+   &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
    &  &  &  &    \\
-  &   & \displaystyle-\frac{1}{2h}-\frac{1}{h^{2}} & \displaystyle\frac{2}{h^{2}}+q_{N-2}& \displaystyle\frac{1}{2h}-\frac{1}{h^{2}} \\[8pt]
-  &  &  & \displaystyle-\frac{1}{2h}-\frac{1}{h^{2}} & \displaystyle \frac{2}{h^{2}}+q_{N-1}
+  &   & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-2}& \dfrac{1}{2h}-\dfrac{1}{h^{2}} \\[8pt]
+  &  &  & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-1}
+\end{bmatrix}
+\end{equation}
+
+上一个矩阵用了 \verb|bmatrix| 环境, 也可以使用 \verb|array| 环境.
+\begin{equation}\label{equ:matrix2}
+\boldsymbol{A}=\left[\begin{array}{cccccc}
+\dfrac{2}{h^{2}}+q_{1} & \dfrac{1}{2h}-\dfrac{1}{h^{2}} &   &  &  \\[8pt]
+ -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{2} & \dfrac{1}{2h}-\dfrac{1}{h^{2}}  & &  \\[8pt]
+  &  &  &  &    \\
+   &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
+   &  &  &  &    \\
+  &   & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-2}& \dfrac{1}{2h}-\dfrac{1}{h^{2}} \\[8pt]
+  &  &  & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-1}
 \end{array}\right]
 \end{equation}
 
 
 
-
-\chapter{定理环境}
-
-\section{定理示例}
-
-\begin{lemma}[Lemma]
-这是一个引理.
-\end{lemma}
-
-
-\begin{theorem}[Theorem]
-这是一个定理.
-\end{theorem}
-\begin{proof}
-这是证明环境.
-\end{proof}
-
-\begin{proposition}[Proposition]
-这是一个命题.
-\end{proposition}
-
-这是一个方程：
-\begin{equation}\label{Equ21}
-L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f.
-\end{equation}
-
-\begin{lemma}\label{lemma-conver} {\rm (\textit{参考文献}\cite{Shen1994})}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{Equ22}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{lemma}
-
-\begin{theorem}\label{theorem-conver} {\rm (\textit{参考文献}\cite{Adams1975})}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{Equ23}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{theorem}
-\begin{proof}
-关于方程 \eqref{Equ21}, 证明上面这个定理.
-\end{proof}
-
-
-\begin{theorem}\label{theorem-conver2}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{Equ24}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{theorem}
-
-\begin{corollary}\label{col-conver}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{Equ25}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{corollary}
-\begin{proof}
- 由定理 \ref{theorem-conver} 和公式 \ref{Equ22} 可以推出以上结论.
-\end{proof}
-
-
-\begin{remark}\label{rem2}
-这是一个 remark.
-\end{remark}
-
-
-
-\begin{example}
-这是一个例子.
-\end{example}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 表格环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{表格环境}
 
@@ -361,8 +372,6 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 		\end{tabularx}
 \end{generaltab}
 
-当然你也可以引用表格, 就像这样: \autoref{tab:heightweight}
-
 使用通用的表格环境 table.
 
 \begin{table}[!htp]
@@ -384,7 +393,11 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 \end{tabularx}
 \end{table}
 
-引用表格: \autoref{tab2:heightweight}
+
+通过 \verb|ref| 引用表格: 表 \ref{tab2:heightweight}.
+
+通过 \verb|autoref| 引用表格: \autoref{tab2:heightweight}.
+
 
 \clearpage
 基于 tabular 设置一些格式: 上下表格线加粗
@@ -392,28 +405,27 @@ L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}
 \begin{table}[!htp]
 %\small
 \centering
-\caption{数值误差与收敛速率}
+\caption{数值误差与收敛速率示例}
 \renewcommand\arraystretch{1.2} %定义表格高度
 \label{table1}
 \begin{tabular}{c|c|cc|cc|cc}
 \Xhline{2\arrayrulewidth}
 degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
 \hline
-   &  1/128     & 4.57 E-07    &2.00     & 2.27 E-04  &1.00          & 9.45 E-07   &1.99    \\
-1  &  1/256    & 1.14 E-07     &2.00    & 1.13 E-04  &1.00          & 2.37 E-07   &2.00      \\
-   &  1/512    & 2.85 E-08     &2.00    & 5.67 E-05  &1.00          & 5.92 E-08   &2.00       \\
+   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02    \\
+1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01      \\
+   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00       \\
 \hline  %   \cline{1-8}
-   &  1/128    & 1.79 E-10    &3.00      & 1.49 E-07  &2.00            & 3.61 E-10  &3.00       \\
-2  &  1/256     & 2.24 E-11     &3.00       & 3.71 E-08  &2.00         & 4.52 E-11   &3.00      \\
-   &  1/512     & 2.80 E-12     &3.00       & 9.28 E-09  &2.00        & 5.65 E-12   &3.00     \\
+   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02       \\
+2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94      \\
+   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55     \\
 \hline  %   \cline{1-8}
-   &  1/32      & 2.04 E-11    &4.00      & 6.20 E-09  &3.00           & 4.00 E-11   &3.97       \\
-3  &  1/64     & 1.28 E-12     &4.00     & 7.76 E-10  &3.00           & 2.52 E-12   &3.99       \\
-   &  1/128     & 7.98 E-14     &4.00     & 9.69 E-11  &3.00           & 1.59 E-13   &4.00       \\
+   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21       \\
+3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85       \\
+   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91       \\
 \Xhline{2\arrayrulewidth}
 \end{tabular}
 \end{table}
-
 
 基于 tabular 设置一些格式: 左右表格双线
 
@@ -421,7 +433,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \centering
 \renewcommand\arraystretch{1.2} %定义表格高度
 % PLCR已经定义
-\caption{数值误差}
+\caption{数值误差示例}
 \label{table2}
 \begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
 \Xhline{2\arrayrulewidth}
@@ -436,13 +448,13 @@ N  & A       & B    & C       & D      & E       & F   \\
 14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 & 4.80E-05 \\
 16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 & 2.90E-05 \\
 18 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 & 7.80E-05 & 3.50E-05 \\
-20 & 1.10E-05 & 1.80E-05 & 0.0001   & 7.70E-05 & 8.40E-05 & 3.60E-05  \\
+20 & 1.10E-05 & 1.80E-05 & 1.10E-04   & 7.70E-05 & 8.40E-05 & 3.60E-05  \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
 \end{table}
 
 	
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 插图环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{插图环境}
 
@@ -455,46 +467,67 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 使用自定义环境 generalfig.
 
 \begin{generalfig}[htb]{大数据信息处理框架}{fig:data}
-		\includegraphics[width=0.8\linewidth]{data.png}
+		\includegraphics[width=0.9\linewidth]{data.png}
 \end{generalfig}
 
-引用该图片例如: \autoref{fig:data}, 请注意 generalfig 第一个参数是标题, 第二个参数是引用.
+请注意 generalfig 第一个参数是标题, 第二个参数是引用.
 
-使用 minipage 排版并排插图.
+两个图左右并排放置, 共用一个标题.
+\begin{figure}[htp!]
+\centering
+  \includegraphics[width=0.45\linewidth]{Image1.eps} %2.3in
+  \hfill
+  \includegraphics[width=0.45\linewidth]{Image2.eps}
+  \caption{左: 图一的描述; 右:图二的描述.}
+  \label{fig:image}
+\end{figure}
+
+通过 \verb|ref| 引用图片: 引用该图片例如: \autoref{fig:data}.
+
+通过 \verb|autoref| 引用图片: \autoref{fig:SMError} 与 \autoref{fig:CMError}.
+
+
+使用 minipage 排版并排插图, 每个图都有单独的标题.
 
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-  \includegraphics[width=\linewidth]{Image1.eps}
-    \caption{A 方法的 $L^\infty$ 误差.}
-    \label{fig:error1}
+  \includegraphics[width=0.9\linewidth]{SMError.eps}
+    \caption{谱方法的误差.}
+    \label{fig:SMError}
 \end{minipage}
   \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=\linewidth]{Image2.eps}
-   \caption{B 方法的 $L^\infty$ 误差.}
-   \label{fig:error2}
+   \includegraphics[width=0.9\linewidth]{CMError.eps}
+   \caption{配置方法的误差.}
+   \label{fig:CMError}
 \end{minipage}
 \end{figure}
 
-引用图片: \autoref{fig:error1} 与 \autoref{fig:error2}
-
-\clearpage
+使用 subfig 宏包实现多图并排.
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.48\linewidth]{Image1.eps} %2.3in
-  \hfill
-  \includegraphics[width=0.48\linewidth]{Image2.eps}
-  \caption{左：A 方法的 $L^\infty$ 误差；右：B 方法的 $L^\infty$ 误差.}
-  \label{fig:error}
+\subfloat[Subcaption A]{\includegraphics[width=0.3\linewidth]{Image1}}
+\hfill
+\subfloat[Subcaption B]{\includegraphics[width=0.3\linewidth]{Image1}}
+\hfill
+\subfloat[Subcaption C]{\includegraphics[width=0.3\linewidth]{Image1}} \\
+\subfloat[Subcaption D]{\includegraphics[width=0.3\linewidth]{Image2}}
+\hfill
+\subfloat[Subcaption E]{\includegraphics[width=0.3\linewidth]{Image2}}
+\hfill
+\subfloat[Subcaption F]{\includegraphics[width=0.3\linewidth]{Image2}}
+\caption{六个图并排.}
 \end{figure}
 
 
 
-\chapter{列表的使用}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 列表与参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{计数列表}
+\chapter{列表与参考文献}
+
+\section{列表的使用}
 
 这是一个计数的列表.
 \begin{enumerate}
@@ -508,9 +541,6 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \end{enumerate}
 
 
-
-\section{不计数列表}
-
 这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
 	\item 第一项
@@ -523,19 +553,28 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \end{itemize}
 
 
+\section{参考文献}
+
+参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献样式, 去掉了文献的标号 [J], [M]等， 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. 参考文献的样式还可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
+
+文献引用 \cite{Adams1975, Tadmor2012}和 \cite{LiLiu1997}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \backmatter  % 结束章节自动编号
 
-%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
 %使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-% 参考文献格式可选
-%\bibliographystyle{plain}
+% 参考文献格式可选  plain, abbrv, unsrt, siam
 %\bibliographystyle{abbrv}
 %\bibliographystyle{thuthesis-numeric}
 \bibliographystyle{shnuthesis-numeric}
 \bibliography{mybib}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%% 攻读硕士学位期间的研究成果  %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -549,7 +588,6 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \noindent
 [2] {{\bf Author 1},  Author 2 and Author 3}, The name of the published article 2, submitted to
 Journal of XXX.
-
 
 
 \end{researchpage}
@@ -568,11 +606,15 @@ Journal of XXX.
 
 感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师.
 
+
 \end{thankpage}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%% 附录  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % 添加附录, 如不需要可以注释掉
 \appendix
+
 %\setcounter{page}{1} %如果需要可以自行重置页码。
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \chapter{附录 A ~ 这是第一个附录}
@@ -590,5 +632,6 @@ Journal of XXX.
 
 
 \end{document}
+
 
 
