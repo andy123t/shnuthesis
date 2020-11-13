@@ -1,14 +1,14 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/11/18
-%	@version v1.4.0
+% 	@date 2020/11/13
+%	@version v1.5.0
 %	@address https://github.com/andy123t/shnuthesis
 %   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2020/11/18 v1.4.0]
+\ProvidesClass{shnuthesis}[2020/11/13 v1.5.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -23,8 +23,10 @@
 % ---------- 载入Class ----------
 \LoadClass[a4paper,openany,twoside]{book}
 
+
 % ---------- 中文字体宏包 ----------
 \RequirePackage[cs4size,UTF8]{ctex}
+
 
 % --------- 定义不同编译方式 ----------
 \RequirePackage{ifpdf,ifxetex}
@@ -107,6 +109,7 @@
 %---------- 设置章节目录的深度 -------------
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3} 
+
 
 % ------------- 设置附录 -----------
 \RequirePackage{titletoc}
@@ -298,8 +301,6 @@
 
 %------------- 定义新的标题页面 -------------------
 
-\def \hspt {\hspace{6pt}}  % 定义一个间距
-
 % ------ 添加几个新的文档属性 ------
 \def \defschool {}
 \def \defcollege {}
@@ -314,22 +315,23 @@
 \newcommand{\stunum}[1]{\def \defstunum {#1}}
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
 
+
 % ------- 重置命令 maketitle -------
 \renewcommand{\maketitle}[1][15em]{
 	\begin{titlepage}
 		\begin{center}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：O24 \hspace{2cm} 学号：\defstunum} \\
-			\vspace{2cm}
+			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
-			\vspace{1.5cm}
-			{\heiti \zihao{0} 硕 \hspt 士 \hspt 学 \hspt 位 \hspt 论 \hspt 文}\\ %\bfseries
+			\vspace{1cm}
+			{\fontsize{40}{40}\selectfont 硕~士~学~位~论~文}\\ %\bfseries
 			\vspace{1.8cm}
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
 			\end{center}
-			\vspace{2cm}
+			\vspace{1.2cm}
 			{\zihao{3} \heiti
-				\renewcommand\arraystretch{1.5}
+				\renewcommand\arraystretch{1.6}
 				\begin{tabular}{lc}
 					\makebox[7em][s]{院 \hfill 系~：} & 
 					\underline{\makebox[#1]{\defcollege}} \\
@@ -376,10 +378,10 @@
 \newcommand{\makestatement}{
 	\clearpage
 	\thispagestyle{empty}
-	\vspace*{-2ex}
+	\vspace*{-4ex}
 
 	\begin{center}
-	{\heiti \zihao{3} 论文独创性声明}
+	{\heiti \zihao{4} 论文独创性声明}
 	\end{center}
 	\vspace{6ex}
 
@@ -388,11 +390,11 @@
 	\end{spacing}
 	\vspace{12ex}
 
-	\rightline{作者签名：\hspace{8em} 日\hspace{1em}期：\hspace{8em}}
+	\rightline{作者签名：\hspace{10em} 日\hspace{1em}期：\hspace{8em}}
 	\vspace{25ex}
 	
 	\begin{center}
-	{\heiti \zihao{3} 论文使用授权声明}
+	{\heiti \zihao{4} 论文使用授权声明}
 	\end{center}
 	\vspace{6ex}
 
@@ -401,10 +403,10 @@
 	\end{spacing}
 	\vspace{12ex}
 	
-	\rightline{作者签名：\hspace{7em} 导师签名：\hspace{8em}}
+	\rightline{作者签名：\hspace{9em} 导师签名：\hspace{8em}}
 	\vspace{1ex}
 
-	\rightline{日\hspace{2em}期：\hspace{7em} 日\hspace{2em}期：\hspace{8em}}
+	\rightline{日\hspace{2em}期：\hspace{9em} 日\hspace{2em}期：\hspace{8em}}
 	
 	\clearpage
 }
@@ -445,6 +447,7 @@
 }
 
 
+
 % ------------- 定义新的目录页面 ----------------
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
@@ -480,7 +483,6 @@
 		{pagenumtoc}{\phantomsection
 			\addcontentsline{toc}{chapter}{目~录}}}
 }
-
 
 
 % ----------- 设置新的生成目录命令 -------------
