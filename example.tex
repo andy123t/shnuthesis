@@ -113,7 +113,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一个引用的示例 \cite{Adams1975}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
+这是一个引用的示例 \cite{Adams2003}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
 
 这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
@@ -560,7 +560,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献样式, 去掉了文献的标号 [J], [M]等, 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. 参考文献的样式还可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
 
-文献引用 \cite{Adams1975, Tadmor2012}和 \cite{LiLiu1997}.
+文献引用 \cite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -569,7 +569,11 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
+% 生成参考文献, 使用第二种请把第一种全部注释
+
+% 第一种方式, 使用 bib 文件
+
+%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
 % 参考文献格式可选  plain, abbrv, unsrt, siam
@@ -577,6 +581,24 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 % \bibliographystyle{thuthesis-numeric}
 \bibliographystyle{shnuthesis-numeric}
 \bibliography{mybib}
+
+
+% 第二种方式, 按照格式直接写文献信息
+
+%\begin{thebibliography}{99}
+%
+%\bibitem{Adams1975} Adams~R~A, Fournier~J~J~F. Sobolev spaces. Elsevier, 2003.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
+%  equations. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+%
+%\end{thebibliography}
 
 
 
