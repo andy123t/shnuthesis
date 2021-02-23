@@ -53,7 +53,6 @@
 %\addtolength{\headsep}{-0.1cm}     % 页眉位置
 %\addtolength{\footskip}{-0.1cm}    % 页脚位置
 
-
 % ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
 \RequirePackage{bm}         % 数学公式黑斜体
@@ -86,9 +85,11 @@
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
 
+\newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
+
 %---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\normalfont \heiti \LARGE \filcenter}
-    {\Large \chaptertitlename}{20pt}{\Large}
+\titleformat{\chapter}[hang]{\normalfont \chpzihao \filcenter \heiti}
+    {\chpzihao \chaptertitlename}{20pt}{\chpzihao}
 \titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \large}
