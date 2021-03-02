@@ -1,14 +1,14 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2020/11/13
-%	@version v1.5.0
+% 	@date 2021/03/02
+%	@version v1.6.0
 %	@address https://github.com/andy123t/shnuthesis
 %   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2020/11/13 v1.5.0]
+\ProvidesClass{shnuthesis}[2021/03/02 v1.6.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -422,7 +422,7 @@
 	\addcontentsline{toc}{chapter}{摘~要}
 	\chaptermark{摘~~要}
 	\vspace*{-2ex}
-	\begin{center} \heiti \Large 摘~~~~要 \end{center}
+	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
 	\vspace*{3ex}
 }{
 	\vspace{2ex}
@@ -439,7 +439,7 @@
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{Abstract}
 	\vspace*{-3ex}
-	\begin{center} \Large \bfseries Abstract \end{center} 
+	\begin{center} \chpzihao \bfseries Abstract \end{center} 
 	\vspace*{3ex}
 }{
 	\vspace*{2ex}
@@ -457,7 +457,7 @@
 	linkcolor  = black,
 	citecolor = black
 } % 去掉目录红框
-\renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2}}
+\renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{1.5ex}

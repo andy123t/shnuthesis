@@ -1,5 +1,5 @@
 % !TEX program = xelatex
-% 使用 texlive 完整编译:
+% 使用 texlive完整编译:
 % xelatex -> bibtex -> xelatex -> xelatex
 % SHNU-Thesis 上海师范大学研究生 LaTeX 模板
 \documentclass{shnuthesis}
@@ -478,7 +478,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 两个图左右并排放置, 共用一个标题.
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.45\linewidth]{Image1.eps} %2.3in
+  \includegraphics[width=0.45\linewidth]{Image1.eps}
   \hfill
   \includegraphics[width=0.45\linewidth]{Image2.eps}
   \caption{左: 图一的描述;~ 右:图二的描述.}
@@ -487,7 +487,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 通过 \verb|ref| 引用图片: 图 \ref{fig:data}.
 
-通过 \verb|autoref| 引用图片: \autoref{fig:SMError} 与 \autoref{fig:CMError}.
+通过 \verb|autoref| 引用图片: \autoref{fig:Image1} 与 \autoref{fig:Image2}.
 
 
 使用 minipage 排版并排插图, 每个图都有单独的标题.
@@ -495,16 +495,16 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-  \includegraphics[width=0.9\linewidth]{SMError.eps}
-    \caption{谱方法的误差.}
-    \label{fig:SMError}
+  \includegraphics[width=0.9\linewidth]{Image1.eps}
+    \caption{图一的描述.}
+    \label{fig:Image1}
 \end{minipage}
   \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=0.9\linewidth]{CMError.eps}
-   \caption{配置方法的误差.}
-   \label{fig:CMError}
+   \includegraphics[width=0.9\linewidth]{Image1.eps}
+   \caption{图二的描述.}
+   \label{fig:Image2}
 \end{minipage}
 \end{figure}
 
@@ -577,7 +577,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
 % 参考文献格式可选  plain, abbrv, unsrt, siam
-% \bibliographystyle{abbrv}
+% \bibliographystyle{plain}
 % \bibliographystyle{thuthesis-numeric}
 \bibliographystyle{shnuthesis-numeric}
 \bibliography{mybib}
