@@ -309,19 +309,20 @@
 \def \defstudy {}
 \def \defstunum {}
 \def \definstructor {}
+\def \defclassifnum {}
 \newcommand{\school}[1]{\def \defschool {#1}}
 \newcommand{\college}[1]{\def \defcollege {#1}}
 \newcommand{\major}[1]{\def \defmajor {#1}}
 \newcommand{\study}[1]{\def \defstudy {#1}}
 \newcommand{\stunum}[1]{\def \defstunum {#1}}
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
-
+\newcommand{\classifnum}[1]{\def \defclassifnum {#1}}
 
 % ------- 重置命令 maketitle -------
 \renewcommand{\maketitle}[1][15em]{
 	\begin{titlepage}
 		\begin{center}
-			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：O24 \hspace{2cm} 学号：\defstunum} \\
+			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1cm}
@@ -461,10 +462,10 @@
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{1.5ex}
-\setlength{\cftaftertoctitleskip}{3ex}
+\setlength{\cftaftertoctitleskip}{5ex}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
 % \renewcommand\cftbeforechapskip{2ex}
-\renewcommand{\cftbeforesecskip}{0ex} % 设置Part字体
+\renewcommand{\cftbeforesecskip}{0.5ex} % 设置Part字体
 \renewcommand{\cftsecfont}{\songti}   % 设置Section字体
 
 % 使用条件语句
