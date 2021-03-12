@@ -1,14 +1,14 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2021/03/02
+% 	@date 2021/03/12
 %	@version v1.6.0
 %	@address https://github.com/andy123t/shnuthesis
 %   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/03/02 v1.6.0]
+\ProvidesClass{shnuthesis}[2021/03/12 v1.6.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -335,7 +335,7 @@
 			{\zihao{3} \heiti
 				\renewcommand\arraystretch{1.6}
 				\begin{tabular}{lc}
-					\makebox[7em][s]{院 \hfill 系~：} & 
+					\makebox[7em][s]{学 \hfill 院~：} & 
 					\underline{\makebox[#1]{\defcollege}} \\
 					\makebox[7em][s]{专 \hfill 业~：} & 
 					\underline{\makebox[#1]{\defmajor}} \\
