@@ -90,7 +90,7 @@
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \chpzihao \filcenter \heiti}
     {\chpzihao \chaptertitlename}{20pt}{\chpzihao}
-\titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
+\titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \large}
     {\zihao{-3} \thesection}{1em}{\zihao{-3}}
