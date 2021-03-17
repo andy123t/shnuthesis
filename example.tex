@@ -570,7 +570,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 生成参考文献, 使用第二种请把第一种全部注释
+% 生成参考文献, 使用第一种请把第二种全部注释
 
 % 第一种方式, 使用 bib 文件
 
@@ -584,8 +584,12 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \bibliography{mybib}
 
 
-% 第二种方式, 按照格式直接写文献信息
-
+% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
+% 注意： 第二种方式需要加下面三行命令才能把  "参考文献 " 加到目录
+%\clearpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
+%
 %\begin{thebibliography}{99}
 %
 %\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces. Elsevier, 2003.
