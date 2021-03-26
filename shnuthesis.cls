@@ -1,14 +1,14 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2021/03/12
+% 	@date 2021/03/26
 %	@version v1.6.0
 %	@address https://github.com/andy123t/shnuthesis
 %   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/03/12 v1.6.0]
+\ProvidesClass{shnuthesis}[2021/03/26 v1.6.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -263,15 +263,17 @@
 \newtheorem{proposition}{\heiti 命题}[chapter]
 \newtheorem{lemma}{\heiti 引理}[chapter]
 \newtheorem{theorem}{\heiti 定理}[chapter]
-\newtheorem{example}{\heiti 例子}[chapter]
+\newtheorem{example}{\heiti 例}[chapter]
 \newtheorem{corollary}{\heiti 推论}[chapter]
 \newtheorem{remark}{\heiti 注}[chapter]
+\newtheorem{exercise}{\heiti 练习}[chapter]
+\newtheorem{algorithm}{\heiti 算法}[chapter]
+\newtheorem{assumption}{\heiti 假设}[chapter]
+\newtheorem{axiom}{\heiti 公理}[chapter]
+\newtheorem{property}{\heiti 性质}[chapter]
+\newtheorem{conjecture}{\heiti 猜想}[chapter]
 \renewcommand{\proofname}{\heiti 证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
-%\newtheorem{algorithm}{算法}
-%\newtheorem{axiom}{公理}
-%\newtheorem{property}{性质}
-%\newtheorem{assumption}{假设}
 
 
 % -------------- 数学公式设置 ---------------
