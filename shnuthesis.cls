@@ -428,8 +428,8 @@
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
 	\vspace*{3ex}
 }{
-	\vspace{2ex}
-	{\noindent \heiti 关键词：} \cnkeyword
+	\vspace{-1ex}
+	\paragraph{\heiti 关键词：} \cnkeyword
 	\clearpage
 }
 
@@ -445,8 +445,8 @@
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
 	\vspace*{3ex}
 }{
-	\vspace*{2ex}
-	{\noindent \bfseries Key Words: } \enkeyword
+	\vspace{-1ex}
+	\paragraph{\bfseries Key Words: } \enkeyword
 	\clearpage
 }
 
