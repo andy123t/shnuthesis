@@ -296,10 +296,8 @@
 
 
 % ---- 定义列表项的样式 -----
-
 \RequirePackage{enumitem}
-%\setlist{noitemsep}
-\setitemize{itemsep=3pt}
+\setlist{nolistsep}
 
 
 %------------- 定义新的标题页面 -------------------
