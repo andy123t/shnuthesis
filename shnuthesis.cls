@@ -267,7 +267,6 @@
 \newtheorem{corollary}{\heiti 推论}[chapter]
 \newtheorem{remark}{\heiti 注}[chapter]
 \newtheorem{exercise}{\heiti 练习}[chapter]
-\newtheorem{algorithm}{\heiti 算法}[chapter]
 \newtheorem{assumption}{\heiti 假设}[chapter]
 \newtheorem{axiom}{\heiti 公理}[chapter]
 \newtheorem{property}{\heiti 性质}[chapter]
