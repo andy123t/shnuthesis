@@ -517,30 +517,13 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 
 \section{表格示例}
 
-%可以使用自定义表格环境 generaltab.
+如下表格: 表~\ref{tab:heightweight}. 通过 \verb|autoref| 引用表格: \autoref{tab:heightweight}.
 
-%\begin{generaltab}{某校学生升高体重样本.}{tab:heightweight}
-%		\begin{tabularx}{0.9\textwidth}{lCCC}
-%			\toprule
-%			序号&年龄&身高&体重\\
-%			\midrule
-%			1&14&156&42\\
-%			2&16&158&45\\
-%			3&14&162&48\\
-%			4&15&163&50\\
-%			\cmidrule{2-4}
-%			平均&15&159.75&46.25\\
-%			\bottomrule
-%		\end{tabularx}
-%\end{generaltab}
-
-%使用通用的表格环境 table.
-通过 \verb|ref| 引用表格: 表 \ref{tab2:heightweight}. 通过 \verb|autoref| 引用表格: \autoref{tab2:heightweight}.
 \begin{table}[!htp]
 \centering
 % PLCR已经定义
 \caption{某校学生升高体重样本.}
-\label{tab2:heightweight}
+\label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
 	序号&年龄&身高&体重\\
@@ -560,9 +543,9 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \begin{table}[!htp]
 %\small
 \centering
-\caption{数值误差与收敛速率示例.}
 \renewcommand\arraystretch{1.2} %定义表格高度
-\label{table1}
+\caption{数值误差与收敛速率示例.} 
+\label{tab:error1}
 \begin{tabular}{c|c|cc|cc|cc}
 \Xhline{2\arrayrulewidth}
 degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
@@ -589,8 +572,8 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \centering
 \renewcommand\arraystretch{1.2} %定义表格高度
 % PLCR已经定义
-\caption{数值误差示例.}
-\label{table2}
+\caption{数值误差示例.} 
+\label{tab:error2}
 \begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
 \Xhline{2\arrayrulewidth}
 N  & A       & B    & C       & D      & E       & F   \\
