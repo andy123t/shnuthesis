@@ -88,15 +88,15 @@
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 
 %---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\normalfont \chpzihao \filcenter \heiti}
+\titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter }
     {\chpzihao \chaptertitlename}{20pt}{\chpzihao}
 \titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
-\titleformat{\section}[hang]{\heiti \large}
+\titleformat{\section}[hang]{\heiti \zihao{-3}}
     {\zihao{-3} \thesection}{1em}{\zihao{-3}}
 \titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
 
-\titleformat{\subsection}[hang]{\heiti \normalsize}
+\titleformat{\subsection}[hang]{\heiti \zihao{4}}
     {\zihao{4} \thesubsection}{1em}{\zihao{4}}
 \titlespacing{\subsection}%
     {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
@@ -139,7 +139,7 @@
 	% \fancyhead[R]{\color{black}\fangsong \leftmark}
 	% \fancyhead[L]{\color{black} 上海师范大学硕士论文}
 	\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
-	\fancyhead[LO,RE]{\color{black} \zihao{5} 上海师范大学硕士论文}
+	\fancyhead[LO,RE]{\color{black}\zihao{5} 上海师范大学硕士论文}
 	% \fancyhead[L]{\fangsong \zihao{5} 上海师范大学硕士论文}
 }
 
