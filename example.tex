@@ -317,7 +317,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \section{算法环境}
 
 如下是算法~\ref{alg:euclid}.
-\begin{algorithm}[!htbp]
+\begin{algorithm}[H]
     \small
     \caption{Euclid's algorithm}\label{alg:euclid}
     \begin{algorithmic}[1]
@@ -335,9 +335,12 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 
 \clearpage
-如下是算法~\ref{algo}.
-\begin{algorithm}[!htbp]
-\caption{算法的名字}\label{algo}  % 算法的名字
+如下是算法~\ref{alg:name}, 算法宽度可以通过 minipage 宏包调节.
+\begin{center}
+\vspace{-2ex}
+\begin{minipage}{.9\linewidth}
+\begin{algorithm}[H]
+\caption{算法的名字}\label{alg:name}  % 算法的名字
 \begin{algorithmic}[1]
 \Require  input parameters A, B, C  % 算法的输入
 \Ensure  output result   % 算法的结果输出
@@ -356,6 +359,8 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \State \Return result
 \end{algorithmic}
 \end{algorithm}
+\end{minipage}
+\end{center}
 
 
 
@@ -544,7 +549,7 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 %\small
 \centering
 \renewcommand\arraystretch{1.2} %定义表格高度
-\caption{数值误差与收敛速率示例.} 
+\caption{数值误差与收敛速率示例.}
 \label{tab:error1}
 \begin{tabular}{c|c|cc|cc|cc}
 \Xhline{2\arrayrulewidth}
@@ -572,7 +577,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \centering
 \renewcommand\arraystretch{1.2} %定义表格高度
 % PLCR已经定义
-\caption{数值误差示例.} 
+\caption{数值误差示例.}
 \label{tab:error2}
 \begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
 \Xhline{2\arrayrulewidth}
