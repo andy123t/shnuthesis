@@ -1,14 +1,14 @@
 %
 %   This is file `shnuthesis.cls',
 %	@author andy123t
-% 	@date 2021/03/26
+% 	@date 2021/05/29
 %	@version v1.6.0
 %	@address https://github.com/andy123t/shnuthesis
 %   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/03/26 v1.6.0]
+\ProvidesClass{shnuthesis}[2021/05/29 v1.6.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -379,36 +379,35 @@
 \newcommand{\makestatement}{
 	\clearpage
 	\thispagestyle{empty}
-	\vspace*{-4ex}
+	\vspace*{3ex}
 
 	\begin{center}
-	{\heiti \zihao{4} 论文独创性声明}
+	{\heiti \zihao{-2} 论文独创性声明}
 	\end{center}
-	\vspace{6ex}
-
+	\vspace{2em}
 	\begin{spacing}{1.5}
 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
-	\vspace{12ex}
 
-	\rightline{作者签名：\hspace{10em} 日\hspace{1em}期：\hspace{8em}}
-	\vspace{25ex}
-	
+	\parbox[t][3cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
+     作者签名：\hrulefill \hfill 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+
+	\vspace{6em}
 	\begin{center}
-	{\heiti \zihao{4} 论文使用授权声明}
+	{\heiti \zihao{-2} 论文使用授权声明}
 	\end{center}
-	\vspace{6ex}
-
+	\vspace{2em}
 	\begin{spacing}{1.5}
-	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。保密的论文在解密后遵守此规定。
+	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
 	\end{spacing}
-	\vspace{12ex}
 	
-	\rightline{作者签名：\hspace{9em} 导师签名：\hspace{8em}}
-	\vspace{1ex}
+	\vspace{1em}
+	{\bfseries （保密的论文在解密后遵守此规定）}
 
-	\rightline{日\hspace{2em}期：\hspace{9em} 日\hspace{2em}期：\hspace{8em}}
-	
+	\parbox[t][6cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
+    作者签名：\hrulefill \hfill 导师签名：\hrulefill \hspace{1.5cm} \\ 
+    \hspace*{2cm} 日\hspace{2em}期：\hrulefill \hfill
+    日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
 	\clearpage
 }
 
