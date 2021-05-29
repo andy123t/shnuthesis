@@ -319,6 +319,8 @@
 
 % ------- 重置命令 maketitle -------
 \renewcommand{\maketitle}[1][15em]{
+	\phantomsection
+	\pdfbookmark[0]{封~面}{cover}
 	\begin{titlepage}
 		\begin{center}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
@@ -378,23 +380,24 @@
 % ----------- 设置命令 ------------
 \newcommand{\makestatement}{
 	\clearpage
+	\phantomsection
+	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
 	\vspace*{3ex}
-
 	\begin{center}
-	{\heiti \zihao{-2} 论文独创性声明}
+	{\heiti \chpzihao 论文独创性声明}
 	\end{center}
 	\vspace{2em}
 	\begin{spacing}{1.5}
 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
 
-	\parbox[t][3cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
-     作者签名：\hrulefill \hfill 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
-
-	\vspace{6em}
+	\parbox[t][3.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{1.5cm}
+     作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+    
+	\vspace{5em}
 	\begin{center}
-	{\heiti \zihao{-2} 论文使用授权声明}
+	{\heiti \chpzihao 论文使用授权声明}
 	\end{center}
 	\vspace{2em}
 	\begin{spacing}{1.5}
@@ -402,12 +405,12 @@
 	\end{spacing}
 	
 	\vspace{1em}
-	{\bfseries （保密的论文在解密后遵守此规定）}
+	{\bfseries （保密的论文在解密后应遵守此规定）}
 
-	\parbox[t][6cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{2cm}
-    作者签名：\hrulefill \hfill 导师签名：\hrulefill \hspace{1.5cm} \\ 
-    \hspace*{2cm} 日\hspace{2em}期：\hrulefill \hfill
-    日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+	\parbox[t][4.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont 
+	\hspace{1.5cm} 作者签名：\hrulefill \hspace*{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[3pt] 
+    \hspace*{1.5cm} 日\hspace{2em}期：\hrulefill \hspace*{4em}
+    日\hspace{2em}期：\hrulefill \hspace*{1.5cm} }
 	\clearpage
 }
 
