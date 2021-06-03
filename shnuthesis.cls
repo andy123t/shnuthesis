@@ -1,14 +1,15 @@
-%
-%   This is file `shnuthesis.cls',
-%	@author andy123t
-% 	@date 2021/05/29
-%	@version v1.6.0
-%	@address https://github.com/andy123t/shnuthesis
-%   This template is based on HUSTPaperTemp
-%
+%%
+%%	This is file `shnuthesis.cls',
+%%
+%%	@author andy123t
+%%	@date 2021/06/03
+%%	@version v2.0.0
+%%	@address https://github.com/andy123t/shnuthesis
+%%	This template for thesis of SHNU
+%%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/05/29 v1.6.0]
+\ProvidesClass{shnuthesis}[2021/06/03 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -19,6 +20,14 @@
 }
 \ProcessOptions\relax
 
+
+\newif\ifmaster\masterfalse
+\DeclareOption{master}{\mastertrue}
+\newif\ifdoctor\doctorfalse
+\DeclareOption{doctor}{\doctortrue}
+\newif\ifprint\printfalse
+\DeclareOption{print}{\printtrue}
+\ProcessOptions
 
 % ---------- 载入Class ----------
 \LoadClass[a4paper,openany,twoside]{book}
@@ -73,7 +82,7 @@
 \RequirePackage{xstring}    % 使用条件语句
 
 
-% --------设置图片的路径 ---------
+% -------- 设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 
@@ -119,7 +128,7 @@
 
 %-------------- 定义页眉页脚 -------------------
 
-% 定义页眉和页脚 使用fancyhdr 宏包
+% 定义页眉和页脚 使用 fancyhdr 宏包
 \newcommand{\makeheadrule}{%
     \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
     \rule[0.85\baselineskip]{\headwidth}{1.5pt}\vskip-.8\baselineskip}
@@ -134,13 +143,31 @@
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
 
 
+% ------- 重新定义 cleardoublepage --------
+\def\cleardoublepage{%
+  \clearpage
+  \ifprint
+      \ifodd\c@page
+      \else
+        \thispagestyle{empty}%
+        \hbox{}%
+        \newpage
+    \fi
+  \fi
+}
+
+
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
-	% \fancyhead[R]{\color{black}\fangsong \leftmark}
-	% \fancyhead[L]{\color{black} 上海师范大学硕士论文}
-	\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
-	\fancyhead[LO,RE]{\color{black}\zihao{5} 上海师范大学硕士论文}
-	% \fancyhead[L]{\fangsong \zihao{5} 上海师范大学硕士论文}
+\ifmaster
+\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
+\fancyhead[LO,RE]{\color{black}\zihao{5} 上海师范大学硕士学位论文}
+\else
+\ifdoctor
+\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
+\fancyhead[LO,RE]{\color{black}\zihao{5} 上海师范大学博士学位论文}
+\fi
+\fi
 }
 
 
@@ -153,7 +180,7 @@
 \footstyle
 
 
-% ------ 定义一种新的格式叫做main ------------
+% --------- 定义一种新的格式叫做main ---------
 \fancypagestyle{main}{%
     \pagestyle{fancyplain} 
 	\fancyhf{} %清空原有样式
@@ -162,6 +189,7 @@
 }
 
 
+% --------- 定义 chaptermark ------------
 \renewcommand\chaptermark[1]{%
   \markboth{%
     \ifnum \c@secnumdepth >\m@ne
@@ -200,7 +228,6 @@
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 
 
-
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
 \captionsetup{font={normalsize,singlespacing},labelformat={default},labelsep=quad}
@@ -214,12 +241,12 @@
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 
-% ----- 重新设置图表autoref -------
+% -------- 重新设置图表autoref ---------
 \newcommand{\figureautorefname}{图}
 \newcommand{\tableautorefname}{表}
 
 
-% --- 使用tabularx库并定义新的左右中格式 ----
+% ------ 使用tabularx库并定义新的左右中格式 ------
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
@@ -294,12 +321,12 @@
 \newcommand{\equationautorefname}{等式}
 
 
-% ---- 定义列表项的样式 -----
+% --------- 定义列表项的样式 ---------
 \RequirePackage{enumitem}
 \setlist{nolistsep}
 
 
-%------------- 定义新的标题页面 -------------------
+% ------------- 定义新的标题页面 -------------------
 
 % ------ 添加几个新的文档属性 ------
 \def \defschool {}
@@ -317,7 +344,7 @@
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
 \newcommand{\classifnum}[1]{\def \defclassifnum {#1}}
 
-% ------- 重置命令 maketitle -------
+% ------- 重置命令maketitle -------
 \renewcommand{\maketitle}[1][15em]{
 	\phantomsection
 	\pdfbookmark[0]{封~面}{cover}
@@ -327,7 +354,13 @@
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1cm}
-			{\fontsize{40}{40}\selectfont 硕~士~学~位~论~文}\\ %\bfseries
+			\ifmaster
+			{\fontsize{40}{40}\selectfont 硕~士~学~位~论~文}\\
+			\else
+			\ifdoctor
+			{\fontsize{40}{40}\selectfont 博~士~学~位~论~文}\\
+			\fi
+			\fi
 			\vspace{1.8cm}
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
@@ -351,30 +384,8 @@
 				\end{tabular}}\\
 		\end{center}
 	\end{titlepage}
+	\cleardoublepage
 }
-
-
-
-% ------------ 定义新的声明页面 --------------
-
-% 定义三个条件语句
-% \newcommand{\encryption}[1]{
-% 	\IfStrEqCase{#1}{{empty}{$\square$}
-% 		{true}{$\text{\rlap{\checkmark}}\square$ }
-% 		{false}{$\square$}}
-% 	[$\square$]
-% }
-% \newcommand{\nonencryption}[1]{
-% 	\IfStrEqCase{#1}{{empty}{$\square$}
-% 		{true}{$\square$}
-% 		{false}{$\text{\rlap{\checkmark}}\square$}}
-% 	[$\square$]
-% }
-% \newcommand{\encryptionyear}[2]{
-% 	\IfStrEqCase{#1}{{empty}{}
-% 		{true}{#2}
-% 		{false}{}}
-% }
 
 
 % ----------- 设置命令 ------------
@@ -411,7 +422,7 @@
 	\hspace{1.5cm} 作者签名：\hrulefill \hspace*{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[3pt] 
     \hspace*{1.5cm} 日\hspace{2em}期：\hrulefill \hspace*{4em}
     日\hspace{2em}期：\hrulefill \hspace*{1.5cm} }
-	\clearpage
+	\cleardoublepage
 }
 
 
@@ -502,10 +513,21 @@
 	\pagestyle{plain}
 	\addtoctotoc{#1}
 	\tableofcontents
-	\clearpage
+	\cleardoublepage
 	\pagestyle{main}
 }
 
+
+% ---------- 定义主要符号表环境 -----------
+\newenvironment{symbolpage}{
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{主要符号表}
+	\chapter*{主要符号表}
+	\chaptermark{主要符号表}
+}{
+	\cleardoublepage
+}
 
 
 % ---------- 定义新的致谢环境 -----------
@@ -514,12 +536,10 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{致谢}
 	\chapter*{致谢}
-	%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 	\chaptermark{致谢}
 }{
 	\clearpage
 }
-
 
 
 % ----------- 重新定义参考文献页 -----------
@@ -537,14 +557,21 @@
 }
 
 
-
 % ---------- 定义新的环境研究成果页 -----------
 \newenvironment{researchpage}{
 	\clearpage
 	\phantomsection
+	\ifmaster
 	\addcontentsline{toc}{chapter}{攻读硕士学位期间的研究成果}
 	\chapter*{攻读硕士学位期间的研究成果}
 	\chaptermark{攻读硕士学位期间的研究成果}
+	\else
+	\ifdoctor
+	\addcontentsline{toc}{chapter}{攻读博士学位期间的研究成果}
+	\chapter*{攻读博士学位期间的研究成果}
+	\chaptermark{攻读博士学位期间的研究成果}
+	\fi
+	\fi
 }{
 	\clearpage
 }
