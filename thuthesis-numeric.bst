@@ -1028,7 +1028,7 @@ FUNCTION {format.mark}
         'skip$
       if$
       'entry.mark :=
-      "[" entry.mark * "]" *
+      "\allowbreak[" entry.mark * "]" *
     }
     { "" }
   if$
