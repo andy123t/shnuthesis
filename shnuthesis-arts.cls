@@ -1,5 +1,5 @@
 %%
-%%	This is file `shnuthesis.cls',
+%%	This is file `shnuthesis-arts.cls',
 %%
 %%	@author andy123t
 %%	@date 2021/09/09
@@ -9,7 +9,7 @@
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/09/09 v2.0.0]
+\ProvidesClass{shnuthesis-arts}[2021/09/09 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -89,21 +89,18 @@
 
 
 % ---------- 定义章节的编号格式 ----------
-\renewcommand{\chaptername}{第\arabic{chapter}章}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+\renewcommand{\chaptername}{第\chinese{chapter}章}
+\renewcommand{\thesection}{第\chinese{section}节}
+\renewcommand{\thesubsection}{\chinese{subsection}}
 
-
-\newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\chpzihao}{\fontsize{18pt}{18pt}\selectfont}
 
 %---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter }
+\titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter}
     {\chpzihao \chaptertitlename}{20pt}{\chpzihao}
 \titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
-\titleformat{\section}[hang]{\heiti \zihao{-3}}
+\titleformat{\section}[hang]{\heiti \zihao{-3} \filcenter}
     {\zihao{-3} \thesection}{1em}{\zihao{-3}}
 \titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
 
@@ -400,9 +397,10 @@
 	\begin{spacing}{1.5}
 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
+
 	\parbox[t][3.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{1.5cm}
-			作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
-	
+     作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+    
 	\vspace{5em}
 	\begin{center}
 	{\heiti \chpzihao 论文使用授权声明}
@@ -421,6 +419,7 @@
     日\hspace{2em}期：\hrulefill \hspace*{1.5cm} }
 	\cleardoublepage
 }
+
 
 
 % ------------------ 中文摘要环境 -------------
@@ -455,6 +454,7 @@
 	\paragraph{\bfseries Key Words: } \enkeyword
 	\clearpage
 }
+
 
 
 % ------------- 定义新的目录页面 ----------------
