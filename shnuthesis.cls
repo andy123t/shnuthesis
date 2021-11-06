@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2021/09/09
+%%	@date 2021/11/06
 %%	@version v2.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/09/09 v2.0.0]
+\ProvidesClass{shnuthesis}[2021/11/06 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
