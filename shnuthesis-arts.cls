@@ -32,11 +32,11 @@
 
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany,twoside]{book}
+\LoadClass[a4paper,openany,twoside,zihao=-4]{book}
 
 
 % ---------- 中文字体宏包 ----------
-\RequirePackage[cs4size,UTF8]{ctex}
+\RequirePackage[UTF8,heading=true]{ctex}
 
 
 % --------- 定义不同编译方式 ----------
@@ -92,6 +92,8 @@
 \renewcommand{\chaptername}{第\chinese{chapter}章}
 \renewcommand{\thesection}{第\chinese{section}节}
 \renewcommand{\thesubsection}{\chinese{subsection}}
+\renewcommand{\thesubsubsection}{(\chinese{subsubsection})}
+
 
 \newcommand{\chpzihao}{\fontsize{18pt}{18pt}\selectfont}
 
@@ -344,7 +346,7 @@
 % ------- 重置命令maketitle -------
 \renewcommand{\maketitle}[1][15em]{
 	\phantomsection
-	\pdfbookmark[0]{封~面}{cover}
+	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
@@ -427,7 +429,7 @@
 	\def \cnkeyword {#1}
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{摘~要}
+	\addcontentsline{toc}{chapter}{摘~~要}
 	\chaptermark{摘~~要}
 	\vspace*{-2ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
@@ -456,7 +458,6 @@
 }
 
 
-
 % ------------- 定义新的目录页面 ----------------
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
@@ -466,14 +467,19 @@
 	citecolor = black
 } % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cftsubsecaftersnumb}{\hspace{-3.2ex}}
+\renewcommand{\cftsubsubsecaftersnumb}{\hspace{-4ex}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{1.5ex}
 \setlength{\cftaftertoctitleskip}{5ex}
+\setlength{\cftbeforesecskip}{0.5ex}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftdotsep}{3}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-% \renewcommand\cftbeforechapskip{2ex}
-\renewcommand{\cftbeforesecskip}{0.5ex} % 设置Part字体
-\renewcommand{\cftsecfont}{\songti}   % 设置Section字体
+
 
 % 使用条件语句
 \RequirePackage{xstring}
@@ -490,7 +496,7 @@
 	\IfStrEqCase{#1}{{nopagenum}{}
 		{pagenum}{}
 		{pagenumtoc}{\phantomsection
-			\addcontentsline{toc}{chapter}{目~录}}}
+			\addcontentsline{toc}{chapter}{目~~录}}}
 }
 
 
