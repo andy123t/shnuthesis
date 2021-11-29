@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2021/11/06
+%%	@date 2021/11/29
 %%	@version v2.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2021/11/06 v2.0.0]
+\ProvidesClass{shnuthesis}[2021/11/29 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -100,20 +100,20 @@
 
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter }
-    {\chpzihao \chaptertitlename}{16pt}{}
+    {\chpzihao \chaptertitlename}{20pt}{}
 \titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \zihao{-3}}
-    {\zihao{-3} \thesection}{10pt}{}
+    {\zihao{-3} \thesection}{1em}{}
 \titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
 
 \titleformat{\subsection}[hang]{\heiti \zihao{4}}
-    {\zihao{4} \thesubsection}{10pt}{}
+    {\zihao{4} \thesubsection}{1em}{}
 \titlespacing{\subsection}%
     {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
 \titleformat{\subsubsection}[hang]{\heiti}
-    {\thesubsubsection }{10pt}{}{}
+    {\thesubsubsection }{1em}{}
 \titlespacing{\subsubsection}%
     {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
