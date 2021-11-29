@@ -32,11 +32,11 @@
 
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany,twoside,zihao=-4]{book}
+\LoadClass[a4paper,openany,twoside]{book}
 
 
 % ---------- 中文字体宏包 ----------
-\RequirePackage[UTF8,heading=true]{ctex}
+\RequirePackage[UTF8,heading=true,zihao=-4]{ctex}
 
 
 % --------- 定义不同编译方式 ----------
@@ -99,20 +99,20 @@
 
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter}
-    {\chpzihao \chaptertitlename}{20pt}{\chpzihao}
+    {\chpzihao \chaptertitlename}{16pt}{}
 \titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \zihao{-3} \filcenter}
-    {\zihao{-3} \thesection}{1em}{\zihao{-3}}
+    {\zihao{-3} \thesection}{10pt}{}
 \titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
 
 \titleformat{\subsection}[hang]{\heiti \zihao{4}}
-    {\zihao{4} \thesubsection}{1em}{\zihao{4}}
+    {\zihao{4} \thesubsection}{10pt}{}
 \titlespacing{\subsection}%
     {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
 \titleformat{\subsubsection}[hang]{\heiti}
-    {\thesubsubsection }{1em}{}{}
+    {\thesubsubsection }{10pt}{}{}
 \titlespacing{\subsubsection}%
     {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
@@ -221,9 +221,7 @@
 
 
 % ---------------- 设置图表格式 ---------------
-
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 
 
@@ -315,6 +313,7 @@
 
 % ------- 公式编号带章节 ----------
 \numberwithin{equation}{chapter}
+%\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
 % 重新设置公式autoref
 \newcommand{\equationautorefname}{等式}
