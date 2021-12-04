@@ -2,24 +2,20 @@
 %%	This is file `shnuthesis-arts.cls',
 %%
 %%	@author andy123t
-%%	@date 2021/11/29
+%%	@date 2021/12/05
 %%	@version v2.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis-arts}[2021/11/29 v2.0.0]
+\ProvidesClass{shnuthesis-arts}[2021/12/05 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
 % ---------- 载入学校logo ----------
 \def\logopic{shnu.eps}   %logo
-\DeclareOption{SHNULogo} {
-	\def\logopic{shnu.eps}
-}
-\ProcessOptions\relax
-
+\DeclareOption{SHNULogo}{\def\logopic{shnu.eps}}
 
 \newif\if@master\@mastertrue
 \DeclareOption{doctor}{\@masterfalse}
@@ -28,15 +24,14 @@
 \newif\if@print\@printfalse
 \DeclareOption{print}{\@printtrue}
 
-\ProcessOptions
-
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ProcessOptions \relax
 
 % ---------- 载入Class ----------
 \LoadClass[a4paper,openany,twoside]{book}
 
-
 % ---------- 中文字体宏包 ----------
-\RequirePackage[UTF8,heading=true,zihao=-4]{ctex}
+\RequirePackage[UTF8,heading=true]{ctex}
 
 
 % --------- 定义不同编译方式 ----------
@@ -70,7 +65,7 @@
 \RequirePackage{mathrsfs}   % 数学英文花体
 \RequirePackage{booktabs}
 \RequirePackage{float}
-\RequirePackage{cite}
+%\RequirePackage{cite}
 \RequirePackage{longtable}  % 长表格
 \RequirePackage{multirow}   % 表格多行合并
 \RequirePackage{enumerate}  % 改变列表标号样式
@@ -283,19 +278,19 @@
 
 %------------- 数学定理设置 ---------------
 \theoremstyle{plain} 
-\newtheorem{definition}{\heiti 定义}[chapter]
-\newtheorem{proposition}{\heiti 命题}[chapter]
-\newtheorem{lemma}{\heiti 引理}[chapter]
-\newtheorem{theorem}{\heiti 定理}[chapter]
-\newtheorem{example}{\heiti 例}[chapter]
-\newtheorem{corollary}{\heiti 推论}[chapter]
-\newtheorem{remark}{\heiti 注}[chapter]
-\newtheorem{exercise}{\heiti 练习}[chapter]
-\newtheorem{assumption}{\heiti 假设}[chapter]
-\newtheorem{axiom}{\heiti 公理}[chapter]
-\newtheorem{property}{\heiti 性质}[chapter]
-\newtheorem{conjecture}{\heiti 猜想}[chapter]
-\renewcommand{\proofname}{\heiti 证明}
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{proposition}{命题}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{example}{例}[chapter]
+\newtheorem{corollary}{推论}[chapter]
+\newtheorem{remark}{注}[chapter]
+\newtheorem{exercise}{练习}[chapter]
+\newtheorem{assumption}{假设}[chapter]
+\newtheorem{axiom}{公理}[chapter]
+\newtheorem{property}{性质}[chapter]
+\newtheorem{conjecture}{猜想}[chapter]
+\renewcommand{\proofname}{证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
 
 
@@ -544,7 +539,7 @@
 
 % ----------- 重新定义参考文献页 -----------
 %\bibliographystyle{plain}
-\ctexset{bibname={参考文献}}
+\renewcommand{\bibname}{参考文献}
 
 % 设置新的附录命令
 \let \oldbibliography \bibliography

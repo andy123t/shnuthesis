@@ -3,14 +3,14 @@
 % xelatex -> bibtex -> xelatex -> xelatex
 % SHNU-Thesis 上海师范大学研究生 LaTeX 模板
 
-\documentclass[master,fontset=windows]{shnuthesis}
+\documentclass[master,12pt]{shnuthesis}
 % master 硕士学位论文, 默认可省略
 % doctor 博士学位论文, 不能省略
 % print 用于打印, 封面等生成空白页, 可省略
 % 提交给图书馆的电子版不要选 print
 
 
-% ----- 论文标题、作者、导师、日期等相关信息 -----
+%----- 论文标题、作者、导师、日期等相关信息 -----
 \title{这是一个很长的这是一个很长的这是一个很长的毕业论文题目}
 \author{某~~某~~某}     % 作者姓名
 \date{二~~〇~~二~~一~~年~~三~~月 }  % 完成日期
@@ -23,12 +23,12 @@
 \instructor{某~~某~~某~~~~教~~授}  % 导师姓名
 
 
-% 添加自己要用的其他宏包
+%----- 添加需要用的其他宏包 -----
 \usepackage[numbers]{natbib}
 \usepackage{subfig}
 % \usepackage{xltxtra}
 
-% ----- 算法宏包及设置  -----
+%----- 算法宏包及设置 -----
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{算法}
@@ -36,23 +36,24 @@
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
 
-% ----- 调整列表项的间距 ------
+%----- 调整列表项的间距 ------
 % \setlength{\itemsep}{3pt plus1pt minus2pt}
 
-% ----- 证明结束黑框 ------
+%----- 证明结束黑框 ------
 % \renewcommand{\qedsymbol}{$\blacksquare$}
 
-% ----- 设置英文字体 -----
-\usepackage{newtxtext}  % for text fonts
+%-----设置英文字体 -----
+\usepackage{newtxtext}          % for texlive
+%\setmainfont{Times New Roman}   % for CTEX
 
-% ----- 设置数学字体 -----
+%----- 设置数学字体 -----
 % \usepackage{newtxmath}
 % \usepackage{mathptmx}
 
-% ----- 直接插入 pdf 文件 -----
+%----- 直接插入 pdf 文件 -----
 % \usepackage{pdfpages}
 
-% ----- 自定义命令 ------
+%----- 自定义命令 ------
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -60,6 +61,7 @@
 \newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
+
 
 \begin{document}
 
