@@ -243,8 +243,9 @@
 % ------ 使用tabularx库并定义新的左右中格式 ------
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+
 
 % ------------ 设置三线表格式 ------
 % \setlength{\heavyrulewidth}{1.5pt}
@@ -294,7 +295,6 @@
 \newtheorem{conjecture}{猜想}[chapter]
 \renewcommand{\proofname}{证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
-
 
 % -------------- 数学公式设置 ---------------
 \allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页

@@ -241,8 +241,9 @@
 % ------ 使用tabularx库并定义新的左右中格式 ------
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+
 
 % ------------ 设置三线表格式 ------
 % \setlength{\heavyrulewidth}{1.5pt}
@@ -571,4 +572,3 @@
 
 
 % End of file `shnuthesis.cls'.
-
