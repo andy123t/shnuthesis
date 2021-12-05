@@ -691,13 +691,14 @@ N  & A       & B    & C       & D      & E       & F   \\
 % 添加附录, 如不需要可以注释掉
 \appendix
 
-%\setcounter{page}{1} % 如果需要可以自行重置页码
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+% 附录正文
 \chapter{附录 A ~ 这是第一个附录}
 \renewcommand{\thesection}{A.\arabic{section}}
 \section{附录A的小节}
 
 这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+
+
 
 \chapter{附录 B ~ 这是第二个附录}
 \renewcommand{\thesection}{B.\arabic{section}}
