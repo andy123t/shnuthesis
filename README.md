@@ -4,10 +4,10 @@
 
 LaTeX Thesis Template for SHNU
 
-**注意：** 本模板需要安装 **texlive** 发行版，并且需要 **XeLaTeX** 编译运行！
+**注意：** 本模板推荐安装 **texlive** 发行版，并且需要 **XeLaTeX** 编译运行！
 
 ```tex
-\documentclass[master,fontset=windows]{shnuthesis}
+\documentclass[master,12pt]{shnuthesis}
 ```
 
 shnuthesis 文档类可指定的选项包括
