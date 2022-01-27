@@ -72,10 +72,11 @@
 \RequirePackage{color,xcolor}
 \RequirePackage{fancyhdr}
 \RequirePackage{setspace}
-\RequirePackage{tikz}       % 绘制图形
+\RequirePackage{indentfirst}
 \RequirePackage{titlesec}   % 设置标题样式
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
+\RequirePackage{tikz}       % 绘制图形
 \RequirePackage{xstring}    % 使用条件语句
 
 
@@ -428,6 +429,7 @@
 	\vspace*{-2ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
 	\vspace*{3ex}
+	\par
 }{
 	\vspace{-1ex}
 	\paragraph{\heiti 关键词：} \cnkeyword
@@ -445,6 +447,7 @@
 	\vspace*{-3ex}
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
 	\vspace*{3ex}
+	\par
 }{
 	\vspace{-1ex}
 	\paragraph{\bfseries Key Words: } \enkeyword
