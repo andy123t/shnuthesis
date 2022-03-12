@@ -1,5 +1,5 @@
 %%
-%% This is file `variants/shnu/shnuthesis-numeric.bst',
+%% This is file `variants/thu/thuthesis-numeric.bst',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -32,6 +32,7 @@ INTEGERS {
   sentence.case.title
   link.title
   title.in.journal
+  show.mark
   show.medium.type
   slash.for.extraction
   in.booktitle
@@ -62,6 +63,7 @@ FUNCTION {load.config}
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'title.in.journal :=
+  #1 'show.mark :=
   #1 'show.medium.type :=
   #1 'slash.for.extraction :=
   #0 'in.booktitle :=
@@ -98,6 +100,7 @@ ENTRY
     langid
     language
     location
+    mark
     medium
     note
     number
@@ -116,7 +119,7 @@ ENTRY
     year
   }
   { entry.lang entry.is.electronic is.pure.electronic entry.numbered }
-  { label extra.label sort.label short.label short.list entry.url }
+  { label extra.label sort.label short.label short.list entry.mark entry.url }
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block after.slash }
 
@@ -998,6 +1001,38 @@ FUNCTION {format.journal}
   if$
 }
 
+FUNCTION {set.entry.mark}
+{ entry.mark empty$ not
+    'pop$
+    { mark empty$ not
+        { pop$ mark 'entry.mark := }
+        { 'entry.mark := }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.mark}
+{ show.mark
+    { entry.mark
+      show.medium.type
+        { medium empty$ not
+            { "/" * medium * }
+            { entry.is.electronic
+                { "/OL" * }
+                'skip$
+              if$
+            }
+          if$
+        }
+        'skip$
+      if$
+      'entry.mark :=
+      "\allowbreak[" entry.mark * "]" *
+    }
+    { "" }
+  if$
+}
 
 FUNCTION {num.to.ordinal}
 { duplicate$ text.length$ 'charptr :=
@@ -1604,6 +1639,8 @@ FUNCTION {monograph}
   if$
   new.block
   format.series.vol.num.title "title" output.check
+  "M" set.entry.mark
+  format.mark "" output.after
   new.block
   format.translators output
   new.sentence
@@ -1639,6 +1676,8 @@ FUNCTION {incollection}
   if$
   new.block
   format.title "title" output.check
+  "M" set.entry.mark
+  format.mark "" output.after
   new.block
   format.translators output
   new.slash
@@ -1678,6 +1717,8 @@ FUNCTION {periodical}
   if$
   new.block
   format.title "title" output.check
+  "J" set.entry.mark
+  format.mark "" output.after
   new.block
   format.periodical.year.volume.number output
   new.block
@@ -1711,6 +1752,8 @@ FUNCTION {article}
   new.block
   title.in.journal
     { format.title "title" output.check
+      "J" set.entry.mark
+      format.mark "" output.after
       new.block
     }
     'skip$
@@ -1747,6 +1790,8 @@ FUNCTION {patent}
   if$
   new.block
   format.title "title" output.check
+  "P" set.entry.mark
+  format.mark "" output.after
   new.block
   format.date "year" output.check
   format.urldate "" output.after
@@ -1776,6 +1821,8 @@ FUNCTION {electronic}
   if$
   new.block
   format.series.vol.num.title "title" output.check
+  "EB" set.entry.mark
+  format.mark "" output.after
   new.block
   format.address.publisher output
   year.after.author not
@@ -1822,6 +1869,8 @@ FUNCTION {preprint}
   new.block
   title.in.journal
     { format.series.vol.num.title "title" output.check
+      "Z" set.entry.mark
+      format.mark "" output.after
       new.block
     }
     'skip$
@@ -1855,6 +1904,7 @@ FUNCTION {misc}
                 { entry.is.electronic
                     'electronic
                     {
+                      "Z" set.entry.mark
                       monograph
                     }
                   if$
@@ -1870,54 +1920,81 @@ FUNCTION {misc}
 }
 
 FUNCTION {archive}
-{ misc }
+{ "A" set.entry.mark
+  misc
+}
 
 FUNCTION {book} { monograph }
 
 FUNCTION {booklet} { book }
 
 FUNCTION {collection}
-{ monograph }
+{ "G" set.entry.mark
+  monograph
+}
 
 FUNCTION {database}
-{ electronic }
+{ "DB" set.entry.mark
+  electronic
+}
 
 FUNCTION {dataset}
-{  electronic }
+{ "DS" set.entry.mark
+  electronic
+}
 
 FUNCTION {inbook} { book }
 
 FUNCTION {inproceedings}
-{ incollection }
+{ "C" set.entry.mark
+  incollection
+}
 
 FUNCTION {conference} { inproceedings }
 
-FUNCTION {map} { misc }
+FUNCTION {map}
+{ "CM" set.entry.mark
+  misc
+}
 
 FUNCTION {manual} { monograph }
 
 FUNCTION {mastersthesis}
-{  monograph }
+{ "D" set.entry.mark
+  monograph
+}
 
 FUNCTION {newspaper}
-{ article }
+{ "N" set.entry.mark
+  article
+}
 
 FUNCTION {online}
-{ electronic }
+{ "EB" set.entry.mark
+  electronic
+}
 
 FUNCTION {phdthesis} { mastersthesis }
 
 FUNCTION {proceedings}
-{ monograph }
+{ "C" set.entry.mark
+  monograph
+}
 
 FUNCTION {software}
-{ electronic }
+{ "CP" set.entry.mark
+  electronic
+}
 
 FUNCTION {standard}
-{ misc }
+{ "S" set.entry.mark
+  misc
+}
 
 FUNCTION {techreport}
-{ misc }
+{ "R" set.entry.mark
+  misc
+}
 
 FUNCTION {unpublished} { misc }
 

@@ -2,7 +2,7 @@
 
 上海师范大学研究生毕业论文 LaTeX 模板
 
-LaTeX Thesis Template for SHNU
+LaTeX template for graduation thesis of Shanghai Normal University
 
 **注意：** 本模板推荐安装 **texlive** 发行版，并且需要 **XeLaTeX** 编译运行！
 
