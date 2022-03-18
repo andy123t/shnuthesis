@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/03/13
+%%	@date 2022/03/18
 %%	@version v2.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/03/13 v2.0.0]
+\ProvidesClass{shnuthesis}[2022/03/18 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -54,10 +54,10 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
+\geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.0cm,includehead,includefoot}
 \setlength{\headheight}{15pt}
-%\addtolength{\headsep}{-0.1cm}     % 页眉位置
-%\addtolength{\footskip}{-0.1cm}    % 页脚位置
+\setlength{\headsep}{18pt}     % 页眉位置
+\setlength{\footskip}{25pt}    % 页脚位置
 
 % ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
@@ -131,7 +131,6 @@
     \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
     \rule[0.85\baselineskip]{\headwidth}{1.5pt}\vskip-.8\baselineskip}
 
-\makeatletter
 \renewcommand{\headrule}{%
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
      \makeheadrule}}
@@ -158,17 +157,17 @@
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
 \if@master
-\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
-\fancyhead[LO,RE]{\color{black}\zihao{5} 上海师范大学硕士学位论文}
+\fancyhead[RO,LE]{\zihao{5} \leftmark}
+\fancyhead[LO,RE]{\zihao{5} 上海师范大学硕士学位论文}
 \else
-\fancyhead[RO,LE]{\color{black}\zihao{5} \leftmark}
-\fancyhead[LO,RE]{\color{black}\zihao{5} 上海师范大学博士学位论文}
+\fancyhead[RO,LE]{\zihao{5} \leftmark}
+\fancyhead[LO,RE]{\zihao{5} 上海师范大学博士学位论文}
 \fi
 }
 
 
 % ------- 设置页脚样式 ----------
-\newcommand{\footstyle}{\fancyfoot[C]{\fangsong \thepage}}
+\newcommand{\footstyle}{\fancyfoot[C]{\zihao{5} \thepage}}
 \pagestyle{empty}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
@@ -301,10 +300,10 @@
 
 % ----- 设置公式间距 ------
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{4pt}
-	\setlength{\belowdisplayskip}{4pt}
-	\setlength{\abovedisplayshortskip}{2pt}
-	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\abovedisplayshortskip}{2pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayshortskip}{2pt plus 1pt minus 1pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
@@ -345,6 +344,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
+		  \vspace*{-1.2cm}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
@@ -387,7 +387,7 @@
 	\phantomsection
 	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
-	\vspace*{3ex}
+	\vspace*{2ex}
 	\begin{center}
 	{\heiti \chpzihao 论文独创性声明}
 	\end{center}
@@ -425,9 +425,9 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{摘~~要}
 	\chaptermark{摘~~要}
-	\vspace*{-2ex}
+	\vspace*{-3ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
-	\vspace*{3ex}
+	\vspace*{2.5ex}
 	\par
 }{
 	\vspace{-1ex}
@@ -445,7 +445,7 @@
 	\chaptermark{Abstract}
 	\vspace*{-3ex}
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
-	\vspace*{3ex}
+	\vspace*{2.5ex}
 	\par
 }{
 	\vspace{-1ex}

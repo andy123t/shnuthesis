@@ -25,7 +25,8 @@
 
 %----- 添加需要用的其他宏包 -----
 \usepackage[numbers]{natbib}
-\def\bibfont{\small}  % 修改参考文献字体
+\def\bibfont{\small}      % 修改参考文献字体
+\setlength{\bibsep}{8pt}  % 调整参考文献间距
 \usepackage{subfig}
 % \usepackage{xltxtra}
 
@@ -264,8 +265,8 @@ a ={} & b + c \\
 如果我们不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
 \begin{gather}
 a = b + c \\
-d = e + f + g \\
-h + i = j + k \notag \\
+d = e + f + g \notag \\
+%h + i = j \\
 l + m = n
 \end{gather}
 
@@ -500,10 +501,9 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 插入一个图形并居中放置, 如图~\ref{fig:sinx}.
 \begin{figure}[htp!]
   \centering
-  \includegraphics[width=0.5\linewidth]{image1.eps}
+  \includegraphics[width=0.48\linewidth]{image1.eps}
   \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
 \end{figure}
-
 
 两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
 \begin{figure}[htp!]
