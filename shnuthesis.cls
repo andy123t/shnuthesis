@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/03/18
+%%	@date 2022/03/20
 %%	@version v2.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/03/18 v2.0.0]
+\ProvidesClass{shnuthesis}[2022/03/20 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -56,8 +56,8 @@
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.0cm,includehead,includefoot}
 \setlength{\headheight}{15pt}
-\setlength{\headsep}{18pt}     % 页眉位置
-\setlength{\footskip}{25pt}    % 页脚位置
+\setlength{\headsep}{15pt}     % 页眉位置
+\setlength{\footskip}{28pt}    % 页脚位置
 
 % ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
@@ -344,7 +344,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-		  \vspace*{-1.2cm}
+		  \vspace*{-1cm}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
