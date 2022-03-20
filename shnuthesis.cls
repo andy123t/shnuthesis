@@ -56,7 +56,7 @@
 \RequirePackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.0cm,includehead,includefoot}
 \setlength{\headheight}{15pt}
-\setlength{\headsep}{15pt}     % 页眉位置
+\setlength{\headsep}{18pt}     % 页眉位置
 \setlength{\footskip}{28pt}    % 页脚位置
 
 % ---------- 常用宏包 ----------
@@ -344,7 +344,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-		  \vspace*{-0.9cm}
+		  \vspace*{-1.2cm}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
