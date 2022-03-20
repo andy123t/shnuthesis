@@ -387,7 +387,7 @@
 	\phantomsection
 	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
-	\vspace*{2ex}
+	\vspace*{0.5ex}
 	\begin{center}
 	{\heiti \chpzihao 论文独创性声明}
 	\end{center}
@@ -395,6 +395,7 @@
 	\begin{spacing}{1.5}
 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
+
 	\parbox[t][3.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{1.5cm}
 			作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
 	

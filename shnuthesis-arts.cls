@@ -387,7 +387,7 @@
 	\phantomsection
 	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
-	\vspace*{2ex}
+	\vspace*{0.5ex}
 	\begin{center}
 	{\heiti \chpzihao 论文独创性声明}
 	\end{center}
@@ -397,7 +397,7 @@
 	\end{spacing}
 
 	\parbox[t][3.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{1.5cm}
-     作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+			作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
     
 	\vspace{5em}
 	\begin{center}
