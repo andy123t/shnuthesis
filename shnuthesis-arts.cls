@@ -344,7 +344,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-		  \vspace*{-1cm}
+		  \vspace*{-0.9cm}
 			{\zihao{5} 学校代码：10270  \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
