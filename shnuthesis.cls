@@ -28,7 +28,7 @@
 \ProcessOptions \relax
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany,twoside]{book}
+\LoadClass[a4paper,openany,twoside,zihao=-4]{book}
 
 % ---------- 中文字体宏包 ----------
 \RequirePackage[UTF8]{ctex}

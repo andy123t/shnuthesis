@@ -1,9 +1,9 @@
 % !TEX program = xelatex
 % 使用 texlive 完整编译:
 % xelatex -> bibtex -> xelatex -> xelatex
-% SHNU-Thesis 上海师范大学研究生 LaTeX 模板
+% SHNU-Thesis 上海师范大学研究生毕业论文 LaTeX 模板
 
-\documentclass[master,12pt]{shnuthesis}
+\documentclass[master]{shnuthesis}
 % master 硕士学位论文, 默认可省略
 % doctor 博士学位论文, 不能省略
 % print 用于打印, 封面等生成空白页, 可省略
@@ -508,9 +508,9 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \includegraphics[width=0.48\linewidth]{image1.eps}
   \hfill
-  \includegraphics[width=0.45\linewidth]{image2.eps}
+  \includegraphics[width=0.48\linewidth]{image2.eps}
   \caption{左: 图一的描述;~ 右:图二的描述.}
   \label{fig:image}
 \end{figure}
