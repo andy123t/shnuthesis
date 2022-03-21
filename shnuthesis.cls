@@ -28,10 +28,10 @@
 \ProcessOptions \relax
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany,twoside,zihao=-4]{book}
+\LoadClass[a4paper,openany,twoside]{book}
 
 % ---------- 中文字体宏包 ----------
-\RequirePackage[UTF8]{ctex}
+\RequirePackage[UTF8,zihao=-4]{ctex}
 
 
 % --------- 定义不同编译方式 ----------
