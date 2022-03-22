@@ -54,7 +54,7 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
+\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=3.0cm}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}     % 页眉位置
 \setlength{\footskip}{28pt}    % 页脚位置
