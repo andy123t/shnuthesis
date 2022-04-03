@@ -266,8 +266,18 @@
 \newtheorem{axiom}{公理}[chapter]
 \newtheorem{property}{性质}[chapter]
 \newtheorem{conjecture}{猜想}[chapter]
-\renewcommand{\proofname}{证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
+\renewcommand{\proofname}{证明}
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
 
 % -------------- 数学公式设置 ---------------
 \allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页
