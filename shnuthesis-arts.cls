@@ -2,16 +2,15 @@
 %%	This is file `shnuthesis-arts.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/03/22
-%%	@version v2.0.0
+%%	@date 2022/04/03
+%%	@version v3.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis-arts}[2022/03/22 v2.0.0]
+\ProvidesClass{shnuthesis-arts}[2022/04/03 v3.0.0]
 \NeedsTeXFormat{LaTeX2e}
-
 
 % ---------- 载入学校logo ----------
 \def\logopic{shnu.eps}   %logo
@@ -33,7 +32,6 @@
 % ---------- 中文字体宏包 ----------
 \RequirePackage[UTF8,heading=true,zihao=-4]{ctex}
 
-
 % --------- 定义不同编译方式 ----------
 \RequirePackage{ifpdf,ifxetex}
 \ifxetex
@@ -51,11 +49,10 @@
   \fi
 \fi
 
-
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=3.0cm}
-\setlength{\headheight}{15pt}
+\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
+\setlength{\headheight}{18pt}
 \setlength{\headsep}{18pt}     % 页眉位置
 \setlength{\footskip}{28pt}    % 页脚位置
 
@@ -79,10 +76,8 @@
 \RequirePackage{tikz}       % 绘制图形
 \RequirePackage{xstring}    % 使用条件语句
 
-
 % -------- 设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
-
 
 % ---------- 定义章节的编号格式 ----------
 \renewcommand{\chaptername}{第\chinese{chapter}章}
@@ -90,33 +85,28 @@
 \renewcommand{\thesubsection}{\chinese{subsection}}
 \renewcommand{\thesubsubsection}{(\chinese{subsubsection})}
 
-
 \newcommand{\chpzihao}{\fontsize{18pt}{18pt}\selectfont}
 
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter}
     {\chpzihao \chaptertitlename}{20pt}{}
-\titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\titlespacing{\chapter}{0pt}{-0.5ex  plus .1ex minus .2ex}{3.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \zihao{-3} \filcenter}
     {\zihao{-3} \thesection}{1em}{}
-\titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
+\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
 
 \titleformat{\subsection}[hang]{\heiti \zihao{4}}
     {\zihao{4} \thesubsection}{1em}{}
-\titlespacing{\subsection}%
-    {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
+\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
 \titleformat{\subsubsection}[hang]{\heiti}
     {\thesubsubsection }{1em}{}
-\titlespacing{\subsubsection}%
-    {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
-
+\titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 %---------- 设置章节目录的深度 -------------
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3} 
-
 
 % ------------- 设置附录 -----------
 \RequirePackage{titletoc}
@@ -124,7 +114,6 @@
 %\renewcommand{\appendixname}{附录}
 
 %-------------- 定义页眉页脚 -------------------
-
 % 定义页眉和页脚 使用 fancyhdr 宏包
 \newcommand{\makeheadrule}{%
     \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
@@ -137,7 +126,6 @@
 % ------------ 画单隔线 ------------
 \renewcommand{\headrulewidth}{0.5pt}    % 在页眉下画一个0.5pt宽的分隔线
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
-
 
 % ------- 重新定义 cleardoublepage --------
 \def\cleardoublepage{%
@@ -152,7 +140,6 @@
   \fi
 }
 
-
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
 \if@master
@@ -164,7 +151,6 @@
 \fi
 }
 
-
 % ------- 设置页脚样式 ----------
 \newcommand{\footstyle}{\fancyfoot[C]{\fangsong \thepage}}
 \pagestyle{empty}
@@ -173,7 +159,6 @@
 \headstyle
 \footstyle
 
-
 % --------- 定义一种新的格式叫做main ---------
 \fancypagestyle{main}{%
     \pagestyle{fancyplain} 
@@ -181,7 +166,6 @@
 	\headstyle
 	\footstyle
 }
-
 
 % --------- 定义 chaptermark ------------
 \renewcommand\chaptermark[1]{%
@@ -194,7 +178,6 @@
     #1}{}%
 }
 
-
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{3pt plus 1pt minus 1pt}  % 段落之间的竖直距离
@@ -205,7 +188,6 @@
 %\baselineskip=5pt
 %\setlength{\baselineskip}{24pt}
 
-
 % ------------------- 浮动对象设置 ---------------------
 % 浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面
 % 也可以防止在很大空白的浮动页上放置很小的图形
@@ -214,11 +196,9 @@
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 
-
 % ---------------- 设置图表格式 ---------------
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
@@ -232,18 +212,15 @@
 \setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 %\setlength{\itemsep}{3pt plus 1pt minus 2pt}
 
-
 % -------- 重新设置图表autoref ---------
 \newcommand{\figureautorefname}{图}
 \newcommand{\tableautorefname}{表}
-
 
 % ------ 使用tabularx库并定义新的左右中格式 ------
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
-
 
 % ------------ 设置三线表格式 ------
 % \setlength{\heavyrulewidth}{1.5pt}
@@ -253,7 +230,6 @@
 % \setlength{\belowrulesep}{0pt}
 % \setlength{\abovetopsep}{0pt}
 % \setlength{\belowbottomsep}{0pt}
-
 
 % -------- 重新定义图和表的浮动环境 ---------
 \newenvironment{generalfig}[3][htbp]{
@@ -276,7 +252,6 @@
 	\end{table}
 }
 
-
 %------------- 数学定理设置 ---------------
 \theoremstyle{plain} 
 \newtheorem{definition}{定义}[chapter]
@@ -293,7 +268,6 @@
 \newtheorem{conjecture}{猜想}[chapter]
 \renewcommand{\proofname}{证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
-
 
 % -------------- 数学公式设置 ---------------
 \allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页
@@ -314,11 +288,9 @@
 % 重新设置公式autoref
 \newcommand{\equationautorefname}{等式}
 
-
 % --------- 定义列表项的样式 ---------
 \RequirePackage{enumitem}
 \setlist{nolistsep}
-
 
 % ------------- 定义新的标题页面 -------------------
 
@@ -379,7 +351,6 @@
 	\cleardoublepage
 }
 
-
 % ----------- 设置命令 ------------
 \newcommand{\makestatement}{
 	\clearpage
@@ -395,8 +366,7 @@
 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
 
-	\parbox[t][3.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont \hspace{1.5cm}
-			作者签名：\hrulefill \hspace*{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+	\parbox[t][3.5cm][c]{\textwidth}{\hspace{1.5cm} 作者签名：\hrulefill \hspace{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
     
 	\vspace{5em}
 	\begin{center}
@@ -410,14 +380,10 @@
 	\vspace{1em}
 	{\bfseries （保密的论文在解密后应遵守此规定）}
 
-	\parbox[t][4.5cm][c]{\textwidth}{\fontsize{13pt}{20pt}\selectfont 
-	\hspace{1.5cm} 作者签名：\hrulefill \hspace*{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[3pt] 
-    \hspace*{1.5cm} 日\hspace{2em}期：\hrulefill \hspace*{4em}
-    日\hspace{2em}期：\hrulefill \hspace*{1.5cm} }
+	\parbox[t][4.5cm][c]{\textwidth}{\hspace{1.5cm} 作者签名：\hrulefill \hspace{4em} 导师签名：\hrulefill \hspace{1.5cm} \\[10pt] 
+	\hspace*{1.5cm} 日\hspace{2em}期：\hrulefill \hspace{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
 	\cleardoublepage
 }
-
-
 
 % ------------------ 中文摘要环境 -------------
 \newenvironment{cnabstract}[1]{
@@ -436,7 +402,6 @@
 	\clearpage
 }
 
-
 % ----------------- 英文摘要环境 ----------------
 \newenvironment{enabstract}[1]{
 	\def \enkeyword {#1}
@@ -454,7 +419,6 @@
 	\clearpage
 }
 
-
 % ------------- 定义新的目录页面 ----------------
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
@@ -464,19 +428,21 @@
 	citecolor = black
 } % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
-\renewcommand{\cftsubsecaftersnumb}{\hspace{-3.2ex}}
-\renewcommand{\cftsubsubsecaftersnumb}{\hspace{-4ex}}
+\renewcommand{\cftchappresnum}{第}
+\renewcommand{\cftchapaftersnum}{章}
+\renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{1.5ex}
-\setlength{\cftaftertoctitleskip}{5ex}
-\setlength{\cftbeforesecskip}{0.5ex}
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforesecskip}{3pt}
+\setlength{\cftbeforesubsecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}
 \renewcommand{\cftdotsep}{3}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-
 
 % 使用条件语句
 \RequirePackage{xstring}
@@ -496,7 +462,6 @@
 			\addcontentsline{toc}{chapter}{目~~录}}}
 }
 
-
 % ----------- 设置新的生成目录命令 -------------
 \let \oldtableofcontens \tableofcontents
 \newcommand{\maketoc}[1][nopagenum]{
@@ -515,7 +480,6 @@
 	\pagestyle{main}
 }
 
-
 % ---------- 定义主要符号表环境 -----------
 \newenvironment{symbolpage}{
 	\clearpage
@@ -527,7 +491,6 @@
 	\cleardoublepage
 }
 
-
 % ---------- 定义新的致谢环境 -----------
 \newenvironment{thankpage}{
 	\clearpage
@@ -538,7 +501,6 @@
 }{
 	\clearpage
 }
-
 
 % ----------- 重新定义参考文献页 -----------
 %\bibliographystyle{plain}
@@ -553,7 +515,6 @@
 	\addcontentsline{toc}{chapter}{参考文献}
 	\oldbibliography{#1}
 }
-
 
 % ---------- 定义新的环境研究成果页 -----------
 \newenvironment{researchpage}{
@@ -571,6 +532,5 @@
 }{
 	\clearpage
 }
-
 
 % End of file `shnuthesis.cls'.
