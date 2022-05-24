@@ -306,20 +306,18 @@
 % ------------- 定义新的标题页面 -------------------
 
 % ------ 添加几个新的文档属性 ------
-\def \defschool {}
-\def \defcollege {}
-\def \defmajor {}
-\def \defstudy {}
-\def \defstunum {}
-\def \definstructor {}
-\def \defclassifnum {}
-\newcommand{\school}[1]{\def \defschool {#1}}
+% \def \defcollege {}
+% \def \defmajor {}
+% \def \defstudy {}
+% \def \defstunum {}
+% \def \definstructor {}
+% \def \defclassifnum {}
 \newcommand{\college}[1]{\def \defcollege {#1}}
 \newcommand{\major}[1]{\def \defmajor {#1}}
 \newcommand{\study}[1]{\def \defstudy {#1}}
 \newcommand{\stunum}[1]{\def \defstunum {#1}}
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
-\newcommand{\classifnum}[1]{\def \defclassifnum {#1}}
+%\newcommand{\classifnum}[1]{\def \defclassifnum {#1}}
 
 % ------- 重置命令maketitle -------
 \renewcommand{\maketitle}[1][15em]{
@@ -327,7 +325,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-			{\zihao{5} 学校代码：10270 \hspace{2cm} 分类号：\defclassifnum \hspace{2cm} 学号：\defstunum} \\
+      {\hspace*{1cm}\zihao{-4} 学校代码：10270 \hfill 学号：\defstunum \hspace*{1cm}} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1cm}
