@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis-arts.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/04/03
+%%	@date 2022/05/25
 %%	@version v3.0.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis-arts}[2022/04/03 v3.0.0]
+\ProvidesClass{shnuthesis-arts}[2022/05/25 v3.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
