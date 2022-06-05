@@ -13,7 +13,7 @@ LaTeX template for graduation thesis of Shanghai Normal University
 shnuthesis 文档类可指定的选项包括
 - master 硕士学位论文，默认可省略
 - doctor 博士学位论文，不能省略
-- print 用于打印，封面等生成空白页，可省略
+- print 用于打印，封面等生成空白页
 - 提交给图书馆的电子版，不要选 print
 
 
@@ -21,6 +21,8 @@ shnuthesis 文档类可指定的选项包括
 
 由于文科研究生毕业论文模板的章节等与理科有差别，可选用文档类 **shnuthesis-arts.cls**，之所以没有放在一起是因为文档类太复杂会影响编译速度。
 
-本模板可以上传到在线 LaTeX 编辑网站 Overleaf 上使用。如果在线使用，需要自行设置字体 (fontset = ubuntu)，更推荐本地使用这个模板。
+在线 LaTeX 编辑可以使用 [TeXPage](https://www.texpage.com/)，设置字体 (fontset=windows) 后符合学校要求，推荐使用。
+
+如果在线使用 [Overleaf](https://www.overleaf.com/)，设置字体 (fontset = ubuntu) 后运行，但字体不符合学校要求，不推荐使用。
 
 如有不足之处，欢迎提出意见或建议。

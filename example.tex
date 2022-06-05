@@ -6,7 +6,7 @@
 \documentclass[master]{shnuthesis}
 % master 硕士学位论文, 默认可省略
 % doctor 博士学位论文, 不能省略
-% print 用于打印, 封面等生成空白页, 可省略
+% print 用于打印, 封面等生成空白页
 % 提交给图书馆的电子版不要选 print
 
 
@@ -694,15 +694,29 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 % 附录正文
 \chapter{附录 A ~ 这是第一个附录}
-\renewcommand{\thesection}{A.\arabic{section}}
+\renewcommand{\thesection}{A.\arabic{section}} % 节编号
+\renewcommand{\theequation}{A.\arabic{equation}} % 公式编号
+\renewcommand{\thefigure}{A.\arabic{figure}} % 图编号
+\setcounter{table}{0}
+\renewcommand{\thetable}{A.\arabic{table}} % 表编号
+
 \section{附录A的小节}
 
 这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
 
+附录公式及编号
+\begin{equation}\label{eq:abc}
+  a^2+b^2=c^2.
+\end{equation}
 
 
 \chapter{附录 B ~ 这是第二个附录}
 \renewcommand{\thesection}{B.\arabic{section}}
+\renewcommand{\theequation}{B.\arabic{equation}}
+\renewcommand{\thefigure}{B.\arabic{figure}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{B.\arabic{table}} 
+
 \section{附录B的小节}
 
 这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.

@@ -1,12 +1,12 @@
 %%
-%% This is file `shnuthesis-numeric.bst',
+%% This is file `shnuthesis-author-year.bst',
 %%
-%% modified under the `thuthesis-numeric.bst`
+%% modified under the `thuthesis-author-year.bst`
 %%
 %% The original source files were:
 %%
 %% -------------------------------------------------------------------
-%% GB/T 7714—2015 BibTeX Style
+%% GB/T 7714-2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
 %% Version: 2020/06/08 v2.0.2
 %% -------------------------------------------------------------------
@@ -31,6 +31,7 @@ INTEGERS {
   link.title
   title.in.journal
   show.mark
+  space.before.mark
   show.medium.type
   slash.for.extraction
   in.booktitle
@@ -38,7 +39,6 @@ INTEGERS {
   italic.journal
   bold.journal.volume
   show.missing.address.publisher
-  space.before.pages
   only.start.page
   show.urldate
   show.url
@@ -46,6 +46,11 @@ INTEGERS {
   show.preprint
   show.note
   show.english.translation
+  lang.zh.order
+  lang.ja.order
+  lang.en.order
+  lang.ru.order
+  lang.other.order
 }
 
 FUNCTION {load.config}
@@ -56,12 +61,13 @@ FUNCTION {load.config}
   #3 'bibliography.et.al.use.first :=
   #0 'uppercase.name :=
   #0 'terms.in.macro :=
-  #0 'year.after.author :=
+  #1 'year.after.author :=
   #1 'period.after.author :=
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'title.in.journal :=
   #1 'show.mark :=
+  #0 'space.before.mark :=
   #1 'show.medium.type :=
   #1 'slash.for.extraction :=
   #0 'in.booktitle :=
@@ -69,7 +75,6 @@ FUNCTION {load.config}
   #0 'italic.journal :=
   #0 'bold.journal.volume :=
   #0 'show.missing.address.publisher :=
-  #0 'space.before.pages :=
   #0 'only.start.page :=
   #1 'show.urldate :=
   #1 'show.url :=
@@ -77,6 +82,11 @@ FUNCTION {load.config}
   #0 'show.preprint :=
   #0 'show.note :=
   #0 'show.english.translation :=
+  #1 'lang.zh.order :=
+  #2 'lang.ja.order :=
+  #3 'lang.en.order :=
+  #4 'lang.ru.order :=
+  #5 'lang.other.order :=
 }
 
 ENTRY
@@ -186,16 +196,9 @@ FUNCTION {citation.et.al}
 
 FUNCTION {bbl.colon} { ": " }
 
-FUNCTION {bbl.pages.colon}
-{ space.before.pages
-    { ": " }
-    { ":\allowbreak " }
-  if$
-}
-
 FUNCTION {bbl.wide.space} { "\quad " }
 
-FUNCTION {bbl.slash} { "//\allowbreak " }
+FUNCTION {bbl.slash} { "// " }
 
 FUNCTION {bbl.sine.loco}
 { entry.lang lang.zh =
@@ -590,7 +593,7 @@ FUNCTION {format.authors}
 { author empty$ not
     { author format.names }
     { "empty author in " cite$ * warning$
-      ""
+      bbl.anonymous
     }
   if$
 }
@@ -1026,7 +1029,10 @@ FUNCTION {format.mark}
         'skip$
       if$
       'entry.mark :=
-      "\allowbreak[" entry.mark * "]" *
+      space.before.mark
+        { " [" entry.mark * "]" * }
+        { "\allowbreak[" entry.mark * "]" * }
+      if$
     }
     { "" }
   if$
@@ -1359,7 +1365,7 @@ FUNCTION {format.journal.volume}
 
 FUNCTION {format.journal.number}
 { number empty$ not
-    { "\allowbreak (" number * ")" * }
+    { "\penalty0 (" number * ")" * }
     { "" }
   if$
 }
@@ -1367,7 +1373,9 @@ FUNCTION {format.journal.number}
 FUNCTION {format.journal.pages}
 { pages empty$
     { "" }
-    { format.extracted.pages }
+    { ": "
+      format.extracted.pages *
+    }
   if$
 }
 
@@ -1381,7 +1389,7 @@ FUNCTION {format.periodical.year.volume.number}
     'skip$
   if$
   number empty$ not
-    { "\allowbreak (" * number extract.before.dash * ")" * }
+    { "\penalty0 (" * number extract.before.dash * ")" * }
     'skip$
   if$
   "--" *
@@ -1397,7 +1405,7 @@ FUNCTION {format.periodical.year.volume.number}
         'skip$
       if$
       number empty$ not
-        { "\allowbreak (" * number extract.after.dash * ")" * }
+        { "\penalty0 (" * number extract.after.dash * ")" * }
         'skip$
       if$
     }
@@ -1620,7 +1628,7 @@ FUNCTION {monograph}
     { editor empty$ not
         { format.editors }
         { "empty author and editor in " cite$ * warning$
-          ""
+          bbl.anonymous
         }
       if$
     }
@@ -1649,7 +1657,7 @@ FUNCTION {monograph}
     { format.year "year" output.check }
     'skip$
   if$
-  format.pages bbl.pages.colon output.after
+  format.pages bbl.colon output.after
   format.urldate "" output.after
   output.url
   output.doi
@@ -1690,7 +1698,7 @@ FUNCTION {incollection}
     { format.year "year" output.check }
     'skip$
   if$
-  format.extracted.pages bbl.pages.colon output.after
+  format.extracted.pages bbl.colon output.after
   format.urldate "" output.after
   output.url
   output.doi
@@ -1763,7 +1771,7 @@ FUNCTION {article}
   if$
   format.journal.volume output
   format.journal.number "" output.after
-  format.journal.pages bbl.pages.colon output.after
+  format.journal.pages "" output.after
   format.urldate "" output.after
   output.url
   output.doi
@@ -1831,7 +1839,7 @@ FUNCTION {electronic}
     }
     'skip$
   if$
-  format.pages bbl.pages.colon output.after
+  format.pages bbl.colon output.after
   format.editdate "" output.after
   format.urldate "" output.after
   output.url
@@ -1849,7 +1857,7 @@ FUNCTION {preprint}
     { editor empty$ not
         { format.editors }
         { "empty author and editor in " cite$ * warning$
-          ""
+          bbl.anonymous
         }
       if$
     }
@@ -1882,7 +1890,7 @@ FUNCTION {preprint}
     { format.year "year" output.check }
     'skip$
   if$
-  format.pages bbl.pages.colon output.after
+  format.pages bbl.colon output.after
   format.urldate "" output.after
   output.url
   new.block
@@ -2226,14 +2234,140 @@ FUNCTION {calc.label}
   'short.label :=
 }
 
-INTEGERS { seq.num }
+FUNCTION {sort.language.label}
+{ entry.lang lang.zh =
+    { lang.zh.order }
+    { entry.lang lang.ja =
+        { lang.ja.order }
+        { entry.lang lang.en =
+            { lang.en.order }
+            { entry.lang lang.ru =
+                { lang.ru.order }
+                { lang.other.order }
+              if$
+            }
+          if$
+        }
+      if$
+    }
+  if$
+  #64 +
+  int.to.chr$
+}
 
-FUNCTION {init.seq}
-{ #0 'seq.num :=}
+FUNCTION {sort.format.names}
+{ 's :=
+  #1 'nameptr :=
+  ""
+  s num.names$ 'numnames :=
+  numnames 'namesleft :=
+    { namesleft #0 > }
+    {
+      s nameptr "{vv{ } }{ll{ }}{  ff{ }}{  jj{ }}" format.name$ 't :=
+      nameptr #1 >
+        {
+          "   "  *
+          namesleft #1 = t "others" = and
+            { "zzzzz" * }
+            { numnames #2 > nameptr #2 = and
+                { "zz" * year field.or.null * "   " * }
+                'skip$
+              if$
+              t sortify *
+            }
+          if$
+        }
+        { t sortify * }
+      if$
+      nameptr #1 + 'nameptr :=
+      namesleft #1 - 'namesleft :=
+    }
+  while$
+}
 
-FUNCTION {int.to.fix}
-{ "000000000" swap$ int.to.str$ *
-  #-1 #10 substring$
+FUNCTION {sort.format.title}
+{ 't :=
+  "A " #2
+    "An " #3
+      "The " #4 t chop.word
+    chop.word
+  chop.word
+  sortify
+  #1 global.max$ substring$
+}
+
+FUNCTION {anonymous.sort}
+{ entry.lang lang.zh =
+    { "yi4 ming2" }
+    { "anon" }
+  if$
+}
+
+FUNCTION {warn.empty.key}
+{ entry.lang lang.zh =
+    { "empty key in " cite$ * warning$ }
+    'skip$
+  if$
+}
+
+FUNCTION {author.sort}
+{ key empty$
+    { warn.empty.key
+      author empty$
+        { anonymous.sort }
+        { author sort.format.names }
+      if$
+    }
+    { key }
+  if$
+}
+
+FUNCTION {author.editor.sort}
+{ key empty$
+    { warn.empty.key
+      author empty$
+        { editor empty$
+            { anonymous.sort }
+            { editor sort.format.names }
+          if$
+        }
+        { author sort.format.names }
+      if$
+    }
+    { key }
+  if$
+}
+
+FUNCTION {author.organization.sort}
+{ key empty$
+    { warn.empty.key
+      author empty$
+        { organization empty$
+            { anonymous.sort }
+            { "The " #4 organization chop.word sortify }
+          if$
+        }
+        { author sort.format.names }
+      if$
+    }
+    { key }
+  if$
+}
+
+FUNCTION {editor.organization.sort}
+{ key empty$
+    { warn.empty.key
+      editor empty$
+        { organization empty$
+            { anonymous.sort }
+            { "The " #4 organization chop.word sortify }
+          if$
+        }
+        { editor sort.format.names }
+      if$
+    }
+    { key }
+  if$
 }
 
 FUNCTION {presort}
@@ -2245,8 +2379,31 @@ FUNCTION {presort}
   label sortify
   "    "
   *
-  seq.num #1 + 'seq.num :=
-  seq.num  int.to.fix
+  sort.language.label
+  "    "
+  *
+  type$ "book" =
+  type$ "inbook" =
+  or
+    'author.editor.sort
+    { type$ "collection" =
+      type$ "proceedings" =
+      or
+        'editor.organization.sort
+        'author.sort
+      if$
+    }
+  if$
+  *
+  "    "
+  *
+  year field.or.null sortify
+  *
+  "    "
+  *
+  cite$
+  *
+  #1 entry.max$ substring$
   'sort.label :=
   sort.label *
   #1 entry.max$ substring$
@@ -2347,8 +2504,6 @@ READ
 EXECUTE {init.state.consts}
 
 EXECUTE {load.config}
-
-EXECUTE {init.seq}
 
 ITERATE {presort}
 
