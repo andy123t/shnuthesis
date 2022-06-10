@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis-arts.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/05/25
-%%	@version v3.0.0
+%%	@date 2022/06/10
+%%	@version v4.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	This template for thesis of SHNU
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis-arts}[2022/05/25 v3.0.0]
+\ProvidesClass{shnuthesis-arts}[2022/06/10 v4.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -51,7 +51,8 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
+%\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
+\geometry{left=3cm,right=3cm,top=2.9cm,bottom=3.2cm}
 \setlength{\headheight}{18pt}
 \setlength{\headsep}{18pt}     % 页眉位置
 \setlength{\footskip}{28pt}    % 页脚位置
@@ -116,8 +117,8 @@
 %-------------- 定义页眉页脚 -------------------
 % 定义页眉和页脚 使用 fancyhdr 宏包
 \newcommand{\makeheadrule}{%
-    \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
-    \rule[0.85\baselineskip]{\headwidth}{1.5pt}\vskip-.8\baselineskip}
+    \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.5pt}}
+    \vskip-.5\baselineskip}
 
 \renewcommand{\headrule}{%
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
@@ -142,17 +143,15 @@
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
-\if@master
-\fancyhead[RO,LE]{\zihao{5} \leftmark}
-\fancyhead[LO,RE]{\zihao{5} 上海师范大学硕士学位论文}
-\else
-\fancyhead[RO,LE]{\zihao{5} \leftmark}
-\fancyhead[LO,RE]{\zihao{5} 上海师范大学博士学位论文}
-\fi
+\fancyhead[C]{\zihao{5} \leftmark}
 }
 
 % ------- 设置页脚样式 ----------
-\newcommand{\footstyle}{\fancyfoot[C]{\fangsong \thepage}}
+\newcommand{\footstyle}{
+\fancyfoot[LE]{\zihao{5} \thepage}
+\fancyfoot[RO]{\zihao{5} \thepage}
+}
+
 \pagestyle{empty}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
@@ -197,8 +196,8 @@
 \renewcommand{\floatpagefraction}{0.60}
 
 % ---------------- 设置图表格式 ---------------
-\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
@@ -292,8 +291,8 @@
 }
 
 % ------- 公式编号带章节 ----------
-\numberwithin{equation}{chapter}
-%\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+%\numberwithin{equation}{chapter}
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 
 % 重新设置公式autoref
 \newcommand{\equationautorefname}{等式}
@@ -324,7 +323,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-			{\hspace*{1cm}\zihao{-4} 学校代码：10270 \hfill 学号：\defstunum \hspace*{1cm}} \\
+			{\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\defstunum \hspace*{0.5cm}} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1cm}

@@ -376,7 +376,6 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \end{algorithm}
 
 
-\clearpage
 如下是算法~\ref{alg:name}, 算法宽度可以通过 minipage 宏包调节.
 \begin{center}
 \vspace{-2ex}
@@ -508,9 +507,9 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.48\linewidth]{image1.eps}
+  \includegraphics[width=0.45\linewidth]{image1.eps}
   \hfill
-  \includegraphics[width=0.48\linewidth]{image2.eps}
+  \includegraphics[width=0.45\linewidth]{image2.eps}
   \caption{左: 图一的描述;~ 右:图二的描述.}
   \label{fig:image}
 \end{figure}
@@ -557,7 +556,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 \section{表的使用}
 
-LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类似. 作为论文, 推荐使用三线表进行排版. 所谓三线表, 即在标题前有横线, 标题后有横线, 表格最后还有横线, 其他地方无线. 当然这不是死规定, 也可以根据需要在合适的地方加线.
+LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类似. 作为论文, 推荐使用三线表进行排版. 所谓三线表, 即在标题前有横线, 标题后有横线, 表格最后还有横线, 其他地方无线, 当然也可以根据需要在合适的地方加线.
 
 本文基于 tabularx 宏包定义了新的的左中右 (LCR) 格式, LCR 三个格式会根据表格宽度的设定自行控制宽度, 且其宽度相等, 方便设置和页面相同宽度的表格. 本文还定义了命令 \verb|P{}|, 它可以设定某一列宽度 (如 \verb|P{1cm}| 控制某一列的宽度为 1cm), 实际上 \verb|P{}| 命令是在 \verb|p{}| 命令的基础上增加了居中功能. %PLCR 格式的功能需要调用 .
 
@@ -620,7 +619,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 % PLCR已经定义
 \caption{数值误差示例.}
 \label{tab:error2}
-\begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
+\begin{tabularx}{0.96\textwidth}{||P{0.8cm}|C|C|C|C|C|C||}
 \Xhline{2\arrayrulewidth}
 N  & A       & B    & C       & D      & E       & F   \\
 \Xhline{2\arrayrulewidth}
@@ -715,7 +714,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 \renewcommand{\theequation}{B.\arabic{equation}}
 \renewcommand{\thefigure}{B.\arabic{figure}}
 \setcounter{table}{0}
-\renewcommand{\thetable}{B.\arabic{table}} 
+\renewcommand{\thetable}{B.\arabic{table}}
 
 \section{附录B的小节}
 
