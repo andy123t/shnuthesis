@@ -2,52 +2,46 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/10
-%%	@version v4.0
+%%	@date 2022/06/15
+%%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
-%%	This template for thesis of SHNU
+%%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/10 v4.0]
+\ProvidesClass{shnuthesis}[2022/06/15 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
-\def\logopic{shnu.eps}   %logo
-\DeclareOption{SHNULogo}{\def\logopic{shnu.eps}}
+\def\logopic{shnu.eps}   %SHNU-logo
 
-\newif\if@master\@mastertrue
-\DeclareOption{doctor}{\@masterfalse}
-\DeclareOption{master}{\@mastertrue}
-
-\newif\if@print\@printfalse
-\DeclareOption{print}{\@printtrue}
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
-\ProcessOptions \relax
+% ---------- 定义的新的Options ----------
+\newif\if@shnu@master
+\newif\if@shnu@print
+\newif\if@shnu@pdf
+\newif\if@shnu@science
+\newif\if@shnu@arts
+\DeclareOption{master}{\@shnu@mastertrue}
+\DeclareOption{doctor}{\@shnu@masterfalse}
+\DeclareOption{print}{\@shnu@printtrue}
+\DeclareOption{science}{\@shnu@sciencetrue}
+\DeclareOption{arts}{\@shnu@artstrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+\ExecuteOptions{master,science}
+\ProcessOptions\relax
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany,twoside]{book}
+\LoadClass[UTF8,a4paper,openany,zihao=-4]{ctexbook}[2017/04/01]%
+\@ifclasslater{ctexbook}{2017/01/01}{}{%
+    \ClassError{shnuthesis}{ctex >= 2017/01/01 is required ...}{}%
+}
 
-% ---------- 中文字体宏包 ----------
-\RequirePackage[UTF8,zihao=-4]{ctex}
-
-% --------- 定义不同编译方式 ----------
-\RequirePackage{ifpdf,ifxetex}
-\ifxetex
-  \RequirePackage{fontspec}
-  \RequirePackage{graphicx}
-\else
-  \ifpdf
-  	\usepackage[utf8]{inputenc}
-  	\RequirePackage[T1]{fontenc}
-    \RequirePackage{graphicx}
-    \RequirePackage{epstopdf}
-  \else
-    \RequirePackage[dvipdfmx]{graphicx}
-    \RequirePackage{bmpsize}
-  \fi
+\if@shnu@pdf
+	\PassOptionsToClass{oneside}{book}
 \fi
+
+% % ---------- 中文字体宏包 ----------
+\PassOptionsToPackage{no-math}{fontspec}
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
@@ -61,6 +55,7 @@
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
 \RequirePackage{bm}         % 数学公式黑斜体
 \RequirePackage{mathrsfs}   % 数学英文花体
+\RequirePackage{graphicx}
 \RequirePackage{booktabs}
 \RequirePackage{float}
 %\RequirePackage{cite}
@@ -74,83 +69,229 @@
 \RequirePackage{titlesec}   % 设置标题样式
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
-\RequirePackage{tikz}       % 绘制图形
+\RequirePackage{etoolbox}
 \RequirePackage{xstring}    % 使用条件语句
+%\RequirePackage{xparse}
+
+% ----- 定义文档属性格式 -----
+\def\shnu@define@term#1{
+    \expandafter\gdef\csname #1\endcsname##1{
+        \expandafter\gdef\csname shnu@#1\endcsname{##1}
+    }
+    \csname #1\endcsname{}
+}
+
+% ------ 添加几个新的文档属性 ------
+\shnu@define@term{college}
+\shnu@define@term{major}
+\shnu@define@term{study}
+\shnu@define@term{stunum}
+\shnu@define@term{instructor}
+\shnu@define@term{clc}
+\shnu@define@term{enkeyword}
+\shnu@define@term{cnkeyword}
+
+% ----- 定义新变量 -----
+\newcommand\shnu@shnuname{上海师范大学}
+
+\if@shnu@master
+  \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
+  \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
+  \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}
+  \else
+  \newcommand\shnu@thesisname{博~士~学~位~论~文}%
+  \newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
+  \newcommand\shnu@researchname{攻读博士学位期间的研究成果}
+\fi
+
+% ------- 重新定义cleardoublepage --------
+\def\cleardoublepage{\clearpage\if@shnu@print
+      \ifodd\c@page
+      \else
+      \thispagestyle{empty}%
+      \hbox{}\newpage\fi\fi
+}
+%\g@addto@macro\frontmatter{%
+%  \pagenumbering{Roman}%
+%}
+\renewcommand\mainmatter{%
+  \cleardoublepage
+  \pagenumbering{arabic}%
+  \@mainmattertrue
+}
 
 % -------- 设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 % ---------- 定义章节的编号格式 ----------
-\renewcommand{\chaptername}{第\arabic{chapter}章}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
-
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
-
-%---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter }
-    {\chpzihao \chaptertitlename}{20pt}{}
-\titlespacing{\chapter}{0pt}{-0.5ex plus .1ex minus .2ex}{3.5ex plus .1ex minus .2ex}
-
-\titleformat{\section}[hang]{\heiti \zihao{-3}}
-    {\zihao{-3} \thesection}{1em}{}
-\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
-
-\titleformat{\subsection}[hang]{\heiti \zihao{4}}
-    {\zihao{4} \thesubsection}{1em}{}
-\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
-
-\titleformat{\subsubsection}[hang]{\heiti}
-    {\thesubsubsection }{1em}{}
-\titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 %---------- 设置章节目录的深度 -------------
 \setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3} 
+\setcounter{tocdepth}{3}
+
+%---------- 定义章节标题格式 ------------
+%---------- 理科论文章节格式 ----------
+\if@shnu@science
+%--- chapter ---
+\ctexset{
+    chapter = {
+        format = \linespread{1.0}\heiti\chpzihao\centering,
+        nameformat = {},
+        titleformat = {},
+        number = \arabic{chapter},
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {4pt},
+        afterskip = {24pt},
+        pagestyle = plain,
+    }
+}
+%--- section ---
+\ctexset{
+    section = {
+        format = \linespread{1.0}\heiti\zihao{-3}\raggedright,
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {24pt},
+        afterskip = {6pt},
+    }
+}
+%--- subsection ---
+\ctexset{
+    subsection = {
+        format = \linespread{1.0}\heiti\zihao{4}\raggedright,
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%--- subsubsection ---
+\ctexset{
+    subsubsection = {
+        format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%--- appendix ---
+\ctexset{
+    appendix = {
+        numbering = true,
+        number = \Alph{chapter},
+    }
+}
+\fi
+
+% ---------- 文科论文章节格式 ----------
+\if@shnu@arts
+%--- chapter ---
+\ctexset{
+    chapter = {
+        format = \linespread{1.0}\heiti\chpzihao\centering,
+        nameformat = {},
+        titleformat = {},
+        number = \chinese{chapter},
+        numberformat = \heiti,
+        aftername = \quad,
+        beforeskip = {4pt},
+        afterskip = {24pt},
+        pagestyle = plain,
+    }
+}
+%--- section ---
+\ctexset{
+    section = {
+        format = \linespread{1.0}\heiti\zihao{-3}\centering,
+        name = {第,节},
+        number = \chinese{section},
+        numberformat = \heiti,
+        aftername = \quad,
+        beforeskip = {24pt},
+        afterskip = {6pt},
+    }
+}
+%--- subsection ---
+\ctexset{
+    subsection = {
+        format = \linespread{1.0}\heiti\zihao{4}\raggedright,
+        number = \chinese{subsection},
+        numberformat = \heiti,
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%--- subsubsection ---
+\ctexset{
+    subsubsection = {
+        format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
+        name = {（,）},
+        number = \chinese{subsubsection},
+        numberformat = \bfseries,
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%--- appendix ---
+\ctexset{
+    appendix = {
+        numbering = true,
+        number = \Alph{chapter},
+    }
+}
+\fi
+
+% ----- 算法宏包及设置 -----
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\floatname{algorithm}{算法}
+\algrenewcommand\algorithmicrequire{\textbf{输入:}}
+\algrenewcommand\algorithmicensure{\textbf{输出:}}
 
 % ------------- 设置附录 -----------
-\RequirePackage{titletoc}
-\RequirePackage[title,titletoc]{appendix}
+% \RequirePackage{titletoc}
+% \RequirePackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
 
-%-------------- 定义页眉页脚 -------------------
+% -------------- 定义页眉页脚 -------------------
 % 定义页眉和页脚 使用 fancyhdr 宏包
-\newcommand{\makeheadrule}{%
-    \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.5pt}}
-    \vskip-.5\baselineskip}
 
-\renewcommand{\headrule}{%
-    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-     \makeheadrule}}
-
-% ------------ 画单隔线 ------------
-\renewcommand{\headrulewidth}{0.5pt}    % 在页眉下画一个0.5pt宽的分隔线
+% ------------ 设置分隔线宽度 ------------
+\renewcommand{\headrulewidth}{0.4pt}    % 在页眉下0.5pt宽的分隔线
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
 
-% ------- 重新定义 cleardoublepage --------
-\def\cleardoublepage{%
-  \clearpage
-  \if@print
-      \ifodd\c@page
-      \else
-        \thispagestyle{empty}%
-        \hbox{}%
-        \newpage
-    \fi
-  \fi
+% ------------ 设置页眉样式 ------------
+\renewcommand{\headrule}{%
+	\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+	\hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
+	\vskip 1.6pt %两条线的距离1pt
+	\hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
+    \vskip-1.5pt 
 }
+
+% \renewcommand{\headrule}{%
+% 	\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+% 	\hrule\@height 0.5pt \@width\headwidth %上面线1pt粗
+%     \vskip-1.5pt 
+% }
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
-\fancyhead[C]{\zihao{5} \leftmark}
+\fancyhead[RO,LE]{\zihao{5} \nouppercase{\leftmark}}
+\fancyhead[LO,RE]{\zihao{5} \shnu@shnuthesisname}
+%\fancyhead[C]{\zihao{5} \nouppercase{\leftmark}}
 }
 
 % ------- 设置页脚样式 ----------
 \newcommand{\footstyle}{
-\fancyfoot[LE]{\zihao{5} \thepage}
-\fancyfoot[RO]{\zihao{5} \thepage}
+\fancyfoot[C]{\zihao{5} \thepage}
+%\fancyfoot[LE]{\zihao{5} \thepage}
+%\fancyfoot[RO]{\zihao{5} \thepage}
 }
 
 \pagestyle{empty}
@@ -161,26 +302,15 @@
 
 % --------- 定义一种新的格式叫做main ---------
 \fancypagestyle{main}{%
-    \pagestyle{fancyplain} 
+  \pagestyle{fancyplain} 
 	\fancyhf{} %清空原有样式
 	\headstyle
 	\footstyle
 }
 
-% --------- 定义 chaptermark ------------
-\renewcommand\chaptermark[1]{%
-  \markboth{%
-    \ifnum \c@secnumdepth >\m@ne
-      \if@mainmatter
-        \@chapapp\ \ %
-      \fi
-    \fi
-    #1}{}%
-}
-
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
-\setlength{\parskip}{3pt plus 1pt minus 1pt}  % 段落之间的竖直距离
+\setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
 \renewcommand{\baselinestretch}{1.35}        % 定义行距
 %\topskip=15pt   % 书写区域顶部空白
 %\parskip=5pt
@@ -197,8 +327,10 @@
 \renewcommand{\floatpagefraction}{0.60}
 
 % ---------------- 设置图表格式 ---------------
-\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
-\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+\numberwithin{figure}{chapter}
+\numberwithin{equation}{chapter}
+%\renewcommand{\thetable}{\thechapter.\arabic{table}}
+%\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
@@ -280,20 +412,20 @@
 }
 
 % -------------- 数学公式设置 ---------------
-\allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页
+\allowdisplaybreaks[4]   % 部分公式可以分页
 
 % ----- 设置公式间距 ------
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
-	\setlength{\abovedisplayshortskip}{2pt plus 1pt minus 1pt}
-	\setlength{\belowdisplayshortskip}{2pt plus 1pt minus 1pt}
-	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
+	\setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}
+	\setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}
+	\setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+	%\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
 % ------- 公式编号带章节 ----------
-%\numberwithin{equation}{chapter}
-\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+\numberwithin{equation}{chapter}
+%\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
 % 重新设置公式autoref
 \newcommand{\equationautorefname}{等式}
@@ -304,35 +436,17 @@
 
 % ------------- 定义新的标题页面 -------------------
 
-% ------ 添加几个新的文档属性 ------
-% \def \defcollege {}
-% \def \defmajor {}
-% \def \defstudy {}
-% \def \defstunum {}
-% \def \definstructor {}
-% \def \defclassifnum {}
-\newcommand{\college}[1]{\def \defcollege {#1}}
-\newcommand{\major}[1]{\def \defmajor {#1}}
-\newcommand{\study}[1]{\def \defstudy {#1}}
-\newcommand{\stunum}[1]{\def \defstunum {#1}}
-\newcommand{\instructor}[1]{\def \definstructor {#1}}
-%\newcommand{\classifnum}[1]{\def \defclassifnum {#1}}
-
 % ------- 重置命令maketitle -------
 \renewcommand{\maketitle}[1][15em]{
 	\phantomsection
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-      {\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\defstunum \hspace*{0.5cm}} \\
+        {\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\shnu@stunum \hspace*{0.5cm}} \\
 			\vspace{2.4cm}
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1cm}
-			\if@master
-			{\fontsize{40}{40}\selectfont 硕~士~学~位~论~文}\\
-			\else
-			{\fontsize{40}{40}\selectfont 博~士~学~位~论~文}\\
-			\fi
+			{\fontsize{40}{40}\selectfont \shnu@thesisname}\\
 			\vspace{1.8cm}
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
@@ -342,15 +456,15 @@
 				\renewcommand\arraystretch{1.6}
 				\begin{tabular}{lc}
 					\makebox[7em][s]{学 \hfill 院~：} & 
-					\underline{\makebox[#1]{\defcollege}} \\
+					\underline{\makebox[#1]{\shnu@college}} \\
 					\makebox[7em][s]{专 \hfill 业~：} & 
-					\underline{\makebox[#1]{\defmajor}} \\
+					\underline{\makebox[#1]{\shnu@major}} \\
 					\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & 
-					\underline{\makebox[#1]{\defstudy}} \\
+					\underline{\makebox[#1]{\shnu@study}} \\
 					\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & 
 					\underline{\makebox[#1]{\@author}} \\
 					\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} &
-					\underline{\makebox[#1]{\definstructor}} \\
+					\underline{\makebox[#1]{\shnu@instructor}} \\
 					\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
 					\underline{\makebox[#1]{\@date}} \\
 				\end{tabular}}\\
@@ -365,7 +479,7 @@
 	\phantomsection
 	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
-	\vspace*{3ex}
+	\vspace*{2ex}
 	\begin{center}
 	{\heiti \chpzihao 论文独创性声明}
 	\end{center}
@@ -373,10 +487,10 @@
 	\begin{spacing}{1.5}
 	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 	\end{spacing}
-	
+
 	\parbox[t][3.5cm][c]{\textwidth}{\hspace{1.5cm} 作者签名：\hrulefill \hspace{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
-	
-	\vspace{5em}
+
+	\vspace{6em}
 	\begin{center}
 	{\heiti \chpzihao 论文使用授权声明}
 	\end{center}
@@ -384,8 +498,8 @@
 	\begin{spacing}{1.5}
 	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
 	\end{spacing}
-	
 	\vspace{1em}
+
 	{\bfseries （保密的论文在解密后应遵守此规定）}
 
 	\parbox[t][4.5cm][c]{\textwidth}{\hspace{1.5cm} 作者签名：\hrulefill \hspace{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[10pt] 
@@ -395,35 +509,35 @@
 
 % ------------------ 中文摘要环境 -------------
 \newenvironment{cnabstract}[1]{
-	\def \cnkeyword {#1}
+	\cnkeyword{#1}
 	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{摘~~要}
 	\chaptermark{摘~~要}
-	\vspace*{-2ex}
+	\vspace*{-18pt}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
-	\vspace*{3ex}
+	\vspace*{8pt}
 	\par
 }{
-	\vspace{-1ex}
-	\paragraph{\heiti 关键词：} \cnkeyword
+	\vspace{-3pt}
+	\paragraph{\heiti 关键词：} \shnu@cnkeyword
 	\clearpage
 }
 
 % ----------------- 英文摘要环境 ----------------
 \newenvironment{enabstract}[1]{
-	\def \enkeyword {#1}
+	\enkeyword{#1}
 	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{Abstract}
-	\vspace*{-2ex}
+	\vspace*{-18pt}
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
-	\vspace*{3ex}
+	\vspace*{8pt}
 	\par
 }{
-	\vspace{-1ex}
-	\paragraph{\bfseries Key Words: } \enkeyword
+	\vspace{-3pt}
+	\paragraph{\bfseries Key Words: } \shnu@enkeyword
 	\clearpage
 }
 
@@ -436,9 +550,6 @@
 	citecolor = black
 } % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
-\renewcommand{\cftchappresnum}{第}
-\renewcommand{\cftchapaftersnum}{章}
-\renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{8pt}
@@ -451,9 +562,6 @@
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-
-% 使用条件语句
-\RequirePackage{xstring}
 
 % 定义两个新语句
 % 第一个语句更改fancyhdr样式
@@ -506,37 +614,78 @@
 	\addcontentsline{toc}{chapter}{致谢}
 	\chapter*{致谢}
 	\chaptermark{致谢}
+	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
 }
 
 % ----------- 重新定义参考文献页 -----------
-%\bibliographystyle{plain}
-\renewcommand{\bibname}{参考文献}
+\RequirePackage[sort&compress]{natbib}
+\newcommand\bibstyle@super{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\newcommand\bibstyle@numbers{\bibpunct{[}{]}{,}{n}{,}{,}}
+\newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
+% 参考文献引用
+\patchcmd\NAT@citexnum{%
+  \@ifnum{\NAT@ctype=\z@}{%
+    \if*#2*\else\NAT@cmt#2\fi
+  }{}%
+  \NAT@mbox{\NAT@@close}%
+}{%
+  \NAT@mbox{\NAT@@close}%
+  \@ifnum{\NAT@ctype=\z@}{%
+    \if*#2*\else\textsuperscript{#2}\fi
+  }{}%
+}{}{}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa
+\if*#2*\else#2\NAT@spacechar\fi
+\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
+   \else #1\fi\endgroup}
+\renewcommand\NAT@citenum%
+    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+        #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
+\patchcmd{\NAT@citex}{%
+  \if*#2*\else\NAT@cmt#2\fi
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+}{%
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+  \if*#2*\else\textsuperscript{#2}\fi
+}{}{}
+\renewcommand\NAT@cite[3]{
+\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+#1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi
+\endgroup}
+% ----- 参考文献间距 -----
+\def\bibfont{\small}
+\setlength{\bibsep}{8pt}
+\setlength{\bibhang}{2\ccwd}
+\renewcommand\@biblabel[1]{[#1]\hfill}
+\urlstyle{same}
+\g@addto@macro\UrlBreaks{%
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J%
+  \do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T%
+  \do\U\do\V\do\W\do\X\do\Y\do\Z%
+  \do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
+}
 
-% 设置新的附录命令
-\let \oldbibliography \bibliography
-\renewcommand{\bibliography}[1]{
-	% 添加到目录
-	\clearpage
-	\phantomsection
-	\addcontentsline{toc}{chapter}{参考文献}
-	\oldbibliography{#1}
+% 设置新的参考文献命令
+\renewcommand{\bibname}{参考文献}
+\renewcommand\bibsection{%
+    \@mainmatterfalse
+    \chapter{\bibname}%
+    \@mainmattertrue
 }
 
 % ---------- 定义新的环境研究成果页 -----------
 \newenvironment{researchpage}{
 	\clearpage
 	\phantomsection
-	\if@master
-	\addcontentsline{toc}{chapter}{攻读硕士学位期间的研究成果}
-	\chapter*{攻读硕士学位期间的研究成果}
-	\chaptermark{攻读硕士学位期间的研究成果}
-	\else
-	\addcontentsline{toc}{chapter}{攻读博士学位期间的研究成果}
-	\chapter*{攻读博士学位期间的研究成果}
-	\chaptermark{攻读博士学位期间的研究成果}
-	\fi
+	\addcontentsline{toc}{chapter}{\shnu@researchname}
+	\chapter*{\shnu@researchname}
+	\chaptermark{\shnu@researchname}
+	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
 }
