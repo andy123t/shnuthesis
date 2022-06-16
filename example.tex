@@ -24,6 +24,7 @@
 
 %----- 添加需要用的其他宏包 -----
 \usepackage{subfig}
+\usepackage{pdfpages}
 %\usepackage{xltxtra}
 
 %----- 参考文献格式 -----
@@ -49,9 +50,6 @@
 %----- 设置数学字体 -----
 %\usepackage{newtxmath}
 %\usepackage{mathptmx}
-
-%----- 直接插入 pdf 文件 -----
-%\usepackage{pdfpages}
 
 %----- 自定义命令 ------
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
@@ -125,6 +123,12 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
     % pagenumtoc指目录有页码, 且目录两字出现在目录中
     % 请注意在合适的位置放置\pagenumbering{numstyle}使用新的页码
     \maketoc[pagenumtoc]
+
+    % 生成插图清单, 如无需插图清单则可注释掉下述语句
+    \listoffigures
+
+    % 生成附表清单, 如无需附表清单则可注释掉下述语句
+    \listoftables
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% 填写主要符号表 %%%%%%%%%%%%%%%%%%%%%%%%%%%

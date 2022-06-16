@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/15
+%%	@date 2022/06/16
 %%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/15 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/16 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -40,7 +40,7 @@
 	\PassOptionsToClass{oneside}{book}
 \fi
 
-% % ---------- 中文字体宏包 ----------
+% ---------- 中文字体宏包 ----------
 \PassOptionsToPackage{no-math}{fontspec}
 
 % ---------- 定义页边距 ----------
@@ -126,12 +126,12 @@
 % ---------- 定义章节的编号格式 ----------
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 
-%---------- 设置章节目录的深度 -------------
+% ---------- 设置章节目录的深度 -------------
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-%---------- 定义章节标题格式 ------------
-%---------- 理科论文章节格式 ----------
+% ---------- 定义章节标题格式 ------------
+% ---------- 理科论文章节格式 ----------
 \if@shnu@science
 %--- chapter ---
 \ctexset{
@@ -246,7 +246,7 @@
 }
 \fi
 
-% ----- 算法宏包及设置 -----
+% ---------- 算法宏包及设置 ----------
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
 \floatname{algorithm}{算法}
@@ -254,7 +254,7 @@
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
 % ------------- 设置附录 -----------
-% \RequirePackage{titletoc}
+\RequirePackage{titletoc}
 % \RequirePackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
 
@@ -428,7 +428,7 @@
 %\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
 % 重新设置公式autoref
-\newcommand{\equationautorefname}{等式}
+\newcommand{\equationautorefname}{公式}
 
 % --------- 定义列表项的样式 ---------
 \RequirePackage{enumitem}
@@ -447,11 +447,11 @@
 			\includegraphics[width=10cm]{\logopic}\\
 			\vspace{1cm}
 			{\fontsize{40}{40}\selectfont \shnu@thesisname}\\
-			\vspace{1.8cm}
+			\vspace{1.6cm}
 			\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
 			\end{center}
-			\vspace{1.2cm}
+			\vspace{1.4cm}
 			{\zihao{3} \heiti
 				\renewcommand\arraystretch{1.6}
 				\begin{tabular}{lc}
@@ -550,8 +550,14 @@
 	citecolor = black
 } % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
-\renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\contentsname}{目~~录}
+\renewcommand{\listfigurename}{插图清单}
+\renewcommand{\listtablename}{表格清单}
 \setlength{\cftbeforetoctitleskip}{8pt}
 \setlength{\cftaftertoctitleskip}{20pt}
 \setlength{\cftbeforechapskip}{12pt}
@@ -561,7 +567,7 @@
 \renewcommand{\cftdotsep}{3}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
-\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
+\renewcommand{\cftsecdotsep}{\cftdotsep}
 
 % 定义两个新语句
 % 第一个语句更改fancyhdr样式
@@ -594,6 +600,35 @@
 	\tableofcontents
 	\cleardoublepage
 	\pagestyle{main}
+}
+
+% ----------- 重定义插图索引和表格索引 ----------
+\titlecontents{figure}[0pt]{}{
+\figureautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
+\titlerule*[8pt]{$\cdot$}\contentspage}
+\titlecontents{table}[0pt]{}{
+\tableautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
+\titlerule*[8pt]{$\cdot$}\contentspage}
+
+\AtBeginDocument{
+\let \oldlistoffigures \listoffigures
+\renewcommand\listoffigures{%
+    \newpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \vspace*{-7.5ex}
+    \oldlistoffigures
+    \cleardoublepage
+}
+\let\oldlistoftables \listoftables
+\renewcommand\listoftables{%
+    \newpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \vspace*{-7.5ex}
+    \oldlistoftables
+    \cleardoublepage
+}
 }
 
 % ---------- 定义主要符号表环境 -----------
