@@ -51,6 +51,11 @@
 %\usepackage{newtxmath}
 %\usepackage{mathptmx}
 
+%----- 定义符号描述命令 (可调整) -----
+\newcommand{\nameditem}[3][]{%
+\noindent\hspace{2em}\makebox[0.2\textwidth][l]{#2}{{#3}\hfill
+\makebox[0.2\textwidth][l]{#1}\hspace*{2em}}\par}
+
 %----- 自定义命令 ------
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
@@ -137,22 +142,44 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 \begin{symbolpage}
 
-    如不加特殊说明, 本论文采用如下符号和记号
+如不加特殊说明, 本论文采用如下符号和记号
 
-    \begin{table}[htp!]
-    \centering
-    \renewcommand\arraystretch{1.5} %定义表格高度
-    \begin{tabular}{ll}
-    $\mathbb{R}$  & 实数集   \\
-    $\mathbb{R}^{n}$  & $n$ 维实向量空间   \\
-    $\mathbb{C}_{+}$  & 正整数集  \\
-    $\mathbb{Z}$  & 整数集  \\
-    $\|\cdot\|_2$  & $2$-范数   \\
-    $\|\cdot\|_{\infty}$  & $\infty$-范数   \\
-    $A^{-1}$  & 矩阵 $A$ 的逆  \\
-    $A^{*}$   & 矩阵 $A$ 的共轭转置
-    \end{tabular}
-    \end{table}
+自定义命令 \verb|\nameditem[]{}{}|, 比如 \verb|\nameditem[单位]{符号}{描述}|
+
+\nameditem[\textbf{单位}]{\textbf{符号}}{\textbf{描述}}
+\nameditem[$\mathrm{m^{2} \cdot s^{-2}}$]{$E$}{系统的能量}
+\nameditem[$m/s$]{$c$}{真空中光速}
+\nameditem[$\mathrm{m^{3}\cdot kg^{-1} \cdot s^{-2}}$]{$g$}{引力常数~(Gravitational constant)}
+\nameditem[$\mathrm{1}$]{$\delta_{ij}$}{Kronecker 张量}
+
+%\nameditem{\textbf{符号}}{\textbf{描述}}
+\nameditem{$\mathbb{R}$}{实数集}
+\nameditem{$\mathbb{R}^{n}$}{$n$ 维实向量空间}
+\nameditem{$\mathbb{C}_{+}$}{正整数集}
+\nameditem{$\mathbb{Z}$}{整数集}
+\nameditem{$\|\cdot\|_2$}{$2$-范数}
+\nameditem{$\|\cdot\|_{\infty}$}{$\infty$-范数}
+\nameditem{$A^{-1}$}{矩阵 $A$ 的逆}
+\nameditem{$A^{*}$}{矩阵 $A$ 的共轭转置}
+
+\vspace{1em}
+使用 table 和 tabular 环境定义符号和描述.
+\begin{table}[htp!]
+\centering
+\renewcommand\arraystretch{1.5} %定义表格高度
+\setlength\tabcolsep{10pt} %调节列间距
+\begin{tabular}{ll}
+  \textbf{符号} & \textbf{描述} \\
+  $\mathbb{R}$  & 实数集   \\
+  $\mathbb{R}^{n}$  & $n$ 维实向量空间   \\
+  $\mathbb{C}_{+}$  & 正整数集  \\
+  $\mathbb{Z}$  & 整数集  \\
+  $\|\cdot\|_2$  & $2$-范数   \\
+  $\|\cdot\|_{\infty}$  & $\infty$-范数   \\
+  $A^{-1}$  & 矩阵 $A$ 的逆  \\
+  $A^{*}$   & 矩阵 $A$ 的共轭转置
+\end{tabular}
+\end{table}
 
 \end{symbolpage}
 
