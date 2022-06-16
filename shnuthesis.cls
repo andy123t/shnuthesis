@@ -617,6 +617,7 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{\listfigurename}
     \vspace*{-7.5ex}
+    \addtocontents{lof}{\linespread{1.6}\selectfont}
     \oldlistoffigures
     \cleardoublepage
 }
@@ -626,6 +627,7 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{\listtablename}
     \vspace*{-7.5ex}
+    \addtocontents{lot}{\linespread{1.6}\selectfont}
     \oldlistoftables
     \cleardoublepage
 }
