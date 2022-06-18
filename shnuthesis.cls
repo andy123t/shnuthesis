@@ -2,46 +2,50 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/16
+%%	@date 2022/06/18
 %%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/16 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/18 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
 \def\logopic{shnu.eps}   %SHNU-logo
 
 % ---------- 定义的新的Options ----------
-\newif\if@shnu@master
-\newif\if@shnu@print
-\newif\if@shnu@pdf
-\newif\if@shnu@science
-\newif\if@shnu@arts
-\DeclareOption{master}{\@shnu@mastertrue}
-\DeclareOption{doctor}{\@shnu@masterfalse}
-\DeclareOption{print}{\@shnu@printtrue}
-\DeclareOption{science}{\@shnu@sciencetrue}
-\DeclareOption{arts}{\@shnu@artstrue}
+\newif\ifshnu@master
+\newif\ifshnu@print
+\newif\ifshnu@science
+\newif\ifshnu@arts
+\DeclareOption{master}{\shnu@mastertrue}
+\DeclareOption{doctor}{\shnu@masterfalse}
+\DeclareOption{print}{\shnu@printtrue}
+\DeclareOption{science}{\shnu@sciencetrue}
+\DeclareOption{arts}{\shnu@artstrue}
+\DeclareOption{openany}{\PassOptionsToClass{openany}{ctexbook}}
+\DeclareOption{openright}{\PassOptionsToClass{openright}{ctexbook}}
+\DeclareOption{twoside}{\PassOptionsToClass{twoside}{ctexbook}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-\ExecuteOptions{master,science}
+\ExecuteOptions{master,science,openany,twoside}
 \ProcessOptions\relax
 
+% ---------------------------------
+% twoside,openany 单面排版
+% twoside,openany,print 用于打印, 封面等生成空白页
+% twoside,openright,print 用于打印, 全部双面排版
+% ---------------------------------
+
+% ---------- 修改字体宏包 ----------
+\PassOptionsToPackage{no-math}{fontspec}
+
 % ---------- 载入Class ----------
-\LoadClass[UTF8,a4paper,openany,zihao=-4]{ctexbook}[2017/04/01]%
+\LoadClass[UTF8,a4paper,zihao=-4]{ctexbook}[2017/04/01]%
 \@ifclasslater{ctexbook}{2017/01/01}{}{%
     \ClassError{shnuthesis}{ctex >= 2017/01/01 is required ...}{}%
 }
-
-\if@shnu@pdf
-	\PassOptionsToClass{oneside}{book}
-\fi
-
-% ---------- 中文字体宏包 ----------
-\PassOptionsToPackage{no-math}{fontspec}
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
@@ -58,7 +62,6 @@
 \RequirePackage{graphicx}
 \RequirePackage{booktabs}
 \RequirePackage{float}
-%\RequirePackage{cite}
 \RequirePackage{longtable}  % 长表格
 \RequirePackage{multirow}   % 表格多行合并
 \RequirePackage{enumerate}  % 改变列表标号样式
@@ -70,6 +73,7 @@
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
 \RequirePackage{etoolbox}
+\RequirePackage{titletoc}
 \RequirePackage{xstring}    % 使用条件语句
 %\RequirePackage{xparse}
 
@@ -92,9 +96,9 @@
 \shnu@define@term{cnkeyword}
 
 % ----- 定义新变量 -----
-\newcommand\shnu@shnuname{上海师范大学}
+\newcommand\shnushnuname{上海师范大学}
 
-\if@shnu@master
+\ifshnu@master
   \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
   \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
   \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}
@@ -105,15 +109,28 @@
 \fi
 
 % ------- 重新定义cleardoublepage --------
-\def\cleardoublepage{\clearpage\if@shnu@print
-      \ifodd\c@page
-      \else
-      \thispagestyle{empty}%
-      \hbox{}\newpage\fi\fi
+% \renewcommand{\cleardoublepage}{\clearpage
+%     \ifodd\c@page\else
+%     \thispagestyle{empty}%
+%     \hbox{}\newpage\fi\fi
+% }
+\renewcommand{\cleardoublepage}{\clearpage
+    \clearpage\if@twoside\ifodd\c@page\else%
+    \thispagestyle{empty}%
+    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
-%\g@addto@macro\frontmatter{%
-%  \pagenumbering{Roman}%
-%}
+
+% ----- 设置超链接 -----
+\RequirePackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+	citecolor = blue,
+	filecolor = blue,
+    urlcolor =blue,
+}
+
+% ----- 设置正文页码为阿拉伯数字 -----
 \renewcommand\mainmatter{%
   \cleardoublepage
   \pagenumbering{arabic}%
@@ -132,7 +149,7 @@
 
 % ---------- 定义章节标题格式 ------------
 % ---------- 理科论文章节格式 ----------
-\if@shnu@science
+\ifshnu@science
 %--- chapter ---
 \ctexset{
     chapter = {
@@ -187,7 +204,7 @@
 \fi
 
 % ---------- 文科论文章节格式 ----------
-\if@shnu@arts
+\ifshnu@arts
 %--- chapter ---
 \ctexset{
     chapter = {
@@ -253,11 +270,6 @@
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
-% ------------- 设置附录 -----------
-\RequirePackage{titletoc}
-% \RequirePackage[title,titletoc]{appendix}
-%\renewcommand{\appendixname}{附录}
-
 % -------------- 定义页眉页脚 -------------------
 % 定义页眉和页脚 使用 fancyhdr 宏包
 
@@ -271,13 +283,13 @@
 	\hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
 	\vskip 1.6pt %两条线的距离1pt
 	\hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
-    \vskip-1.5pt 
+    \vskip-1.5pt
 }
 
 % \renewcommand{\headrule}{%
 % 	\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
 % 	\hrule\@height 0.5pt \@width\headwidth %上面线1pt粗
-%     \vskip-1.5pt 
+%     \vskip-1.5pt
 % }
 
 % ------------ 设置页眉样式 -----------
@@ -302,7 +314,7 @@
 
 % --------- 定义一种新的格式叫做main ---------
 \fancypagestyle{main}{%
-  \pagestyle{fancyplain} 
+  \pagestyle{fancyplain}
 	\fancyhf{} %清空原有样式
 	\headstyle
 	\footstyle
@@ -345,8 +357,8 @@
 %\setlength{\itemsep}{3pt plus 1pt minus 2pt}
 
 % -------- 重新设置图表autoref ---------
-\newcommand{\figureautorefname}{图}
-\newcommand{\tableautorefname}{表}
+\renewcommand{\figureautorefname}{图}
+\renewcommand{\tableautorefname}{表}
 
 % ------ 使用tabularx库并定义新的左右中格式 ------
 \newcolumntype{L}{X}
@@ -385,7 +397,7 @@
 }
 
 %------------- 数学定理设置 ---------------
-\theoremstyle{plain} 
+\theoremstyle{plain}
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
 \newtheorem{lemma}{引理}[chapter]
@@ -428,7 +440,7 @@
 %\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
 % 重新设置公式autoref
-\newcommand{\equationautorefname}{公式}
+\renewcommand{\equationautorefname}{公式}
 
 % --------- 定义列表项的样式 ---------
 \RequirePackage{enumitem}
@@ -442,35 +454,47 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\begin{titlepage}
 		\begin{center}
-        {\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\shnu@stunum \hspace*{0.5cm}} \\
-			\vspace{2.4cm}
-			\includegraphics[width=10cm]{\logopic}\\
-			\vspace{1cm}
-			{\fontsize{40}{40}\selectfont \shnu@thesisname}\\
-			\vspace{1.6cm}
-			\begin{center}
+        {\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\shnu@stunum \hspace*{0.5cm}}
+
+		\vspace*{2.4cm}
+
+		\includegraphics[width=10cm]{\logopic}\\
+		
+		\vspace*{1cm}
+
+		{\fontsize{40}{40}\selectfont \shnu@thesisname}\\
+		
+		\vspace*{1.6cm}
+
+		\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
-			\end{center}
-			\vspace{1.4cm}
-			{\zihao{3} \heiti
-				\renewcommand\arraystretch{1.6}
-				\begin{tabular}{lc}
-					\makebox[7em][s]{学 \hfill 院~：} & 
-					\underline{\makebox[#1]{\shnu@college}} \\
-					\makebox[7em][s]{专 \hfill 业~：} & 
-					\underline{\makebox[#1]{\shnu@major}} \\
-					\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & 
-					\underline{\makebox[#1]{\shnu@study}} \\
-					\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & 
-					\underline{\makebox[#1]{\@author}} \\
-					\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} &
-					\underline{\makebox[#1]{\shnu@instructor}} \\
-					\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
-					\underline{\makebox[#1]{\@date}} \\
-				\end{tabular}}\\
+		\end{center}
+			
+		\vspace*{1.4cm}
+
+		{\zihao{3} \heiti
+			\renewcommand\arraystretch{1.6}
+			\begin{tabular}{lc}
+				\makebox[7em][s]{学 \hfill 院~：} &
+				\underline{\makebox[#1]{\shnu@college}} \\
+				\makebox[7em][s]{专 \hfill 业~：} &
+				\underline{\makebox[#1]{\shnu@major}} \\
+				\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} &
+				\underline{\makebox[#1]{\shnu@study}} \\
+				\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} &
+				\underline{\makebox[#1]{\@author}} \\
+				\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} &
+				\underline{\makebox[#1]{\shnu@instructor}} \\
+				\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
+				\underline{\makebox[#1]{\@date}} \\
+			\end{tabular}}\\
 		\end{center}
 	\end{titlepage}
-	\cleardoublepage
+	\clearpage
+    \ifshnu@print
+    	\cleardoublepage
+    	\hypersetup{hidelinks} % remove link color and border
+    \fi
 }
 
 % ----------- 设置命令 ------------
@@ -479,32 +503,42 @@
 	\phantomsection
 	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
-	\vspace*{2ex}
-	\begin{center}
-	{\heiti \chpzihao 论文独创性声明}
-	\end{center}
-	\vspace{2em}
-	\begin{spacing}{1.5}
-	本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
-	\end{spacing}
+	{
+		\linespread{1.6}\selectfont
 
-	\parbox[t][3.5cm][c]{\textwidth}{\hspace{1.5cm} 作者签名：\hrulefill \hspace{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
+		\vspace*{5pt}
 
-	\vspace{6em}
-	\begin{center}
-	{\heiti \chpzihao 论文使用授权声明}
-	\end{center}
-	\vspace{2em}
-	\begin{spacing}{1.5}
-	本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
-	\end{spacing}
-	\vspace{1em}
+		\begin{center}
+			{\heiti \chpzihao 论文独创性声明}
+		\end{center}
 
-	{\bfseries （保密的论文在解密后应遵守此规定）}
+		\vspace*{2em}
 
-	\parbox[t][4.5cm][c]{\textwidth}{\hspace{1.5cm} 作者签名：\hrulefill \hspace{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[10pt] 
-	\hspace*{1.5cm} 日\hspace{2em}期：\hrulefill \hspace{4em} 日\hspace{2em}期：\hrulefill \hspace{1.5cm} }
-	\cleardoublepage
+		本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
+
+		\parbox[t][3.5cm][c]{\textwidth}{\hspace*{1.5cm} 作者签名：\hrulefill \hspace*{4em} 日\hspace*{2em}期：\hrulefill \hspace*{1.5cm} }
+
+		\vspace*{5em}
+
+		\begin{center}
+			{\heiti \chpzihao 论文使用授权声明}
+		\end{center}
+
+		\vspace*{2em}
+
+		本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
+
+		\vspace*{0.5em}
+
+		{\bfseries （保密的论文在解密后应遵守此规定）}
+
+		\parbox[t][4.5cm][c]{\textwidth}{\hspace*{1.5cm} 作者签名：\hrulefill \hspace*{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[10pt]
+		\hspace*{1.5cm} 日\hspace*{2em}期：\hrulefill \hspace*{4em} 日\hspace*{2em}期：\hrulefill \hspace*{1.5cm}}
+	}
+	\clearpage
+    \ifshnu@print
+        \cleardoublepage
+    \fi
 }
 
 % ------------------ 中文摘要环境 -------------
@@ -519,9 +553,12 @@
 	\vspace*{8pt}
 	\par
 }{
-	\vspace{-3pt}
+	\vspace*{-3pt}
 	\paragraph{\heiti 关键词：} \shnu@cnkeyword
 	\clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 % ----------------- 英文摘要环境 ----------------
@@ -532,23 +569,23 @@
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{Abstract}
 	\vspace*{-18pt}
-	\begin{center} \chpzihao \bfseries Abstract \end{center} 
+	\begin{center} \chpzihao \bfseries Abstract \end{center}
 	\vspace*{8pt}
 	\par
 }{
-	\vspace{-3pt}
+	\vspace*{-3pt}
 	\paragraph{\bfseries Key Words: } \shnu@enkeyword
 	\clearpage
+	\ifshnu@print
+        \cleardoublepage
+    \fi
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 % ------------- 定义新的目录页面 ----------------
 \RequirePackage{tocloft}
-\RequirePackage{hyperref}
-\hypersetup{
-	colorlinks = true,
-	linkcolor  = black,
-	citecolor = black
-} % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftloftitlefont}{\hfill \heiti \chpzihao}
@@ -585,7 +622,6 @@
 }
 
 % ----------- 设置新的生成目录命令 -------------
-\let \oldtableofcontens \tableofcontents
 \newcommand{\maketoc}[1][nopagenum]{
 	% 修改hdr原plain格式
 	\fancypagestyle{plain}{%
@@ -598,11 +634,14 @@
 	\pagestyle{plain}
 	\addtoctotoc{#1}
 	\tableofcontents
-	\cleardoublepage
+	\clearpage
+    \ifshnu@print
+        \cleardoublepage
+    \fi
 	\pagestyle{main}
 }
 
-% ----------- 重定义插图索引和表格索引 ----------
+% ----------- 设置插图清单和表格清单格式 ----------
 \titlecontents{figure}[0pt]{}{
 \figureautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
 \titlerule*[8pt]{$\cdot$}\contentspage}
@@ -610,27 +649,28 @@
 \tableautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
 \titlerule*[8pt]{$\cdot$}\contentspage}
 
-\AtBeginDocument{
-\let \oldlistoffigures \listoffigures
-\renewcommand\listoffigures{%
-    \newpage
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\listfigurename}
-    \vspace*{-7.5ex}
-    \addtocontents{lof}{\linespread{1.6}\selectfont}
-    \oldlistoffigures
-    \cleardoublepage
+% ----------- 重定义插图清单和表格清单 ----------
+\newcommand\makelof{
+    \clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\listfigurename}
+    \chapter*{\listfigurename}
+    \@starttoc{lof}
+    \clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
 }
-\let\oldlistoftables \listoftables
-\renewcommand\listoftables{%
-    \newpage
+\newcommand\makelot{
+    \clearpage
     \phantomsection
     \addcontentsline{toc}{chapter}{\listtablename}
-    \vspace*{-7.5ex}
-    \addtocontents{lot}{\linespread{1.6}\selectfont}
-    \oldlistoftables
-    \cleardoublepage
-}
+    \chapter*{\listtablename}
+    \@starttoc{lot}
+    \clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 % ---------- 定义主要符号表环境 -----------
@@ -641,7 +681,10 @@
 	\chapter*{主要符号表}
 	\chaptermark{主要符号表}
 }{
-	\cleardoublepage
+	\clearpage
+	\ifshnu@print
+        \cleardoublepage
+    \fi
 }
 
 % ---------- 定义新的致谢环境 -----------
@@ -654,6 +697,9 @@
 	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 % ----------- 重新定义参考文献页 -----------
@@ -725,6 +771,9 @@
 	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 % End of file `shnuthesis.cls'.

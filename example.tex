@@ -10,7 +10,6 @@
 % print 用于打印, 封面等生成空白页
 % 提交给图书馆的电子版不要选 print
 
-
 %----- 论文标题、作者、导师、日期等相关信息 -----
 \title{这是一个很长的这是一个很长的这是一个很长的毕业论文题目}
 \author{某~~某~~某}     % 作者姓名
@@ -22,10 +21,12 @@
 \instructor{某~~某~~某~~~~教~~授}  % 导师姓名
 
 
-%----- 添加需要用的其他宏包 -----
+%----- 添加需要用的其他宏包及设置 -----
+\usepackage{listings}
 \usepackage{subfig}
 \usepackage{pdfpages}
 %\usepackage{xltxtra}
+%\hypersetup{hidelinks}
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam
@@ -52,7 +53,7 @@
 %\usepackage{mathptmx}
 
 %----- 定义符号描述命令 (可调整) -----
-\newcommand{\nameditem}[3][]{%
+\newcommand{\nameditem}[3][]{
 \noindent\hspace{2em}\makebox[0.2\textwidth][l]{#2}{{#3}\hfill
 \makebox[0.2\textwidth][l]{#1}\hspace*{2em}}\par}
 
@@ -94,8 +95,6 @@
 
 \begin{cnabstract}{关键词 1；关键词 2；关键词 3}
 
-在正文中添加空行可以实现换行功能.
-
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
@@ -130,10 +129,10 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
     \maketoc[pagenumtoc]
 
     % 生成插图清单, 如无需插图清单则可注释掉下述语句
-    \listoffigures
+    \makelof
 
     % 生成附表清单, 如无需附表清单则可注释掉下述语句
-    \listoftables
+    \makelot
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% 填写主要符号表 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,24 +160,32 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \nameditem{$A^{-1}$}{矩阵 $A$ 的逆}
 \nameditem{$A^{*}$}{矩阵 $A$ 的共轭转置}
 
-\vspace{1em}
-使用 table 和 tabular 环境排版符号和描述.
-\begin{table}[htp!]
-\centering
-\renewcommand\arraystretch{1.5} %定义表格高度
-\setlength\tabcolsep{10pt} %调节列间距
-\begin{tabular}{ll}
-  \textbf{符号} & \textbf{描述} \\
-  $\mathbb{R}$  & 实数集   \\
-  $\mathbb{R}^{n}$  & $n$ 维实向量空间   \\
-  $\mathbb{C}_{+}$  & 正整数集  \\
-  $\mathbb{Z}$  & 整数集  \\
-  $\|\cdot\|_2$  & $2$-范数   \\
-  $\|\cdot\|_{\infty}$  & $\infty$-范数   \\
-  $A^{-1}$  & 矩阵 $A$ 的逆  \\
-  $A^{*}$   & 矩阵 $A$ 的共轭转置
-\end{tabular}
-\end{table}
+\vspace{2em}
+\nameditem{\textbf{缩写}}{\textbf{全称}}
+\nameditem{ODE}{Ordinary differential equation}
+\nameditem{PDE}{Partial differential equation}
+\nameditem{CFD}{Computational fluid dynamics}
+\nameditem{FDM}{Finite difference method}
+\nameditem{FEM}{Finite element method}
+
+%\vspace{1em}
+%使用 table 和 tabular 环境排版符号和描述.
+%\begin{table}[htp!]
+%\centering
+%\renewcommand\arraystretch{1.5} %定义表格高度
+%\setlength\tabcolsep{10pt} %调节列间距
+%\begin{tabular}{ll}
+%  \textbf{符号} & \textbf{描述} \\
+%  $\mathbb{R}$  & 实数集   \\
+%  $\mathbb{R}^{n}$  & $n$ 维实向量空间   \\
+%  $\mathbb{C}_{+}$  & 正整数集  \\
+%  $\mathbb{Z}$  & 整数集  \\
+%  $\|\cdot\|_2$  & $2$-范数   \\
+%  $\|\cdot\|_{\infty}$  & $\infty$-范数   \\
+%  $A^{-1}$  & 矩阵 $A$ 的逆  \\
+%  $A^{*}$   & 矩阵 $A$ 的共轭转置
+%\end{tabular}
+%\end{table}
 
 \end{symbolpage}
 
@@ -202,14 +209,22 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
+这是一个文献引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
-这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.%这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+本模板 \href{https://github.com/andy123t/shnuthesis}{\texttt{shnuthesis}} 基于标准文类 ctexbook 设计, 可以在目前主流的 \href{https://en.wikibooks.org/wiki/LaTeX/Introduction}{\LaTeX{}} 编译系统中使用, 如 \TeX{}Live 和 MiK\TeX{}. 因 C\TeX{} 套装已停止维护, \textbf{不再建议使用}.
 
 
 \section{主要结论}
 
-这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.这是一大段文字这是一大段文字.
+本模板定义了以下选项：
+\begin{itemize}
+  \item \verb|master| \quad 硕士学位论文, 默认可省略
+  \item \verb|doctor| \quad 博士学位论文, 不能省略
+  \item \verb|arts| \quad 文科学位论文, 默认缺省为理科
+  \item \verb|print| \quad 用于打印, 封面等生成空白页
+\end{itemize}
+
+\textbf{注：} 提交给图书馆的论文电子版不要选 print.
 
 
 \section{结构安排}
