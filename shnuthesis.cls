@@ -86,11 +86,15 @@
 \shnu@define@term{stunum}
 \shnu@define@term{instructor}
 \shnu@define@term{clc}
-\shnu@define@term{enkeyword}
-\shnu@define@term{cnkeyword}
+% \shnu@define@term{enkeywords}
+% \shnu@define@term{cnkeywords}
 
 % ----- 定义新变量 -----
 \newcommand\shnuname{上海师范大学}
+\newcommand\cnabstractbame{摘~~要}
+\newcommand\enabstractbame{Abstract}
+\newcommand\symbolpagename{主要符号表}
+\newcommand\thankpagename{致谢}
 
 \ifshnu@master
   \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
@@ -312,8 +316,8 @@
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
-\linespread{1.35}  % line space setting
-%\renewcommand{\baselinestretch}{1.35}        % 定义行距
+\linespread{1.35}  % 设置行距
+%\renewcommand{\baselinestretch}{1.35}  % 设置行距
 %\topskip=15pt   % 书写区域顶部空白
 %\setlength{\baselineskip}{24pt}
 
@@ -550,20 +554,25 @@
     \fi
 }
 
+% ----------------- 定义中英文关键词 ----------------
+%--- 中文关键词
+\newcommand{\cnkeywords}[1]{%
+    \vspace*{0.8\baselineskip}\par
+    \noindent {\bfseries 关键词:~} #1}
+%--- 英文关键词
+\newcommand{\enkeywords}[1]{%
+    \vspace*{0.8\baselineskip}\par
+    \noindent {\bfseries Key Words:~} #1}
+
 % ------------------ 中文摘要环境 -------------
-\newenvironment{cnabstract}[1]{
-	\cnkeyword{#1}
+\newenvironment{cnabstract}{
 	\clearpage
+	\pagestyle{main}
 	\phantomsection
-	\addcontentsline{toc}{chapter}{摘~~要}
-	\chaptermark{摘~~要}
-	\vspace*{-18pt}
-	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
-	\vspace*{8pt}
-	\par
+	\addcontentsline{toc}{chapter}{\cnabstractbame}
+	\chapter*{\cnabstractbame}
+	\chaptermark{\cnabstractbame}
 }{
-	\vspace*{-3pt}
-	\paragraph{\heiti 关键词：} \shnu@cnkeyword
 	\clearpage
     \if@openright
         \cleardoublepage
@@ -571,19 +580,14 @@
 }
 
 % ----------------- 英文摘要环境 ----------------
-\newenvironment{enabstract}[1]{
-	\enkeyword{#1}
+\newenvironment{enabstract}{
 	\clearpage
+	\pagestyle{main}
 	\phantomsection
-	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
-	\chaptermark{Abstract}
-	\vspace*{-18pt}
-	\begin{center} \chpzihao \bfseries Abstract \end{center}
-	\vspace*{8pt}
-	\par
+	\addcontentsline{toc}{chapter}{\enabstractbame}
+	\chapter*{\bfseries\enabstractbame}
+	\chaptermark{\enabstractbame}
 }{
-	\vspace*{-3pt}
-	\paragraph{\bfseries Key Words: } \shnu@enkeyword
 	\clearpage
 	\ifshnu@print
         \cleardoublepage
@@ -665,9 +669,9 @@
 \newenvironment{symbolpage}{
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{主要符号表}
-	\chapter*{主要符号表}
-	\chaptermark{主要符号表}
+	\addcontentsline{toc}{chapter}{\symbolpagename}
+	\chapter*{\symbolpagename}
+	\chaptermark{\symbolpagename}
 }{
 	\clearpage
 	\ifshnu@print
@@ -679,9 +683,9 @@
 \newenvironment{thankpage}{
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{致谢}
-	\chapter*{致谢}
-	\chaptermark{致谢}
+	\addcontentsline{toc}{chapter}{\thankpagename}
+	\chapter*{\thankpagename}
+	\chaptermark{\thankpagename}
 	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
