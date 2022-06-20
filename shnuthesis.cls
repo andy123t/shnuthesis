@@ -85,9 +85,7 @@
 \shnu@define@term{study}
 \shnu@define@term{stunum}
 \shnu@define@term{instructor}
-\shnu@define@term{clc}
-% \shnu@define@term{enkeywords}
-% \shnu@define@term{cnkeywords}
+%\shnu@define@term{clc}
 
 % ----- 定义新变量 -----
 \newcommand\shnuname{上海师范大学}
@@ -99,11 +97,11 @@
 \ifshnu@master
   \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
   \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
-  \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}
+  \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}%
   \else
   \newcommand\shnu@thesisname{博~士~学~位~论~文}%
   \newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
-  \newcommand\shnu@researchname{攻读博士学位期间的研究成果}
+  \newcommand\shnu@researchname{攻读博士学位期间的研究成果}%
 \fi
 
 % ------- 重新定义cleardoublepage --------
@@ -366,27 +364,6 @@
 % \setlength{\abovetopsep}{0pt}
 % \setlength{\belowbottomsep}{0pt}
 
-% -------- 重新定义图和表的浮动环境 ---------
-\newenvironment{generalfig}[3][htbp]{
-	\def \figcaption {#2}
-	\def \figlabel {#3}
-	\begin{figure}[#1]
-		\centering
-	}{
-		\caption{\figcaption} \label{\figlabel}
-	\end{figure}
-}
-\newenvironment{generaltab}[3][htbp]{
-	\def \tabcaption {#2}
-	\def \tablabel {#3}
-	\begin{table}[#1]
-		\caption{\tabcaption} \label{\tablabel}
-		\zihao{5}
-		\centering
-	}{
-	\end{table}
-}
-
 %------------- 数学定理设置 ---------------
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[chapter]
@@ -555,11 +532,11 @@
 }
 
 % ----------------- 定义中英文关键词 ----------------
-%--- 中文关键词
+%--- 中文关键词 ---
 \newcommand{\cnkeywords}[1]{%
     \vspace*{0.8\baselineskip}\par
     \noindent {\bfseries 关键词:~} #1}
-%--- 英文关键词
+%--- 英文关键词 ---
 \newcommand{\enkeywords}[1]{%
     \vspace*{0.8\baselineskip}\par
     \noindent {\bfseries Key Words:~} #1}
@@ -641,7 +618,7 @@
 \tableautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
 \titlerule*[8pt]{$\cdot$}\contentspage}
 
-% ----------- 重定义插图清单和表格清单 ----------
+% ----------- 重定义插图清单 ----------
 \newcommand\makelof{
     \clearpage
 	\phantomsection
@@ -653,6 +630,8 @@
         \cleardoublepage
     \fi
 }
+
+% ----------- 重定义表格清单 ----------
 \newcommand\makelot{
     \clearpage
     \phantomsection
@@ -699,7 +678,7 @@
 \newcommand\bibstyle@super{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@numbers{\bibpunct{[}{]}{,}{n}{,}{,}}
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
-% 参考文献引用
+%--- 参考文献引用 ---
 \patchcmd\NAT@citexnum{%
   \@ifnum{\NAT@ctype=\z@}{%
     \if*#2*\else\NAT@cmt#2\fi
@@ -729,7 +708,7 @@
 \ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
 #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi
 \endgroup}
-% ----- 参考文献间距 -----
+%--- 参考文献间距 ---
 \def\bibfont{\small}
 \setlength{\bibsep}{8pt}
 \setlength{\bibhang}{2\ccwd}
@@ -744,8 +723,7 @@
   \do\U\do\V\do\W\do\X\do\Y\do\Z%
   \do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
 }
-
-% 设置新的参考文献命令
+%--- 设置新的参考文献命令 ---
 \renewcommand{\bibname}{参考文献}
 \renewcommand\bibsection{%
     \@mainmatterfalse
