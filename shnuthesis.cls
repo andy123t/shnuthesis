@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/18
+%%	@date 2022/06/20
 %%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/18 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/20 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -60,22 +60,16 @@
 \RequirePackage{bm}         % 数学公式黑斜体
 \RequirePackage{mathrsfs}   % 数学英文花体
 \RequirePackage{graphicx}
+\RequirePackage{tabularx}
 \RequirePackage{booktabs}
 \RequirePackage{float}
 \RequirePackage{longtable}  % 长表格
 \RequirePackage{multirow}   % 表格多行合并
-\RequirePackage{enumerate}  % 改变列表标号样式
 \RequirePackage{color,xcolor}
 \RequirePackage{fancyhdr}
-\RequirePackage{setspace}
-\RequirePackage{indentfirst}
-\RequirePackage{titlesec}   % 设置标题样式
-\RequirePackage{tabularx}
 \RequirePackage{makecell}
 \RequirePackage{etoolbox}
 \RequirePackage{titletoc}
-\RequirePackage{xstring}    % 使用条件语句
-%\RequirePackage{xparse}
 
 % ----- 定义文档属性格式 -----
 \def\shnu@define@term#1{
@@ -96,7 +90,7 @@
 \shnu@define@term{cnkeyword}
 
 % ----- 定义新变量 -----
-\newcommand\shnushnuname{上海师范大学}
+\newcommand\shnuname{上海师范大学}
 
 \ifshnu@master
   \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
@@ -109,11 +103,6 @@
 \fi
 
 % ------- 重新定义cleardoublepage --------
-% \renewcommand{\cleardoublepage}{\clearpage
-%     \ifodd\c@page\else
-%     \thispagestyle{empty}%
-%     \hbox{}\newpage\fi\fi
-% }
 \renewcommand{\cleardoublepage}{\clearpage
     \clearpage\if@twoside\ifodd\c@page\else%
     \thispagestyle{empty}%
@@ -323,11 +312,9 @@
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
-\renewcommand{\baselinestretch}{1.35}        % 定义行距
+\linespread{1.35}  % line space setting
+%\renewcommand{\baselinestretch}{1.35}        % 定义行距
 %\topskip=15pt   % 书写区域顶部空白
-%\parskip=5pt
-%\parindent=0pt
-%\baselineskip=5pt
 %\setlength{\baselineskip}{24pt}
 
 % ------------------- 浮动对象设置 ---------------------
@@ -456,21 +443,21 @@
 		\begin{center}
         {\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\shnu@stunum \hspace*{0.5cm}}
 
-		\vspace*{2.4cm}
+		\vspace*{3.5\baselineskip}
 
 		\includegraphics[width=10cm]{\logopic}\\
 		
-		\vspace*{1cm}
+		\vspace*{1.4\baselineskip}
 
 		{\fontsize{40}{40}\selectfont \shnu@thesisname}\\
 		
-		\vspace*{1.6cm}
+		\vspace*{2.3\baselineskip}
 
 		\begin{center}
 			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
 		\end{center}
 			
-		\vspace*{1.4cm}
+		\vspace*{2.1\baselineskip}
 
 		{\zihao{3} \heiti
 			\renewcommand\arraystretch{1.6}
@@ -497,7 +484,7 @@
     \fi
 }
 
-% ----------- 设置命令 ------------
+% ----------- 定义声明页 ------------
 \newcommand{\makestatement}{
 	\clearpage
 	\phantomsection
@@ -506,35 +493,57 @@
 	{
 		\linespread{1.6}\selectfont
 
-		\vspace*{5pt}
+		\vspace*{0.2\baselineskip}
 
 		\begin{center}
 			{\heiti \chpzihao 论文独创性声明}
 		\end{center}
 
-		\vspace*{2em}
+		\vspace*{\baselineskip}
 
 		本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均己在论文中做了明确的声明并表示了谢意。
 
-		\parbox[t][3.5cm][c]{\textwidth}{\hspace*{1.5cm} 作者签名：\hrulefill \hspace*{4em} 日\hspace*{2em}期：\hrulefill \hspace*{1.5cm} }
+		\vspace*{2.4\baselineskip}
 
-		\vspace*{5em}
+		\hspace*{1.5cm} \raisebox{5pt}{作者签名：}\hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
+
+		\vspace*{4\baselineskip}
 
 		\begin{center}
 			{\heiti \chpzihao 论文使用授权声明}
 		\end{center}
 
-		\vspace*{2em}
+		\vspace*{\baselineskip}
 
 		本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
 
-		\vspace*{0.5em}
+		\vspace*{0.25\baselineskip}
 
 		{\bfseries （保密的论文在解密后应遵守此规定）}
 
-		\parbox[t][4.5cm][c]{\textwidth}{\hspace*{1.5cm} 作者签名：\hrulefill \hspace*{4em} 导师签名：\hrulefill \hspace*{1.5cm} \\[10pt]
-		\hspace*{1.5cm} 日\hspace*{2em}期：\hrulefill \hspace*{4em} 日\hspace*{2em}期：\hrulefill \hspace*{1.5cm}}
+		\vspace*{2.4\baselineskip}
+
+		\hspace*{1.5cm} \raisebox{5pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{5pt}{导师签名：} \hrulefill \hspace*{0.5cm}
+
+		\vspace*{0.25\baselineskip}
+
+		\hspace*{1.5cm} \raisebox{5pt}{日\hspace*{2em}期：} \hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：} \hrulefill \hspace*{0.5cm}
+
+		\vspace*{1.8\baselineskip}
 	}
+	\clearpage
+    \ifshnu@print
+        \cleardoublepage
+    \fi
+}
+
+% ---------- 定义插入声明页 pdf 文件命令 ----------
+\newcommand{\insertstatement}[1]{
+	\clearpage
+	\phantomsection
+	\pdfbookmark[0]{声明页}{statement}
+	\thispagestyle{empty}
+	\includepdf{#1}
 	\clearpage
     \ifshnu@print
         \cleardoublepage
@@ -606,39 +615,18 @@
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}
 
-% 定义两个新语句
-% 第一个语句更改fancyhdr样式
-\newcommand{\plainfooterstyle}[1]{
-	\IfStrEqCase{#1}{{nopagenum}{}
-		{pagenum}{\footstyle}
-		{pagenumtoc}{\footstyle}}
-}
-% 第二个语句在目录中添加目录标签
-\newcommand{\addtoctotoc}[1]{
-	\IfStrEqCase{#1}{{nopagenum}{}
-		{pagenum}{}
-		{pagenumtoc}{\phantomsection
-			\addcontentsline{toc}{chapter}{目~~录}}}
-}
-
 % ----------- 设置新的生成目录命令 -------------
-\newcommand{\maketoc}[1][nopagenum]{
-	% 修改hdr原plain格式
-	\fancypagestyle{plain}{%
-		\fancyhf{} %清空原有样式
-		\headstyle
-		\plainfooterstyle{#1}
-	}
+\newcommand{\maketoc}{
 	% 设置目录hdr和页码选项
 	\clearpage
-	\pagestyle{plain}
-	\addtoctotoc{#1}
+	\pagestyle{main}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\contentsname}
 	\tableofcontents
 	\clearpage
     \ifshnu@print
         \cleardoublepage
     \fi
-	\pagestyle{main}
 }
 
 % ----------- 设置插图清单和表格清单格式 ----------
