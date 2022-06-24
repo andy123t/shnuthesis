@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/20
+%%	@date 2022/06/24
 %%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/20 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/24 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -49,8 +49,8 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-%\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
-\geometry{left=3cm,right=3cm,top=2.9cm,bottom=3.2cm}
+%\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=3.0cm}
+\geometry{left=3.0cm,right=3.0cm,top=3.0cm,bottom=3.2cm}
 \setlength{\headheight}{18pt}
 \setlength{\headsep}{18pt}     % 页眉位置
 \setlength{\footskip}{28pt}    % 页脚位置
@@ -418,46 +418,40 @@
 
 % ------- 重置命令maketitle -------
 \renewcommand{\maketitle}[1][15em]{
+	\clearpage
 	\phantomsection
 	\pdfbookmark[0]{封~~面}{cover}
-	\begin{titlepage}
-		\begin{center}
-        {\hspace*{0.5cm}\zihao{-4} 学校代码：10270 \hfill 学号：\shnu@stunum \hspace*{0.5cm}}
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{-1.9\baselineskip}
 
-		\vspace*{3.5\baselineskip}
+        {\hfill 学校代码：10270 \hspace*{8cm} 学号：\shnu@stunum \hfill}
 
-		\includegraphics[width=10cm]{\logopic}\\
-		
-		\vspace*{1.4\baselineskip}
+		\vspace*{4.0\baselineskip}
 
-		{\fontsize{40}{40}\selectfont \shnu@thesisname}\\
-		
-		\vspace*{2.3\baselineskip}
+		\includegraphics[width=10cm]{\logopic}
 
-		\begin{center}
-			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
-		\end{center}
-			
-		\vspace*{2.1\baselineskip}
+		\vspace*{1.0\baselineskip}
+
+		{\fontsize{40}{40}\selectfont \shnu@thesisname}
+
+		\vspace*{2.5\baselineskip}
+
+		\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
+
+		\vspace*{3.0\baselineskip}
 
 		{\zihao{3} \heiti
 			\renewcommand\arraystretch{1.6}
 			\begin{tabular}{lc}
-				\makebox[7em][s]{学 \hfill 院~：} &
-				\underline{\makebox[#1]{\shnu@college}} \\
-				\makebox[7em][s]{专 \hfill 业~：} &
-				\underline{\makebox[#1]{\shnu@major}} \\
-				\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} &
-				\underline{\makebox[#1]{\shnu@study}} \\
-				\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} &
-				\underline{\makebox[#1]{\@author}} \\
-				\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} &
-				\underline{\makebox[#1]{\shnu@instructor}} \\
-				\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} &
-				\underline{\makebox[#1]{\@date}} \\
-			\end{tabular}}\\
-		\end{center}
-	\end{titlepage}
+				\makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@college}} \\
+				\makebox[7em][s]{专 \hfill 业~：} & \underline{\makebox[#1]{\shnu@major}} \\
+				\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@study}} \\
+				\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & \underline{\makebox[#1]{\@author}} \\
+				\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@instructor}} \\
+				\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
+			\end{tabular}}
+	\end{center}
 	\clearpage
     \ifshnu@print
     	\cleardoublepage
@@ -474,7 +468,7 @@
 	{
 		\linespread{1.6}\selectfont
 
-		\vspace*{0.2\baselineskip}
+		\vspace*{0.1\baselineskip}
 
 		\begin{center}
 			{\heiti \chpzihao 论文独创性声明}
@@ -486,7 +480,7 @@
 
 		\vspace*{2.4\baselineskip}
 
-		\hspace*{1.5cm} \raisebox{5pt}{作者签名：}\hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
+		\hspace*{1.5cm} \raisebox{5pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
 
 		\vspace*{4\baselineskip}
 
