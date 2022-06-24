@@ -49,8 +49,8 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-%\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=3.0cm}
-\geometry{left=3.0cm,right=3.0cm,top=3.0cm,bottom=3.2cm}
+%\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
+\geometry{left=3.0cm,right=3.0cm,top=2.9cm,bottom=3.2cm}
 \setlength{\headheight}{18pt}
 \setlength{\headsep}{18pt}     % 页眉位置
 \setlength{\footskip}{28pt}    % 页脚位置
@@ -423,7 +423,7 @@
 	\pdfbookmark[0]{封~~面}{cover}
 	\thispagestyle{empty}
 	\begin{center}
-		\vspace*{-1.9\baselineskip}
+		\vspace*{-1.8\baselineskip}
 
         {\hfill 学校代码：10270 \hspace*{8cm} 学号：\shnu@stunum \hfill}
 
@@ -468,7 +468,7 @@
 	{
 		\linespread{1.6}\selectfont
 
-		\vspace*{0.1\baselineskip}
+		\vspace*{0.2\baselineskip}
 
 		\begin{center}
 			{\heiti \chpzihao 论文独创性声明}
