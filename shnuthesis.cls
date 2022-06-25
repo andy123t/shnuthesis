@@ -618,6 +618,7 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\listfigurename}
     \chapter*{\listfigurename}
+    \chaptermark{\listfigurename}
     \@starttoc{lof}
     \clearpage
     \if@openright
@@ -631,6 +632,7 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{\listtablename}
     \chapter*{\listtablename}
+    \chaptermark{\listtablename}
     \@starttoc{lot}
     \clearpage
     \if@openright
