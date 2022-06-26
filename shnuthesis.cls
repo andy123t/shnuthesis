@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/24
+%%	@date 2022/06/26
 %%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/24 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/26 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -95,20 +95,20 @@
 \newcommand\thankpagename{致谢}
 
 \ifshnu@master
-  \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
-  \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
-  \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}%
-  \else
-  \newcommand\shnu@thesisname{博~士~学~位~论~文}%
-  \newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
-  \newcommand\shnu@researchname{攻读博士学位期间的研究成果}%
+	\newcommand\shnu@thesisname{硕~士~学~位~论~文}%
+	\newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
+	\newcommand\shnu@researchname{攻读硕士学位期间的研究成果}%
+	\else
+	\newcommand\shnu@thesisname{博~士~学~位~论~文}%
+	\newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
+	\newcommand\shnu@researchname{攻读博士学位期间的研究成果}%
 \fi
 
 % ------- 重新定义cleardoublepage --------
 \renewcommand{\cleardoublepage}{\clearpage
-    \clearpage\if@twoside\ifodd\c@page\else%
-    \thispagestyle{empty}%
-    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+	\clearpage\if@twoside\ifodd\c@page\else%
+	\thispagestyle{empty}%
+	\hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
 
 % ----- 设置超链接 -----
@@ -118,14 +118,14 @@
 	linkcolor = black,
 	citecolor = blue,
 	filecolor = blue,
-    urlcolor =blue,
+	urlcolor =blue,
 }
 
 % ----- 设置正文页码为阿拉伯数字 -----
 \renewcommand\mainmatter{%
-  \cleardoublepage
-  \pagenumbering{arabic}%
-  \@mainmattertrue
+	\cleardoublepage
+	\pagenumbering{arabic}%
+	\@mainmattertrue
 }
 
 % -------- 设置图片的路径 ---------
@@ -248,8 +248,8 @@
 %--- appendix ---
 \ctexset{
     appendix = {
-        numbering = true,
-        number = \Alph{chapter},
+    	numbering = true,
+    	number = \Alph{chapter},
     }
 }
 \fi
@@ -274,27 +274,27 @@
 	\hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
 	\vskip 1.6pt %两条线的距离1pt
 	\hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
-    \vskip-1.5pt
+	\vskip-1.5pt
 }
 
 % \renewcommand{\headrule}{%
 % 	\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
 % 	\hrule\@height 0.5pt \@width\headwidth %上面线1pt粗
-%     \vskip-1.5pt
+% 	\vskip-1.5pt
 % }
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
-\fancyhead[RO,LE]{\zihao{5} \nouppercase{\leftmark}}
-\fancyhead[LO,RE]{\zihao{5} \shnu@shnuthesisname}
-%\fancyhead[C]{\zihao{5} \nouppercase{\leftmark}}
+	\fancyhead[RO,LE]{\zihao{5} \nouppercase{\leftmark}}
+	\fancyhead[LO,RE]{\zihao{5} \shnu@shnuthesisname}
+	%\fancyhead[C]{\zihao{5} \nouppercase{\leftmark}}
 }
 
 % ------- 设置页脚样式 ----------
 \newcommand{\footstyle}{
-\fancyfoot[C]{\zihao{5} \thepage}
-%\fancyfoot[LE]{\zihao{5} \thepage}
-%\fancyfoot[RO]{\zihao{5} \thepage}
+	\fancyfoot[C]{\zihao{5} \thepage}
+	%\fancyfoot[LE]{\zihao{5} \thepage}
+	%\fancyfoot[RO]{\zihao{5} \thepage}
 }
 
 \pagestyle{empty}
@@ -305,7 +305,7 @@
 
 % --------- 定义一种新的格式叫做main ---------
 \fancypagestyle{main}{%
-  \pagestyle{fancyplain}
+	\pagestyle{fancyplain}
 	\fancyhf{} %清空原有样式
 	\headstyle
 	\footstyle
@@ -441,16 +441,16 @@
 
 		\vspace*{3.0\baselineskip}
 
-		{\zihao{3} \heiti
-			\renewcommand\arraystretch{1.6}
-			\begin{tabular}{lc}
-				\makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@college}} \\
-				\makebox[7em][s]{专 \hfill 业~：} & \underline{\makebox[#1]{\shnu@major}} \\
-				\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@study}} \\
-				\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & \underline{\makebox[#1]{\@author}} \\
-				\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@instructor}} \\
-				\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
-			\end{tabular}}
+		{\zihao{3} \heiti 
+		\renewcommand\arraystretch{1.6}
+		\begin{tabular}{lc}
+			\makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@college}} \\
+			\makebox[7em][s]{专 \hfill 业~：} & \underline{\makebox[#1]{\shnu@major}} \\
+			\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@study}} \\
+			\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & \underline{\makebox[#1]{\@author}} \\
+			\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@instructor}} \\
+			\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
+		\end{tabular}}
 	\end{center}
 	\clearpage
     \ifshnu@print
@@ -606,10 +606,10 @@
 
 % ----------- 设置插图清单和表格清单格式 ----------
 \titlecontents{figure}[0pt]{}{
-\figureautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
+\figureautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{
 \titlerule*[8pt]{$\cdot$}\contentspage}
 \titlecontents{table}[0pt]{}{
-\tableautorefname\hspace*{0.5em}\thecontentslabel\quad}{}{
+\tableautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{
 \titlerule*[8pt]{$\cdot$}\contentspage}
 
 % ----------- 重定义插图清单 ----------
@@ -652,6 +652,9 @@
 	\ifshnu@print
         \cleardoublepage
     \fi
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 % ---------- 定义新的致谢环境 -----------
@@ -676,34 +679,33 @@
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 %--- 参考文献引用 ---
 \patchcmd\NAT@citexnum{%
-  \@ifnum{\NAT@ctype=\z@}{%
-    \if*#2*\else\NAT@cmt#2\fi
-  }{}%
-  \NAT@mbox{\NAT@@close}%
+	\@ifnum{\NAT@ctype=\z@}{
+	\if*#2*\else\NAT@cmt#2\fi}{}
+	\NAT@mbox{\NAT@@close}%
 }{%
-  \NAT@mbox{\NAT@@close}%
-  \@ifnum{\NAT@ctype=\z@}{%
-    \if*#2*\else\textsuperscript{#2}\fi
-  }{}%
+	\NAT@mbox{\NAT@@close}%
+	\@ifnum{\NAT@ctype=\z@}{
+	\if*#2*\else\textsuperscript{#2}\fi}{}
 }{}{}
-\renewcommand\NAT@citesuper[3]{\ifNAT@swa
-\if*#2*\else#2\NAT@spacechar\fi
-\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
-   \else #1\fi\endgroup}
-\renewcommand\NAT@citenum%
-    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-        #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
-\patchcmd{\NAT@citex}{%
-  \if*#2*\else\NAT@cmt#2\fi
-  \if\relax\NAT@date\relax\else\NAT@@close\fi
+\renewcommand\NAT@citesuper[3]{
+	\ifNAT@swa \if*#2*\else#2\NAT@spacechar\fi
+	\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close
+	\if*#3*\else#3\fi}\else #1\fi\endgroup}
+\renewcommand\NAT@citenum[3]{
+	\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+	#1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
+	\else#1\fi\endgroup}
+\patchcmd{\NAT@citex}{
+	\if*#2*\else\NAT@cmt#2\fi
+	\if\relax\NAT@date\relax\else\NAT@@close\fi
 }{%
-  \if\relax\NAT@date\relax\else\NAT@@close\fi
-  \if*#2*\else\textsuperscript{#2}\fi
+	\if\relax\NAT@date\relax\else\NAT@@close\fi
+	\if*#2*\else\textsuperscript{#2}\fi
 }{}{}
 \renewcommand\NAT@cite[3]{
-\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-#1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi
-\endgroup}
+	\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+	#1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
+	\else#1\fi\endgroup}
 %--- 参考文献间距 ---
 \def\bibfont{\small}
 \setlength{\bibsep}{8pt}
@@ -711,13 +713,13 @@
 \renewcommand\@biblabel[1]{[#1]\hfill}
 \urlstyle{same}
 \g@addto@macro\UrlBreaks{%
-  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
-  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
-  \do\u\do\v\do\w\do\x\do\y\do\z%
-  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J%
-  \do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T%
-  \do\U\do\V\do\W\do\X\do\Y\do\Z%
-  \do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
+	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+	\do\u\do\v\do\w\do\x\do\y\do\z%
+	\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J%
+	\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T%
+	\do\U\do\V\do\W\do\X\do\Y\do\Z%
+	\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
 }
 %--- 设置新的参考文献命令 ---
 \renewcommand{\bibname}{参考文献}
