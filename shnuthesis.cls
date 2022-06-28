@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/26
+%%	@date 2022/06/28
 %%	@version v3.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/26 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/28 v3.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -587,6 +587,10 @@
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}
+\ifshnu@arts
+\renewcommand{\cftsubsecaftersnumb}{\hspace{-1.4em}}
+\renewcommand{\cftsubsubsecaftersnumb}{\hspace{-1.4em}}
+\fi
 
 % ----------- 设置新的生成目录命令 -------------
 \newcommand{\maketoc}{
