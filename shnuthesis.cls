@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/06/28
-%%	@version v3.0
+%%	@date 2022/06/30
+%%	@version v4.0
 %%	@address https://github.com/andy123t/shnuthesis
 %%	LaTeX thesis template for Shanghai Normal University
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2022/06/28 v3.0]
+\ProvidesClass{shnuthesis}[2022/06/30 v4.0]
 \NeedsTeXFormat{LaTeX2e}
 
 % ---------- 载入学校logo ----------
@@ -95,20 +95,20 @@
 \newcommand\thankpagename{致谢}
 
 \ifshnu@master
-	\newcommand\shnu@thesisname{硕~士~学~位~论~文}%
-	\newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
-	\newcommand\shnu@researchname{攻读硕士学位期间的研究成果}%
-	\else
-	\newcommand\shnu@thesisname{博~士~学~位~论~文}%
-	\newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
-	\newcommand\shnu@researchname{攻读博士学位期间的研究成果}%
+    \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
+    \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
+    \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}%
+    \else
+    \newcommand\shnu@thesisname{博~士~学~位~论~文}%
+    \newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
+    \newcommand\shnu@researchname{攻读博士学位期间的研究成果}%
 \fi
 
 % ------- 重新定义cleardoublepage --------
 \renewcommand{\cleardoublepage}{\clearpage
-	\clearpage\if@twoside\ifodd\c@page\else%
-	\thispagestyle{empty}%
-	\hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+    \clearpage\if@twoside\ifodd\c@page\else%
+    \thispagestyle{empty}%
+    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
 
 % ----- 设置超链接 -----
@@ -118,14 +118,14 @@
 	linkcolor = black,
 	citecolor = blue,
 	filecolor = blue,
-	urlcolor =blue,
+    urlcolor =blue,
 }
 
 % ----- 设置正文页码为阿拉伯数字 -----
 \renewcommand\mainmatter{%
-	\cleardoublepage
-	\pagenumbering{arabic}%
-	\@mainmattertrue
+    \cleardoublepage
+    \pagenumbering{arabic}%
+    \@mainmattertrue
 }
 
 % -------- 设置图片的路径 ---------
@@ -248,8 +248,8 @@
 %--- appendix ---
 \ctexset{
     appendix = {
-    	numbering = true,
-    	number = \Alph{chapter},
+        numbering = true,
+        number = \Alph{chapter},
     }
 }
 \fi
@@ -269,32 +269,32 @@
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
 
 % ------------ 设置页眉样式 ------------
-\renewcommand{\headrule}{%
-	\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-	\hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
-	\vskip 1.6pt %两条线的距离1pt
-	\hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
-	\vskip-1.5pt
-}
-
 % \renewcommand{\headrule}{%
-% 	\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-% 	\hrule\@height 0.5pt \@width\headwidth %上面线1pt粗
-% 	\vskip-1.5pt
+%     \if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+%     \hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
+%     \vskip 1.6pt %两条线的距离1pt
+%     \hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
+%     \vskip-1.5pt
 % }
+
+\renewcommand{\headrule}{%
+    \if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+    \hrule\@height 0.5pt \@width\headwidth
+    \vskip-1.5pt
+}
 
 % ------------ 设置页眉样式 -----------
 \newcommand{\headstyle}{
-	\fancyhead[RO,LE]{\zihao{5} \nouppercase{\leftmark}}
-	\fancyhead[LO,RE]{\zihao{5} \shnu@shnuthesisname}
-	%\fancyhead[C]{\zihao{5} \nouppercase{\leftmark}}
+    %\fancyhead[RO,LE]{\zihao{5} \nouppercase{\leftmark}}
+    %\fancyhead[LO,RE]{\zihao{5} \shnu@shnuthesisname}
+    \fancyhead[C]{\zihao{5} \nouppercase{\leftmark}}
 }
 
 % ------- 设置页脚样式 ----------
 \newcommand{\footstyle}{
-	\fancyfoot[C]{\zihao{5} \thepage}
-	%\fancyfoot[LE]{\zihao{5} \thepage}
-	%\fancyfoot[RO]{\zihao{5} \thepage}
+    %\fancyfoot[C]{\zihao{5} \thepage}
+    \fancyfoot[LE]{\zihao{5} \thepage}
+    \fancyfoot[RO]{\zihao{5} \thepage}
 }
 
 \pagestyle{empty}
@@ -305,7 +305,7 @@
 
 % --------- 定义一种新的格式叫做main ---------
 \fancypagestyle{main}{%
-	\pagestyle{fancyplain}
+    \pagestyle{fancyplain}
 	\fancyhf{} %清空原有样式
 	\headstyle
 	\footstyle
@@ -328,10 +328,10 @@
 \renewcommand{\floatpagefraction}{0.60}
 
 % ---------------- 设置图表格式 ---------------
-\numberwithin{figure}{chapter}
-\numberwithin{equation}{chapter}
-%\renewcommand{\thetable}{\thechapter.\arabic{table}}
-%\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+%\numberwithin{figure}{chapter}
+%\numberwithin{equation}{chapter}
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
@@ -381,9 +381,9 @@
 %\renewcommand{\qedsymbol}{$\blacksquare$}
 \renewcommand{\proofname}{证明}
 \renewenvironment{proof}[1][\proofname]{\par
-	\pushQED{\qed}%
-	\normalfont \topsep6\p@\@plus6\p@\relax
-	\trivlist\item[\hskip\labelsep
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist\item[\hskip\labelsep
     \bfseries #1\@addpunct{\,:\,}]\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
@@ -402,8 +402,8 @@
 }
 
 % ------- 公式编号带章节 ----------
-\numberwithin{equation}{chapter}
-%\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+%\numberwithin{equation}{chapter}
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 
 % 重新设置公式autoref
 \renewcommand{\equationautorefname}{公式}
@@ -439,7 +439,7 @@
 
 		\vspace*{3.0\baselineskip}
 
-		{\zihao{3} \heiti 
+		{\zihao{3} \heiti
 		\renewcommand\arraystretch{1.6}
 		\begin{tabular}{lc}
 			\makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@college}} \\
@@ -480,7 +480,7 @@
 
 		\hspace*{1.5cm} \raisebox{5pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
 
-		\vspace*{4\baselineskip}
+		\vspace*{4.0\baselineskip}
 
 		\begin{center}
 			{\heiti \chpzihao 论文使用授权声明}
@@ -488,11 +488,11 @@
 
 		\vspace*{\baselineskip}
 
-		本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
+        本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
 
-		\vspace*{0.25\baselineskip}
+        \vspace*{0.25\baselineskip}
 
-		{\bfseries （保密的论文在解密后应遵守此规定）}
+        {\bfseries （保密的论文在解密后应遵守此规定）}
 
 		\vspace*{2.4\baselineskip}
 
@@ -681,33 +681,33 @@
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 %--- 参考文献引用 ---
 \patchcmd\NAT@citexnum{%
-	\@ifnum{\NAT@ctype=\z@}{
-	\if*#2*\else\NAT@cmt#2\fi}{}
-	\NAT@mbox{\NAT@@close}%
+    \@ifnum{\NAT@ctype=\z@}{
+    \if*#2*\else\NAT@cmt#2\fi}{}
+    \NAT@mbox{\NAT@@close}%
 }{%
-	\NAT@mbox{\NAT@@close}%
-	\@ifnum{\NAT@ctype=\z@}{
-	\if*#2*\else\textsuperscript{#2}\fi}{}
+    \NAT@mbox{\NAT@@close}%
+    \@ifnum{\NAT@ctype=\z@}{
+    \if*#2*\else\textsuperscript{#2}\fi}{}
 }{}{}
 \renewcommand\NAT@citesuper[3]{
-	\ifNAT@swa \if*#2*\else#2\NAT@spacechar\fi
-	\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close
-	\if*#3*\else#3\fi}\else #1\fi\endgroup}
+    \ifNAT@swa \if*#2*\else#2\NAT@spacechar\fi
+    \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close
+    \if*#3*\else#3\fi}\else #1\fi\endgroup}
 \renewcommand\NAT@citenum[3]{
-	\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-	#1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
-	\else#1\fi\endgroup}
+    \ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+    #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
+    \else#1\fi\endgroup}
 \patchcmd{\NAT@citex}{
-	\if*#2*\else\NAT@cmt#2\fi
-	\if\relax\NAT@date\relax\else\NAT@@close\fi
+    \if*#2*\else\NAT@cmt#2\fi
+    \if\relax\NAT@date\relax\else\NAT@@close\fi
 }{%
-	\if\relax\NAT@date\relax\else\NAT@@close\fi
-	\if*#2*\else\textsuperscript{#2}\fi
+    \if\relax\NAT@date\relax\else\NAT@@close\fi
+    \if*#2*\else\textsuperscript{#2}\fi
 }{}{}
 \renewcommand\NAT@cite[3]{
-	\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-	#1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
-	\else#1\fi\endgroup}
+    \ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+    #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
+    \else#1\fi\endgroup}
 %--- 参考文献间距 ---
 \def\bibfont{\small}
 \setlength{\bibsep}{8pt}
@@ -715,13 +715,13 @@
 \renewcommand\@biblabel[1]{[#1]\hfill}
 \urlstyle{same}
 \g@addto@macro\UrlBreaks{%
-	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
-	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
-	\do\u\do\v\do\w\do\x\do\y\do\z%
-	\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J%
-	\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T%
-	\do\U\do\V\do\W\do\X\do\Y\do\Z%
-	\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
+    \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+    \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+    \do\u\do\v\do\w\do\x\do\y\do\z%
+    \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J%
+    \do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T%
+    \do\U\do\V\do\W\do\X\do\Y\do\Z%
+    \do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
 }
 %--- 设置新的参考文献命令 ---
 \renewcommand{\bibname}{参考文献}
@@ -729,6 +729,16 @@
     \@mainmatterfalse
     \chapter{\bibname}%
     \@mainmattertrue
+}
+
+% ---------- 设置新的附录命令 ----------
+\let \oldappendix \appendix
+\renewcommand{\appendix}[1]{
+	\clearpage
+	\renewcommand{\theequation}{\Alph{chapter}\arabic{equation}}
+	\renewcommand{\thefigure}{\Alph{chapter}\arabic{equation}}
+	\renewcommand{\thetable}{\Alph{chapter}\arabic{equation}}
+	\oldappendix{#1}
 }
 
 % ---------- 定义新的环境研究成果页 -----------
