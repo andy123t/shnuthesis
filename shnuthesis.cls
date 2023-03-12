@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2023/03/09
+%%	@date 2023/03/12
 %%	@version v4.2
 %%	@address https://github.com/andy123t/shnuthesis
 %%  LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/03/09 v4.2]
+\ProvidesClass{shnuthesis}[2023/03/12 v4.2]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -42,7 +42,7 @@
 \PassOptionsToPackage{no-math}{fontspec}
 
 %---------- 载入Class ----------
-\LoadClass[UTF8,a4paper,zihao=-4]{ctexbook}[2017/04/01]%
+\LoadClass[UTF8,a4paper,zihao=-4]{ctexbook}
 \@ifclasslater{ctexbook}{2017/01/01}{}{%
     \ClassError{shnuthesis}{ctex >= 2017/01/01 is required ...}{}%
 }
@@ -70,6 +70,7 @@
 \RequirePackage{makecell}
 \RequirePackage{etoolbox}
 \RequirePackage{titletoc}
+\RequirePackage{anyfontsize}
 \RequirePackage[numbered]{bookmark}
 
 %---------- 定义文档属性格式 ----------
@@ -80,15 +81,14 @@
     \csname #1\endcsname{}
 }
 
-%------ 添加几个新的文档属性 ------
+%----------- 添加几个新的文档属性 -----------
 \shnu@define@term{college}
 \shnu@define@term{major}
 \shnu@define@term{study}
 \shnu@define@term{stunum}
 \shnu@define@term{instructor}
-%\shnu@define@term{clc}
 
-%----- 定义新变量 -----
+%---------- 定义新变量 ----------
 \newcommand\shnuname{上海师范大学}
 \newcommand\cnabstractbame{摘~~要}
 \newcommand\enabstractbame{Abstract}
@@ -122,9 +122,16 @@
     urlcolor = blue,
 }
 
+%---------- 设置正文前页码为大写罗马数字 ----------
+\renewcommand\frontmatter{%
+    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \@mainmatterfalse
+    \pagenumbering{Roman}%
+}
+
 %---------- 设置正文页码为阿拉伯数字 ----------
 \renewcommand\mainmatter{%
-    \cleardoublepage
+    \ifshnu@print\cleardoublepage\else\clearpage\fi
     \pagenumbering{arabic}%
     \@mainmattertrue
 }
@@ -266,20 +273,20 @@
 % 定义页眉和页脚 使用 fancyhdr 宏包
 
 %---------- 设置分隔线宽度 ----------
-\renewcommand{\headrulewidth}{0.4pt}    % 在页眉下0.5pt宽的分隔线
-\renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
+\renewcommand{\headrulewidth}{0.5pt}  % 在页眉下0.5pt宽的分隔线
+\renewcommand{\footrulewidth}{0pt}    % 在页脚不画分隔线。
 
 %---------- 设置页眉样式 ----------
 % \renewcommand{\headrule}{%
-%     \if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+%     %\let\headrulewidth\plainheadrulewidth
 %     \hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
-%     \vskip 1.6pt %两条线的距离1pt
+%     \vskip 1.6pt %两条线的距离
 %     \hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
 %     \vskip-1.5pt
 % }
 
 \renewcommand{\headrule}{%
-    \if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+    \let\headrulewidth\plainheadrulewidth
     \hrule\@height 0.5pt \@width\headwidth
     \vskip-1.5pt
 }
@@ -298,26 +305,20 @@
     \fancyfoot[RO]{\zihao{5} \thepage}
 }
 
-\pagestyle{empty}
-\pagestyle{fancy}
-\fancyhf{} %清空原有样式
-\headstyle
-\footstyle
+\pagestyle{plain}
 
-%---------- 定义一种新的格式叫做main ----------
-\fancypagestyle{main}{%
-    \pagestyle{fancyplain}
-	\fancyhf{} %清空原有样式
+%---------- 定义plain样式 ----------
+\fancypagestyle{plain}{%
+	\fancyhf{}
 	\headstyle
 	\footstyle
 }
 
 %---------- 中文段落缩进和行距 ----------
-\setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
+\setlength{\parindent}{2em}                   % 首行两个汉字的缩进量
 \setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
 \linespread{1.35}  % 设置行距
 %\renewcommand{\baselinestretch}{1.35}  % 设置行距
-%\topskip=15pt   % 书写区域顶部空白
 %\setlength{\baselineskip}{24pt}
 
 %---------- 浮动对象设置 ----------
@@ -344,7 +345,6 @@
 \setlength{\intextsep}{10pt plus 2pt minus 2pt}
 \setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
 \setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
-%\setlength{\itemsep}{3pt plus 1pt minus 2pt}
 
 %---------- 重新设置图表autoref ----------
 \renewcommand{\figureautorefname}{图}
@@ -453,10 +453,11 @@
 			\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
 		\end{tabular}}
 	\end{center}
-	\clearpage
-    \ifshnu@print
-    	\cleardoublepage
-    	\hypersetup{hidelinks} % remove link color and border
+	\ifshnu@print
+        \cleardoublepage
+        \hypersetup{hidelinks} % remove link color and border
+    \else
+        \clearpage
     \fi
 }
 
@@ -520,10 +521,7 @@
         }%
         \kvsetkeys{shnu@statement}{#1}
     \fi
-	\clearpage
-    \ifshnu@print
-        \cleardoublepage
-    \fi
+	\ifshnu@print\cleardoublepage\else\clearpage\fi
 }
 
 %---------- 定义插入声明页pdf文件命令 ----------
@@ -533,10 +531,7 @@
 	\pdfbookmark[0]{声明页}{statement}
 	\thispagestyle{empty}
 	\includepdf{#1}
-	\clearpage
-    \ifshnu@print
-        \cleardoublepage
-    \fi
+	\ifshnu@print\cleardoublepage\else\clearpage\fi
 }
 
 %---------- 定义中英文关键词 ----------
@@ -552,7 +547,7 @@
 %---------- 中文摘要环境 ----------
 \newenvironment{cnabstract}{
 	\clearpage
-	\pagestyle{main}
+	\pagestyle{plain}
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\cnabstractbame}
 	\chapter*{\cnabstractbame}
@@ -567,16 +562,13 @@
 %---------- 英文摘要环境 ----------
 \newenvironment{enabstract}{
 	\clearpage
-	\pagestyle{main}
+	\pagestyle{plain}
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\enabstractbame}
 	\chapter*{\bfseries\enabstractbame}
 	\chaptermark{\enabstractbame}
 }{
-	\clearpage
-	\ifshnu@print
-        \cleardoublepage
-    \fi
+	\ifshnu@print\cleardoublepage\else\clearpage\fi
     \if@openright
         \cleardoublepage
     \fi
@@ -612,14 +604,11 @@
 \newcommand{\maketoc}{
 	% 设置目录hdr和页码选项
 	\clearpage
-	\pagestyle{main}
+	\pagestyle{plain}
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\contentsname}
 	\tableofcontents
-	\clearpage
-    \ifshnu@print
-        \cleardoublepage
-    \fi
+	\ifshnu@print\cleardoublepage\else\clearpage\fi
 }
 
 %---------- 设置插图清单和表格清单格式 ----------
@@ -666,25 +655,7 @@
 	\chapter*{\symbolpagename}
 	\chaptermark{\symbolpagename}
 }{
-	\clearpage
-	\ifshnu@print
-        \cleardoublepage
-    \fi
-    \if@openright
-        \cleardoublepage
-    \fi
-}
-
-%---------- 定义新的致谢环境 ----------
-\newenvironment{thankpage}{
-	\clearpage
-	\phantomsection
-	\addcontentsline{toc}{chapter}{\thankpagename}
-	\chapter*{\thankpagename}
-	\chaptermark{\thankpagename}
-	\baselineskip=1.2\baselineskip
-}{
-	\clearpage
+	\ifshnu@print\cleardoublepage\else\clearpage\fi
     \if@openright
         \cleardoublepage
     \fi
@@ -757,6 +728,21 @@
 	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
+}
+
+%---------- 定义新的致谢环境 ----------
+\newenvironment{thankpage}{
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\thankpagename}
+    \chapter*{\thankpagename}
+    \chaptermark{\thankpagename}
+    \baselineskip=1.2\baselineskip
+}{
+    \clearpage
     \if@openright
         \cleardoublepage
     \fi
