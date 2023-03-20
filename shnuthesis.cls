@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2023/03/12
-%%	@version v4.2
+%%	@date 2023/03/20
+%%	@version v4.3
 %%	@address https://github.com/andy123t/shnuthesis
 %%  LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/03/12 v4.2]
+\ProvidesClass{shnuthesis}[2023/03/20 v4.3]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -71,6 +71,7 @@
 \RequirePackage{etoolbox}
 \RequirePackage{titletoc}
 \RequirePackage{anyfontsize}
+\RequirePackage{pdfpages}
 \RequirePackage[numbered]{bookmark}
 
 %---------- 定义文档属性格式 ----------
@@ -278,7 +279,7 @@
 
 %---------- 设置页眉样式 ----------
 % \renewcommand{\headrule}{%
-%     %\let\headrulewidth\plainheadrulewidth
+%     \let\headrulewidth\plainheadrulewidth
 %     \hrule\@height 1.5pt \@width\headwidth %上面线1pt粗
 %     \vskip 1.6pt %两条线的距离
 %     \hrule\@height 0.4pt \@width\headwidth %下面线0.4pt粗
@@ -305,8 +306,6 @@
     \fancyfoot[RO]{\zihao{5} \thepage}
 }
 
-\pagestyle{plain}
-
 %---------- 定义plain样式 ----------
 \fancypagestyle{plain}{%
 	\fancyhf{}
@@ -314,12 +313,13 @@
 	\footstyle
 }
 
+\pagestyle{plain}
+
 %---------- 中文段落缩进和行距 ----------
 \setlength{\parindent}{2em}                   % 首行两个汉字的缩进量
 \setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
 \linespread{1.35}  % 设置行距
 %\renewcommand{\baselinestretch}{1.35}  % 设置行距
-%\setlength{\baselineskip}{24pt}
 
 %---------- 浮动对象设置 ----------
 % 浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面
