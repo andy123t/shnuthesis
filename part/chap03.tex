@@ -21,7 +21,7 @@
 \subsection{数值格式}
 将区间 $[a,b]$ 分成 $N$ 等分, 分点为
 \begin{equation*}
-  x_{i}=a+i h \quad i=0,1, \cdots, N,
+  x_{i}=a+i h, \quad i=0,1, \cdots, N,
 \end{equation*}
 其中 $h=(b-a) / N$. 于是我们得到区间 $I=[a,b]$ 的一个网格剖分. $x_i$ 称为网格的节点, $h$ 称为步长.
 
@@ -34,7 +34,7 @@
 以上差分方程对于 $i=1,2, \cdots, N-1$ 都成立, 加上边值条件 $u_{0}=\alpha, u_{N}=\beta$, 就得到关于 $u_i$ 的差分格式:
 \begin{equation}\label{eq:fdm}
 \left\{\begin{aligned}
-& L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, ~ i=1, \cdots, N-1, \\
+& L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, ~~ i=1, \cdots, N-1, \\
 & u_{0}=\alpha, \quad u_{N}=\beta.
 \end{aligned}\right.
 \end{equation}
