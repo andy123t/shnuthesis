@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2023/03/20
+%%	@date 2023/04/03
 %%	@version v4.3
 %%	@address https://github.com/andy123t/shnuthesis
 %%  LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/03/20 v4.3]
+\ProvidesClass{shnuthesis}[2023/04/03 v4.3]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -141,7 +141,7 @@
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 %---------- 定义章节的编号格式 ----------
-\newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\chpzihao}{\fontsize{20pt}{28pt}\selectfont}
 
 %---------- 设置章节目录的深度 ----------
 \setcounter{secnumdepth}{3}
@@ -159,7 +159,7 @@
         number = \arabic{chapter},
         numberformat = {},
         aftername = \quad,
-        beforeskip = {4pt},
+        beforeskip = {-4pt},
         afterskip = {24pt},
         pagestyle = plain,
     }
