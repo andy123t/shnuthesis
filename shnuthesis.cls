@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2023/04/03
+%%	@date 2023/04/04
 %%	@version v4.3
 %%	@address https://github.com/andy123t/shnuthesis
 %%  LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/04/03 v4.3]
+\ProvidesClass{shnuthesis}[2023/04/04 v4.3]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -141,7 +141,7 @@
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 %---------- 定义章节的编号格式 ----------
-\newcommand{\chpzihao}{\fontsize{20pt}{28pt}\selectfont}
+\newcommand{\chapfont}{\fontsize{20pt}{28pt}\selectfont}
 
 %---------- 设置章节目录的深度 ----------
 \setcounter{secnumdepth}{3}
@@ -153,7 +153,7 @@
 %--- chapter ---
 \ctexset{
     chapter = {
-        format = \linespread{1.0}\heiti\chpzihao\centering,
+        format = \linespread{1.0}\heiti\chapfont\centering,
         nameformat = {},
         titleformat = {},
         number = \arabic{chapter},
@@ -208,7 +208,7 @@
 %--- chapter ---
 \ctexset{
     chapter = {
-        format = \linespread{1.0}\heiti\chpzihao\centering,
+        format = \linespread{1.0}\heiti\chapfont\centering,
         nameformat = {},
         titleformat = {},
         number = \chinese{chapter},
@@ -248,7 +248,7 @@
         format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
         name = {（,）},
         number = \chinese{subsubsection},
-        numberformat = \bfseries,
+        numberformat = \heiti,
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
@@ -475,7 +475,7 @@
 		\vspace*{0.2\baselineskip}
 
 		\begin{center}
-			{\heiti \chpzihao 论文独创性声明}
+			{\heiti \chapfont 论文独创性声明}
 		\end{center}
 
 		\vspace*{\baselineskip}
@@ -489,7 +489,7 @@
 		\vspace*{4.0\baselineskip}
 
 		\begin{center}
-			{\heiti \chpzihao 论文使用授权声明}
+			{\heiti \chapfont 论文使用授权声明}
 		\end{center}
 
 		\vspace*{\baselineskip}
@@ -576,11 +576,11 @@
 
 %---------- 定义新的目录页面 ----------
 \RequirePackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cfttoctitlefont}{\hfill \heiti \chapfont}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\cftloftitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cftloftitlefont}{\hfill \heiti \chapfont}
 \renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cftlottitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cftlottitlefont}{\hfill \heiti \chapfont}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\listfigurename}{插图清单}
