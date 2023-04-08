@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2023/04/04
-%%	@version v4.3
+%%	@date 2023/04/08
+%%	@version v4.4
 %%	@address https://github.com/andy123t/shnuthesis
 %%  LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/04/04 v4.3]
+\ProvidesClass{shnuthesis}[2023/04/08 v4.4]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -93,17 +93,17 @@
 \newcommand\shnuname{上海师范大学}
 \newcommand\cnabstractbame{摘~~要}
 \newcommand\enabstractbame{Abstract}
-\newcommand\symbolpagename{主要符号表}
-\newcommand\thankpagename{致谢}
+\newcommand\denotationname{主要符号表}
+\newcommand\acknowledgementname{致谢}
 
 \ifshnu@master
     \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
     \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
-    \newcommand\shnu@researchname{攻读硕士学位期间的研究成果}%
+    \newcommand\shnu@publications{攻读硕士学位期间的研究成果}%
     \else
     \newcommand\shnu@thesisname{博~士~学~位~论~文}%
     \newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
-    \newcommand\shnu@researchname{攻读博士学位期间的研究成果}%
+    \newcommand\shnu@publications{攻读博士学位期间的研究成果}%
 \fi
 
 %------- 重新定义cleardoublepage --------
@@ -153,7 +153,7 @@
 %--- chapter ---
 \ctexset{
     chapter = {
-        format = \linespread{1.0}\heiti\chapfont\centering,
+        format = \linespread{1.0}\sffamily\heiti\chapfont\centering,
         nameformat = {},
         titleformat = {},
         number = \arabic{chapter},
@@ -167,7 +167,7 @@
 %--- section ---
 \ctexset{
     section = {
-        format = \linespread{1.0}\heiti\zihao{-3}\raggedright,
+        format = \linespread{1.0}\sffamily\heiti\zihao{-3}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {24pt},
@@ -177,7 +177,7 @@
 %--- subsection ---
 \ctexset{
     subsection = {
-        format = \linespread{1.0}\heiti\zihao{4}\raggedright,
+        format = \linespread{1.0}\sffamily\heiti\zihao{4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
@@ -187,7 +187,7 @@
 %--- subsubsection ---
 \ctexset{
     subsubsection = {
-        format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
+        format = \linespread{1.0}\sffamily\heiti\zihao{-4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
@@ -208,7 +208,7 @@
 %--- chapter ---
 \ctexset{
     chapter = {
-        format = \linespread{1.0}\heiti\chapfont\centering,
+        format = \linespread{1.0}\sffamily\heiti\chapfont\centering,
         nameformat = {},
         titleformat = {},
         number = \chinese{chapter},
@@ -222,7 +222,7 @@
 %--- section ---
 \ctexset{
     section = {
-        format = \linespread{1.0}\heiti\zihao{-3}\centering,
+        format = \linespread{1.0}\sffamily\heiti\zihao{-3}\centering,
         name = {第,节},
         number = \chinese{section},
         numberformat = \heiti,
@@ -234,7 +234,7 @@
 %--- subsection ---
 \ctexset{
     subsection = {
-        format = \linespread{1.0}\heiti\zihao{4}\raggedright,
+        format = \linespread{1.0}\sffamily\heiti\zihao{4}\raggedright,
         number = \chinese{subsection},
         numberformat = \heiti,
         aftername = \quad,
@@ -245,7 +245,7 @@
 %--- subsubsection ---
 \ctexset{
     subsubsection = {
-        format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
+        format = \linespread{1.0}\sffamily\heiti\zihao{-4}\raggedright,
         name = {（,）},
         number = \chinese{subsubsection},
         numberformat = \heiti,
@@ -417,7 +417,6 @@
 \setlist[biblist]{leftmargin=*,label={[\arabic*]}}
 
 %---------- 定义新的标题页面 ----------
-%---------- 重置命令maketitle ----------
 \renewcommand{\maketitle}[1][15em]{
 	\clearpage
 	\phantomsection
@@ -434,11 +433,11 @@
 
 		\vspace*{1.0\baselineskip}
 
-		{\fontsize{40}{40}\selectfont \shnu@thesisname}
+		{\fontsize{40}{40}\selectfont\shnu@thesisname}
 
 		\vspace*{2.5\baselineskip}
 
-		\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
+		\parbox[t]{15cm}{\centering\zihao{1}\sffamily\heiti\@title}
 
 		\vspace*{3.0\baselineskip}
 
@@ -455,7 +454,7 @@
 	\end{center}
 	\ifshnu@print
         \cleardoublepage
-        \hypersetup{hidelinks} % remove link color and border
+        \hypersetup{hidelinks}
     \else
         \clearpage
     \fi
@@ -565,7 +564,7 @@
 	\pagestyle{plain}
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\enabstractbame}
-	\chapter*{\bfseries\enabstractbame}
+	\chapter*{\enabstractbame}
 	\chaptermark{\enabstractbame}
 }{
 	\ifshnu@print\cleardoublepage\else\clearpage\fi
@@ -576,11 +575,11 @@
 
 %---------- 定义新的目录页面 ----------
 \RequirePackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \heiti \chapfont}
+\renewcommand{\cfttoctitlefont}{\hfill \heiti\chapfont}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\cftloftitlefont}{\hfill \heiti \chapfont}
+\renewcommand{\cftloftitlefont}{\hfill \heiti\chapfont}
 \renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cftlottitlefont}{\hfill \heiti \chapfont}
+\renewcommand{\cftlottitlefont}{\hfill \heiti\chapfont}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\listfigurename}{插图清单}
@@ -592,6 +591,7 @@
 \setlength{\cftbeforesubsecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}
 \renewcommand{\cftdotsep}{3}
+\renewcommand{\cftchapfont}{\sffamily\heiti}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}
@@ -648,12 +648,12 @@
 }
 
 %---------- 定义主要符号表环境 ----------
-\newenvironment{symbolpage}{
+\newenvironment{denotation}{
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{\symbolpagename}
-	\chapter*{\symbolpagename}
-	\chaptermark{\symbolpagename}
+	\addcontentsline{toc}{chapter}{\denotationname}
+	\chapter*{\denotationname}
+	\chaptermark{\denotationname}
 }{
 	\ifshnu@print\cleardoublepage\else\clearpage\fi
     \if@openright
@@ -719,12 +719,12 @@
 }
 
 %---------- 定义新的环境研究成果页 ----------
-\newenvironment{researchpage}{
+\newenvironment{publications}{
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{\shnu@researchname}
-	\chapter*{\shnu@researchname}
-	\chaptermark{\shnu@researchname}
+	\addcontentsline{toc}{chapter}{\shnu@publications}
+	\chapter*{\shnu@publications}
+	\chaptermark{\shnu@publications}
 	\baselineskip=1.2\baselineskip
 }{
 	\clearpage
@@ -734,12 +734,12 @@
 }
 
 %---------- 定义新的致谢环境 ----------
-\newenvironment{thankpage}{
+\newenvironment{acknowledgement}{
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{\thankpagename}
-    \chapter*{\thankpagename}
-    \chaptermark{\thankpagename}
+    \addcontentsline{toc}{chapter}{\acknowledgementname}
+    \chapter*{\acknowledgementname}
+    \chaptermark{\acknowledgementname}
     \baselineskip=1.2\baselineskip
 }{
     \clearpage

@@ -39,7 +39,7 @@
 %\citestyle{authoryear}
 
 %----- 调整列表项的间距 -----
-%\setlength{\itemsep}{3pt plus 1pt minus 1pt}
+%\setlength{\itemsep}{3pt}
 
 %-----设置英文字体 -----
 \usepackage{newtxtext}
@@ -85,11 +85,11 @@
 
 %%%%%%%%%%%%%% 中文摘要内容和关键字  %%%%%%%%%%%%%
 
-\input{part/cnabstract}
+\input{data/cnabstract}
 
 %%%%%%%%%%%%%% 英文摘要内容和关键字 %%%%%%%%%%%%%
 
-\input{part/enabstract}
+\input{data/enabstract}
 
 
 %%%%%%%%%%%%%%%%%%%% 目录 %%%%%%%%%%%%%%%%%%%%%%
@@ -106,7 +106,7 @@
 %%%%%%%%%%%%%%%%%% 主要符号表 %%%%%%%%%%%%%%%%%%
 
 % 如不需要可以注释
-\input{part/symbolpage}
+\input{data/denotation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,19 +116,19 @@
 %%%%%%%%%%%%%%%%%%% 正文内容 %%%%%%%%%%%%%%%%%%%
 
 %----- 第1章 引言 -----
-\input{part/chap01}
+\input{data/chap01}
 
 %----- 第2章 LaTeX 常用环境 -----
-\input{part/chap02}
+\input{data/chap02}
 
 %----- 第3章 微分方程的数值方法 -----
-\input{part/chap03}
+\input{data/chap03}
 
 %----- 第4章 插图环境 -----
-\input{part/chap04}
+\input{data/chap04}
 
 %----- 第5章 表格环境 -----
-\input{part/chap05}
+\input{data/chap05}
 
 
 %%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%
@@ -137,18 +137,18 @@
 
 % 第一种方式, 使用 bib 文件
 %\nocite{*}  % 可以显示全部参考文献, 包括未引用的
-\bibliography{mybib}
+\bibliography{reference}
 
 %---------------------------------------------%
 
 % 第二种方式, 手动添加文献信息
-%\input{part/bibliography}
+%\input{data/bibliography}
 
 
 %%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%
 
 % 添加附录, 如不需要可以注释
-\input{part/appendix}
+\input{data/appendix}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,12 +157,12 @@
 
 %%%%%%%%%%%% 攻读学位期间的研究成果  %%%%%%%%%%%%
 
-\input{part/publications}
+\input{data/publications}
 
 
 %%%%%%%%%%%%%%%%%%% 致谢 %%%%%%%%%%%%%%%%%%%%%%
 
-\input{part/thankpage}
+\input{data/acknowledgement}
 
 
 \end{document}
