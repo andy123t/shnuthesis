@@ -2,14 +2,14 @@
 %%	This is file `shnuthesis.cls',
 %%
 %%	@author andy123t
-%%	@date 2023/04/08
+%%	@date 2023/04/10
 %%	@version v4.4
 %%	@address https://github.com/andy123t/shnuthesis
 %%  LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/04/08 v4.4]
+\ProvidesClass{shnuthesis}[2023/04/10 v4.4]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -83,11 +83,11 @@
 }
 
 %----------- 添加几个新的文档属性 -----------
-\shnu@define@term{college}
+\shnu@define@term{institute}
 \shnu@define@term{major}
-\shnu@define@term{study}
-\shnu@define@term{stunum}
-\shnu@define@term{instructor}
+\shnu@define@term{research}
+\shnu@define@term{studentID}
+\shnu@define@term{advisor}
 
 %---------- 定义新变量 ----------
 \newcommand\shnuname{上海师范大学}
@@ -425,7 +425,7 @@
 	\begin{center}
 		\vspace*{-1.8\baselineskip}
 
-        {\hfill 学校代码：10270 \hspace*{8cm} 学号：\shnu@stunum \hfill}
+        {\hfill 学校代码：10270 \hspace*{8cm} 学号：\shnu@studentID \hfill}
 
 		\vspace*{4.0\baselineskip}
 
@@ -444,11 +444,11 @@
 		{\zihao{3} \heiti
 		\renewcommand\arraystretch{1.6}
 		\begin{tabular}{lc}
-			\makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@college}} \\
+			\makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@institute}} \\
 			\makebox[7em][s]{专 \hfill 业~：} & \underline{\makebox[#1]{\shnu@major}} \\
-			\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@study}} \\
+			\makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@research}} \\
 			\makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & \underline{\makebox[#1]{\@author}} \\
-			\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@instructor}} \\
+			\makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@advisor}} \\
 			\makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
 		\end{tabular}}
 	\end{center}
