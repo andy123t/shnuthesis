@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2023/04/11
+%% @date 2023/04/20
 %% @version v4.4
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/04/11 v4.4]
+\ProvidesClass{shnuthesis}[2023/04/20 v4.4]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -140,12 +140,15 @@
 %---------- 设置图片的路径 ----------
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
-%---------- 定义章节的编号格式 ----------
-\newcommand{\chapfont}{\fontsize{20pt}{28pt}\selectfont}
-
 %---------- 设置章节目录的深度 ----------
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+
+%---------- 定义章节字号 ----------
+\newcommand{\chapfont}{\fontsize{20bp}{28bp}\selectfont}
+\newcommand{\secfont}{\fontsize{15bp}{20bp}\selectfont}
+\newcommand{\subsecfont}{\fontsize{14bp}{20bp}\selectfont}
+\newcommand{\ssubsecfont}{\fontsize{12bp}{18bp}\selectfont}
 
 %---------- 定义章节标题格式 ----------
 %---------- 理科论文章节格式 ----------
@@ -431,7 +434,7 @@
 
         \vspace*{1.0\baselineskip}
 
-        {\fontsize{40}{40}\selectfont\shnu@thesisname}
+        {\fontsize{40bp}{40bp}\selectfont\shnu@thesisname}
 
         \vspace*{2.5\baselineskip}
 

@@ -1,0 +1,42 @@
+
+字体设置说明
+
+一般情况 windows 系统会直接调用中文字体
+特殊情况 (比如 mac 系统等) 可能需要本地路径调用字体
+文件夹下建一个 fonts 文件夹, 放置宋体, 楷体, 黑体和仿宋字体文件
+SimSun.ttf, KaiTi.ttf, SimHei.ttf, FangSong.ttf
+注意: 这些字体版权属于北京中易公司, 请自行下载
+字体下载网站: https://www.fonts.net.cn/
+
+%----- 设置 fontset=none 后调用本地路径字体 -----
+\documentclass[master,fontset=none]{shnuthesis}
+
+%----- 本地路径调用字体 -----
+\setCJKfamilyfont{zhsong}[Path=fonts/]{SimSun}%
+\setCJKfamilyfont{zhhei}[Path=fonts/]{SimHei}%
+\setCJKfamilyfont{zhkai}[Path=fonts/]{KaiTi}%
+\setCJKfamilyfont{zhfang}[Path=fonts/]{FangSong}%
+\setCJKmainfont{SimSun}[Path=fonts/,BoldFont=SimHei,ItalicFont=KaiTi]%
+\setCJKmonofont[Path=fonts/]{FangSong}%
+\makeatletter
+\providecommand\songti{\CJKfamily{zhsong}}
+\providecommand\heiti{\CJKfamily{zhhei}}
+\providecommand\kaishu{\CJKfamily{zhkai}}
+\providecommand\fangsong{\CJKfamily{zhfang}}
+\makeatother
+
+
+% 英文字体建议使用 newtxtext 宏包设置字体
+% 也可以设置 Times New Roman 字体
+% 无衬线字体可使用 Arial, 也可以使用默认
+
+%----- 设置英文字体 -----
+\usepackage{newtxtext}
+%\setmainfont{Times New Roman}
+\setsansfont{Arial}
+%\setmonofont{Courier New}
+
+%----- 设置数学字体 -----
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
+
