@@ -37,7 +37,7 @@
 
 \section{数学公式}\label{sec:mathEqEnv}
 
-数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
+数学公式的使用请参考《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn), 更多的数学符号参考 The Comprehensive LaTeX Symbol List (symbols-a4).
 
 自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\bA$. 微分符号 $\dif$ 以及 $\dx$, $\dx[t]$.
 
@@ -71,8 +71,8 @@ d = e + f + g \notag \\
 h + i = j
 \end{gather}
 
-align 和 gather 有对应的不带编号的版本 align* 和 gather*.
-对于 align、 gather、align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
+align 和 gather 有对应不带编号的环境 align* 和 gather*.
+对于 align, gather, align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
 
 多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
@@ -83,7 +83,7 @@ align 和 gather 有对应的不带编号的版本 align* 和 gather*.
   &u(0)=0,\quad u(1)=0.
 \end{aligned} \right.
 \end{equation}
-其中方程的解析解为 $u=\sin(\pi x)$.
+%其中方程的解析解 $u=\sin(\pi x)$.
 
 这个公式使用 array 环境
 \begin{equation}\label{eq:arrayEq}
@@ -114,6 +114,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \begin{theorem}[Theorem]\label{thm:foo}
 这是一个定理.
 \end{theorem}
+
 \begin{proof}
 这是证明环境.
 \end{proof}

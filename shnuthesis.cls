@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2023/04/20
-%% @version v4.4
+%% @date 2023/06/04
+%% @version v4.5
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/04/20 v4.4]
+\ProvidesClass{shnuthesis}[2023/06/04 v4.5]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -57,7 +57,6 @@
 
 %---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm}
-\RequirePackage{bm}
 \RequirePackage{mathrsfs}
 \RequirePackage{graphicx}
 \RequirePackage{tabularx}
@@ -116,11 +115,11 @@
 %---------- 设置超链接 ----------
 \RequirePackage{hyperref}
 \hypersetup{
-    colorlinks = true,
-    linkcolor = black,
-    citecolor = blue,
-    filecolor = blue,
-    urlcolor = blue,
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue
 }
 
 %---------- 设置正文前页码为大写罗马数字 ----------
@@ -319,7 +318,7 @@
 \pagestyle{plain}
 
 %---------- 中文段落缩进和行距 ----------
-\setlength{\parindent}{2em}
+\setlength{\parindent}{2\ccwd}
 \setlength{\parskip}{4pt plus 1pt minus 1pt}
 \linespread{1.35}  % 设置行距
 %\renewcommand{\baselinestretch}{1.35}
@@ -345,8 +344,8 @@
 \setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 \setlength{\floatsep}{10pt plus 2pt minus 2pt}
 \setlength{\intextsep}{10pt plus 2pt minus 2pt}
-\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
-\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
+%\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+%\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 
 %---------- 重新设置图表autoref ----------
 \renewcommand{\figureautorefname}{图}
@@ -368,7 +367,12 @@
 % \setlength{\belowbottomsep}{0pt}
 
 %---------- 数学定理设置 ----------
-\theoremstyle{plain}
+\newtheoremstyle{shnu}
+{0.5\topsep}{0.5\topsep}
+{\itshape}{}{\bfseries}
+{.}{5pt plus 1pt minus 1pt}{}
+%\theoremstyle{plain}
+\theoremstyle{shnu}
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
 \newtheorem{lemma}{引理}[chapter]
@@ -385,7 +389,8 @@
 \renewcommand{\proofname}{证明}
 \renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}%
-    \normalfont \topsep6\p@\@plus6\p@\relax
+    %\normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep3\p@\@plus3\p@\relax
     \trivlist\item[\hskip\labelsep
     \bfseries #1\@addpunct{\,:\,}]\ignorespaces
 }{%
@@ -397,8 +402,8 @@
 
 %---------- 设置公式间距 ----------
 \AtBeginDocument{
-    \setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}
-    \setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}
+    \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+    \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
     \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
     \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
     %\setlength{\arraycolsep}{2pt}
@@ -429,7 +434,10 @@
 
         {\hfill 学校代码：10270 \hspace*{8cm} 学号：\shnu@studentID \hfill}
 
-        \vspace*{4.0\baselineskip}
+        \vspace*{\fill}
+
+        \vspace*{3.0\baselineskip}
+
         \includegraphics[width=10cm]{\logopic}
 
         \vspace*{1.0\baselineskip}
@@ -452,6 +460,7 @@
             \makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
         \end{tabular}}
     \end{center}
+    \vspace*{\fill}
     \ifshnu@print
         \cleardoublepage
         \hypersetup{hidelinks}
@@ -470,6 +479,7 @@
     \thispagestyle{empty}
     {
         \linespread{1.6}\selectfont
+        \ziju{0.03}
 
         \vspace*{0.2\baselineskip}
 
@@ -493,11 +503,7 @@
 
         \vspace*{\baselineskip}
 
-        本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。
-
-        \vspace*{0.25\baselineskip}
-
-        {\bfseries （保密的论文在解密后应遵守此规定）}
+        本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。暂缓出版的论文在公开后遵守此规定。
 
         \vspace*{2.4\baselineskip}
 
@@ -507,7 +513,7 @@
 
         \hspace*{1.5cm} \raisebox{5pt}{日\hspace*{2em}期：} \hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：} \hrulefill \hspace*{0.5cm}
 
-        \vspace*{1.8\baselineskip}
+        \vspace*{2.0\baselineskip}
     }
     \else
         \kv@define@key{shnu@statement}{file}{\includepdf{\kv@value}}%
@@ -524,6 +530,16 @@
     \clearpage
     \phantomsection
     \pdfbookmark[0]{声明页}{statement}
+    \thispagestyle{empty}
+    \includepdf{#1}
+    \ifshnu@print\cleardoublepage\else\clearpage\fi
+}
+
+%---------- 定义插入封面pdf文件命令 ----------
+\newcommand{\insertcover}[1]{
+    \clearpage
+    \phantomsection
+    \pdfbookmark[0]{封~~面}{cover}
     \thispagestyle{empty}
     \includepdf{#1}
     \ifshnu@print\cleardoublepage\else\clearpage\fi

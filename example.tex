@@ -32,6 +32,7 @@
 %\usepackage{mathptmx}
 
 %----- 添加其他宏包 -----
+%\usepackage[notcite,notref]{showkeys}
 \usepackage{listings}
 \usepackage{subfig}
 
@@ -64,7 +65,7 @@
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\bA}{\boldsymbol{A}}
-\newcommand{\ii}{\mathrm{i}\,}
+\newcommand{\ii}{\mathrm{i}\mkern1mu}
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
@@ -73,8 +74,10 @@
 
 \begin{document}
 
-% 生成标题页
+% 生成封面页
 \maketitle
+% 也可以插入封面 cover.pdf 替换原始封面
+%\insertcover{cover.pdf}
 
 % 生成独创性与授权声明页, 此页可以放在最后
 \makestatement

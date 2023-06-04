@@ -1,0 +1,41 @@
+% !TEX program = xelatex
+% xelatex -> xelatex
+% LaTeX 书脊模板
+
+\documentclass[UTF8]{ctexbook}
+
+\usepackage[paper=a4paper,margin=4cm]{geometry}
+%\usepackage[paper=a4paper,margin=3cm]{geometry}
+
+\usepackage{graphicx}
+
+\setlength{\parskip}{2pt}
+
+%---------- Define command ----------
+\renewcommand{\title}[1]{\def\spinetitle{#1}}
+\renewcommand{\author}[1]{\def\spineauthor{#1}}
+\newcommand{\institute}[1]{\def\spineinst{#1}}
+\newcommand{\makespine}{
+    \newpage\thispagestyle{empty}
+    \linespread{1.0}
+    \heiti\zihao{-4}\centering
+    \spinetitle\vfill\spineauthor\vfill\spineinst
+}
+
+\begin{document}
+
+% 论文中文题目
+\title{上\par 海\par 师\par 范\par 大\par 学\par 学\par 位\par 论\par 文\par \rotatebox[origin=c]{-90}{~\LaTeX{}~}\par 模\par 板\par {$~^{\pi}\pi^{\pi}$}}
+
+% 论文作者
+\author{某\par 某\par 某}
+
+% 学校名称
+\institute{上\par 海\par 师\par 范\par 大\par 学}
+
+% 生成书脊
+\makespine
+
+
+\end{document}
+
