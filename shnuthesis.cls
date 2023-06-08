@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2023/06/04
+%% @date 2023/06/08
 %% @version v4.5
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/06/04 v4.5]
+\ProvidesClass{shnuthesis}[2023/06/08 v4.5]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -709,7 +709,7 @@
     \else#1\fi\endgroup}
 %--- 参考文献间距 ---
 \def\bibfont{\small}
-\setlength{\bibsep}{8pt}
+\setlength{\bibsep}{7pt plus 3pt minus 3pt}
 \setlength{\bibhang}{2\ccwd}
 \renewcommand\@biblabel[1]{[#1]\hfill}
 \urlstyle{same}
