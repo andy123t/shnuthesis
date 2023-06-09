@@ -1,0 +1,76 @@
+% !Tex Program = xelatex
+% matlab and python code highlighting
+
+\documentclass[a4paper,zihao=-4]{ctexart}
+
+\usepackage{geometry}
+\geometry{left=3.0cm,right=3.0cm,top=2.9cm,bottom=3.2cm}
+\linespread{1.35}
+
+% package for code highlighting
+\usepackage{codestyle}
+
+\usepackage{fontspec}
+\pagenumbering{gobble}
+
+\title{Code highlighting}
+\author{Author}
+\date{}
+
+
+\begin{document}
+
+%\maketitle
+
+
+%\section{代码环境}
+
+这是一个代码环境.
+
+\begin{lstlisting}[language=TeX,title={Title of source code}]
+\documentclass{article}  % book,report,letter,beamer
+\usepackage{amsmath}  % AMS package
+\begin{document}
+Hello world!
+$$E = m c^2$$
+\end{document}
+\end{lstlisting}
+
+
+% 已定义  style=matlab 以及 style=python
+
+这是 MATLAB 程序代码高亮环境.
+
+\begin{lstlisting}[style=Matlab,basicstyle=\footnotesize\fontspec{Courier New},title={MATLAB code}]
+% Euler method for the ODEs
+clear all;  clf
+h=0.1; x=0:h:1;
+N=length(x)-1;
+u(1)=0;
+fun=@(t,u) t.^2+t-u;
+for n=1:N
+    u(n+1)=u(n)+h.*fun(x(n),u(n));
+end
+ue=-exp(-x)+x.^2-x+1;
+plot(x,ue,'b-',x,u,'r+','LineWidth',1)
+xlabel('x'), ylabel('u')
+\end{lstlisting}
+
+
+这是 Python 程序代码高亮环境.
+
+\begin{lstlisting}[style=python,basicstyle=\footnotesize\fontspec{Consolas},title={Python code}]
+# Fibonacci series up to n
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+fib(1000)
+\end{lstlisting}
+
+
+
+\end{document}
+

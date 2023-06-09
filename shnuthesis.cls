@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2023/06/08
+%% @date 2023/06/09
 %% @version v4.5
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/06/08 v4.5]
+\ProvidesClass{shnuthesis}[2023/06/09 v4.5]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -390,7 +390,7 @@
 \renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}%
     %\normalfont \topsep6\p@\@plus6\p@\relax
-    \normalfont \topsep3\p@\@plus3\p@\relax
+    \normalfont \topsep0\p@\@plus3\p@\relax
     \trivlist\item[\hskip\labelsep
     \bfseries #1\@addpunct{\,:\,}]\ignorespaces
 }{%
@@ -467,6 +467,9 @@
     \else
         \clearpage
     \fi
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 %---------- 定义声明页 ----------
@@ -523,16 +526,9 @@
         \kvsetkeys{shnu@statement}{#1}
     \fi
     \ifshnu@print\cleardoublepage\else\clearpage\fi
-}
-
-%---------- 定义插入声明页pdf文件命令 ----------
-\newcommand{\insertstatement}[1]{
-    \clearpage
-    \phantomsection
-    \pdfbookmark[0]{声明页}{statement}
-    \thispagestyle{empty}
-    \includepdf{#1}
-    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 %---------- 定义插入封面pdf文件命令 ----------
@@ -543,6 +539,22 @@
     \thispagestyle{empty}
     \includepdf{#1}
     \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \if@openright
+        \cleardoublepage
+    \fi
+}
+
+%---------- 定义插入声明页pdf文件命令 ----------
+\newcommand{\insertstatement}[1]{
+    \clearpage
+    \phantomsection
+    \pdfbookmark[0]{声明页}{statement}
+    \thispagestyle{empty}
+    \includepdf{#1}
+    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 %---------- 定义中英文关键词 ----------
@@ -579,7 +591,7 @@
     \chapter*{\enabstractbame}
     \chaptermark{\enabstractbame}
 }{
-    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \clearpage
     \if@openright
         \cleardoublepage
     \fi
@@ -620,7 +632,10 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{\contentsname}
     \tableofcontents
-    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \clearpage
+    \if@openright
+        \cleardoublepage
+    \fi
 }
 
 %---------- 设置插图清单和表格清单格式 ----------
@@ -667,7 +682,7 @@
     \chapter*{\denotationname}
     \chaptermark{\denotationname}
 }{
-    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \clearpage
     \if@openright
         \cleardoublepage
     \fi
