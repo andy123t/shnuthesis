@@ -31,8 +31,8 @@ SimSun.ttf, KaiTi.ttf, SimHei.ttf, FangSong.ttf
 % 无衬线字体可使用 Arial, 也可以使用默认
 
 %----- 设置英文字体 -----
-\usepackage{newtxtext}
-%\setmainfont{Times New Roman}
+%\usepackage{newtxtext}
+\setmainfont{Times New Roman}
 \setsansfont{Arial}
 %\setmonofont{Courier New}
 
