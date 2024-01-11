@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2023/12/10
+%% @date 2024/01/11
 %% @version v4.5
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2023/12/10 v4.5]
+\ProvidesClass{shnuthesis}[2024/01/11 v4.5]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -339,8 +339,8 @@
 %---------- 定制图形和表格标题的样式 ----------
 \RequirePackage{caption}
 \captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
-\captionsetup[figure]{position=bottom,skip={5pt},name={图}}
-\captionsetup[table]{position=top,skip={2pt},name={表}}
+\captionsetup[figure]{position=bottom,skip={6pt},name={图}}
+\captionsetup[table]{position=top,skip={3pt},name={表}}
 \setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 \setlength{\floatsep}{10pt plus 2pt minus 2pt}
 \setlength{\intextsep}{10pt plus 2pt minus 2pt}
@@ -694,34 +694,11 @@
 \newcommand\bibstyle@numbers{\bibpunct{[}{]}{,}{n}{,}{,}}
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 %--- 参考文献引用 ---
-\patchcmd\NAT@citexnum{%
-    \@ifnum{\NAT@ctype=\z@}{
-    \if*#2*\else\NAT@cmt#2\fi}{}
-    \NAT@mbox{\NAT@@close}%
-}{%
-    \NAT@mbox{\NAT@@close}%
-    \@ifnum{\NAT@ctype=\z@}{
-    \if*#2*\else\textsuperscript{#2}\fi}{}
-}{}{}
-\renewcommand\NAT@citesuper[3]{
-    \ifNAT@swa \if*#2*\else#2\NAT@spacechar\fi
-    \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close
-    \if*#3*\else#3\fi}\else #1\fi\endgroup}
-\renewcommand\NAT@citenum[3]{
-    \ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-    #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
-    \else#1\fi\endgroup}
-\patchcmd{\NAT@citex}{
-    \if*#2*\else\NAT@cmt#2\fi
-    \if\relax\NAT@date\relax\else\NAT@@close\fi
-}{%
-    \if\relax\NAT@date\relax\else\NAT@@close\fi
-    \if*#2*\else\textsuperscript{#2}\fi
-}{}{}
-\renewcommand\NAT@cite[3]{
-    \ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-    #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi
-    \else#1\fi\endgroup}
+\renewcommand\NAT@citesuper[3]{%
+    \ifNAT@swa\if*#2*\else#2\NAT@spacechar\fi
+    \unskip\kern\p@\textsuperscript{\NAT@@open#1%
+    \if*#3*\else,\NAT@spacechar#3\fi
+    \NAT@@close}\else#1\fi\endgroup}
 %--- 参考文献间距 ---
 \def\bibfont{\small}
 \setlength{\bibsep}{7pt plus 3pt minus 3pt}

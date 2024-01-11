@@ -22,7 +22,10 @@
 
 
 %----- 设置英文字体 -----
-%\usepackage{newtxtext}
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
 %\setmonofont{Courier New}
@@ -51,6 +54,9 @@
 
 %----- 调整列表项的间距 -----
 %\setlength{\itemsep}{3pt}
+
+%----- 调整页面避免出现过大空白 -----
+%\raggedbottom
 
 %----- 定义符号描述命令  -----
 \newcommand{\nameditem}[3][]{
