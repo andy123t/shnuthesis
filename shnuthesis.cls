@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2024/01/11
+%% @date 2024/01/18
 %% @version v4.5
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2024/01/11 v4.5]
+\ProvidesClass{shnuthesis}[2024/01/18 v4.5]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -90,8 +90,8 @@
 
 %---------- 定义新变量 ----------
 \newcommand\shnuname{上海师范大学}
-\newcommand\cnabstractbame{摘~~要}
-\newcommand\enabstractbame{Abstract}
+\newcommand\cnabstractname{摘~~要}
+\newcommand\enabstractname{Abstract}
 \newcommand\denotationname{主要符号表}
 \newcommand\acknowledgementname{致谢}
 
@@ -332,9 +332,9 @@
 
 %---------- 设置图表格式 ----------
 \numberwithin{figure}{chapter}
-\numberwithin{equation}{chapter}
-%\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\numberwithin{table}{chapter}
 %\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+%\renewcommand{\thetable}{\thechapter.\arabic{table}}
 
 %---------- 定制图形和表格标题的样式 ----------
 \RequirePackage{caption}
@@ -496,7 +496,7 @@
 
         \vspace*{2.4\baselineskip}
 
-        \hspace*{1.5cm} \raisebox{5pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
+        \hspace*{1.5cm} \raisebox{4pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{4pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
 
         \vspace*{4.0\baselineskip}
 
@@ -510,11 +510,11 @@
 
         \vspace*{2.4\baselineskip}
 
-        \hspace*{1.5cm} \raisebox{5pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{5pt}{导师签名：} \hrulefill \hspace*{0.5cm}
+        \hspace*{1.5cm} \raisebox{4pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{4pt}{导师签名：} \hrulefill \hspace*{0.5cm}
 
         \vspace*{0.25\baselineskip}
 
-        \hspace*{1.5cm} \raisebox{5pt}{日\hspace*{2em}期：} \hrulefill \hspace*{4em} \raisebox{5pt}{日\hspace*{2em}期：} \hrulefill \hspace*{0.5cm}
+        \hspace*{1.5cm} \raisebox{4pt}{日\hspace*{2em}期：} \hrulefill \hspace*{4em} \raisebox{4pt}{日\hspace*{2em}期：} \hrulefill \hspace*{0.5cm}
 
         \vspace*{2.0\baselineskip}
     }
@@ -572,9 +572,9 @@
     \clearpage
     \pagestyle{plain}
     \phantomsection
-    \addcontentsline{toc}{chapter}{\cnabstractbame}
-    \chapter*{\cnabstractbame}
-    \chaptermark{\cnabstractbame}
+    \addcontentsline{toc}{chapter}{\cnabstractname}
+    \chapter*{\cnabstractname}
+    \chaptermark{\cnabstractname}
 }{
     \clearpage
     \if@openright
@@ -587,9 +587,9 @@
     \clearpage
     \pagestyle{plain}
     \phantomsection
-    \addcontentsline{toc}{chapter}{\enabstractbame}
-    \chapter*{\enabstractbame}
-    \chaptermark{\enabstractbame}
+    \addcontentsline{toc}{chapter}{\enabstractname}
+    \chapter*{\enabstractname}
+    \chaptermark{\enabstractname}
 }{
     \clearpage
     \if@openright
