@@ -19,16 +19,16 @@ LaTeX 的 Table 环境是一个浮动体环境, 排版与 Figure 环境类似. �
 \caption{某校学生身高体重样本}
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
-	序号 & 年龄 & 身高 & 体重 \\
-	\midrule
-	001 & 15 & 156 & 42 \\
-	002 & 16 & 158 & 45 \\
-	003 & 14 & 162 & 48 \\
-	004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
-	平均 & 15 & 159.75 & 46.25 \\
-	\bottomrule
+  \toprule
+  序号 & 年龄 & 身高 & 体重 \\
+  \midrule
+  001 & 15 & 156 & 42 \\
+  002 & 16 & 158 & 45 \\
+  003 & 14 & 162 & 48 \\
+  004 & 15 & 163 & 50 \\
+  \cmidrule{2-4}
+  平均 & 15 & 159.75 & 46.25 \\
+  \bottomrule
 \end{tabularx}
 \end{table}
 
@@ -37,8 +37,7 @@ LaTeX 的 Table 环境是一个浮动体环境, 排版与 Figure 环境类似. �
 \centering
 \caption{论文进度安排}
 %\renewcommand\arraystretch{1.1} %定义表格高度
-% PLCR前面已经定义
-\begin{tabularx}{0.8\textwidth}{|P{4cm}|C|}
+\begin{tabular}{|P{4cm}|P{7cm}|}
 \Xhline{2\arrayrulewidth}
 论文起止时间       &  论文筹备过程 \\
 \hline
@@ -56,7 +55,7 @@ LaTeX 的 Table 环境是一个浮动体环境, 排版与 Figure 环境类似. �
 \hline
 20xx.xx -- 20xx.xx    &  毕业论文答辩 \\
 \Xhline{2\arrayrulewidth}
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 \clearpage
@@ -90,6 +89,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \begin{table}[htp!]
 \centering
 %\renewcommand\arraystretch{1.1} %定义表格高度
+% PLCR已经定义
 \caption{数值误差示例}
 \label{tab:error2}
 \begin{tabularx}{0.96\textwidth}{|P{0.8cm}|C|C|C|C|C|C|}

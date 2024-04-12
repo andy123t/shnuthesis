@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2024/01/18
-%% @version v4.5
+%% @date 2024/04/12
+%% @version v4.6
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2024/01/18 v4.5]
+\ProvidesClass{shnuthesis}[2024/04/12 v4.6]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -72,6 +72,7 @@
 \RequirePackage{anyfontsize}
 \RequirePackage{pdfpages}
 \RequirePackage[numbered]{bookmark}
+\RequirePackage{microtype}
 
 %---------- 定义文档属性格式 ----------
 \def\shnu@define@term#1{
@@ -82,6 +83,7 @@
 }
 
 %----------- 添加几个新的文档属性 -----------
+\shnu@define@term{shnucode}
 \shnu@define@term{institute}
 \shnu@define@term{major}
 \shnu@define@term{research}
@@ -432,7 +434,7 @@
     \begin{center}
         \vspace*{-1.8\baselineskip}
 
-        {\hfill 学校代码：10270 \hspace*{8cm} 学号：\shnu@studentID \hfill}
+        {\hfill 学校代码：\shnu@shnucode \hspace*{8cm} 学号：\shnu@studentID \hfill}
 
         \vspace*{\fill}
 
@@ -610,7 +612,7 @@
 \renewcommand{\listtablename}{表格清单}
 \setlength{\cftbeforetoctitleskip}{8pt}
 \setlength{\cftaftertoctitleskip}{20pt}
-\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforechapskip}{10pt plus 2pt minus 2pt}
 \setlength{\cftbeforesecskip}{3pt}
 \setlength{\cftbeforesubsecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}
