@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2024/04/12
-%% @version v4.6
+%% @date 2024/11/12
+%% @version v4.7
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2024/04/12 v4.6]
+\ProvidesClass{shnuthesis}[2024/11/12 v4.7]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -75,11 +75,11 @@
 \RequirePackage{microtype}
 
 %---------- 定义文档属性格式 ----------
-\def\shnu@define@term#1{
-    \expandafter\gdef\csname #1\endcsname##1{
-        \expandafter\gdef\csname shnu@#1\endcsname{##1}
-    }
-    \csname #1\endcsname{}
+\def\shnu@define@term#1{%
+    \expandafter\gdef\csname #1\endcsname##1{%
+        \expandafter\gdef\csname shnu@#1\endcsname{##1}%
+    }%
+    \csname #1\endcsname{}%
 }
 
 %----------- 添加几个新的文档属性 -----------
@@ -101,22 +101,22 @@
     \newcommand\shnu@thesisname{硕~士~学~位~论~文}%
     \newcommand\shnu@shnuthesisname{上海师范大学硕士学位论文}%
     \newcommand\shnu@publications{攻读硕士学位期间的研究成果}%
-    \else
+\else
     \newcommand\shnu@thesisname{博~士~学~位~论~文}%
     \newcommand\shnu@shnuthesisname{上海师范大学博士学位论文}%
     \newcommand\shnu@publications{攻读博士学位期间的研究成果}%
 \fi
 
 %------- 重新定义cleardoublepage --------
-\renewcommand{\cleardoublepage}{\clearpage
-    \clearpage\if@twoside\ifodd\c@page\else%
+\renewcommand{\cleardoublepage}{%
+    \clearpage\if@twoside\ifodd\c@page\else
     \thispagestyle{empty}%
-    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi
 }
 
 %---------- 设置超链接 ----------
 \RequirePackage{hyperref}
-\hypersetup{
+\hypersetup{%
     colorlinks=true,
     linkcolor=black,
     citecolor=blue,
@@ -155,7 +155,7 @@
 %---------- 理科论文章节格式 ----------
 \ifshnu@science
 %--- chapter ---
-\ctexset{
+\ctexset{%
     chapter = {
         format = \linespread{1.0}\sffamily\heiti\chapfont\centering,
         nameformat = {},
@@ -166,51 +166,39 @@
         beforeskip = {-4pt},
         afterskip = {24pt},
         pagestyle = plain,
-    }
-}
-%--- section ---
-\ctexset{
+    },
     section = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-3}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {24pt},
         afterskip = {6pt},
-    }
-}
-%--- subsection ---
-\ctexset{
+    },
     subsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
-    }
-}
-%--- subsubsection ---
-\ctexset{
+    },
     subsubsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
-    }
-}
-%--- appendix ---
-\ctexset{
+    },
     appendix = {
         numbering = true,
         number = \Alph{chapter},
-    }
+    },
 }
 \fi
 
 %---------- 文科论文章节格式 ----------
 \ifshnu@arts
 %--- chapter ---
-\ctexset{
+\ctexset{%
     chapter = {
         format = \linespread{1.0}\sffamily\heiti\chapfont\centering,
         nameformat = {},
@@ -221,10 +209,7 @@
         beforeskip = {4pt},
         afterskip = {24pt},
         pagestyle = plain,
-    }
-}
-%--- section ---
-\ctexset{
+    },
     section = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-3}\centering,
         name = {第,节},
@@ -233,10 +218,7 @@
         aftername = \quad,
         beforeskip = {24pt},
         afterskip = {6pt},
-    }
-}
-%--- subsection ---
-\ctexset{
+    },
     subsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{4}\raggedright,
         number = \chinese{subsection},
@@ -244,10 +226,7 @@
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
-    }
-}
-%--- subsubsection ---
-\ctexset{
+    },
     subsubsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-4}\raggedright,
         name = {（,）},
@@ -256,15 +235,12 @@
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
-    }
-}
-%--- appendix ---
-\ctexset{
+    },
     appendix = {
         numbering = true,
         number = \Alph{chapter},
-    }
-}
+    },
+}%
 \fi
 
 %---------- 算法宏包及设置 ----------
@@ -291,23 +267,23 @@
 % }
 
 \renewcommand{\headrule}{%
-    \let\headrulewidth\plainheadrulewidth
-    \hrule\@height 0.5pt \@width\headwidth
+    \let\headrulewidth\plainheadrulewidth%
+    \hrule\@height 0.5pt \@width\headwidth%
     \vskip-1.5pt
 }
 
 %---------- 设置页眉样式 ----------
-\newcommand{\headstyle}{
-    %\fancyhead[RO,LE]{\zihao{5} \nouppercase{\leftmark}}
-    %\fancyhead[LO,RE]{\zihao{5} \shnu@shnuthesisname}
-    \fancyhead[C]{\zihao{5} \nouppercase{\leftmark}}
+\newcommand{\headstyle}{%
+    %\fancyhead[RO,LE]{\zihao{5}\nouppercase{\leftmark}}
+    %\fancyhead[LO,RE]{\zihao{5}\shnu@shnuthesisname}
+    \fancyhead[C]{\zihao{5}\nouppercase{\leftmark}}
 }
 
 %---------- 设置页脚样式 ----------
-\newcommand{\footstyle}{
-    %\fancyfoot[C]{\zihao{5} \thepage}
-    \fancyfoot[LE]{\zihao{5} \thepage}
-    \fancyfoot[RO]{\zihao{5} \thepage}
+\newcommand{\footstyle}{%
+    %\fancyfoot[C]{\zihao{5}\thepage}
+    \fancyfoot[LE]{\zihao{5}\thepage}
+    \fancyfoot[RO]{\zihao{5}\thepage}
 }
 
 %---------- 定义plain样式 ----------
@@ -369,10 +345,8 @@
 % \setlength{\belowbottomsep}{0pt}
 
 %---------- 数学定理设置 ----------
-\newtheoremstyle{shnu}
-{0.5\topsep}{0.5\topsep}
-{\itshape}{}{\bfseries}
-{.}{5pt plus 1pt minus 1pt}{}
+\newtheoremstyle{shnu}{0.5\topsep}{0.5\topsep}%
+{\itshape}{}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}%
 %\theoremstyle{plain}
 \theoremstyle{shnu}
 \newtheorem{definition}{定义}[chapter]
@@ -389,10 +363,10 @@
 \newtheorem{conjecture}{猜想}[chapter]
 %\renewcommand{\qedsymbol}{$\blacksquare$}
 \renewcommand{\proofname}{证明}
-\renewenvironment{proof}[1][\proofname]{\par
-    \pushQED{\qed}%
+\renewenvironment{proof}[1][\proofname]{%
+    \par\pushQED{\qed}%
     %\normalfont \topsep6\p@\@plus6\p@\relax
-    \normalfont \topsep0\p@\@plus3\p@\relax
+    \normalfont\topsep0\p@\@plus3\p@\relax
     \trivlist\item[\hskip\labelsep
     \bfseries #1\@addpunct{\,:\,}]\ignorespaces
 }{%
@@ -403,7 +377,7 @@
 \allowdisplaybreaks[4]
 
 %---------- 设置公式间距 ----------
-\AtBeginDocument{
+\AtBeginDocument{%
     \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
     \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
     \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
@@ -426,43 +400,43 @@
 \setlist[biblist]{leftmargin=*,label={[\arabic*]}}
 
 %---------- 定义新的标题页面 ----------
-\renewcommand{\maketitle}[1][15em]{
+\renewcommand{\maketitle}[1][15em]{%
     \clearpage
     \phantomsection
     \pdfbookmark[0]{封~~面}{cover}
-    \thispagestyle{empty}
-    \begin{center}
-        \vspace*{-1.8\baselineskip}
+    \thispagestyle{empty}%
+    \begin{center}%
+        \vspace*{-1.8\baselineskip}%
 
         {\hfill 学校代码：\shnu@shnucode \hspace*{8cm} 学号：\shnu@studentID \hfill}
 
-        \vspace*{\fill}
+        \vspace*{\fill}%
 
-        \vspace*{3.0\baselineskip}
+        \vspace*{3.0\baselineskip}%
 
-        \includegraphics[width=10cm]{\logopic}
+        \includegraphics[width=10cm]{\logopic}%
 
-        \vspace*{1.0\baselineskip}
+        \vspace*{1.0\baselineskip}%
 
-        {\fontsize{40bp}{40bp}\selectfont\shnu@thesisname}
+        {\fontsize{40bp}{40bp}\selectfont\shnu@thesisname}%
 
-        \vspace*{2.5\baselineskip}
+        \vspace*{2.5\baselineskip}%
 
-        \parbox[t]{15cm}{\centering\zihao{1}\sffamily\heiti\@title}
+        \parbox[t]{15cm}{\centering\zihao{1}\sffamily\heiti\@title}%
 
-        \vspace*{3.0\baselineskip}
+        \vspace*{3.0\baselineskip}%
 
-        {\zihao{3} \heiti \renewcommand\arraystretch{1.6}
+        {\zihao{3}\heiti\renewcommand\arraystretch{1.6}%
         \begin{tabular}{lc}
-            \makebox[7em][s]{学 \hfill 院~：} & \underline{\makebox[#1]{\shnu@institute}} \\
-            \makebox[7em][s]{专 \hfill 业~：} & \underline{\makebox[#1]{\shnu@major}} \\
-            \makebox[7em][s]{研 \hfill 究 \hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@research}} \\
-            \makebox[7em][s]{研 \hfill 究 \hfill 生 \hfill 姓 \hfill 名~：} & \underline{\makebox[#1]{\@author}} \\
-            \makebox[7em][s]{指 \hfill 导 \hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@advisor}} \\
-            \makebox[7em][s]{完 \hfill 成 \hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
-        \end{tabular}}
-    \end{center}
-    \vspace*{\fill}
+            \makebox[7em][s]{学\hfill 院~：} & \underline{\makebox[#1]{\shnu@institute}} \\
+            \makebox[7em][s]{专\hfill 业~：} & \underline{\makebox[#1]{\shnu@major}} \\
+            \makebox[7em][s]{研\hfill 究\hfill 方 \hfill 向~：} & \underline{\makebox[#1]{\shnu@research}} \\
+            \makebox[7em][s]{研\hfill 究\hfill 生 \hfill 姓\hfill 名~：} & \underline{\makebox[#1]{\@author}} \\
+            \makebox[7em][s]{指\hfill 导\hfill 教 \hfill 师~：} & \underline{\makebox[#1]{\shnu@advisor}} \\
+            \makebox[7em][s]{完\hfill 成\hfill 日 \hfill 期~：} & \underline{\makebox[#1]{\@date}} \\
+        \end{tabular}}%
+    \end{center}%
+    \vspace*{\fill}%
     \ifshnu@print
         \cleardoublepage
         \hypersetup{hidelinks}
@@ -475,51 +449,51 @@
 }
 
 %---------- 定义声明页 ----------
-\newcommand{\makestatement}[1][]{
+\newcommand{\makestatement}[1][]{%
     \clearpage
     \phantomsection
     \pdfbookmark[0]{声明页}{statement}
     \def\shnu@tmp{#1}
     \ifx\shnu@tmp\@empty
-    \thispagestyle{empty}
-    {
+    \thispagestyle{empty}%
+    {%
         \linespread{1.6}\selectfont
         \ziju{0.03}
 
-        \vspace*{0.2\baselineskip}
+        \vspace*{0.2\baselineskip}%
 
         \begin{center}
             {\heiti \chapfont 论文独创性声明}
         \end{center}
 
-        \vspace*{\baselineskip}
+        \vspace*{\baselineskip}%
 
         本论文是我个人在导师指导下进行的研究工作及取得的研究成果。论文中除了特别加以标注和致谢的地方外，不包含其他人或机构已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献均已在论文中做了明确的声明并表示了谢意。
 
-        \vspace*{2.4\baselineskip}
+        \vspace*{2.4\baselineskip}%
 
-        \hspace*{1.5cm} \raisebox{4pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{4pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}
+        \hspace*{1.5cm} \raisebox{4pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{4pt}{日\hspace*{2em}期：}\hrulefill \hspace*{0.5cm}%
 
-        \vspace*{4.0\baselineskip}
+        \vspace*{4.0\baselineskip}%
 
         \begin{center}
             {\heiti \chapfont 论文使用授权声明}
         \end{center}
 
-        \vspace*{\baselineskip}
+        \vspace*{\baselineskip}%
 
         本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。暂缓出版的论文在公开后遵守此规定。
 
-        \vspace*{2.4\baselineskip}
+        \vspace*{2.4\baselineskip}%
 
-        \hspace*{1.5cm} \raisebox{4pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{4pt}{导师签名：} \hrulefill \hspace*{0.5cm}
+        \hspace*{1.5cm} \raisebox{4pt}{作者签名：} \hrulefill \hspace*{4em} \raisebox{4pt}{导师签名：} \hrulefill \hspace*{0.5cm}%
+        
+        \vspace*{0.25\baselineskip}%
 
-        \vspace*{0.25\baselineskip}
-
-        \hspace*{1.5cm} \raisebox{4pt}{日\hspace*{2em}期：} \hrulefill \hspace*{4em} \raisebox{4pt}{日\hspace*{2em}期：} \hrulefill \hspace*{0.5cm}
-
-        \vspace*{2.0\baselineskip}
-    }
+        \hspace*{1.5cm} \raisebox{4pt}{日\hspace*{2em}期：} \hrulefill \hspace*{4em} \raisebox{4pt}{日\hspace*{2em}期：} \hrulefill \hspace*{0.5cm}%
+        
+        \vspace*{2.0\baselineskip}%
+    }%
     \else
         \kv@define@key{shnu@statement}{file}{\includepdf{\kv@value}}%
         \kv@set@family@handler{shnu@statement}{%
@@ -534,11 +508,11 @@
 }
 
 %---------- 定义插入封面pdf文件命令 ----------
-\newcommand{\insertcover}[1]{
+\newcommand{\insertcover}[1]{%
     \clearpage
     \phantomsection
     \pdfbookmark[0]{封~~面}{cover}
-    \thispagestyle{empty}
+    \thispagestyle{empty}%
     \includepdf{#1}
     \ifshnu@print\cleardoublepage\else\clearpage\fi
     \if@openright
@@ -547,11 +521,11 @@
 }
 
 %---------- 定义插入声明页pdf文件命令 ----------
-\newcommand{\insertstatement}[1]{
+\newcommand{\insertstatement}[1]{%
     \clearpage
     \phantomsection
     \pdfbookmark[0]{声明页}{statement}
-    \thispagestyle{empty}
+    \thispagestyle{empty}%
     \includepdf{#1}
     \ifshnu@print\cleardoublepage\else\clearpage\fi
     \if@openright
@@ -563,21 +537,23 @@
 %--- 中文关键词 ---
 \newcommand{\cnkeywords}[1]{%
     \vspace*{0.8\baselineskip}\par
-    \noindent {\bfseries 关键词:~} #1}
+    \noindent {\bfseries 关键词:~} #1%
+}
 %--- 英文关键词 ---
 \newcommand{\enkeywords}[1]{%
     \vspace*{0.8\baselineskip}\par
-    \noindent {\bfseries Key Words:~} #1}
+    \noindent {\bfseries Key Words:~} #1%
+}
 
 %---------- 中文摘要环境 ----------
-\newenvironment{cnabstract}{
+\newenvironment{cnabstract}{%
     \clearpage
-    \pagestyle{plain}
+    \pagestyle{plain}%
     \phantomsection
     \addcontentsline{toc}{chapter}{\cnabstractname}
     \chapter*{\cnabstractname}
     \chaptermark{\cnabstractname}
-}{
+}{%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -585,14 +561,14 @@
 }
 
 %---------- 英文摘要环境 ----------
-\newenvironment{enabstract}{
+\newenvironment{enabstract}{%
     \clearpage
-    \pagestyle{plain}
+    \pagestyle{plain}%
     \phantomsection
     \addcontentsline{toc}{chapter}{\enabstractname}
     \chapter*{\enabstractname}
     \chaptermark{\enabstractname}
-}{
+}{%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -627,13 +603,13 @@
 \fi
 
 %---------- 设置新的生成目录命令 ----------
-\newcommand{\maketoc}{
+\newcommand{\maketoc}{%
     % 设置目录hdr和页码选项
     \clearpage
     \pagestyle{plain}
     \phantomsection
     \addcontentsline{toc}{chapter}{\contentsname}
-    \tableofcontents
+    \tableofcontents%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -641,21 +617,21 @@
 }
 
 %---------- 设置插图清单和表格清单格式 ----------
-\titlecontents{figure}[0pt]{}{
-\figureautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{
+\titlecontents{figure}[0pt]{}{%
+\figureautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{%
 \titlerule*[8pt]{$\cdot$}\contentspage}
-\titlecontents{table}[0pt]{}{
-\tableautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{
+\titlecontents{table}[0pt]{}{%
+\tableautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{%
 \titlerule*[8pt]{$\cdot$}\contentspage}
 
 %---------- 重定义插图清单 ----------
-\newcommand\makelof{
+\newcommand\makelof{%
     \clearpage
     \phantomsection
     \addcontentsline{toc}{chapter}{\listfigurename}
     \chapter*{\listfigurename}
     \chaptermark{\listfigurename}
-    \@starttoc{lof}
+    \@starttoc{lof}%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -663,13 +639,13 @@
 }
 
 %---------- 重定义表格清单 ----------
-\newcommand\makelot{
+\newcommand\makelot{%
     \clearpage
     \phantomsection
     \addcontentsline{toc}{chapter}{\listtablename}
     \chapter*{\listtablename}
     \chaptermark{\listtablename}
-    \@starttoc{lot}
+    \@starttoc{lot}%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -677,13 +653,13 @@
 }
 
 %---------- 定义主要符号表环境 ----------
-\newenvironment{denotation}{
+\newenvironment{denotation}{%
     \clearpage
     \phantomsection
     \addcontentsline{toc}{chapter}{\denotationname}
     \chapter*{\denotationname}
     \chaptermark{\denotationname}
-}{
+}{%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -725,14 +701,14 @@
 }
 
 %---------- 定义新的环境研究成果页 ----------
-\newenvironment{publications}{
+\newenvironment{publications}{%
     \clearpage
     \phantomsection
     \addcontentsline{toc}{chapter}{\shnu@publications}
     \chapter*{\shnu@publications}
     \chaptermark{\shnu@publications}
     \baselineskip=1.2\baselineskip
-}{
+}{%
     \clearpage
     \if@openright
         \cleardoublepage
@@ -740,14 +716,14 @@
 }
 
 %---------- 定义新的致谢环境 ----------
-\newenvironment{acknowledgement}{
+\newenvironment{acknowledgement}{%
     \clearpage
     \phantomsection
     \addcontentsline{toc}{chapter}{\acknowledgementname}
     \chapter*{\acknowledgementname}
     \chaptermark{\acknowledgementname}
     \baselineskip=1.2\baselineskip
-}{
+}{%
     \clearpage
     \if@openright
         \cleardoublepage
