@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2024/11/12
+%% @date 2024/11/13
 %% @version v4.7
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2024/11/12 v4.7]
+\ProvidesClass{shnuthesis}[2024/11/13 v4.7]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -408,7 +408,7 @@
     \begin{center}%
         \vspace*{-1.8\baselineskip}%
 
-        {\hfill 学校代码：\shnu@shnucode \hspace*{8cm} 学号：\shnu@studentID \hfill}
+        {\hfill 学校代码：\shnu@shnucode \hspace*{8cm} 学号：\shnu@studentID \hfill}%
 
         \vspace*{\fill}%
 
@@ -601,6 +601,12 @@
 \renewcommand{\cftsubsecaftersnumb}{\hspace{-1.4em}}
 \renewcommand{\cftsubsubsecaftersnumb}{\hspace{-1.4em}}
 \fi
+\renewcommand{\cftfigpresnum}{\figurename~}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cftfignumwidth}{3.5em}
+\renewcommand{\cfttabpresnum}{\tablename~}
+\setlength{\cfttabindent}{0pt}
+\setlength{\cfttabnumwidth}{3.5em}
 
 %---------- 设置新的生成目录命令 ----------
 \newcommand{\maketoc}{%
@@ -615,14 +621,6 @@
         \cleardoublepage
     \fi
 }
-
-%---------- 设置插图清单和表格清单格式 ----------
-\titlecontents{figure}[0pt]{}{%
-\figureautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{%
-\titlerule*[8pt]{$\cdot$}\contentspage}
-\titlecontents{table}[0pt]{}{%
-\tableautorefname\hspace*{0.3em}\thecontentslabel\quad}{}{%
-\titlerule*[8pt]{$\cdot$}\contentspage}
 
 %---------- 重定义插图清单 ----------
 \newcommand\makelof{%
