@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2024/11/13
+%% @date 2024/11/16
 %% @version v4.7
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2024/11/13 v4.7]
+\ProvidesClass{shnuthesis}[2024/11/16 v4.7]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -38,7 +38,7 @@
 % twoside,openright,print 用于打印, 全部双面排版
 %---------------------------------
 
-%---------- 修改字体宏包 ----------
+%---------- 修改字体宏包Options ----------
 \PassOptionsToPackage{no-math}{fontspec}
 
 %---------- 载入Class ----------
@@ -192,7 +192,7 @@
         numbering = true,
         number = \Alph{chapter},
     },
-}
+}%
 \fi
 
 %---------- 文科论文章节格式 ----------
@@ -349,14 +349,14 @@
 {\itshape}{}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}%
 %\theoremstyle{plain}
 \theoremstyle{shnu}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{corollary}{推论}[chapter]
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{theorem}{定理}[chapter]
 \newtheorem{example}{例}[chapter]
-\newtheorem{corollary}{推论}[chapter]
 \newtheorem{remark}{注}[chapter]
-\newtheorem{exercise}{练习}[chapter]
+\newtheorem{exercise}{习题}[chapter]
 \newtheorem{assumption}{假设}[chapter]
 \newtheorem{axiom}{公理}[chapter]
 \newtheorem{property}{性质}[chapter]
@@ -372,6 +372,20 @@
 }{%
     \popQED\endtrivlist\@endpefalse
 }
+
+%---------- 定义定理的autoref ----------
+\renewcommand{\theoremautorefname}{定理}
+\newcommand{\lemmaautorefname}{引理}
+\newcommand{\corollaryautorefname}{推论}
+\newcommand{\definitionautorefname}{定义}
+\newcommand{\propositionautorefname}{命题}
+\newcommand{\exampleautorefname}{例}
+\newcommand{\remarkautorefname}{注}
+\newcommand{\exerciseautorefname}{习题}
+\newcommand{\assumptionautorefname}{假设}
+\newcommand{\axiomautorefname}{公理}
+\newcommand{\propertyautorefname}{性质}
+\newcommand{\conjectureautorefname}{猜想}
 
 %---------- 数学公式设置 ----------
 \allowdisplaybreaks[4]
@@ -555,9 +569,6 @@
     \chaptermark{\cnabstractname}
 }{%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
 }
 
 %---------- 英文摘要环境 ----------
@@ -617,9 +628,6 @@
     \addcontentsline{toc}{chapter}{\contentsname}
     \tableofcontents%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
 }
 
 %---------- 重定义插图清单 ----------
@@ -631,9 +639,6 @@
     \chaptermark{\listfigurename}
     \@starttoc{lof}%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
 }
 
 %---------- 重定义表格清单 ----------
@@ -645,9 +650,6 @@
     \chaptermark{\listtablename}
     \@starttoc{lot}%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
 }
 
 %---------- 定义主要符号表环境 ----------
@@ -674,7 +676,8 @@
     \ifNAT@swa\if*#2*\else#2\NAT@spacechar\fi
     \unskip\kern\p@\textsuperscript{\NAT@@open#1%
     \if*#3*\else,\NAT@spacechar#3\fi
-    \NAT@@close}\else#1\fi\endgroup}
+    \NAT@@close}\else#1\fi
+}
 %--- 参考文献间距 ---
 \def\bibfont{\small}
 \setlength{\bibsep}{7pt plus 3pt minus 3pt}
@@ -708,9 +711,6 @@
     \baselineskip=1.2\baselineskip
 }{%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
 }
 
 %---------- 定义新的致谢环境 ----------
