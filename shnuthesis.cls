@@ -676,7 +676,7 @@
     \ifNAT@swa\if*#2*\else#2\NAT@spacechar\fi
     \unskip\kern\p@\textsuperscript{\NAT@@open#1%
     \if*#3*\else,\NAT@spacechar#3\fi
-    \NAT@@close}\else#1\fi
+    \NAT@@close}\else#1\fi\endgroup
 }
 %--- 参考文献间距 ---
 \def\bibfont{\small}
