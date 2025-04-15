@@ -1,5 +1,5 @@
 %%
-%% This is file `shnuthesis-numeric.bst',
+%% This is file `shnuthesis-numeric-authors.bst',
 %%
 %% modified under the `thuthesis-numeric.bst`
 %%
@@ -60,9 +60,9 @@ STRINGS {
 
 FUNCTION {load.config}
 {
-  #2 'citation.et.al.min :=
+  #3 'citation.et.al.min :=
   #1 'citation.et.al.use.first :=
-  #4 'bibliography.et.al.min :=
+  #1000 'bibliography.et.al.min :=
   #3 'bibliography.et.al.use.first :=
   #0 'uppercase.name :=
   #0 'terms.in.macro :=
