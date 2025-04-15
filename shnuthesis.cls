@@ -2,18 +2,18 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2024/11/16
-%% @version v4.7
+%% @date 2025/04/15
+%% @version v4.8
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2024/11/16 v4.7]
+\ProvidesClass{shnuthesis}[2025/04/15 v4.8]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
-\def\logopic{shnu.eps}  %SHNU-logo
+\def\logopic{shnu.eps}  % SHNU-logo
 
 %---------- 定义的新的Options ----------
 \newif\ifshnu@master
@@ -29,6 +29,7 @@
 \DeclareOption{openright}{\PassOptionsToClass{openright}{ctexbook}}
 \DeclareOption{twoside}{\PassOptionsToClass{twoside}{ctexbook}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+
 \ExecuteOptions{master,science,openany,twoside}
 \ProcessOptions\relax
 
@@ -49,13 +50,15 @@
 
 %---------- 定义页边距 ----------
 \RequirePackage{geometry}
-%\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
-\geometry{left=3.0cm,right=3.0cm,top=2.9cm,bottom=3.2cm}
-\setlength{\headheight}{18pt}
-\setlength{\headsep}{18pt}
-\setlength{\footskip}{28pt}
+\geometry{
+    left=3.0cm, right=3.0cm,
+    top=3.0cm, bottom=3.0cm,
+    headheight=15pt, headsep=18pt,
+    footskip=28pt
+}
 
 %---------- 常用宏包 ----------
+\RequirePackage{keyval}
 \RequirePackage{amsmath,amssymb,amsthm}
 \RequirePackage{mathrsfs}
 \RequirePackage{graphicx}
@@ -75,7 +78,7 @@
 \RequirePackage{microtype}
 
 %---------- 定义文档属性格式 ----------
-\def\shnu@define@term#1{%
+\newcommand{\shnu@define@term}[1]{%
     \expandafter\gdef\csname #1\endcsname##1{%
         \expandafter\gdef\csname shnu@#1\endcsname{##1}%
     }%
@@ -109,13 +112,21 @@
 
 %------- 重新定义cleardoublepage --------
 \renewcommand{\cleardoublepage}{%
-    \clearpage\if@twoside\ifodd\c@page\else
-    \thispagestyle{empty}%
-    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi
+    \clearpage
+    \if@twoside
+        \ifodd\c@page\else
+            \thispagestyle{empty}%
+            \hbox{}\newpage
+            \if@twocolumn\hbox{}\newpage\fi
+        \fi
+    \fi
 }
 
 %---------- 设置超链接 ----------
 \RequirePackage{hyperref}
+\ifshnu@print
+\hypersetup{hidelinks=true}
+\else
 \hypersetup{%
     colorlinks=true,
     linkcolor=black,
@@ -123,6 +134,7 @@
     filecolor=blue,
     urlcolor=blue
 }
+\fi
 
 %---------- 设置正文前页码为大写罗马数字 ----------
 \renewcommand\frontmatter{%
@@ -251,8 +263,6 @@
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
 %---------- 定义页眉页脚 ----------
-% 定义页眉和页脚 使用 fancyhdr 宏包
-
 %---------- 设置分隔线宽度 ----------
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -286,7 +296,6 @@
     \fancyfoot[RO]{\zihao{5}\thepage}
 }
 
-%---------- 定义plain样式 ----------
 \fancypagestyle{plain}{%
     \fancyhf{}
     \headstyle
@@ -302,7 +311,6 @@
 %\renewcommand{\baselinestretch}{1.35}
 
 %---------- 浮动对象设置 ----------
-% 浮动对象的缺省值稍微宽松一点
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
@@ -314,7 +322,7 @@
 %\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 %\renewcommand{\thetable}{\thechapter.\arabic{table}}
 
-%---------- 定制图形和表格标题的样式 ----------
+%---------- 设置图片和表格样式 ----------
 \RequirePackage{caption}
 \captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
 \captionsetup[figure]{position=bottom,skip={6pt},name={图}}
@@ -329,7 +337,7 @@
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 
-%---------- 使用tabularx库并定义新的左右中格式 ----------
+%---------- 定义表格列类型 ----------
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
@@ -345,8 +353,8 @@
 % \setlength{\belowbottomsep}{0pt}
 
 %---------- 数学定理设置 ----------
-\newtheoremstyle{shnu}{0.5\topsep}{0.5\topsep}%
-{\itshape}{}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}%
+%\newtheoremstyle{shnu}{0.5\topsep}{0.5\topsep}{\itshape}{}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}%
+\newtheoremstyle{shnu}{0.5\topsep}{0.5\topsep}{\kaishu}{}{\sffamily\heiti}{.}{5pt plus 1pt minus 1pt}{}%
 %\theoremstyle{plain}
 \theoremstyle{shnu}
 \newtheorem{theorem}{定理}[chapter]
@@ -405,7 +413,7 @@
 %---------- 重新设置公式autoref ----------
 \renewcommand{\equationautorefname}{公式}
 
-%---------- 定义列表项的样式 ----------
+%---------- 列表样式设置 ----------
 \RequirePackage{enumitem}
 \setlist{nolistsep}
 
@@ -436,7 +444,7 @@
 
         \vspace*{2.5\baselineskip}%
 
-        \parbox[t]{15cm}{\centering\zihao{1}\sffamily\heiti\@title}%
+        \parbox[t]{\linewidth}{\centering\zihao{1}\sffamily\heiti\@title}%
 
         \vspace*{3.0\baselineskip}%
 
@@ -451,15 +459,8 @@
         \end{tabular}}%
     \end{center}%
     \vspace*{\fill}%
-    \ifshnu@print
-        \cleardoublepage
-        \hypersetup{hidelinks}
-    \else
-        \clearpage
-    \fi
-    \if@openright
-        \cleardoublepage
-    \fi
+    \ifshnu@print\cleardoublepage\else\clearpage\fi
+    \if@openright\cleardoublepage\fi
 }
 
 %---------- 定义声明页 ----------
@@ -516,9 +517,7 @@
         \kvsetkeys{shnu@statement}{#1}
     \fi
     \ifshnu@print\cleardoublepage\else\clearpage\fi
-    \if@openright
-        \cleardoublepage
-    \fi
+    \if@openright\cleardoublepage\fi
 }
 
 %---------- 定义插入封面pdf文件命令 ----------
@@ -529,9 +528,7 @@
     \thispagestyle{empty}%
     \includepdf{#1}
     \ifshnu@print\cleardoublepage\else\clearpage\fi
-    \if@openright
-        \cleardoublepage
-    \fi
+    \if@openright\cleardoublepage\fi
 }
 
 %---------- 定义插入声明页pdf文件命令 ----------
@@ -542,24 +539,21 @@
     \thispagestyle{empty}%
     \includepdf{#1}
     \ifshnu@print\cleardoublepage\else\clearpage\fi
-    \if@openright
-        \cleardoublepage
-    \fi
+    \if@openright\cleardoublepage\fi
 }
 
 %---------- 定义中英文关键词 ----------
-%--- 中文关键词 ---
 \newcommand{\cnkeywords}[1]{%
     \vspace*{0.8\baselineskip}\par
     \noindent {\bfseries 关键词:~} #1%
 }
-%--- 英文关键词 ---
+
 \newcommand{\enkeywords}[1]{%
     \vspace*{0.8\baselineskip}\par
     \noindent {\bfseries Key Words:~} #1%
 }
 
-%---------- 中文摘要环境 ----------
+%---------- 中英文摘要环境 ----------
 \newenvironment{cnabstract}{%
     \clearpage
     \pagestyle{plain}%
@@ -571,7 +565,6 @@
     \clearpage
 }
 
-%---------- 英文摘要环境 ----------
 \newenvironment{enabstract}{%
     \clearpage
     \pagestyle{plain}%
@@ -581,12 +574,10 @@
     \chaptermark{\enabstractname}
 }{%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
+    \if@openright\cleardoublepage\fi
 }
 
-%---------- 定义新的目录页面 ----------
+%---------- 目录格式设置 ----------
 \RequirePackage{tocloft}
 \renewcommand{\cfttoctitlefont}{\hfill\heiti\chapfont}
 \renewcommand{\cftaftertoctitle}{\hfill}
@@ -609,8 +600,8 @@
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}
 \ifshnu@arts
-\renewcommand{\cftsubsecaftersnumb}{\hspace{-1.4em}}
-\renewcommand{\cftsubsubsecaftersnumb}{\hspace{-1.4em}}
+    \renewcommand{\cftsubsecaftersnumb}{\hspace{-1.4em}}
+    \renewcommand{\cftsubsubsecaftersnumb}{\hspace{-1.4em}}
 \fi
 \renewcommand{\cftfigpresnum}{\figurename~}
 \setlength{\cftfigindent}{0pt}
@@ -621,7 +612,6 @@
 
 %---------- 设置新的生成目录命令 ----------
 \newcommand{\maketoc}{%
-    % 设置目录hdr和页码选项
     \clearpage
     \pagestyle{plain}
     \phantomsection
@@ -661,9 +651,7 @@
     \chaptermark{\denotationname}
 }{%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
+    \if@openright\cleardoublepage\fi
 }
 
 %---------- 重新定义参考文献页 ----------
@@ -693,7 +681,7 @@
     \do\U\do\V\do\W\do\X\do\Y\do\Z%
     \do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0%
 }
-%--- 设置新的参考文献命令 ---
+%--- 设置参考文献命令 ---
 \renewcommand{\bibname}{参考文献}
 \renewcommand\bibsection{%
     \@mainmatterfalse
@@ -701,7 +689,7 @@
     \@mainmattertrue
 }
 
-%---------- 定义新的环境研究成果页 ----------
+%---------- 定义研究成果环境 ----------
 \newenvironment{publications}{%
     \clearpage
     \phantomsection
@@ -713,7 +701,7 @@
     \clearpage
 }
 
-%---------- 定义新的致谢环境 ----------
+%---------- 定义致谢环境 ----------
 \newenvironment{acknowledgement}{%
     \clearpage
     \phantomsection
@@ -723,9 +711,7 @@
     \baselineskip=1.2\baselineskip
 }{%
     \clearpage
-    \if@openright
-        \cleardoublepage
-    \fi
+    \if@openright\cleardoublepage\fi
 }
 
 % End of file `shnuthesis.cls'.
