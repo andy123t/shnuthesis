@@ -2,14 +2,14 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2025/04/15
+%% @date 2025/05/08
 %% @version v4.8
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2025/04/15 v4.8]
+\ProvidesClass{shnuthesis}[2025/05/08 v4.8]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
@@ -125,7 +125,7 @@
 %---------- 设置超链接 ----------
 \RequirePackage{hyperref}
 \ifshnu@print
-\hypersetup{hidelinks=true}
+\hypersetup{hidelinks}
 \else
 \hypersetup{%
     colorlinks=true,
