@@ -2,29 +2,32 @@
 %% This is file `shnuthesis.cls',
 %%
 %% @author andy123t
-%% @date 2025/05/08
-%% @version v4.8
+%% @date 2026/04/06
+%% @version v4.9
 %% @address https://github.com/andy123t/shnuthesis
 %% LaTeX thesis template for Shanghai Normal University
 %%
 
 %---------- 定义的新的Class ----------
-\ProvidesClass{shnuthesis}[2025/05/08 v4.8]
+\ProvidesClass{shnuthesis}[2026/04/06 v4.9]
 \NeedsTeXFormat{LaTeX2e}
 
 %---------- 载入学校logo ----------
-\def\logopic{shnu.eps}  % SHNU-logo
+\def\logopic{shnu.pdf}  % SHNU-logo
 
 %---------- 定义的新的Options ----------
 \newif\ifshnu@master
 \newif\ifshnu@print
 \newif\ifshnu@science
 \newif\ifshnu@arts
+\newif\ifshnu@fonts
+\shnu@fontsfalse
 \DeclareOption{master}{\shnu@mastertrue}
 \DeclareOption{doctor}{\shnu@masterfalse}
 \DeclareOption{print}{\shnu@printtrue}
 \DeclareOption{science}{\shnu@sciencetrue}
 \DeclareOption{arts}{\shnu@artstrue}
+\DeclareOption{fonts}{\shnu@fontstrue}
 \DeclareOption{openany}{\PassOptionsToClass{openany}{ctexbook}}
 \DeclareOption{openright}{\PassOptionsToClass{openright}{ctexbook}}
 \DeclareOption{twoside}{\PassOptionsToClass{twoside}{ctexbook}}
@@ -39,14 +42,55 @@
 % twoside,openright,print 用于打印, 全部双面排版
 %---------------------------------
 
+\ifshnu@science
+  \ifshnu@arts
+    \ClassError{shnuthesis}{Options `science' and `arts' cannot be used together}{}
+  \fi
+\fi
+\ifshnu@science\else
+  \ifshnu@arts\else
+    \ClassWarning{shnuthesis}{Neither `science' nor `arts' specified, using `science' by default}
+    \shnu@sciencetrue
+  \fi
+\fi
+
 %---------- 修改字体宏包Options ----------
 \PassOptionsToPackage{no-math}{fontspec}
 
 %---------- 载入Class ----------
-\LoadClass[UTF8,a4paper,zihao=-4]{ctexbook}
+\ifshnu@fonts
+  \LoadClass[UTF8,a4paper,zihao=-4,fontset=none]{ctexbook}
+\else
+  \LoadClass[UTF8,a4paper,zihao=-4]{ctexbook}
+\fi
 \@ifclasslater{ctexbook}{2017/01/01}{}{%
     \ClassError{shnuthesis}{ctex >= 2017/01/01 is required ...}{}%
 }
+
+\ifshnu@fonts
+  \IfFileExists{fonts/SimSun.ttf}{}{\ClassError{shnuthesis}{Font file `fonts/SimSun.ttf' not found}{}}
+  \IfFileExists{fonts/SimHei.ttf}{}{\ClassError{shnuthesis}{Font file `fonts/SimHei.ttf' not found}{}}
+  \IfFileExists{fonts/KaiTi.ttf}{}{\ClassError{shnuthesis}{Font file `fonts/KaiTi.ttf' not found}{}}
+  \IfFileExists{fonts/FangSong.ttf}{}{\ClassError{shnuthesis}{Font file `fonts/FangSong.ttf' not found}{}}
+
+  \setCJKfamilyfont{zhsong}[Path=fonts/]{SimSun.ttf}
+  \setCJKfamilyfont{zhhei}[Path=fonts/]{SimHei.ttf}
+  \setCJKfamilyfont{zhkai}[Path=fonts/]{KaiTi.ttf}
+  \setCJKfamilyfont{zhfang}[Path=fonts/]{FangSong.ttf}
+
+  \setCJKmainfont{SimSun.ttf}[
+    Path=fonts/,
+    BoldFont=SimHei.ttf,
+    ItalicFont=KaiTi.ttf
+  ]
+  \setCJKsansfont{SimHei.ttf}[Path=fonts/]
+  \setCJKmonofont{FangSong.ttf}[Path=fonts/]
+
+  \providecommand\songti{\CJKfamily{zhsong}}
+  \providecommand\heiti{\CJKfamily{zhhei}}
+  \providecommand\kaishu{\CJKfamily{zhkai}}
+  \providecommand\fangsong{\CJKfamily{zhfang}}
+\fi
 
 %---------- 定义页边距 ----------
 \RequirePackage{geometry}
@@ -62,6 +106,7 @@
 \RequirePackage{amsmath,amssymb,amsthm}
 \RequirePackage{mathrsfs}
 \RequirePackage{graphicx}
+\RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
 \RequirePackage{float}
@@ -291,9 +336,12 @@
 
 %---------- 设置页脚样式 ----------
 \newcommand{\footstyle}{%
-    %\fancyfoot[C]{\zihao{5}\thepage}
-    \fancyfoot[LE]{\zihao{5}\thepage}
-    \fancyfoot[RO]{\zihao{5}\thepage}
+    \if@twoside
+        \fancyfoot[LE]{\zihao{5}\thepage}
+        \fancyfoot[RO]{\zihao{5}\thepage}
+    \else
+        \fancyfoot[C]{\zihao{5}\thepage}
+    \fi
 }
 
 \fancypagestyle{plain}{%
@@ -324,7 +372,7 @@
 
 %---------- 设置图片和表格样式 ----------
 \RequirePackage{caption}
-\captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
+\captionsetup{font={small},labelformat={default},labelsep=quad}
 \captionsetup[figure]{position=bottom,skip={6pt},name={图}}
 \captionsetup[table]{position=top,skip={3pt},name={表}}
 \setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
@@ -425,12 +473,15 @@
 \renewcommand{\maketitle}[1][15em]{%
     \clearpage
     \phantomsection
-    \pdfbookmark[0]{封~~面}{cover}
+    \pdfbookmark[0]{封~~面}{shnucover}
     \thispagestyle{empty}%
     \begin{center}%
         \vspace*{-1.8\baselineskip}%
 
-        {\hfill 学校代码：\shnu@shnucode \hspace*{8cm} 学号：\shnu@studentID \hfill}%
+        \noindent%
+        \makebox[\textwidth]{%
+        学校代码：\shnu@shnucode \hfill 学号：\shnu@studentID
+        }%
 
         \vspace*{\fill}%
 
@@ -467,7 +518,7 @@
 \newcommand{\makestatement}[1][]{%
     \clearpage
     \phantomsection
-    \pdfbookmark[0]{声明页}{statement}
+    \pdfbookmark[0]{声明页}{shnustatement}
     \def\shnu@tmp{#1}
     \ifx\shnu@tmp\@empty
     \thispagestyle{empty}%
@@ -497,7 +548,7 @@
 
         \vspace*{\baselineskip}%
 
-        本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被査阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。暂缓出版的论文在公开后遵守此规定。
+        本人完全了解上海师范大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被查阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其它手段保存论文。暂缓出版的论文在公开后遵守此规定。
 
         \vspace*{2.4\baselineskip}%
 
@@ -558,8 +609,8 @@
     \clearpage
     \pagestyle{plain}%
     \phantomsection
-    \addcontentsline{toc}{chapter}{\cnabstractname}
     \chapter*{\cnabstractname}
+    \addcontentsline{toc}{chapter}{\cnabstractname}
     \chaptermark{\cnabstractname}
 }{%
     \clearpage
@@ -569,8 +620,8 @@
     \clearpage
     \pagestyle{plain}%
     \phantomsection
+    \chapter*{\rmfamily\bfseries\enabstractname}
     \addcontentsline{toc}{chapter}{\enabstractname}
-    \chapter*{\enabstractname}
     \chaptermark{\enabstractname}
 }{%
     \clearpage
@@ -624,8 +675,8 @@
 \newcommand\makelof{%
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{\listfigurename}
     \chapter*{\listfigurename}
+    \addcontentsline{toc}{chapter}{\listfigurename}
     \chaptermark{\listfigurename}
     \@starttoc{lof}%
     \clearpage
@@ -635,8 +686,8 @@
 \newcommand\makelot{%
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{\listtablename}
     \chapter*{\listtablename}
+    \addcontentsline{toc}{chapter}{\listtablename}
     \chaptermark{\listtablename}
     \@starttoc{lot}%
     \clearpage
@@ -646,8 +697,8 @@
 \newenvironment{denotation}{%
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{\denotationname}
     \chapter*{\denotationname}
+    \addcontentsline{toc}{chapter}{\denotationname}
     \chaptermark{\denotationname}
 }{%
     \clearpage
@@ -693,10 +744,10 @@
 \newenvironment{publications}{%
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{\shnu@publications}
     \chapter*{\shnu@publications}
+    \addcontentsline{toc}{chapter}{\shnu@publications}
     \chaptermark{\shnu@publications}
-    \baselineskip=1.2\baselineskip
+    \linespread{1.6}\selectfont
 }{%
     \clearpage
 }
@@ -705,10 +756,10 @@
 \newenvironment{acknowledgement}{%
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{\acknowledgementname}
     \chapter*{\acknowledgementname}
+    \addcontentsline{toc}{chapter}{\acknowledgementname}
     \chaptermark{\acknowledgementname}
-    \baselineskip=1.2\baselineskip
+    \linespread{1.6}\selectfont
 }{%
     \clearpage
     \if@openright\cleardoublepage\fi

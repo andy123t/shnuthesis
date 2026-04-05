@@ -1,14 +1,28 @@
 
 字体设置说明
 
-一般情况 windows 系统会直接调用中文字体
-特殊情况 (比如 mac 系统等) 可能需要本地路径调用字体
-文件夹下建一个 fonts 文件夹, 放置宋体, 楷体, 黑体和仿宋字体文件
-SimSun.ttf, KaiTi.ttf, SimHei.ttf, FangSong.ttf
-注意: 这些字体版权属于北京中易公司, 请自行下载
-字体下载网站: https://www.fonts.net.cn/
+一般情况下，Windows 系统会自动调用系统自带的中文字体。
+在其他情况下 (如 macOS 系统)，可能需要通过本地字体路径设置字体。
 
-%----- 设置 fontset=none 后调用本地路径字体 -----
+请在模板所在目录下新建一个 fonts 文件夹，并将以下字体文件放入其中：
+
+SimSun.ttf
+KaiTi.ttf
+SimHei.ttf
+FangSong.ttf
+
+注意：上述字体的版权归北京中易公司所有，请用户自行下载。
+字体下载网站：https://www.fonts.net.cn/
+
+本地字体配置完成后，选择 fonts 选项，模板会自动调用相应字体：
+
+\documentclass[master,fonts]{shnuthesis}
+
+%-----------------------------------------------%
+
+方法二 (与以上设置等效)
+
+%--- 设置 fontset=none 后调用本地路径字体 ---
 \documentclass[master,fontset=none]{shnuthesis}
 
 %----- 本地路径调用字体 -----
@@ -25,11 +39,6 @@ SimSun.ttf, KaiTi.ttf, SimHei.ttf, FangSong.ttf
 \providecommand\fangsong{\CJKfamily{zhfang}}
 \makeatother
 
-
-% 英文字体建议使用 newtxtext 宏包设置字体
-% 也可以设置 Times New Roman 字体
-% 无衬线字体可使用 Arial, 也可以使用默认
-
 %----- 设置英文字体 -----
 %\usepackage{newtxtext}  % New TX font for text
 %\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
@@ -38,8 +47,4 @@ SimSun.ttf, KaiTi.ttf, SimHei.ttf, FangSong.ttf
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
 %\setmonofont{Courier New}
-
-%----- 设置数学字体 -----
-%\usepackage{newtxmath}
-%\usepackage{mathptmx}
 

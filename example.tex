@@ -1,4 +1,4 @@
-% !TEX program = xelatex
+% 本文件为论文主 TeX 文件
 % 使用 texlive 完整编译:
 % xelatex -> bibtex -> xelatex -> xelatex
 % SHNU-Thesis 上海师范大学研究生毕业论文 LaTeX 模板
@@ -9,6 +9,11 @@
 % arts 文科学位论文, 默认缺省为理科
 % print 用于打印, 封面等生成空白页
 % 提交给图书馆的电子版不要选 print
+
+% fonts macOS系统必选, 调用本地字体
+% 需在本地文件夹 fonts 中添加字体 SimSun.ttf, KaiTi.ttf, FangSong.ttf
+
+%【为符合新的论文规范, 请直接插入Word生成的封面及声明页PDF文件, 以下信息无需填写】%
 
 %----- 论文标题、作者、导师、日期等相关信息 -----
 \title{上海师范大学研究生毕业论文 LaTeX 模板, 支持硕士/博士学位论文}
@@ -70,7 +75,6 @@
 %----- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
-\newcommand{\A}{\mathcal{A}}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\ii}{\mathrm{i}\mkern1mu}
 \newcommand{\abs}[1]{\lvert#1\rvert}
@@ -81,15 +85,17 @@
 
 \begin{document}
 
-% 生成封面页
+% 生成封面页, 已不适应新的论文规范
 \maketitle
-% 也可以插入封面 cover.pdf 替换原始封面
-%\insertcover{cover.pdf}
 
-% 生成独创性与授权声明页, 此页可以放在最后
-\makestatement
-% 将签字扫描的声明页 statement.pdf 替换原始页面
-%\makestatement[file=statement.pdf]
+% 请插入Word生成的封面 cover.pdf
+\insertcover{cover.pdf}
+
+% 生成独创性与授权声明页, 已不适应新的论文规范
+%\makestatement
+
+% 请插入Word生成的声明页 statement.pdf
+\makestatement[file=statement.pdf]
 
 %=============== 摘要 =================%
 
