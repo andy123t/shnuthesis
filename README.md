@@ -17,7 +17,7 @@ shnuthesis 文档类可指定的选项包括
 - doctor 博士学位论文, 不能省略
 - arts 文科学位论文, 默认缺省为理科
 - print 用于打印, 封面等生成空白页（提交给图书馆的电子版, 不要选 print）
-- fonts macOS 系统必选, 调用本地字体（需在本地文件夹 fonts 中添加字体 SimSun.ttf, KaiTi.ttf, FangSong.ttf）
+- fonts macOS 系统必选, 调用本地字体（需在本地文件夹 fonts 中添加字体 SimSun.ttf, KaiTi.ttf, SimHei.ttf, FangSong.ttf）
 
 本模板为上海师范大学非官方的研究生学位论文 LaTeX 模板，参考了《上海师范大学研究生学位论文规范》，文档类为 **shnuthesis.cls**，示例文件 **example.tex** 给出了使用的指南和要求，也展示了论文排版中常用的例子，包括公式、定理、表格、插图、参考文献等。
 
