@@ -3,7 +3,7 @@
 
 \chapter{微分方程的数值方法}
 
-本章我们考虑具有以下微分方程:
+本章我们考虑以下微分方程:
 \begin{equation}\label{eq:PDE}
 \left\{\begin{aligned}
 & Lu=-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}+qu=f, \quad a < x < b, \\
@@ -27,7 +27,7 @@
 
 为了方便起见, 令 $q_{i}=q(x_{i})$, $f_{i}=f(x_{i})$. 方程 \eqref{eq:PDE} 的差分方程为
 \begin{equation}\label{eq:difEqu}
-  L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{h}+q_{i} u_{i}=f_{i},\quad 1 \leqslant j \leqslant N-1,
+  L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{h}+q_{i} u_{i}=f_{i},\quad 1 \leqslant i \leqslant N-1,
 \end{equation}
 其中 $L_{h}$ 为差分算子, $u_i$ 为 $u(x)$ 在 $x=x_i$ 处的近似解即差分解.
 

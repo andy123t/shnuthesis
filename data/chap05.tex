@@ -7,7 +7,7 @@
 
 LaTeX 的 table 环境是一个浮动体, 与 figure 环境的排版方式类似. 简单的表格可以使用三线表进行排版, 其结构是仅在标题的上下以及表格的最下方添加横线.
 
-排版表格最基本的环境是 tabular 环境, 适合大多数需求. 如果想要控制表格行列间距, 可使用命令 \verb|\tabcolsep| 和 \verb|\arraystretch|, 它们分别控制列间距和行间距. 例如, \verb|\tabcolsep{10pt}| 表示列间距为 10pt, 默认是 6pt,  \verb|\arraystretch{1.2}| 表示行间距为 1.2 倍, 默认是 1 倍间距.
+排版表格最基本的环境是 tabular 环境, 适合大多数需求. 如果想要控制表格行列间距, 可使用命令 \verb|\tabcolsep| 和 \verb|\arraystretch|, 它们分别控制列间距和行间距. 例如, \verb|\setlength{\tabcolsep}{10pt}| 表示列间距为 10pt, 默认是 6pt, \verb|\renewcommand{\arraystretch}{1.2}| 表示行间距为 1.2 倍, 默认是 1 倍间距.
 
 本文基于 array 宏包定义了新的列类型 \verb|LCR| 格式, 实现了居左、居中和居右的对齐方式, 可用于 tabularx 环境. tabularx 环境要求先指定表格的总宽度, \verb|LCR| 三个格式根据表格的总宽度自动调整列宽, 使其相等. 本模板还定义了新的列类型 \verb|P{}|, 可用于 tabular 和 tabularx 环境, 它允许指定某列的宽度并使其内容居中 (如 \verb|P{1cm}| 控制某一列的宽度为 1cm), 实际上 \verb|P{}| 是在 \verb|p{}| 的基础上增加了居中功能.
 

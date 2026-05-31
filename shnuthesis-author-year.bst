@@ -1963,7 +1963,7 @@ FUNCTION {preprint}
   new.block
   title.in.journal
     { format.series.vol.num.title "title" output.check
-      "A" set.entry.mark
+      "PP" set.entry.mark
       format.mark "" output.after
       new.block
     }
